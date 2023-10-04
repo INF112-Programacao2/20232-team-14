@@ -10,9 +10,12 @@ namespace view {
         Cli();
         int mainMenu();
 
-        int readInt();
+        std::string readUserInput();
 
-        void displayInt(int i);
+        void displayOutput(const std::string& output);
+
+        void errorMsg(const std::exception& e);
+
     };
 
 } // View

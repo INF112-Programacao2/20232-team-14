@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include "Controller.h"
 #include "model/Carro.h"
 #include "view/Cli.h"
@@ -21,11 +22,18 @@ namespace controller {
                     //teria aqui uma instanciação de c
                     break;
                 case 2:
-                    c.setHoras(interface.readInt());
-                    c.setPHora(interface.readInt());
+                    try { //try catch pois stoi retorna excecao de invalid_argument
+                        c.setHoras(stoi(interface.readUserInput()));
+                        c.setPHora(stoi(interface.readUserInput()));
+                    } catch (std::exception& e) { //catch chama a interface para exibir a mensagem de erro, no formato exception
+                        interface.errorMsg(e);
+                    }
                     break;
                 case 3:
-                    interface.displayInt(c.calculaPreco());
+                    {//bloco pro compilador nao encher o saco (explico depois mas basicamente nao pode declarar variavel dentro do switch sem usar bloco)
+                        std::string output = std::to_string(c.calculaPreco()).append("\n"); //esse append por algum motivo ta adiantando de nada :(
+                        interface.displayOutput(std::to_string(c.calculaPreco()));
+                    }
                     break;
                 case 4:
                     //teria aqui um delete c
