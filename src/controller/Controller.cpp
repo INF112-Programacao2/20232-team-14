@@ -2,7 +2,7 @@
 #include "Controller.h"
 #include "model/Carro.h"
 #include "view/Cli.h"
-
+#include <sqlite3.h>
 namespace controller {
 
     Controller::Controller() = default;
@@ -38,8 +38,27 @@ namespace controller {
                 case 4:
                     //teria aqui um delete c
                     break;
+                case 5:
+                    //abre database
+                    initDatabase();
+                    break;
             }
-
         }
+    }// startProgram()
+    void Controller::initDatabase(){ // essa função NÃO PERTENCE AQUI, está aqui temporariamente pra testes (e tenho que pensar em onde ela deveria ficar de fato)
+        //peguei essa implementação de um site, pretendo dissecar posteriormente e analisar pra aprender, mas por agora, podemos comemorar a implementação do BD!
+        sqlite3 *db;
+        char *errMsg = 0;
+        int rc;
+
+        rc = sqlite3_open("../test.db", &db);
+
+        if(rc){
+            fprintf(stderr, "Nao pode abrir banco de dados: %s\n", sqlite3_errmsg(db));
+        }else{
+            fprintf(stderr, "Banco de dados aberto");
+        }
+        sqlite3_close(db);
     }
+
 } // controller

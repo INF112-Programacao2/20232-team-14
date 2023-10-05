@@ -11,6 +11,7 @@ namespace view {
         std::cout << "2. Alterar Carro" << std::endl;
         std::cout << "3. Calcula Preco do Carro" << std::endl;
         std::cout << "4. OBLITERA CARRO. (nao ta funcionando)" << std::endl;
+        std::cout << "5. Test Database" << std::endl;
         std::cout << "0. Encerra Programa" << std::endl;
         std::cin >> input;
         std::cin.ignore(); // preciso fazer uma implementacao mais limpa, mas ignore() limpa o inputstream apos um read
