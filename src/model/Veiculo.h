@@ -6,7 +6,7 @@
 namespace model {
 
     class Veiculo : Model{
-        std::string Placa, Tipo;
+        std::string _placa, _tipo;
 
     public:
 
