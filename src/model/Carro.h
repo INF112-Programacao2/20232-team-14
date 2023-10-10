@@ -9,11 +9,10 @@ namespace model {
         int _pHora, _horas;
 
     public:
-        Carro();
 
         Carro(int pHora, int horas);
 
-        int calculaPreco();
+        int calculaPreco() const;
 
         int getPHora() const;
 
