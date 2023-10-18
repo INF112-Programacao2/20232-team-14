@@ -3,6 +3,9 @@
 namespace model {
 
 
+    Carro::Carro() {
+
+    }
 
     Carro::Carro(int pHora, int horas) {
         _pHora = pHora;

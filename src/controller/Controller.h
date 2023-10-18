@@ -9,7 +9,6 @@ namespace controller {
 
         void startProgram();
 
-        void initDatabase();
     };
 
 }

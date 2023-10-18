@@ -1,5 +1,3 @@
-
-
 #include "Veiculo.h"
 
 namespace model {

@@ -6,9 +6,13 @@
 namespace model {
 
     class Carro  : Veiculo{
+
+
         int _pHora, _horas;
 
     public:
+
+        Carro();
 
         Carro(int pHora, int horas);
 
