@@ -1,9 +1,10 @@
 #include "Model.h"
 #include <sqlite3.h>
 #include <cstdio>
+#include <string>
 // superclasse de persistencia model utilizando SQLite3
 namespace model {
-    sqlite3 *_db = nullptr;
+    sqlite3 *Model::_db = nullptr;
 
     int Model::connectDB() {
 
@@ -22,12 +23,17 @@ namespace model {
 
     int Model::closeDB(){
         sqlite3_close(_db);
+        return 0;
     }
 
-    static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
+    static int callback(void *_, int numCol, char **row, char **colName) {
 
-        for(int i = 0; i<argc; i++) {
-            printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+        //void star eh oq eu quiser
+        //mesmo cara que eu passo na chamada do exec (tipo contexto da execucao)
+        //posso fazer ser um vector e retornar ele no final de cada execucao
+        // anotacao pessoal feita por eu caio pra mexer dps no codigo
+        for(int i = 0; i<numCol; i++) {
+            printf("%s = %s\n", colName[i], row[i] ? row[i] : "NULL");
         }
         printf("\n");
         return 0;
@@ -36,15 +42,15 @@ namespace model {
     int Model::initDB() {
         char *errorMsg = 0;
         int dbresponse;
-        char *sql;
-        sql = "CREATE TABLE patio("  \
+        std::string sql;
+        sql = "CREATE TABLE IF NOT EXISTS patio("  \
             "ID INT PRIMARY KEY     NOT NULL," \
             "NAME           TEXT    NOT NULL," \
             "AGE            INT     NOT NULL," \
             "ADDRESS        CHAR(50)," \
             "SALARY         REAL );";
 
-        dbresponse = sqlite3_exec(_db, sql, callback, 0, &errorMsg);
+        dbresponse = sqlite3_exec(_db, sql.c_str(), callback, 0, &errorMsg);
 
         if( dbresponse != SQLITE_OK ){
             fprintf(stderr, "SQL error: %s\n", errorMsg);
