@@ -7,10 +7,11 @@ namespace model {
 
     class Carro  : Veiculo{
 
-
         int _pHora, _horas;
 
     public:
+
+        void fillChecklist() override;
 
         Carro();
 

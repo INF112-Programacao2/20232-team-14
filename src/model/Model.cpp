@@ -43,18 +43,30 @@ namespace model {
         char *errorMsg = 0;
         int dbresponse;
         std::string sql;
-        sql = "CREATE TABLE IF NOT EXISTS patio("  \
-            "ID INT PRIMARY KEY     NOT NULL," \
+        sql = "CREATE TABLE IF NOT EXISTS patios("  \
+            "ID             INT PRIMARY KEY NOT NULL," \
             "NAME           TEXT    NOT NULL," \
-            "AGE            INT     NOT NULL," \
+            "CAPACITY       INT     NOT NULL," \
             "ADDRESS        CHAR(50)," \
-            "SALARY         REAL );";
-
-        dbresponse = sqlite3_exec(_db, sql.c_str(), callback, 0, &errorMsg);
+            "PROPRIETARY    CHAR(50)," \
+            "CONTACT        CHAR(12)," \
+            "DAILY_FEE      REAL);"; \
+            /*"CREATE TABLE IF NOT EXISTS veiculos("  \
+            "ID             INT PRIMARY KEY NOT NULL," \
+            "ID_PATIO             INT NOT NULL," \ // FOREIGN KEY
+            "PLATE          TEXT    NOT NULL," \
+            "DOORS          INT     NOT NULL," \
+            "MAKE           CHAR(50)," \
+            "MODEL          CHAR(50)," \
+            "YEAR           INT," \
+            "VIN            REAL);";  // numero do chassi
+            */
+        dbresponse = sqlite3_exec(_db, sql.c_str(), callback, 0, &errorMsg); //0 pode ser literalmente qualquer coisa pois vai pra void *
 
         if( dbresponse != SQLITE_OK ){
             fprintf(stderr, "SQL error: %s\n", errorMsg);
             sqlite3_free(errorMsg);
+            return -1;
         } else {
             fprintf(stdout, "Tabela criada com sucesso\n");
         }
