@@ -2,12 +2,14 @@
 #define INC_20232_TEAM_14_CARRO_H
 
 #include "Veiculo.h"
+#include <string>
 
 namespace model {
 
-    class Carro  : public Veiculo{
+    class Carro  : public Veiculo {
+
     private:
-        double _pHora;
+
         std::string _id;
         bool _extintor;
         bool _estepe;
@@ -24,11 +26,9 @@ namespace model {
         int _teto;
 
     public:
-        Carro(std::string os, std::string solicitacao, std::string funcionario, std::string placa_reboque, std::string motivo, int estado_veiculo, bool blitz, std::string local, std::string placa, std::string marca, std::string modelo, int ano, std::string cidade, std::string chassi, int km, int hodometro, std::string ocorrencia, std::string policial, std::string data, std::string horario,std::string objetos, std::string obervacoes, int rodas, int retrovisores, double _pHora, std::string _id, bool _extintor, bool _estepe, bool _macaco, bool _chave_roda, bool _triangulo, bool _bateria, bool _calotas, bool _tapetes, bool _radio, int _portas, int _capo, int _painel, int _teto );
 
-        int calculaPreco();
-        int get_pHora() const;
-        void set_pHora(int _pHora);
+        Carro(std::string os, std::string solicitacao, std::string funcionario, std::string placa_reboque, std::string motivo, int estado_veiculo, bool blitz, std::string local, std::string placa, std::string marca, std::string modelo, int ano, std::string cidade, std::string chassi, int km, int hodometro, std::string ocorrencia, std::string policial, std::string data, std::string horario,std::string objetos, std::string observacoes, int rodas, int retrovisores, std::string _id, bool _extintor, bool _estepe, bool _macaco, bool _chave_roda, bool _triangulo, bool _bateria, bool _calotas, bool _tapetes, bool _radio, int _portas, int _capo, int _painel, int _teto, std::string &_checklist);
+
         std::string get_id() const;
         void set_id(std::string _id);
         bool get_extintor() const;
@@ -59,7 +59,6 @@ namespace model {
         void set_teto(int _teto);
         bool get_bateria() const;
         void set_bateria(bool _bateria);
-        virtual void preenche_checklist(std::string &_checklist);
 
     };
 

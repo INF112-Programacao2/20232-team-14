@@ -7,7 +7,9 @@ namespace view {
 
 
     public:
+
         Cli();
+
         int mainMenu();
 
         std::string readUserInput();

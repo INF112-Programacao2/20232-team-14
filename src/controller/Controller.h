@@ -4,7 +4,9 @@
 namespace controller {
 
     class Controller {
+
     public:
+
         Controller();
 
         void startProgram();

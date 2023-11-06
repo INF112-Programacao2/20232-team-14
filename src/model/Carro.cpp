@@ -4,9 +4,20 @@
 
 namespace model {
 
-    Carro::Carro(std::string os, std::string solicitacao, std::string funcionario, std::string placa_reboque, std::string motivo, int estado_veiculo, bool blitz, std::string local, std::string placa, std::string marca, std::string modelo, int ano, std::string cidade, std::string chassi, int km, int hodometro, std::string ocorrencia, std::string policial, std::string data, std::string horario, std::string objetos, std::string obervacoes, int rodas, int retrovisores, std::string os, std::string solicitacao, std::string funcionario, std::string placa_reboque, std::string motivo, int estado_veiculo, bool blitz, std::string local, std::string placa, std::string marca, std::string modelo, int ano, std::string cidade, std::string chassi, int km, int hodometro, std::string ocorrencia, std::string policial, std::string data, std::string objetos, std::string obervacoes, int rodas, int retrovisores, double _pHora, std::string &_checklist) :
-            Veiculo(os,solicitacao,funcionario,placa_reboque,motivo,estado_veiculo,blitz,local,placa,marca,modelo,ano,cidade,chassi,km,hodometro, ocorrencia,policial,data, horario,objetos,observacoes,rodas,retrovisores),_pHora(pHora)
+    Carro::Carro(std::string os, std::string solicitacao, std::string funcionario, std::string placa_reboque,
+                 std::string motivo, int estado_veiculo, bool blitz, std::string local, std::string placa,
+                 std::string marca, std::string modelo, int ano, std::string cidade, std::string chassi, int km,
+                 int hodometro, std::string ocorrencia, std::string policial, std::string data, std::string horario,
+                 std::string objetos, std::string observacoes, int rodas, int retrovisores, std::string _id,
+                 bool _extintor, bool _estepe, bool _macaco, bool _chave_roda, bool _triangulo, bool _bateria,
+                 bool _calotas, bool _tapetes, bool _radio, int _portas, int _capo, int _painel, int _teto,
+                 std::string &_checklist):
+
+            Veiculo(os,solicitacao,funcionario,placa_reboque,motivo,estado_veiculo,blitz,local,placa,marca,modelo,
+                    ano,cidade,chassi,km,hodometro,ocorrencia,policial,data,horario,objetos,observacoes,rodas,retrovisores)
+
     {
+
         _id = _checklist[0];
         _extintor = _checklist[1];
         _estepe = _checklist[2];
@@ -21,22 +32,14 @@ namespace model {
         _capo = std::stoi(_checklist[11]);
         _painel = std::stoi(_checklist[12]);
         _teto = std::stoi(_checklist[13]);
-    }
 
-
-    double Carro:: get_pHora() const {
-        return _pHora;
-    }
-
-    void Carro::set_pHora(double pHora) {
-        _pHora = pHora;
     }
 
     std::string Carro::get_id() const {
         return _id;
     }
 
-    void Carro:: set_id(const std::string& id) {
+    void Carro::set_id(std::string id) {
         _id = id;
     }
 

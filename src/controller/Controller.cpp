@@ -10,12 +10,15 @@ namespace controller {
 
 
     void Controller::startProgram() {
+
         bool loop = true;
         model::Carro c;
         view::Cli interface;
+
         while(loop){
 
             switch(interface.mainMenu()) {
+
                 case 0:
                     loop = false;
                     break;
