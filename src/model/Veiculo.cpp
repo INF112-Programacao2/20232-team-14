@@ -4,15 +4,15 @@
 
 namespace model {
 
-    Veiculo::Veiculo(std::string &dados_veiculo){
+    Veiculo::Veiculo(std::vector<std::string> &dados_veiculo){
 
         _os = dados_veiculo[0];
         _solicitacao = dados_veiculo[1];
         _funcionario = dados_veiculo[2];
         _placa_reboque = dados_veiculo[3];
         _motivo = dados_veiculo[4];
-        _estado_veiculo = std::stoi(dados_veiculo[5]);
-        _blitz = dados_veiculo[6];
+        _estado_veiculo = stoi(dados_veiculo[5]);
+        _blitz = stob(dados_veiculo[6]);
         _local = dados_veiculo[7];
         _placa = dados_veiculo[8];
         _marca = dados_veiculo[9];
@@ -223,6 +223,21 @@ namespace model {
 
     void Veiculo:: set_retrovisores(const int &_retrovisores){
         Veiculo::_retrovisores=_retrovisores;
+    }
+
+    //função string to bool - usada para converter os dados do vector que devem ser interpretados como bool
+    bool Veiculo::stob(const std::string &str){
+
+        if(str == "true" || str == "1"){
+
+            return true;
+
+        }else if(str == "false" || str == "0"){
+
+            return false;
+
+        }
+
     }
 
 } // model
