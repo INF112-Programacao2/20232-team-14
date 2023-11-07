@@ -12,6 +12,7 @@ namespace controller {
     void Controller::startProgram() {
 
         bool loop = true;
+        bool erro = false; //responsavel por solicitar novamente entradas consideradas invalidas
         model::Carro c;
         view::Cli interface;
 
@@ -26,12 +27,25 @@ namespace controller {
                     //teria aqui uma instanciação de c
                     break;
                 case 2:
+                    interface.displayOutput("*Digite 0 a qualquer momento caso queira desistir da operacao*\n");
+                    do {
                     try { //try catch pois stoi retorna excecao de invalid_argument
+                        interface.displayOutput("Horario de registro do veiculo: ");
                         c.setHoras(stoi(interface.readUserInput()));
+                        if (c.getHoras()==0) {
+                            break;
+                        }
+                        interface.displayOutput("Horario de liberacao do veiculo: ");
                         c.setPHora(stoi(interface.readUserInput()));
+                        if (c.getPHora()==0) {
+                            break;
+                        }
+                        erro = false;
                     } catch (std::exception& e) { //catch chama a interface para exibir a mensagem de erro, no formato exception
                         interface.errorMsg(e);
+                        erro = true;
                     }
+                    } while (erro);
                     break;
                 case 3:
                     {//bloco pro compilador nao encher o saco (explico depois mas basicamente nao pode declarar variavel dentro do switch sem usar bloco)
