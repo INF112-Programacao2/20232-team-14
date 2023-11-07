@@ -226,7 +226,7 @@ namespace model {
     }
 
     //função string to bool - usada para converter os dados do vector que devem ser interpretados como bool
-    bool Veiculo::stob(const std::string &str){
+    bool Veiculo::stob(const std::string& str){
 
         if(str == "true" || str == "1"){
 
@@ -239,7 +239,5 @@ namespace model {
         }
 
     }
-
-
 
 } // model

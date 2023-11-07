@@ -10,8 +10,8 @@ namespace model {
                  int hodometro, std::string ocorrencia, std::string policial, std::string data, std::string horario,
                  std::string objetos, std::string observacoes, int rodas, int retrovisores, std::vector <std::string> &_checklist):
 
-            Veiculo(os,solicitacao,funcionario,placa_reboque,motivo,estado_veiculo,blitz,local,placa,marca,modelo,
-                    ano,cidade,chassi,km,hodometro,ocorrencia,policial,data,horario,objetos,observacoes,rodas,retrovisores)
+    Veiculo(os,solicitacao,funcionario,placa_reboque,motivo,estado_veiculo,blitz,local,placa,marca,modelo,
+            ano,cidade,chassi,km,hodometro,ocorrencia,policial,data,horario,objetos,observacoes,rodas,retrovisores)
 
     {
 

@@ -10,9 +10,9 @@ namespace view {
         int input;
 
         std::cout << "\n1. Inserir Apreensão (nao ta funcionando)" << std::endl;
-        std::cout << "2. Alterar Carro" << std::endl;
-        std::cout << "3. Calcula Preco do Carro" << std::endl;
-        std::cout << "4. OBLITERA CARRO. (nao ta funcionando)" << std::endl;
+        std::cout << "2. Editar checklist (nao ta funcionando) " << std::endl;
+        std::cout << "3. Realizar orçamento (nao ta funcionando)" << std::endl;
+        std::cout << "4. Liberar veículo. (nao ta funcionando)" << std::endl;
         std::cout << "5. Test Database" << std::endl;
         std::cout << "0. Encerra Programa" << std::endl;
         std::cin >> input;
