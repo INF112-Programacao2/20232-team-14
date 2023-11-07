@@ -27,7 +27,7 @@ namespace model {
 
     public:
 
-        Carro(std::string os, std::string solicitacao, std::string funcionario, std::string placa_reboque, std::string motivo, int estado_veiculo, bool blitz, std::string local, std::string placa, std::string marca, std::string modelo, int ano, std::string cidade, std::string chassi, int km, int hodometro, std::string ocorrencia, std::string policial, std::string data, std::string horario,std::string objetos, std::string observacoes, int rodas, int retrovisores, std::string _id, bool _extintor, bool _estepe, bool _macaco, bool _chave_roda, bool _triangulo, bool _bateria, bool _calotas, bool _tapetes, bool _radio, int _portas, int _capo, int _painel, int _teto, std::string &_checklist);
+        Carro(std::string os, std::string solicitacao, std::string funcionario, std::string placa_reboque, std::string motivo, int estado_veiculo, bool blitz, std::string local, std::string placa, std::string marca, std::string modelo, int ano, std::string cidade, std::string chassi, int km, int hodometro, std::string ocorrencia, std::string policial, std::string data, std::string horario,std::string objetos, std::string observacoes, int rodas, int retrovisores, std::vector<std::string> &_checklist);
 
         std::string get_id() const;
         void set_id(std::string _id);
@@ -57,8 +57,8 @@ namespace model {
         void set_painel(int _painel);
         int get_teto() const;
         void set_teto(int _teto);
-        bool get_bateria() const;
-        void set_bateria(bool _bateria);
+
+        virtual bool stob(const std::string& str);
 
     };
 

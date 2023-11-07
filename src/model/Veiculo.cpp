@@ -11,7 +11,7 @@ namespace model {
         _funcionario = dados_veiculo[2];
         _placa_reboque = dados_veiculo[3];
         _motivo = dados_veiculo[4];
-        _estado_veiculo = stoi(dados_veiculo[5]);
+        _estado_veiculo = std::stoi(dados_veiculo[5]);
         _blitz = stob(dados_veiculo[6]);
         _local = dados_veiculo[7];
         _placa = dados_veiculo[8];
@@ -33,12 +33,12 @@ namespace model {
 
     }
 
-    std::string Veiculo::&get_os() const{
+    const std::string &Veiculo::get_os() const {
         return _os;
     }
 
-    void Veiculo:: set_os(const std::string &_os){
-        Veiculo::_os=_os;
+    void Veiculo:: set_os(const std::string &os){
+        _os=os;
     }
 
     std::string Veiculo::&get_solicitacao() const{
@@ -133,19 +133,19 @@ namespace model {
         return _cidade;
     }
 
-    void Veiculo::set_cidade(const std::string &_cidade){
-        Veiculo::_cidade=_cidade;
+    void Veiculo::set_cidade(const std::string &cidade){
+        _cidade=cidade;
     }
 
     std::string Veiculo:: &get_chassi() const{
         return _chassi;
     }
 
-    void Veiculo:: set_chassi(const std::string &_chassi){
-        Veiculo::_chassi=_chassi;
+    void Veiculo:: set_chassi(const std::string &chassi){
+        _chassi=chassi;
     }
 
-    int Veiculo::&get_km() const{
+    const int &Veiculo::get_km() const{
         return _km;
     }
 
@@ -157,72 +157,72 @@ namespace model {
         return _hodometro;
     }
 
-    void Veiculo::set_hodometro(const int &_hodometro){
-        Veiculo::_hodometro=_hodometro;
+    void Veiculo::set_hodometro(const int &hodometro){
+        _hodometro=hodometro;
     }
 
-    std::string Veiculo::&get_ocorrencia() const{
+    const std::string &Veiculo::get_ocorrencia() const{
         return _ocorrencia;
     }
 
-    void Veiculo::set_ocorrencia(const std::string &_ocorrencia){
-        Veiculo::_ocorrencia=_ocorrencia;
+    void Veiculo::set_ocorrencia(const std::string &ocorrencia){
+        _ocorrencia=ocorrencia;
     }
 
-    std::string Veiculo::&get_policial() const{
+    const std::string &Veiculo::get_policial() const{
         return _policial;
     }
 
-    void Veiculo::set_policial(const std::string &_policial){
-        Veiculo::_policial=_policial;
+    void Veiculo::set_policial(const std::string &policial){
+        _policial=policial;
     }
 
-    std::string Veiculo::&get_data() const{
+    const std::string &Veiculo::get_data() const{
         return _data;
     }
 
-    void Veiculo::set_data(const std::string &_data){
-        Veiculo::_data=_data;
+    void Veiculo::set_data(const std::string &data){
+        _data=data;
     }
 
-    std::string Veiculo::&get_horario() const{
+    const std::string &Veiculo::get_horario() const{
         return _horario;
     }
 
-    void Veiculo::set_horario(const std::string &_horario){
-        Veiculo::_horario=_horario;
+    void Veiculo::set_horario(const std::string &horario){
+        _horario=horario;
     }
 
-    std::string Veiculo::&get_objetos() const{
+    const std::string &Veiculo::get_objetos() const{
         return _objetos;
     }
 
-    void Veiculo::set_objetos(const std::string &_objetos){
-        Veiculo::_objetos=_objetos;
+    void Veiculo::set_objetos(const std::string &objetos){
+        _objetos=objetos;
     }
 
-    std::string Veiculo::&get_observacoes() const{
+    const std::string &Veiculo::get_observacoes() const{
         return _observacoes;
     }
 
-    void Veiculo::set_observacoes(const std::string &_observacoes){
-        Veiculo::_observacoes=_observacoes;
+    void Veiculo::set_observacoes(const std::string &observacoes){
+        _observacoes=observacoes;
     }
 
-    int Veiculo:: &get_rodas() const{
+    const int &Veiculo:: get_rodas() const{
         return _rodas;
     }
 
-    void Veiculo::set_rodas(const int &_rodas){
-        Veiculo::_rodas=_rodas;
+    void Veiculo::set_rodas(const int &rodas){
+        _rodas=rodas;
     }
 
-    int Veiculo:: &get_retrovisores() const{
+    const int &Veiculo:: get_retrovisores() const{
         return _retrovisores;
     }
 
-    void Veiculo:: set_retrovisores(const int &_retrovisores){
-        Veiculo::_retrovisores=_retrovisores;
+    void Veiculo:: set_retrovisores(const int &retrovisores){
+        _retrovisores=retrovisores;
     }
 
     //função string to bool - usada para converter os dados do vector que devem ser interpretados como bool
@@ -239,5 +239,7 @@ namespace model {
         }
 
     }
+
+
 
 } // model

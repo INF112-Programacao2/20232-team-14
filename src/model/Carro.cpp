@@ -8,10 +8,7 @@ namespace model {
                  std::string motivo, int estado_veiculo, bool blitz, std::string local, std::string placa,
                  std::string marca, std::string modelo, int ano, std::string cidade, std::string chassi, int km,
                  int hodometro, std::string ocorrencia, std::string policial, std::string data, std::string horario,
-                 std::string objetos, std::string observacoes, int rodas, int retrovisores, std::string _id,
-                 bool _extintor, bool _estepe, bool _macaco, bool _chave_roda, bool _triangulo, bool _bateria,
-                 bool _calotas, bool _tapetes, bool _radio, int _portas, int _capo, int _painel, int _teto,
-                 std::string &_checklist):
+                 std::string objetos, std::string observacoes, int rodas, int retrovisores, std::vector <std::string> &_checklist):
 
             Veiculo(os,solicitacao,funcionario,placa_reboque,motivo,estado_veiculo,blitz,local,placa,marca,modelo,
                     ano,cidade,chassi,km,hodometro,ocorrencia,policial,data,horario,objetos,observacoes,rodas,retrovisores)
@@ -19,15 +16,15 @@ namespace model {
     {
 
         _id = _checklist[0];
-        _extintor = _checklist[1];
-        _estepe = _checklist[2];
-        _macaco = _checklist[3];
-        _chave_roda = _checklist[4];
-        _triangulo = _checklist[5];
-        _bateria = _checklist[6];
-        _calotas = _checklist[7];
-        _tapetes = _checklist[8];
-        _radio = _checklist[9];
+        _extintor = stob(_checklist[1]);
+        _estepe = stob (_checklist[2]);
+        _macaco = stob(_checklist[3]);
+        _chave_roda = stob (_checklist[4]);
+        _triangulo = stob(_checklist[5]);
+        _bateria = stob(_checklist[6]);
+        _calotas = stob(_checklist[7]);
+        _tapetes = stob(_checklist[8]);
+        _radio = stob(_checklist[9]);
         _portas = std::stoi(_checklist[10]);
         _capo = std::stoi(_checklist[11]);
         _painel = std::stoi(_checklist[12]);
