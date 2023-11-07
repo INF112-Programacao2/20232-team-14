@@ -28,7 +28,7 @@ namespace model {
         _portas = std::stoi(_checklist[10]);
         _capo = std::stoi(_checklist[11]);
         _painel = std::stoi(_checklist[12]);
-        _teto = std::stoi(_checklist[13]);
+        _teto = std::stoi( _checklist[13]);
 
     }
 

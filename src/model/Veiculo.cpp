@@ -41,95 +41,95 @@ namespace model {
         _os=os;
     }
 
-    std::string Veiculo::&get_solicitacao() const{
+    const std::string &Veiculo::get_solicitacao() const{
         return _solicitacao;
     }
 
-    void Veiculo:: set_solicitacao(const std::string &_solicitacao){
-        Veiculo::_solicitacao=_solicitacao;
+    void Veiculo:: set_solicitacao(const std::string &solicitacao){
+        _solicitacao=solicitacao;
     }
 
-    std::string Veiculo::&get_funcionario() const{
+    const std::string &Veiculo::get_funcionario() const{
         return _funcionario;
     }
 
-    void Veiculo::set_funcionario(const std::string &_funcionario){
-        Veiculo::_funcionario=_funcionario;
+    void Veiculo::set_funcionario(const std::string &funcionario){
+        _funcionario=funcionario;
     }
 
-    std::string Veiculo::&get_placa_reboque() const{
+    const std::string &Veiculo::get_placa_reboque() const{
         return _placa_reboque;
     }
 
-    void Veiculo::set_placa_reboque(const std::string &_placa_reboque){
-        Veiculo::_placa_reboque=_placa_reboque;
+    void Veiculo::set_placa_reboque(const std::string &placa_reboque){
+        _placa_reboque=placa_reboque;
     }
 
-    std::string Veiculo::&get_motivo() const{
+    const std::string &Veiculo::get_motivo() const{
         return _motivo;
     }
 
-    void Veiculo::set_motivo(const std::string &_motivo){
-        Veiculo::_motivo=_motivo;
+    void Veiculo::set_motivo(const std::string &motivo){
+        _motivo=motivo;
     }
 
-    int Veiculo::&get_estado_veiculo() const{
+    const int &Veiculo::get_estado_veiculo() const{
         return _estado_veiculo;
     }
 
-    void Veiculo::set_estado_veiculo(const int &_estado_veiculo){
-        Veiculo::_estado_veiculo=_estado_veiculo;
+    void Veiculo::set_estado_veiculo(const int &estado_veiculo){
+        _estado_veiculo=estado_veiculo;
     }
 
-    bool Veiculo::&get_blitz() const{
+    const bool &Veiculo::get_blitz() const{
         return _blitz;
     }
 
-    void Veiculo::set_blitz(const bool &_blitz){
-        Veiculo::_blitz=_blitz;
+    void Veiculo::set_blitz(const bool &blitz){
+        _blitz=blitz;
     }
 
-    std::string Veiculo::&get_local() const{
+    const std::string &Veiculo::get_local() const{
         return _local;
     }
 
-    void Veiculo::set_local(const std::string &_local){
-        Veiculo:: _local=_local;
+    void Veiculo::set_local(const std::string &local){
+        _local=local;
     }
 
-    std::string Veiculo::&get_placa() const{
+    const std::string &Veiculo::get_placa() const{
         return _placa;
     }
 
-    void Veiculo::set_placa(const std::string &_placa){
-        Veiculo:: _placa=_placa;
+    void Veiculo::set_placa(const std::string &placa){
+        _placa=placa;
     }
 
-    std::string Veiculo::&get_marca() const{
+    const std::string &Veiculo::get_marca() const{
         return _marca;
     }
 
-    void Veiculo::set_marca(const std::string &_marca){
-        Veiculo::_marca=_marca;
+    void Veiculo::set_marca(const std::string &marca){
+        _marca=marca;
     }
 
-    std::string Veiculo::&get_modelo() const{
+    const std::string &Veiculo::get_modelo() const{
         return _modelo;
     }
 
-    void Veiculo::set_modelo(const std::string &_modelo){
-        Veiculo::_modelo=_modelo;
+    void Veiculo::set_modelo(const std::string &modelo){
+        _modelo=modelo;
     }
 
-    int Veiculo:: &get_ano() const{
+    const int &Veiculo:: get_ano() const{
         return _ano;
     }
 
-    void Veiculo:: set_ano(const int &_ano);{
-        Veiculo:: _ano=_ano;
+    void Veiculo:: set_ano(const int &ano){
+        _ano=ano;
     }
 
-    std::string Veiculo::&get_cidade() const{
+    const std::string &Veiculo::get_cidade() const{
         return _cidade;
     }
 
@@ -137,7 +137,7 @@ namespace model {
         _cidade=cidade;
     }
 
-    std::string Veiculo:: &get_chassi() const{
+    const std::string &Veiculo:: get_chassi() const{
         return _chassi;
     }
 
@@ -149,11 +149,11 @@ namespace model {
         return _km;
     }
 
-    void Veiculo::set_km(const int &_km){
-        veiculo::_km=_km;
+    void Veiculo::set_km(const int &km){
+        _km=km;
     }
 
-    int veiculo::&get_hodometro() const{
+    const int &Veiculo::get_hodometro() const{
         return _hodometro;
     }
 
