@@ -33,7 +33,7 @@ namespace model {
 
     }
 
-    const std::string Caminhao::get_id() const {
+    const std::string &Caminhao::get_id() const {
         return _id;
     }
 
@@ -71,14 +71,6 @@ namespace model {
 
     void Caminhao::set_suspCabine(int suspCabine) {
         _suspCabine = suspCabine;
-    }
-
-    bool Caminhao::get_estepe() const {
-        return _estepe;
-    }
-
-    void Caminhao::set_estepe(bool estepe) {
-        _estepe = estepe;
     }
 
     bool Caminhao::get_extintor() const {
@@ -155,7 +147,7 @@ namespace model {
 
     bool Caminhao::stob(const std::string& str){
 
-        return Veiculo::stob(&str);
+        return Veiculo::stob(str);
 
     }
 

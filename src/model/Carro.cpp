@@ -146,7 +146,7 @@ namespace model {
 
     bool Carro::stob(const std::string& str){
 
-        return Veiculo::stob(&str);
+        return Veiculo::stob(str);
 
     }
 

@@ -110,7 +110,7 @@ namespace model {
 
     bool Moto::stob(const std::string& str){
 
-        return Veiculo::stob(&str);
+        return Veiculo::stob(str);
 
     }
 
