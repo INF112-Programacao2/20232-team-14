@@ -3,6 +3,8 @@
 
 namespace model {
 
+    //Construtor Veiculo.h
+
     Veiculo::Veiculo(const std::string &os, const std::string &solicitacao, const std::string &funcionario,
                      const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                      const std::string &local, const std::string &placa, const std::string &marca,
@@ -18,6 +20,8 @@ namespace model {
                      _retrovisores(retrovisores) {
 
     }
+
+    //Gets and Sets
 
     const std::string &Veiculo::get_os() const {
         return _os;
@@ -211,19 +215,22 @@ namespace model {
         _retrovisores=retrovisores;
     }
 
-    //função string to bool - usada para converter os dados do vector que devem ser interpretados como bool
-    bool Veiculo::stob(const std::string& str){
+    //end of gets and Sets
 
-        if(str == "true" || str == "1"){
+    //função verifica se um ano é bissexto ou não (usada para estabelecer o cálculo do orçamento baseado nas diárias)
 
-            return true;
+    /*bool Veiculo::anoBissexto(int ano){
 
-        }else if(str == "false" || str == "0"){
+        bool valid = false;
 
-            return false;
+        if(ano%4 == 0 && ano%100 != 0 || ano%400==0){
+
+            valid = true;
 
         }
 
-    }
+        return valid;
+
+    }*/
 
 } // model

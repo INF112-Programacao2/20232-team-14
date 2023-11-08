@@ -1,8 +1,9 @@
 #include "Moto.h"
-#include <vector>
 #include <string>
 
 namespace model {
+
+    //Construtor Moto.h
 
     Moto::Moto(const std::string &os, const std::string &solicitacao, const std::string &funcionario,
                const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
@@ -10,22 +11,19 @@ namespace model {
                int ano, const std::string &cidade, const std::string &chassi, int km, int hodometro,
                const std::string &ocorrencia, const std::string &policial, const std::string &data,
                const std::string &horario, const std::string &objetos, const std::string &observacoes, int rodas,
-               int retrovisores, const std::string &id, bool capacete, bool carenagem, bool bau, bool ferramentas,
-               int suspDianteira, int suspTraseira, int guidao, int sistEletrico, int escapamento) :
+               int retrovisores, bool capacete, bool carenagem, bool bau, bool ferramentas,
+               int suspDianteira, int suspTraseira, int guidao, int sistEletrico, int escapamento):
 
-            Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local, placa, marca, modelo,
-                    ano, cidade, chassi, km, hodometro, ocorrencia, policial, data, horario, objetos, observacoes, rodas, retrovisores),
-            _id(id), _capacete(capacete), _carenagem(carenagem), _bau(bau), _ferramentas(ferramentas), _suspDianteira(suspDianteira),
-            _suspTraseira(suspTraseira), _guidao(guidao), _sistEletrico(sistEletrico), _escapamento(escapamento) {
+               Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local, placa, marca, modelo,
+                       ano, cidade, chassi, km, hodometro, ocorrencia, policial, data, horario, objetos, observacoes, rodas, retrovisores), _capacete(capacete), _carenagem(carenagem), _bau(bau), _ferramentas(ferramentas), _suspDianteira(suspDianteira),
+                       _suspTraseira(suspTraseira), _guidao(guidao), _sistEletrico(sistEletrico), _escapamento(escapamento){
 
     }
+
+    //Gets and Sets
 
     const std::string &model::Moto::get_id() const {
         return _id;
-    }
-
-    void Moto::set_id(const std::string &id) {
-        _id = id;
     }
 
     bool Moto::get_capacete() const {
@@ -99,6 +97,25 @@ namespace model {
     void Moto::set_escapamento(int escapamento) {
         _escapamento = escapamento;
     }
+
+    double Moto::get_taxaDiaria() const {
+        return _taxaDiaria;
+    }
+
+    void Moto::set_taxaDiaria(double taxaDiaria){
+        _taxaDiaria = taxaDiaria;
+    }
+
+    double Moto::get_taxaReboque() const{
+        return _taxaReboque;
+    }
+
+    void Moto::set_taxaReboque(double taxaReboque){
+        _taxaReboque = taxaReboque;
+    }
+    //end of gets and sets
+
+    //String to bool Método
 
     bool Moto::stob(const std::string& str){
 

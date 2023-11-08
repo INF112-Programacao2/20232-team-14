@@ -1,9 +1,10 @@
-
 #include "Caminhao.h"
 #include <vector>
 #include <string>
 
 namespace model {
+
+    //Construtor Caminhao.h
 
     Caminhao::Caminhao(const std::string &os, const std::string &solicitacao, const std::string &funcionario,
                        const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
@@ -11,27 +12,24 @@ namespace model {
                        const std::string &modelo, int ano, const std::string &cidade, const std::string &chassi, int km,
                        int hodometro, const std::string &ocorrencia, const std::string &policial,
                        const std::string &data, const std::string &horario, const std::string &objetos,
-                       const std::string &observacoes, int rodas, int retrovisores, const std::string &id,
-                       int carroceria, bool eixoTraseiro, bool cintas, int suspCabine, bool extintor, bool estepe,
-                       bool macaco, bool chaveRoda, bool triangulo, bool bateria, bool calotas, bool tapetes,
-                       bool radio) :
+                       const std::string &observacoes, int rodas, int retrovisores, int carroceria, bool eixoTraseiro,
+                       bool cintas, int suspCabine, bool extintor, bool estepe, bool macaco, bool chaveRoda, bool triangulo,
+                       bool bateria, bool calotas, bool tapetes, bool radio) :
 
-            Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz,
-                    local, placa, marca, modelo, ano, cidade, chassi, km, hodometro,
-                    ocorrencia, policial, data, horario, objetos, observacoes, rodas, retrovisores),
-            _id(id), _carroceria(carroceria), _eixoTraseiro(eixoTraseiro), _cintas(cintas),
-            _suspCabine(suspCabine), _extintor(extintor), _estepe(estepe), _macaco(macaco),
-            _chave_roda(chaveRoda), _triangulo(triangulo), _bateria(bateria), _calotas(calotas),
-            _tapetes(tapetes), _radio(radio) {
+                       Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz,
+                               local, placa, marca, modelo, ano, cidade, chassi, km, hodometro,
+                               ocorrencia, policial, data, horario, objetos, observacoes, rodas, retrovisores)
+                               , _carroceria(carroceria), _eixoTraseiro(eixoTraseiro), _cintas(cintas),
+                               _suspCabine(suspCabine), _extintor(extintor), _estepe(estepe), _macaco(macaco),
+                               _chave_roda(chaveRoda), _triangulo(triangulo), _bateria(bateria), _calotas(calotas),
+                               _tapetes(tapetes), _radio(radio){
 
     }
+
+    //Gets and Sets
 
     const std::string &Caminhao::get_id() const {
         return _id;
-    }
-
-    void Caminhao::set_id(const std::string &id) {
-        _id = id;
     }
 
     int Caminhao::get_carroceria() const {
@@ -137,6 +135,24 @@ namespace model {
     void Caminhao::set_radio(bool radio) {
         _radio = radio;
     }
+
+    double Caminhao::get_taxaDiaria() const {
+        return _taxaDiaria;
+    }
+
+    void Caminhao::set_taxaDiaria(double taxaDiaria){
+        _taxaDiaria = taxaDiaria;
+    }
+
+    double Caminhao::get_taxaReboque() const{
+        return _taxaReboque;
+    }
+
+    void Caminhao::set_taxaReboque(double taxaReboque){
+        _taxaReboque = taxaReboque;
+    }
+
+    //end of gets and sets
 
     bool Caminhao::stob(const std::string& str){
 
