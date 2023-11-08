@@ -81,7 +81,6 @@ namespace controller {
                     model::Veiculo v(_dados_veiculo); //chamando funcao que vai armazenar os dados do veiculo
                     _dados_veiculo.clear(); //esvaziando o vetor apos seus dados serem transferidos para o objeto veiculo
                     break;
-
                 case 2:
                     interface.displayOutput("*Digite 0 a qualquer momento caso queira desistir da operacao*\n");
                     do {
