@@ -32,11 +32,11 @@ namespace model {
 
     }
 
-    std::string Carro::get_id() const {
+    const std::string &Carro::get_id() const {
         return _id;
     }
 
-    void Carro::set_id(std::string id) {
+    void Carro::set_id(const std::string &id) {
         _id = id;
     }
 
@@ -142,6 +142,12 @@ namespace model {
 
     void Carro:: set_teto(int teto) {
         _teto = teto;
+    }
+
+    bool Carro::stob(const std::string& str){
+
+        return Veiculo::stob(&str);
+
     }
 
 };

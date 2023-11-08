@@ -28,84 +28,90 @@ namespace model {
 
     }
 
-    const std::string &model::Moto::getId() const {
+    const std::string &model::Moto::get_id() const {
         return _id;
     }
 
-    void model::Moto::setId(const std::string &id) {
+    void Moto::set_id(const std::string &id) {
         _id = id;
     }
 
-    bool model::Moto::isCapacete() const {
+    bool Moto::get_capacete() const {
         return _capacete;
     }
 
-    void model::Moto::setCapacete(bool capacete) {
+    void Moto::set_capacete(bool capacete) {
         _capacete = capacete;
     }
 
-    bool model::Moto::isCarenagem() const {
+    bool Moto::get_carenagem() const {
         return _carenagem;
     }
 
-    void model::Moto::setCarenagem(bool carenagem) {
+    void Moto::set_carenagem(bool carenagem) {
         _carenagem = carenagem;
     }
 
-    bool model::Moto::isBau() const {
+    bool Moto::get_bau() const {
         return _bau;
     }
 
-    void model::Moto::setBau(bool bau) {
+    void Moto::set_bau(bool bau) {
         _bau = bau;
     }
 
-    bool model::Moto::isFerramentas() const {
+    bool Moto:: get_ferramentas() const {
         return _ferramentas;
     }
 
-    void model::Moto::setFerramentas(bool ferramentas) {
+    void Moto::set_ferramentas(bool ferramentas) {
         _ferramentas = ferramentas;
     }
 
-    int model::Moto::getSuspDianteira() const {
+    int Moto::get_suspDianteira() const {
         return _suspDianteira;
     }
 
-    void model::Moto::setSuspDianteira(int suspDianteira) {
+    void Moto::set_suspDianteira(int suspDianteira) {
         _suspDianteira = suspDianteira;
     }
 
-    int model::Moto::getSuspTraseira() const {
+    int Moto::get_suspTraseira() const {
         return _suspTraseira;
     }
 
-    void model::Moto::setSuspTraseira(int suspTraseira) {
+    void Moto::set_suspTraseira(int suspTraseira) {
         _suspTraseira = suspTraseira;
     }
 
-    int model::Moto::getGuidao() const {
+    int Moto::get_guidao() const {
         return _guidao;
     }
 
-    void model::Moto::setGuidao(int guidao) {
+    void Moto::set_guidao(int guidao) {
         _guidao = guidao;
     }
 
-    int model::Moto::getSistEletrico() const {
+    int Moto::get_sistEletrico() const {
         return _sistEletrico;
     }
 
-    void model::Moto::setSistEletrico(int sistEletrico) {
+    void Moto::set_sistEletrico(int sistEletrico) {
         _sistEletrico = sistEletrico;
     }
 
-    int model::Moto::getEscapamento() const {
+    int Moto::get_escapamento() const {
         return _escapamento;
     }
 
-    void model::Moto::setEscapamento(int escapamento) {
+    void Moto::set_escapamento(int escapamento) {
         _escapamento = escapamento;
+    }
+
+    bool Moto::stob(const std::string& str){
+
+        return Veiculo::stob(&str);
+
     }
 
 }

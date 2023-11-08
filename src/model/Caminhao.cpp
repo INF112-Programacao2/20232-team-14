@@ -33,124 +33,130 @@ namespace model {
 
     }
 
-    const std::string &model::Caminhao::get_id() const {
+    const std::string Caminhao::get_id() const {
         return _id;
     }
 
-    void model::Caminhao::set_id(const std::string &id) {
+    void Caminhao::set_id(const std::string &id) {
         _id = id;
     }
 
-    int model::Caminhao::get_carroceria() const {
+    int Caminhao::get_carroceria() const {
         return _carroceria;
     }
 
-    void model::Caminhao::set_carroceria(int carroceria) {
+    void Caminhao::set_carroceria(int carroceria) {
         _carroceria = carroceria;
     }
 
-    bool model::Caminhao::is_eixoTraseiro() const {
+    bool Caminhao::get_eixoTraseiro() const {
         return _eixoTraseiro;
     }
 
-    void model::Caminhao::set_eixoTraseiro(bool eixoTraseiro) {
+    void Caminhao::set_eixoTraseiro(bool eixoTraseiro) {
         _eixoTraseiro = eixoTraseiro;
     }
 
-    bool model::Caminhao::is_cintas() const {
+    bool Caminhao::get_cintas() const {
         return _cintas;
     }
 
-    void model::Caminhao::set_cintas(bool cintas) {
+    void Caminhao::set_cintas(bool cintas) {
         _cintas = cintas;
     }
 
-    int model::Caminhao::get_suspCabine() const {
+    int Caminhao::get_suspCabine() const {
         return _suspCabine;
     }
 
-    void model::Caminhao::set_suspCabine(int suspCabine) {
+    void Caminhao::set_suspCabine(int suspCabine) {
         _suspCabine = suspCabine;
     }
 
-    bool model::Caminhao::is_estepe() const {
+    bool Caminhao::get_estepe() const {
         return _estepe;
     }
 
-    void model::Caminhao::set_estepe(bool estepe) {
+    void Caminhao::set_estepe(bool estepe) {
         _estepe = estepe;
     }
 
-    bool model::Caminhao::is_extintor() const {
+    bool Caminhao::get_extintor() const {
         return _extintor;
     }
 
-    void model::Caminhao::set_extintor(bool extintor) {
+    void Caminhao::set_extintor(bool extintor) {
         _extintor = extintor;
     }
 
-    bool model::Caminhao::is_estepe() const {
+    bool Caminhao::get_estepe() const {
         return _estepe;
     }
 
-    void model::Caminhao::set_estepe(bool estepe) {
+    void Caminhao::set_estepe(bool estepe) {
         _estepe = estepe;
     }
 
-    bool model::Caminhao::is_macaco() const {
+    bool Caminhao::get_macaco() const {
         return _macaco;
     }
 
-    void model::Caminhao::set_macaco(bool macaco) {
+    void Caminhao::set_macaco(bool macaco) {
         _macaco = macaco;
     }
 
-    bool model::Caminhao::is_chaveRoda() const {
+    bool Caminhao::get_chaveRoda() const {
         return _chave_roda;
     }
 
-    void model::Caminhao::set_chaveRoda(bool chaveRoda) {
+    void Caminhao::set_chaveRoda(bool chaveRoda) {
         _chave_roda = chaveRoda;
     }
 
-    bool model::Caminhao::is_triangulo() const {
+    bool Caminhao::get_triangulo() const {
         return _triangulo;
     }
 
-    void model::Caminhao::set_triangulo(bool triangulo) {
+    void Caminhao::set_triangulo(bool triangulo) {
         _triangulo = triangulo;
     }
 
-    bool model::Caminhao::is_bateria() const {
+    bool Caminhao::get_bateria() const {
         return _bateria;
     }
 
-    void model::Caminhao::set_bateria(bool bateria) {
+    void Caminhao::set_bateria(bool bateria) {
         _bateria = bateria;
     }
 
-    bool model::Caminhao::is_calotas() const {
+    bool Caminhao::get_calotas() const {
         return _calotas;
     }
 
-    void model::Caminhao::set_calotas(bool calotas) {
+    void Caminhao::set_calotas(bool calotas) {
         _calotas = calotas;
     }
 
-    bool model::Caminhao::is_tapetes() const {
+    bool Caminhao::get_tapetes() const {
         return _tapetes;
     }
 
-    void model::Caminhao::set_tapetes(bool tapetes) {
+    void Caminhao::set_tapetes(bool tapetes) {
         _tapetes = tapetes;
     }
 
-    bool model::Caminhao::is_radio() const {
+    bool Caminhao::get_radio() const {
         return _radio;
     }
 
-    void model::Caminhao::set_radio(bool radio) {
+    void Caminhao::set_radio(bool radio) {
         _radio = radio;
+    }
+
+    bool Caminhao::stob(const std::string& str){
+
+        return Veiculo::stob(&str);
+
     }
 
 }
