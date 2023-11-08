@@ -4,31 +4,21 @@
 
 namespace model {
 
-    Carro::Carro(std::string os, std::string solicitacao, std::string funcionario, std::string placa_reboque,
-                 std::string motivo, int estado_veiculo, bool blitz, std::string local, std::string placa,
-                 std::string marca, std::string modelo, int ano, std::string cidade, std::string chassi, int km,
-                 int hodometro, std::string ocorrencia, std::string policial, std::string data, std::string horario,
-                 std::string objetos, std::string observacoes, int rodas, int retrovisores, std::vector <std::string> &_checklist):
+    Carro::Carro(const std::string &os, const std::string &solicitacao, const std::string &funcionario,
+                 const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
+                 const std::string &local, const std::string &placa, const std::string &marca,
+                 const std::string &modelo, int ano, const std::string &cidade, const std::string &chassi, int km,
+                 int hodometro, const std::string &ocorrencia, const std::string &policial, const std::string &data,
+                 const std::string &horario, const std::string &objetos, const std::string &observacoes, int rodas,
+                 int retrovisores, const std::string &id, bool extintor, bool estepe, bool macaco, bool chaveRoda,
+                 bool triangulo, bool bateria, bool calotas, bool tapetes, bool radio, int portas, int capo, int painel,
+                 int teto) :
 
-    Veiculo(os,solicitacao,funcionario,placa_reboque,motivo,estado_veiculo,blitz,local,placa,marca,modelo,
-            ano,cidade,chassi,km,hodometro,ocorrencia,policial,data,horario,objetos,observacoes,rodas,retrovisores)
-
-    {
-
-        _id = _checklist[0];
-        _extintor = stob(_checklist[1]);
-        _estepe = stob (_checklist[2]);
-        _macaco = stob(_checklist[3]);
-        _chave_roda = stob (_checklist[4]);
-        _triangulo = stob(_checklist[5]);
-        _bateria = stob(_checklist[6]);
-        _calotas = stob(_checklist[7]);
-        _tapetes = stob(_checklist[8]);
-        _radio = stob(_checklist[9]);
-        _portas = std::stoi(_checklist[10]);
-        _capo = std::stoi(_checklist[11]);
-        _painel = std::stoi(_checklist[12]);
-        _teto = std::stoi( _checklist[13]);
+            Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local,
+                    placa, marca, modelo, ano, cidade, chassi, km, hodometro, ocorrencia, policial,
+                    data, horario, objetos, observacoes, rodas, retrovisores), _id(id), _extintor(extintor),
+            _estepe(estepe), _macaco(macaco), _chave_roda(chaveRoda), _triangulo(triangulo), _bateria(bateria),
+            _calotas(calotas), _tapetes(tapetes), _radio(radio), _portas(portas), _capo(capo), _painel(painel), _teto(teto) {
 
     }
 

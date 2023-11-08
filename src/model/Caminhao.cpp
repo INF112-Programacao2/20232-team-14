@@ -5,31 +5,24 @@
 
 namespace model {
 
-    Caminhao::Caminhao(std::string os, std::string solicitacao, std::string funcionario, std::string placa_reboque, std::string motivo,
-               int estado_veiculo, bool blitz, std::string local, std::string placa, std::string marca, std::string modelo,
-               int ano, std::string cidade, std::string chassi, int km, int hodometro, std::string ocorrencia, std::string policial,
-               std::string data, std::string horario,std::string objetos, std::string observacoes, int rodas, int retrovisores,
-               std::vector<std::string> &_checklist):
+    Caminhao::Caminhao(const std::string &os, const std::string &solicitacao, const std::string &funcionario,
+                       const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
+                       const std::string &local, const std::string &placa, const std::string &marca,
+                       const std::string &modelo, int ano, const std::string &cidade, const std::string &chassi, int km,
+                       int hodometro, const std::string &ocorrencia, const std::string &policial,
+                       const std::string &data, const std::string &horario, const std::string &objetos,
+                       const std::string &observacoes, int rodas, int retrovisores, const std::string &id,
+                       int carroceria, bool eixoTraseiro, bool cintas, int suspCabine, bool extintor, bool estepe,
+                       bool macaco, bool chaveRoda, bool triangulo, bool bateria, bool calotas, bool tapetes,
+                       bool radio) :
 
-            Veiculo(os,solicitacao,funcionario,placa_reboque,motivo,estado_veiculo,blitz,local,placa,marca,modelo,
-                    ano,cidade,chassi,km,hodometro,ocorrencia,policial,data,horario,objetos,observacoes,rodas,retrovisores)
-
-    {
-
-        _id = _checklist[0];
-        _carroceria = stoi(_checklist[1]);
-        _eixoTraseiro = stob(_checklist[2]);
-        _cintas = stob(_checklist[3]);
-        _suspCabine = stoi(_checklist[4]);
-        _estepe = stob(_checklist[5]);
-        _extintor = stob(_checklist[6]);
-        _macaco = stob(_checklist[7]);
-        _chave_roda = stob(_checklist[8]);
-        _triangulo = stob(_checklist[9]);
-        _bateria = stob(_checklist[6]);
-        _calotas = stob(_checklist[7]);
-        _tapetes = stob(_checklist[8]);
-        _radio = stob(_checklist[9]);
+            Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz,
+                    local, placa, marca, modelo, ano, cidade, chassi, km, hodometro,
+                    ocorrencia, policial, data, horario, objetos, observacoes, rodas, retrovisores),
+            _id(id), _carroceria(carroceria), _eixoTraseiro(eixoTraseiro), _cintas(cintas),
+            _suspCabine(suspCabine), _extintor(extintor), _estepe(estepe), _macaco(macaco),
+            _chave_roda(chaveRoda), _triangulo(triangulo), _bateria(bateria), _calotas(calotas),
+            _tapetes(tapetes), _radio(radio) {
 
     }
 

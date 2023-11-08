@@ -4,27 +4,19 @@
 
 namespace model {
 
-    Moto::Moto(std::string os, std::string solicitacao, std::string funcionario, std::string placa_reboque, std::string motivo,
-               int estado_veiculo, bool blitz, std::string local, std::string placa, std::string marca, std::string modelo,
-               int ano, std::string cidade, std::string chassi, int km, int hodometro, std::string ocorrencia, std::string policial,
-               std::string data, std::string horario,std::string objetos, std::string observacoes, int rodas, int retrovisores,
-               std::vector<std::string> &_checklist):
+    Moto::Moto(const std::string &os, const std::string &solicitacao, const std::string &funcionario,
+               const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
+               const std::string &local, const std::string &placa, const std::string &marca, const std::string &modelo,
+               int ano, const std::string &cidade, const std::string &chassi, int km, int hodometro,
+               const std::string &ocorrencia, const std::string &policial, const std::string &data,
+               const std::string &horario, const std::string &objetos, const std::string &observacoes, int rodas,
+               int retrovisores, const std::string &id, bool capacete, bool carenagem, bool bau, bool ferramentas,
+               int suspDianteira, int suspTraseira, int guidao, int sistEletrico, int escapamento) :
 
-    Veiculo(os,solicitacao,funcionario,placa_reboque,motivo,estado_veiculo,blitz,local,placa,marca,modelo,
-            ano,cidade,chassi,km,hodometro,ocorrencia,policial,data,horario,objetos,observacoes,rodas,retrovisores)
-
-    {
-
-        _id = _checklist[0];
-        _capacete = stob(_checklist[1]);
-        _carenagem = stob(_checklist[2]);
-        _bau = stob(_checklist[3]);
-        _ferramentas = stob(_checklist[4]);
-        _suspDianteira = stoi(_checklist[5]);
-        _suspTraseira = stoi(_checklist[6]);
-        _guidao = stoi(_checklist[7]);
-        _sistEletrico = stoi(_checklist[8]);
-        _escapamento = stoi(_checklist[9]);
+            Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local, placa, marca, modelo,
+                    ano, cidade, chassi, km, hodometro, ocorrencia, policial, data, horario, objetos, observacoes, rodas, retrovisores),
+            _id(id), _capacete(capacete), _carenagem(carenagem), _bau(bau), _ferramentas(ferramentas), _suspDianteira(suspDianteira),
+            _suspTraseira(suspTraseira), _guidao(guidao), _sistEletrico(sistEletrico), _escapamento(escapamento) {
 
     }
 

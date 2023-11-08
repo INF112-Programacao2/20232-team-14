@@ -1,35 +1,21 @@
-#include <vector>
 #include <string>
 #include "Veiculo.h"
 
 namespace model {
 
-    Veiculo::Veiculo(std::vector<std::string> &dados_veiculo){
-
-        _os = dados_veiculo[0];
-        _solicitacao = dados_veiculo[1];
-        _funcionario = dados_veiculo[2];
-        _placa_reboque = dados_veiculo[3];
-        _motivo = dados_veiculo[4];
-        _estado_veiculo = std::stoi(dados_veiculo[5]);
-        _blitz = stob(dados_veiculo[6]);
-        _local = dados_veiculo[7];
-        _placa = dados_veiculo[8];
-        _marca = dados_veiculo[9];
-        _modelo = dados_veiculo[10];
-        _ano = std::stoi(dados_veiculo[11]);
-        _cidade = dados_veiculo[12];
-        _chassi = dados_veiculo[13];
-        _km = std::stoi(dados_veiculo[14]);
-        _hodometro = std::stoi(dados_veiculo[15]);
-        _ocorrencia = dados_veiculo[16];
-        _policial = dados_veiculo[17];
-        _data = dados_veiculo[18];
-        _horario = dados_veiculo[19];
-        _objetos = dados_veiculo[20];
-        _observacoes = dados_veiculo[21];
-        _rodas = std::stoi(dados_veiculo[22]);
-        _retrovisores = std::stoi(dados_veiculo[23]);
+    Veiculo::Veiculo(const std::string &os, const std::string &solicitacao, const std::string &funcionario,
+                     const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
+                     const std::string &local, const std::string &placa, const std::string &marca,
+                     const std::string &modelo, int ano, const std::string &cidade, const std::string &chassi, int km,
+                     int hodometro, const std::string &ocorrencia, const std::string &policial, const std::string &data,
+                     const std::string &horario, const std::string &objetos, const std::string &observacoes, int rodas,
+                     int retrovisores) : _os(os), _solicitacao(solicitacao), _funcionario(funcionario),
+                     _placa_reboque(placaReboque), _motivo(motivo), _estado_veiculo(estadoVeiculo),
+                     _blitz(blitz), _local(local), _placa(placa), _marca(marca), _modelo(modelo),
+                     _ano(ano), _cidade(cidade), _chassi(chassi), _km(km), _hodometro(hodometro),
+                     _ocorrencia(ocorrencia), _policial(policial), _data(data), _horario(horario),
+                     _objetos(objetos), _observacoes(observacoes), _rodas(rodas),
+                     _retrovisores(retrovisores) {
 
     }
 
