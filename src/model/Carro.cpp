@@ -1,5 +1,4 @@
 #include "Carro.h"
-#include <vector>
 #include <string>
 
 namespace model {

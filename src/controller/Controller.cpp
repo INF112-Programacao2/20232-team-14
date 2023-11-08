@@ -3,18 +3,21 @@
 #include "model/Carro.h"
 #include "view/Cli.h"
 #include "model/Model.h"
+#include "model/Moto.h"
+#include "model/Caminhao.h"
 
 namespace controller {
 
     Controller::Controller() = default;
 
+    view::Cli interface;
 
     void Controller::startProgram() {
-        std::vector<std::string> _dados_veiculo //responsavel por receber e encaminhar dados dos novos veiculos registrados
+        std::vector<model::Veiculo *> _veiculos;
+
         bool loop = true;
         bool erro = false; //responsavel por solicitar novamente entradas consideradas invalidas
-        model::Carro c;
-        view::Cli interface;
+
 
         while(loop){
 
@@ -25,64 +28,11 @@ namespace controller {
                     break;
                 case 1:
                     //teria aqui uma instanciação de c
-                    interface.displayOutput("Informe a ordem de servico: ");
-                    _dados_veiculo[0] = interface.readUserInput();
-                    interface.displayOutput("Informe a solicitacao: ");
-                    _dados_veiculo[1] = interface.readUserInput();
-                    interface.displayOutput("Informe o funcionario responsavel por registrar este veiculo: ");
-                    _dados_veiculo[2] = interface.readUserInput();
-                    interface.displayOutput("Informe a placa do veiculo que realizou o reboque: ");
-                    _dados_veiculo[3] = interface.readUserInput();
-                    interface.displayOutput("Informe o motivo da apreensao: ");
-                    _dados_veiculo[4] = interface.readUserInput();
-                    interface.displayOutput("Informe o estado do veiculo no momento de apreensao, considerando:\n");
-                    interface.displayOutput("1 - Ruim\n2 - Regular\n3 - Bom\n");
-                    _dados_veiculo[5] = interface.readUserInput();
-                    interface.displayOutput("Informe se houve blitz, considerando:\n");
-                    interface.displayOutput("**Responda com 1 em caso afirmativo e com 0 em caso negativo**\n");
-                    _dados_veiculo[6] = interface.readUserInput();
-                    interface.displayOutput("Informe o local de apreensao: ");
-                    _dados_veiculo[7] = interface.readUserInput();
-                    interface.displayOutput("Informe a placa do veiculo apreendido: ");
-                    _dados_veiculo[8] = interface.readUserInput();
-                    interface.displayOutput("Informe a marca do veiculo apreendido: ");
-                    _dados_veiculo[9] = interface.readUserInput();
-                    interface.displayOutput("Informe o modelo do veiculo apreendido: ");
-                    _dados_veiculo[10] = interface.readUserInput();
-                    interface.displayOutput("Informe o ano de apreensao do veiculo: ");
-                    _dados_veiculo[11] = interface.readUserInput();
-                    interface.displayOutput("Informe a cidade em que ocorreu a apreensao: ");
-                    _dados_veiculo[12] = interface.readUserInput();
-                    interface.displayOutput("Informe o chassi do veiculo apreendido: ");
-                    _dados_veiculo[13] = interface.readUserInput();
-                    interface.displayOutput("Informe a que distancia do patio o veiculo foi apreendido: ");
-                    _dados_veiculo[14] = interface.readUserInput();
-                    interface.displayOutput("Informe a quilometragem do veiculo no momento de apreensao: ");
-                    _dados_veiculo[15] = interface.readUserInput();
-                    interface.displayOutput("Informe a ocorrencia registrada: ");
-                    _dados_veiculo[16] = interface.readUserInput();
-                    interface.displayOutput("Informe o policial responsavel pela apreensao: ");
-                    _dados_veiculo[17] = interface.readUserInput();
-                    interface.displayOutput("Informe a data de apreensao do veiculo: ");
-                    _dados_veiculo[18] = interface.readUserInput();
-                    interface.displayOutput("Informe o horario de apreensao: ");
-                    _dados_veiculo[19] = interface.readUserInput();
-                    interface.displayOutput("Liste os objetos que estavam no carro no momento de apreensao: ");
-                    _dados_veiculo[20] = interface.readUserInput();
-                    interface.displayOutput("Se desejar, acrescente alguma observacao, caso contrario digite 0 para continuar: ");
-                    _dados_veiculo[21] = interface.readUserInput();
-                    interface.displayOutput("Informe o estado das rodas do veiculo no momento de apreensao, considerando:\n");
-                    interface.displayOutput("0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado\n");
-                    _dados_veiculo[22] = interface.readUserInput();
-                    interface.displayOutput("Informe o estado dos retrovisoes do veiculo no momento de apreensao, considerando:\n");
-                    interface.displayOutput("0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado\n");
-                    _dados_veiculo[23] = interface.readUserInput();
 
-                    model::Veiculo v(_dados_veiculo); //chamando funcao que vai armazenar os dados do veiculo
-                    _dados_veiculo.clear(); //esvaziando o vetor apos seus dados serem transferidos para o objeto veiculo
+                    //_dados_veiculo.clear(); //esvaziando o vetor apos seus dados serem transferidos para o objeto veiculo
                     break;
                 case 2:
-                    interface.displayOutput("*Digite 0 a qualquer momento caso queira desistir da operacao*\n");
+                    /* interface.displayOutput("*Digite 0 a qualquer momento caso queira desistir da operacao*\n");
                     do {
                     try { //try catch pois stoi retorna excecao de invalid_argument
                         interface.displayOutput("Horario de registro do veiculo: ");
@@ -100,13 +50,9 @@ namespace controller {
                         interface.errorMsg(e);
                         erro = true;
                     }
-                    } while (erro);
+                    } while (erro); */
                     break;
                 case 3:
-                    {//bloco pro compilador nao encher o saco (explico depois mas basicamente nao pode declarar variavel dentro do switch sem usar bloco)
-                        std::string output = std::to_string(c.calculaPreco()).append("\n"); //esse append por algum motivo ta adiantando de nada :(
-                        interface.displayOutput(std::to_string(c.calculaPreco()));
-                    }
                     break;
                 case 4:
                     //teria aqui um delete c
@@ -119,6 +65,91 @@ namespace controller {
                     break;
             }
         }
-    }// startProgram()
+    }
+
+    bool Controller::stob(const std::string &str){
+
+        if(str == "true" || str == "1"){
+
+            return true;
+
+        }else if(str == "false" || str == "0"){
+
+            return false;
+
+        }
+
+    }
+
+    void Controller::criarCarro(std::vector<std::string> &dados_veiculo) {
+        std::vector<std::string> dados_carro;
+        interface.coletaChecklistCarro(dados_carro);
+        model::Veiculo *car = new model::Carro(dados_veiculo[0], dados_veiculo[1], dados_veiculo[2], dados_veiculo[3], dados_veiculo[4],
+                                               stoi(dados_veiculo[5]), stob(dados_veiculo[6]), dados_veiculo[7], dados_veiculo[8], dados_veiculo[9],
+                                               dados_veiculo[10], dados_veiculo[11], dados_veiculo[12], dados_veiculo[13], dados_veiculo[14],
+                                               dados_veiculo[15], dados_veiculo[16], dados_veiculo[17], dados_veiculo[18], dados_veiculo[19],
+                                               dados_veiculo[20], dados_veiculo[21], dados_veiculo[22], dados_veiculo[23],
+                                               dados_carro[0], dados_carro[1], dados_carro[2], dados_carro[3],
+                                               dados_carro[4], dados_carro[5], dados_carro[6], dados_carro[7],
+                                               dados_carro[8], dados_carro[9], dados_carro[10], dados_carro[11],
+                                               dados_carro[12]);
+    }
+
+    void Controller::criarCaminhao(std::vector<std::string> &dados_veiculo) {
+        std::vector<std::string> dados_caminhao;
+        interface.coletaChecklistCaminhao(dados_caminhao);
+        model::Veiculo *truck = new model::Caminhao(dados_veiculo[0], dados_veiculo[1], dados_veiculo[2], dados_veiculo[3], dados_veiculo[4],
+                                                    dados_veiculo[5], dados_veiculo[6], dados_veiculo[7], dados_veiculo[8], dados_veiculo[9],
+                                                    dados_veiculo[10], dados_veiculo[11], dados_veiculo[12], dados_veiculo[13], dados_veiculo[14],
+                                                    dados_veiculo[15], dados_veiculo[16], dados_veiculo[17], dados_veiculo[18], dados_veiculo[19],
+                                                    dados_veiculo[20], dados_veiculo[21], dados_veiculo[22], dados_veiculo[23], dados_caminhao[0],
+                                                    dados_caminhao[1], dados_caminhao[2], dados_caminhao[3], dados_caminhao[4], dados_caminhao[5],
+                                                    dados_caminhao[6], dados_caminhao[7], dados_caminhao[8], dados_caminhao[9], dados_caminhao[10],
+                                                    dados_caminhao[11], dados_caminhao[12]);
+    }
+
+    void Controller::criarMoto(std::vector<std::string> &dados_veiculo) {
+        std::vector<std::string> dados_moto;
+        interface.coletaChecklistMoto(dados_moto);
+        model::Veiculo *motorcycle = new model::Moto(dados_veiculo[0], dados_veiculo[1], dados_veiculo[2], dados_veiculo[3], dados_veiculo[4],
+                                                     dados_veiculo[5], dados_veiculo[6], dados_veiculo[7], dados_veiculo[8], dados_veiculo[9],
+                                                     dados_veiculo[10], dados_veiculo[11], dados_veiculo[12], dados_veiculo[13], dados_veiculo[14],
+                                                     dados_veiculo[15], dados_veiculo[16], dados_veiculo[17], dados_veiculo[18], dados_veiculo[19],
+                                                     dados_veiculo[20], dados_veiculo[21], dados_veiculo[22], dados_veiculo[23], dados_moto[0], dados_moto[1],
+                                                     dados_moto[2], dados_moto[3], dados_moto[4], dados_moto[5], dados_moto[6], dados_moto[7], dados_moto[8]);
+    }
+
+    void Controller::iniciarApreensao() {
+        int tipo;
+        std::vector<std::string> dados_veiculo; //responsavel por receber e encaminhar dados dos novos veiculos registrados
+        interface.coletaChecklist(dados_veiculo);
+        tipo = interface.recebeTipo();
+        switch (tipo) {
+            case 1:
+                criarMoto(dados_veiculo);
+                break;
+            case 2:
+                criarCarro(dados_veiculo);
+                break;
+            case 3:
+                criarCaminhao(dados_veiculo);
+                break;
+        }
+    }
+
+    void Controller::editarChecklist() {
+
+    }
+
+    void Controller::realizarOrcamento() {
+
+    }
+
+    void Controller::liberarVeiculo() {
+
+    }
+// startProgram()
+
+
 
 } // controller
