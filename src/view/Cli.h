@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <vector>
+#include <unordered_map>
+
 namespace view {
 
     class Cli {
@@ -21,10 +23,10 @@ namespace view {
         void errorMsg(const std::exception& e);
 
         int recebeTipo();
-        void coletaChecklist(std::vector<std::string> &dados_veiculo);
-        void coletaChecklistCarro(std::vector<std::string> &dados_carro);
-        void coletaChecklistCaminhao(std::vector<std::string> &dados_caminhao);
-        void coletaChecklistMoto(std::vector<std::string> &dados_moto);
+        void coletaChecklist(std::unordered_map<std::string, std::string> &dados_veiculo);
+        void coletaChecklistCarro(std::unordered_map<std::string, std::string> &dados_carro);
+        void coletaChecklistCaminhao(std::unordered_map<std::string, std::string> &dados_caminhao);
+        void coletaChecklistMoto(std::unordered_map<std::string, std::string> &dados_moto);
     };
 
 } // View
