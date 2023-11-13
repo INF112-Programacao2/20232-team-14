@@ -97,30 +97,7 @@ namespace model {
     void Moto::set_escapamento(int escapamento) {
         _escapamento = escapamento;
     }
-
-    double Moto::get_taxaDiaria() const {
-        return _taxaDiaria;
-    }
-
-    void Moto::set_taxaDiaria(double taxaDiaria){
-        _taxaDiaria = taxaDiaria;
-    }
-
-    double Moto::get_taxaReboque() const{
-        return _taxaReboque;
-    }
-
-    void Moto::set_taxaReboque(double taxaReboque){
-        _taxaReboque = taxaReboque;
-    }
     //end of gets and sets
 
-    //String to bool Método
-
-    bool Moto::stob(const std::string& str){
-
-        return Veiculo::stob(str);
-
-    }
 
 }

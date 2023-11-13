@@ -135,29 +135,6 @@ namespace model {
     void Caminhao::set_radio(bool radio) {
         _radio = radio;
     }
-
-    double Caminhao::get_taxaDiaria() const {
-        return _taxaDiaria;
-    }
-
-    void Caminhao::set_taxaDiaria(double taxaDiaria){
-        _taxaDiaria = taxaDiaria;
-    }
-
-    double Caminhao::get_taxaReboque() const{
-        return _taxaReboque;
-    }
-
-    void Caminhao::set_taxaReboque(double taxaReboque){
-        _taxaReboque = taxaReboque;
-    }
-
     //end of gets and sets
-
-    bool Caminhao::stob(const std::string& str){
-
-        return Veiculo::stob(str);
-
-    }
 
 }

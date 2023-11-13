@@ -132,31 +132,7 @@ namespace model {
         _teto = teto;
     }
 
-    double Carro::get_taxaDiaria() const {
-        return _taxaDiaria;
-    }
-
-    void Carro::set_taxaDiaria(double taxaDiaria){
-        _taxaDiaria = taxaDiaria;
-    }
-
-    double Carro::get_taxaReboque() const{
-        return _taxaReboque;
-    }
-
-    void Carro::set_taxaReboque(double taxaReboque){
-        _taxaReboque = taxaReboque;
-    }
-
     //end of gets and sets
-
-    //String to bool Método
-
-    bool Carro::stob(const std::string& str){
-
-        return Veiculo::stob(str);
-
-    }
 
 };
 
