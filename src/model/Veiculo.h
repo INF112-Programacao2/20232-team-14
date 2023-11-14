@@ -9,7 +9,7 @@ namespace model {
 
     protected:
 
-        std::string _os;                        //Ordem de serviço
+        int _os;                        //Ordem de serviço
         std::string _solicitacao;               //Quem solicitou a apreensão (PM,PRV,etc...)
         std::string _funcionario;               //Funcionário que realizou a apreensão
         std::string _placa_reboque;             //Placa do veículo do pátio (caminhão ou carro) que realizou a apreensão
@@ -38,7 +38,7 @@ namespace model {
 
         //Construtor Veiculo.h
 
-        Veiculo(const std::string &os, const std::string &solicitacao, const std::string &funcionario,
+        Veiculo(int os, const std::string &solicitacao, const std::string &funcionario,
                 const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                 const std::string &local, const std::string &placa, const std::string &marca, const std::string &modelo,
                 int ano, const std::string &cidade, const std::string &chassi, int km, int hodometro,

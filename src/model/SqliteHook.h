@@ -13,7 +13,7 @@ namespace model {
     public:
         static int connectDB(); // realiza a conexão com o banco de dados e retorna um int status code
 
-        static int initDB(); // inicializa as tabelas necessárias com CREATE TABLE
+        static int initDB(const std::string &sql); // inicializa as tabelas necessárias com CREATE TABLE
 
         static int insert(); // realiza operação INSERT
 

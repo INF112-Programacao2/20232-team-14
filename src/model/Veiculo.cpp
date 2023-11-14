@@ -6,7 +6,7 @@ namespace model {
 
     //Construtor Veiculo.h
 
-    Veiculo::Veiculo(const std::string &os, const std::string &solicitacao, const std::string &funcionario,
+    Veiculo::Veiculo(int os, const std::string &solicitacao, const std::string &funcionario,
                      const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                      const std::string &local, const std::string &placa, const std::string &marca,
                      const std::string &modelo, int ano, const std::string &cidade, const std::string &chassi, int km,

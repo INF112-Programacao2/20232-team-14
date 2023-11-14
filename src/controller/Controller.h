@@ -2,16 +2,16 @@
 #define INC_20232_TEAM_14_CONTROLLER_H
 
 #include <vector>
+#include <unordered_map>
 #include "model/Veiculo.h"
 
 namespace controller {
 
     class Controller {
     private:
-        std::vector<model::Veiculo *> _veiculos;
+        std::unordered_map<int, model::Veiculo *> *_veiculos; //unordered map de chave ordem de servico por valor endereco objeto veiculo
+
     public:
-
-
         Controller();
         void startProgram();
         void iniciarApreensao();
