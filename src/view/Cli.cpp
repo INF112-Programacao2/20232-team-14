@@ -156,7 +156,7 @@ namespace view {
         std::cin >> dados_moto["SuspensaoD"];
         std::cout << "Suspensao traseira:\n";
         std::cout << "(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado\n";
-        std::cin >> dados_moto["SuspencaoT"];
+        std::cin >> dados_moto["SuspensaoT"];
         std::cout << "Guidao:\n";
         std::cout << "(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado\n";
         std::cin >> dados_moto["Guidao"];

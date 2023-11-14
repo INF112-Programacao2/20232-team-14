@@ -14,8 +14,8 @@ namespace model {
                      const std::string &horario, const std::string &objetos, const std::string &observacoes, int rodas,
                      int retrovisores) : _os(os), _solicitacao(solicitacao), _funcionario(funcionario),
                      _placa_reboque(placaReboque), _motivo(motivo), _estado_veiculo(estadoVeiculo),
-                     _blitz(blitz), _local(local), _placa(placa), _modelo(modelo), _ano(ano), _cidade(cidade),
-                     _chassi(chassi), _km(km), _hodometro(hodometro), _ocorrencia(ocorrencia), _policial(policial),
+                     _blitz(blitz), _local(local), _placa(placa), _marca(marca),  _modelo(modelo), _ano(ano), _cidade(cidade),
+                     _chassi(chassi), _km(km), _hodometro(hodometro), _ocorrencia(ocorrencia), _policial(policial), _data(data),
                      _horario(horario), _objetos(objetos), _observacoes(observacoes), _rodas(rodas), _retrovisores(retrovisores) {
 
     }
@@ -94,6 +94,14 @@ namespace model {
         _placa=placa;
     }
 
+    const std::string &Veiculo::get_marca() const {
+        return _marca;
+    }
+
+    void Veiculo::set_marca(const std::string &marca) {
+        _marca=marca;
+    }
+
     const std::string &Veiculo::get_modelo() const{
         return _modelo;
     }
@@ -158,6 +166,14 @@ namespace model {
         _policial=policial;
     }
 
+    const std::string &Veiculo::get_data() const {
+        return _data;
+    }
+
+    void Veiculo::set_data(const std::string &data) {
+        _data=data;
+    }
+
     const std::string &Veiculo::get_horario() const{
         return _horario;
     }
@@ -216,19 +232,19 @@ namespace model {
 
     }
 
-    int Veiculo::calcDiasApreensao(std::string data_Apreensao, std::string data_Liberacao){
+    int Veiculo::calcDiasApreensao(std::string data_Apreensao, std::string data_Liberacao) {
 
         //Obtém dia, mes e ano das strings de data recebidas, guardando os valores nas variáveis abaixo
         int dia_Apreensao, mes_Apreensao, ano_Apreensao;
         int dia_Liberacao, mes_Liberacao, ano_Liberacao;
         char discard;
         std::stringstream ss_apreensao(data_Apreensao);
-        ss_apreensao >> dia_Apreensao>> discard >> mes_Apreensao >> discard >> ano_Apreensao;
+        ss_apreensao >> dia_Apreensao >> discard >> mes_Apreensao >> discard >> ano_Apreensao;
         std::stringstream ss_liberacao(data_Liberacao);
         ss_liberacao >> dia_Liberacao >> discard >> mes_Liberacao >> discard >> ano_Liberacao;
 
-        int calendario_Entrada[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
-        int calendario_Saida[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+        int calendario_Entrada[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        int calendario_Saida[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
         /*A função trabalha encontrando a quantidade de dias do ano de liberação e do ano de apreensão
         Exemplo: se o carro foi apreendido dia 25/12/2022 e liberado dia 03/01/2023, a variável
@@ -241,14 +257,14 @@ namespace model {
         /*Verificando se os anos de entrada e 
         saída sao bissextos e adicionando 1 dia em fevereiro caso sejam*/
 
-        if(anoBissexto(ano_Apreensao)){
+        if (anoBissexto(ano_Apreensao)) {
 
             //é somado um dia ao mes de fevereiro - referente ao ano de apreensão do veículo
             calendario_Entrada[1]++;
 
         }
 
-        if(anoBissexto(ano_Liberacao)){
+        if (anoBissexto(ano_Liberacao)) {
 
             //é somado um dia ao mes de fevereiro - referente ao ano de liberação do veículo
             calendario_Saida[1]++;
@@ -257,13 +273,13 @@ namespace model {
 
         //Verificando se a data de entrada e saída estão no mesmo ano
 
-        if(ano_Apreensao == ano_Liberacao){
+        if (ano_Apreensao == ano_Liberacao) {
 
-            for(int i = 0; i < mes_Liberacao-1; i++){
+            for (int i = 0; i < mes_Liberacao - 1; i++) {
 
                 dias_liberacao += calendario_Saida[i];
 
-                if(i < mes_Apreensao-1){
+                if (i < mes_Apreensao - 1) {
 
                     dias_apreensao += calendario_Entrada[i];
 
@@ -276,9 +292,9 @@ namespace model {
 
             cont_dias = dias_liberacao - dias_apreensao;
 
-        }else{
+        } else {
 
-            for(int i = 0; i < mes_Liberacao-1; i++){
+            for (int i = 0; i < mes_Liberacao - 1; i++) {
 
                 dias_liberacao += calendario_Saida[i];
 
@@ -286,7 +302,7 @@ namespace model {
 
             dias_liberacao += dia_Liberacao;
 
-            for(int i = 0; i < mes_Apreensao-1; i++){
+            for (int i = 0; i < mes_Apreensao - 1; i++) {
 
                 dias_apreensao += calendario_Entrada[i];
 
@@ -294,23 +310,23 @@ namespace model {
 
             dias_apreensao += dia_Apreensao;
 
-            if(anoBissexto(ano_Apreensao)){
+            if (anoBissexto(ano_Apreensao)) {
 
                 dias_apreensao = 366 - dias_apreensao;
 
-            }else{
+            } else {
 
                 dias_apreensao = 365 - dias_apreensao;
 
             }
 
-            for(int i = ano_Apreensao + 1; i < ano_Liberacao; i++){
+            for (int i = ano_Apreensao + 1; i < ano_Liberacao; i++) {
 
-                if(anoBissexto(i)){
+                if (anoBissexto(i)) {
 
                     cont_dias += 366;
 
-                }else{
+                } else {
 
                     cont_dias += 365;
 

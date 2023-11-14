@@ -21,7 +21,7 @@ namespace controller {
         void consultarVeiculo();
         bool stob(const std::string &str);
         void criarCarro(std::unordered_map<std::string, std::string> &dados_veiculo);
-        void criarCaminhao(std::unordered_map<std::string, std::string> &sdados_veiculo);
+        void criarCaminhao(std::unordered_map<std::string, std::string> &dados_veiculo);
         void criarMoto(std::unordered_map<std::string, std::string> &dados_veiculo);
 
         void persistChecklists();
