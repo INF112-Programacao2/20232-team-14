@@ -10,7 +10,7 @@ namespace model {
     protected:
 
         int _os;                                //Ordem de serviço
-        std::string _solicitacao;               //Quem solicitou a apreensão (PM,PRV,etc...)
+        std::string _solicitacao;               //Quem solicitou a apreensão (PM, PRV, etc...)
         std::string _funcionario;               //Funcionário que realizou a apreensão
         std::string _placa_reboque;             //Placa do veículo do pátio (caminhão ou carro) que realizou a apreensão
         std::string _motivo;                    //(Inf. Trânsito/Crime de Trânsito/Falta de Licenciamento/Etc... -> são vários, o usuário que vai escrever)

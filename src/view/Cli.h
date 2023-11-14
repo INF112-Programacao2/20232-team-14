@@ -27,6 +27,8 @@ namespace view {
         void coletaChecklistCarro(std::unordered_map<std::string, std::string> &dados_carro);
         void coletaChecklistCaminhao(std::unordered_map<std::string, std::string> &dados_caminhao);
         void coletaChecklistMoto(std::unordered_map<std::string, std::string> &dados_moto);
+
+        static void leituraCampo(const std::string &label, std::string &field);
     };
 
 } // View

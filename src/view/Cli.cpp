@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <unordered_map>
+#include <cstring>
 #include "Cli.h"
 
 namespace view {
@@ -24,11 +26,16 @@ namespace view {
 
     }
 
+    void Cli::leituraCampo(const std::string &label, std::string &field){
+        std::cout << label << std::endl;
+
+        std::cin.sync();
+        std::getline(std::cin, field);
+    }
+
     void Cli::coletaChecklist(std::unordered_map<std::string, std::string> &dados_veiculo){
-        std::cout << "Ordem de servico: ";
-        std::cin >> dados_veiculo["OS"];
-        std::cout << "Solicitacao: ";
-        std::cin >> dados_veiculo["Solicitacao"];
+        leituraCampo("Ordem de servico: ", dados_veiculo["OS"]);
+        leituraCampo("Solicitacao: ", dados_veiculo["Solicitacao"]);
         std::cout << "Funcionario responsavel por registrar o veiculo: ";
         std::cin >> dados_veiculo["Funcionario"];
         std::cout << "Placa do veiculo que realizou o reboque: ";

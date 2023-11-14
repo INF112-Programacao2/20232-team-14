@@ -28,7 +28,7 @@ namespace controller {
                     break;
                 case 1:
                     //teria aqui uma instanciação de c
-
+                    iniciarApreensao();
                     //_dados_veiculo.clear(); //esvaziando o vetor apos seus dados serem transferidos para o objeto veiculo
                     break;
                 case 2:
@@ -142,6 +142,7 @@ namespace controller {
                                                      stob(dados_moto["Capacete"]), stob(dados_moto["Carenagem"]), stob(dados_moto["Bau"]), stob(dados_moto["Ferramentas"]), stoi(dados_moto["SuspensaoD"]),
                                                      stoi(dados_moto["SuspensaoT"]), stoi(dados_moto["Guidao"]), stoi(dados_moto["SistemaE"]), stoi(dados_moto["Escapamento"]));
         //*_veiculos[os] =
+        std::cout << "eh vidinha" << std::endl;
     }
 
     void Controller::iniciarApreensao() {
