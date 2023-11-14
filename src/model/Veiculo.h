@@ -9,7 +9,7 @@ namespace model {
 
     protected:
 
-        int _os;                        //Ordem de serviço
+        int _os;                                //Ordem de serviço
         std::string _solicitacao;               //Quem solicitou a apreensão (PM,PRV,etc...)
         std::string _funcionario;               //Funcionário que realizou a apreensão
         std::string _placa_reboque;             //Placa do veículo do pátio (caminhão ou carro) que realizou a apreensão
@@ -27,7 +27,8 @@ namespace model {
         int _hodometro;                         //Quantidade de km que o carro ja percorreu
         std::string _ocorrencia;                //Número da ocorrência da apreensão
         std::string _policial;                  //Policial responsável pela apreensão
-        std::string _data;                      //Data de Apreensão
+        std::string _data_apreensao;            //Data de Apreensão (mandada pro construtor)
+        std::string _data_liberacao;            //Data de Apreensão (eniada somente depois, não consta no construtor)
         std::string _horario;                   //Horário de Apreensão
         std::string _objetos;                   //Objetos que estavam dentro do veículo
         std::string _observacoes;               //Observações a mais, se for necessário
@@ -42,7 +43,7 @@ namespace model {
                 const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                 const std::string &local, const std::string &placa, const std::string &marca, const std::string &modelo,
                 int ano, const std::string &cidade, const std::string &chassi, int km, int hodometro,
-                const std::string &ocorrencia, const std::string &policial, const std::string &data,
+                const std::string &ocorrencia, const std::string &policial, const std::string &data_apreensao,
                 const std::string &horario, const std::string &objetos, const std::string &observacoes, int rodas,
                 int retrovisores);
 
@@ -83,8 +84,10 @@ namespace model {
         virtual void set_ocorrencia(const std::string &ocorrencia);
         virtual const std::string &get_policial() const;
         virtual void set_policial(const std::string &policial);
-        virtual const std::string &get_data() const;
-        virtual void set_data(const std::string &data);
+        virtual const std::string &get_data_apreensao() const;
+        virtual void set_data_apreensao(const std::string &data_apreensao);
+        virtual const std::string &get_data_liberacao() const;
+        virtual void set_data_liberacao(const std::string &data_liberacao);
         virtual const std::string &get_horario() const;
         virtual void set_horario(const std::string &horario);
         virtual const std::string &get_objetos() const;
@@ -101,7 +104,11 @@ namespace model {
         virtual bool anoBissexto(int ano);
 
         //Calcula os dias entre a data de apreensão e liberação de veículo para realizar o orçamento
-        virtual int calcDiasApreensao(std::string data_Liberacao);
+        virtual int calcDiasApreensao();
+
+        //Realiza o orçamento de um veículo baseado no seu tipo e na quantidade de dias que permaneceu no patio
+        //Será sobrescrita pois há variáveis dependentes de cada subclasse
+        virtual double calcOrcamento() = 0;
 
     };
 

@@ -118,5 +118,11 @@ namespace model {
     }
     //end of gets and sets
 
+    double Moto::calcOrcamento(){
+
+        return (_diaria_moto * (calcDiasApreensao()) + (_reboque_moto) + (2.5 * _km));
+
+    }
+
 
 }

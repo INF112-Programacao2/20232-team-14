@@ -10,12 +10,12 @@ namespace model {
                      const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                      const std::string &local, const std::string &placa, const std::string &marca,
                      const std::string &modelo, int ano, const std::string &cidade, const std::string &chassi, int km,
-                     int hodometro, const std::string &ocorrencia, const std::string &policial, const std::string &data,
+                     int hodometro, const std::string &ocorrencia, const std::string &policial, const std::string &data_apreensao,
                      const std::string &horario, const std::string &objetos, const std::string &observacoes, int rodas,
                      int retrovisores) : _os(os), _solicitacao(solicitacao), _funcionario(funcionario),
                      _placa_reboque(placaReboque), _motivo(motivo), _estado_veiculo(estadoVeiculo),
                      _blitz(blitz), _local(local), _placa(placa), _marca(marca),  _modelo(modelo), _ano(ano), _cidade(cidade),
-                     _chassi(chassi), _km(km), _hodometro(hodometro), _ocorrencia(ocorrencia), _policial(policial), _data(data),
+                     _chassi(chassi), _km(km), _hodometro(hodometro), _ocorrencia(ocorrencia), _policial(policial), _data_apreensao(data_apreensao),
                      _horario(horario), _objetos(objetos), _observacoes(observacoes), _rodas(rodas), _retrovisores(retrovisores) {
 
     }
@@ -166,12 +166,20 @@ namespace model {
         _policial=policial;
     }
 
-    const std::string &Veiculo::get_data() const {
-        return _data;
+    const std::string &Veiculo::get_data_apreensao() const {
+        return _data_apreensao;
     }
 
-    void Veiculo::set_data(const std::string &data) {
-        _data=data;
+    void Veiculo::set_data_apreensao(const std::string &data_apreensao) {
+        _data_apreensao=data_apreensao;
+    }
+
+    const std::string &Veiculo::get_data_liberacao() const {
+        return _data_liberacao;
+    }
+
+    void Veiculo::set_data_liberacao(const std::string &data_liberacao) {
+        _data_apreensao=data_liberacao;
     }
 
     const std::string &Veiculo::get_horario() const{
@@ -232,15 +240,15 @@ namespace model {
 
     }
 
-    int Veiculo::calcDiasApreensao(std::string data_Liberacao) {
+    int Veiculo::calcDiasApreensao() {
 
         //Obtém dia, mes e ano das strings de data recebidas, guardando os valores nas variáveis abaixo
         int dia_Apreensao, mes_Apreensao, ano_Apreensao;
         int dia_Liberacao, mes_Liberacao, ano_Liberacao;
         char discard;
-        std::stringstream ss_apreensao(_data);
+        std::stringstream ss_apreensao(_data_apreensao);
         ss_apreensao >> dia_Apreensao >> discard >> mes_Apreensao >> discard >> ano_Apreensao;
-        std::stringstream ss_liberacao(data_Liberacao);
+        std::stringstream ss_liberacao(_data_liberacao);
         ss_liberacao >> dia_Liberacao >> discard >> mes_Liberacao >> discard >> ano_Liberacao;
 
         int calendario_Entrada[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
