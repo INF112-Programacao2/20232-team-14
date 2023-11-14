@@ -149,7 +149,11 @@ namespace model {
     }
 
     //end of gets and sets
+    double Carro::calcOrcamento(){
 
+        return (_diaria_carro * (calcDiasApreensao()) + (_reboque_carro) + (2.5 * _km));
+
+    }
 };
 
 // model

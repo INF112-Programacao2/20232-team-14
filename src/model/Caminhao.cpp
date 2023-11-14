@@ -153,6 +153,10 @@ namespace model {
     }
     //end of gets and sets
 
+    double Caminhao::calcOrcamento(){
 
+        return (_diaria_caminhao * (calcDiasApreensao()) + (_reboque_caminhao) + (2.5 * _km));
+
+    }
 
 }
