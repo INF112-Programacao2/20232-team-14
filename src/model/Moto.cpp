@@ -9,13 +9,13 @@ namespace model {
                const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                const std::string &local, const std::string &placa, const std::string &marca, const std::string &modelo,
                int ano, const std::string &cidade, const std::string &chassi, int km, int hodometro,
-               const std::string &ocorrencia, const std::string &policial, const std::string &data,
+               const std::string &ocorrencia, const std::string &policial, const std::string &data_apreensao,
                const std::string &horario, const std::string &objetos, const std::string &observacoes, int rodas,
                int retrovisores, bool capacete, bool carenagem, bool bau, bool ferramentas,
                int suspDianteira, int suspTraseira, int guidao, int sistEletrico, int escapamento):
 
                Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local, placa, marca, modelo,
-                       ano, cidade, chassi, km, hodometro, ocorrencia, policial, data, horario, objetos, observacoes, rodas, retrovisores), _capacete(capacete), _carenagem(carenagem), _bau(bau), _ferramentas(ferramentas), _suspDianteira(suspDianteira),
+                       ano, cidade, chassi, km, hodometro, ocorrencia, policial, data_apreensao, horario, objetos, observacoes, rodas, retrovisores), _capacete(capacete), _carenagem(carenagem), _bau(bau), _ferramentas(ferramentas), _suspDianteira(suspDianteira),
                        _suspTraseira(suspTraseira), _guidao(guidao), _sistEletrico(sistEletrico), _escapamento(escapamento){
 
         _diaria_moto = 30.22;

@@ -35,7 +35,7 @@ namespace model {
               const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
               const std::string &local, const std::string &placa, const std::string &marca, const std::string &modelo,
               int ano, const std::string &cidade, const std::string &chassi, int km, int hodometro,
-              const std::string &ocorrencia, const std::string &policial, const std::string &data,
+              const std::string &ocorrencia, const std::string &policial, const std::string &data_apreensao,
               const std::string &horario, const std::string &objetos, const std::string &observacoes, int rodas,
               int retrovisores, bool extintor, bool estepe, bool macaco, bool chaveRoda,
               bool triangulo, bool bateria, bool calotas, bool tapetes, bool radio, int portas, int capo, int painel,
