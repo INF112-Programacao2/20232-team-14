@@ -1,5 +1,4 @@
 #include "Caminhao.h"
-#include <vector>
 #include <string>
 
 namespace model {
@@ -17,12 +16,14 @@ namespace model {
                        bool bateria, bool calotas, bool tapetes, bool radio) :
 
                        Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz,
-                               local, placa, marca, modelo, ano, cidade, chassi, km, hodometro,
-                               ocorrencia, policial, data, horario, objetos, observacoes, rodas, retrovisores)
-                               , _carroceria(carroceria), _eixoTraseiro(eixoTraseiro), _cintas(cintas),
-                               _suspCabine(suspCabine), _extintor(extintor), _estepe(estepe), _macaco(macaco),
-                               _chave_roda(chaveRoda), _triangulo(triangulo), _bateria(bateria), _calotas(calotas),
-                               _tapetes(tapetes), _radio(radio){
+                       local, placa, marca, modelo, ano, cidade, chassi, km, hodometro,
+                       ocorrencia, policial, data, horario, objetos, observacoes, rodas, retrovisores)
+                       , _carroceria(carroceria), _eixoTraseiro(eixoTraseiro), _cintas(cintas), _suspCabine(suspCabine),
+                       _extintor(extintor), _estepe(estepe), _macaco(macaco), _chave_roda(chaveRoda), _triangulo(triangulo),
+                       _bateria(bateria), _calotas(calotas), _tapetes(tapetes), _radio(radio){
+
+                       _diaria_caminhao = 60.44;
+                       _reboque_caminhao = 367.69;
 
     }
 
@@ -134,6 +135,22 @@ namespace model {
 
     void Caminhao::set_radio(bool radio) {
         _radio = radio;
+    }
+
+    double Caminhao::get_diariaCaminhao() const {
+        return _diaria_caminhao;
+    }
+
+    void Caminhao::set_diariaCaminhao(double diariaCaminhao) {
+        _diaria_caminhao = diariaCaminhao;
+    }
+
+    double Caminhao::get_reboqueCaminhao() const {
+        return _reboque_caminhao;
+    }
+
+    void Caminhao::set_reboqueCaminhao(double reboqueCaminhao) {
+        _reboque_caminhao = reboqueCaminhao;
     }
     //end of gets and sets
 
