@@ -22,11 +22,11 @@ namespace model {
 
     //Gets and Sets
 
-    int Veiculo::getOs() const {
+    int Veiculo::get_os() const {
         return _os;
     }
 
-    void Veiculo::setOs(int os) {
+    void Veiculo::set_os(int os) {
         _os = os;
     }
 
@@ -232,13 +232,13 @@ namespace model {
 
     }
 
-    int Veiculo::calcDiasApreensao(std::string data_Apreensao, std::string data_Liberacao) {
+    int Veiculo::calcDiasApreensao(std::string data_Liberacao) {
 
         //Obtém dia, mes e ano das strings de data recebidas, guardando os valores nas variáveis abaixo
         int dia_Apreensao, mes_Apreensao, ano_Apreensao;
         int dia_Liberacao, mes_Liberacao, ano_Liberacao;
         char discard;
-        std::stringstream ss_apreensao(data_Apreensao);
+        std::stringstream ss_apreensao(_data);
         ss_apreensao >> dia_Apreensao >> discard >> mes_Apreensao >> discard >> ano_Apreensao;
         std::stringstream ss_liberacao(data_Liberacao);
         ss_liberacao >> dia_Liberacao >> discard >> mes_Liberacao >> discard >> ano_Liberacao;
