@@ -135,6 +135,24 @@ namespace model {
     void Caminhao::set_radio(bool radio) {
         _radio = radio;
     }
+
+    double Caminhao::get_diaria_caminhao() const {
+        return _diaria_caminhao;
+    }
+
+    void Caminhao::set_diaria_caminhao(double diaria_caminhao) {
+        _diaria_caminhao = diaria_caminhao;
+    }
+
+    double Caminhao::get_reboque_caminhao() const {
+        return _reboque_caminhao;
+    }
+
+    void Caminhao::set_reboque_caminhao(double reboque_caminhao) {
+        _reboque_caminhao = reboque_caminhao;
+    }
     //end of gets and sets
+
+
 
 }

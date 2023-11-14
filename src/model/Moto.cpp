@@ -18,6 +18,9 @@ namespace model {
                        ano, cidade, chassi, km, hodometro, ocorrencia, policial, data, horario, objetos, observacoes, rodas, retrovisores), _capacete(capacete), _carenagem(carenagem), _bau(bau), _ferramentas(ferramentas), _suspDianteira(suspDianteira),
                        _suspTraseira(suspTraseira), _guidao(guidao), _sistEletrico(sistEletrico), _escapamento(escapamento){
 
+        _diaria_moto = 30.22;
+        _reboque_moto = 176.29;
+
     }
 
     //Gets and Sets
@@ -97,7 +100,22 @@ namespace model {
     void Moto::set_escapamento(int escapamento) {
         _escapamento = escapamento;
     }
-    //end of gets and sets
 
+    double Moto::get_diaria_moto() const {
+        return _diaria_moto;
+    }
+
+    void Moto::set_diaria_moto(double diaria_moto) {
+        _diaria_moto = diaria_moto;
+    }
+
+    double Moto::get_reboque_moto() const {
+        return _reboque_moto;
+    }
+
+    void Moto::set_reboque_moto(double reboque_moto) {
+        _reboque_moto = reboque_moto;
+    }
+    //end of gets and sets
 
 }

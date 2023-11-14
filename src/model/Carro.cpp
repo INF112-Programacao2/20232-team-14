@@ -132,6 +132,22 @@ namespace model {
         _teto = teto;
     }
 
+    double Carro::get_diaria_carro() const {
+        return _diaria_carro;
+    }
+
+    void Carro::set_diaria_carro(double diaria_carro) {
+        _diaria_carro = diaria_carro;
+    }
+
+    double Carro::get_reboque_carro() const {
+        return _reboque_carro;
+    }
+
+    void Carro::set_reboque_carro(double reboque_carro){
+        _reboque_carro = reboque_carro;
+    }
+
     //end of gets and sets
 
 };

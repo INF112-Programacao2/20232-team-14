@@ -9,7 +9,9 @@ add_executable(20232_team_14 ${PROJ_FILES}
         src/model/Moto.cpp
         src/model/Moto.h
         src/model/Caminhao.cpp
-        src/model/Caminhao.h)
+        src/model/Caminhao.h
+        src/model/Moto.cpp
+)
 
 find_package(SQLite3 REQUIRED)
 target_include_directories(20232_team_14 PRIVATE ${SQLite3_INCLUDE_DIRS} src)
