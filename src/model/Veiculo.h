@@ -103,6 +103,9 @@ namespace model {
         //Calcula os dias entre a data de apreensão e liberação de veículo para realizar o orçamento
         virtual int calcDiasApreensao(std::string data_Apreensao, std::string data_Liberacao);
 
+        //Realiza o orçamento do veículo baseado no seu tipo/custo de diária/custo de reboque
+        //virtual double calcOrcamento() = 0; -> Discutir depois
+
     };
 
 } // model

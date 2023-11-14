@@ -15,10 +15,13 @@ namespace model {
                  bool bateria, bool calotas, bool tapetes, bool radio, int portas, int capo, int painel, int teto) :
 
                 Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local,
-                        placa, marca, modelo, ano, cidade, chassi, km, hodometro, ocorrencia, policial,
-                        data, horario, objetos, observacoes, rodas, retrovisores), _extintor(extintor),
-                        _estepe(estepe), _macaco(macaco), _chave_roda(chaveRoda), _triangulo(triangulo), _bateria(bateria),
-                        _calotas(calotas), _tapetes(tapetes), _radio(radio), _portas(portas), _capo(capo), _painel(painel), _teto(teto){
+                placa, marca, modelo, ano, cidade, chassi, km, hodometro, ocorrencia, policial, data, horario,
+                objetos, observacoes, rodas, retrovisores), _extintor(extintor), _estepe(estepe), _macaco(macaco),
+                _chave_roda(chaveRoda), _triangulo(triangulo), _bateria(bateria), _calotas(calotas), _tapetes(tapetes),
+                _radio(radio), _portas(portas), _capo(capo), _painel(painel), _teto(teto){
+
+                _diaria_carro = 50.37;
+                _reboque_carro = 277.03;
 
     }
 
@@ -130,6 +133,22 @@ namespace model {
 
     void Carro:: set_teto(int teto) {
         _teto = teto;
+    }
+
+    double Carro::get_diariaCarro() const {
+        return _diaria_carro;
+    }
+
+    void Carro::set_diariaCarro(double diariaCarro) {
+        _diaria_carro = diariaCarro;
+    }
+
+    double Carro::get_reboqueCarro() const {
+        return _reboque_carro;
+    }
+
+    void Carro::set_reboqueCarro(double reboqueCarro) {
+        _reboque_carro = reboqueCarro;
     }
 
     //end of gets and sets
