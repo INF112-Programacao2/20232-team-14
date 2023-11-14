@@ -5,7 +5,7 @@ namespace model {
 
     //Construtor Moto.h
 
-    Moto::Moto(const std::string &os, const std::string &solicitacao, const std::string &funcionario,
+    Moto::Moto(int os, const std::string &solicitacao, const std::string &funcionario,
                const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                const std::string &local, const std::string &placa, const std::string &marca, const std::string &modelo,
                int ano, const std::string &cidade, const std::string &chassi, int km, int hodometro,
@@ -15,12 +15,8 @@ namespace model {
                int suspDianteira, int suspTraseira, int guidao, int sistEletrico, int escapamento):
 
                Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local, placa, marca, modelo,
-               ano, cidade, chassi, km, hodometro, ocorrencia, policial, data, horario, objetos, observacoes, rodas, retrovisores),
-               _capacete(capacete), _carenagem(carenagem), _bau(bau), _ferramentas(ferramentas), _suspDianteira(suspDianteira),
-               _suspTraseira(suspTraseira), _guidao(guidao), _sistEletrico(sistEletrico), _escapamento(escapamento){
-
-               _diaria_moto = 30.22;
-               _reboque_moto = 176.29;
+                       ano, cidade, chassi, km, hodometro, ocorrencia, policial, data, horario, objetos, observacoes, rodas, retrovisores), _capacete(capacete), _carenagem(carenagem), _bau(bau), _ferramentas(ferramentas), _suspDianteira(suspDianteira),
+                       _suspTraseira(suspTraseira), _guidao(guidao), _sistEletrico(sistEletrico), _escapamento(escapamento){
 
     }
 
@@ -101,22 +97,7 @@ namespace model {
     void Moto::set_escapamento(int escapamento) {
         _escapamento = escapamento;
     }
-
-    double Moto::get_diariaMoto() const {
-        return _diaria_moto;
-    }
-
-    void Moto::set_diariaMoto(double diariaMoto) {
-        _diaria_moto = diariaMoto;
-    }
-
-    double Moto::get_reboqueMoto() const {
-        return _reboque_moto;
-    }
-
-    void Moto::set_reboqueMoto(double reboqueMoto) {
-        _reboque_moto = reboqueMoto;
-    }
     //end of gets and sets
+
 
 }

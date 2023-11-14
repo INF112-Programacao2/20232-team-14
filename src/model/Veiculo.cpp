@@ -22,12 +22,12 @@ namespace model {
 
     //Gets and Sets
 
-    const std::string &Veiculo::get_os() const {
+    int Veiculo::getOs() const {
         return _os;
     }
 
-    void Veiculo:: set_os(const std::string &os){
-        _os=os;
+    void Veiculo::setOs(int os) {
+        _os = os;
     }
 
     const std::string &Veiculo::get_solicitacao() const{

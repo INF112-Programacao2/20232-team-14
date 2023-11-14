@@ -1,11 +1,12 @@
 #include "Caminhao.h"
+#include <vector>
 #include <string>
 
 namespace model {
 
     //Construtor Caminhao.h
 
-    Caminhao::Caminhao(const std::string &os, const std::string &solicitacao, const std::string &funcionario,
+    Caminhao::Caminhao(int os, const std::string &solicitacao, const std::string &funcionario,
                        const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                        const std::string &local, const std::string &placa, const std::string &marca,
                        const std::string &modelo, int ano, const std::string &cidade, const std::string &chassi, int km,
@@ -16,14 +17,12 @@ namespace model {
                        bool bateria, bool calotas, bool tapetes, bool radio) :
 
                        Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz,
-                       local, placa, marca, modelo, ano, cidade, chassi, km, hodometro,
-                       ocorrencia, policial, data, horario, objetos, observacoes, rodas, retrovisores)
-                       , _carroceria(carroceria), _eixoTraseiro(eixoTraseiro), _cintas(cintas), _suspCabine(suspCabine),
-                       _extintor(extintor), _estepe(estepe), _macaco(macaco), _chave_roda(chaveRoda), _triangulo(triangulo),
-                       _bateria(bateria), _calotas(calotas), _tapetes(tapetes), _radio(radio){
-
-                       _diaria_caminhao = 60.44;
-                       _reboque_caminhao = 367.69;
+                               local, placa, marca, modelo, ano, cidade, chassi, km, hodometro,
+                               ocorrencia, policial, data, horario, objetos, observacoes, rodas, retrovisores)
+                               , _carroceria(carroceria), _eixoTraseiro(eixoTraseiro), _cintas(cintas),
+                               _suspCabine(suspCabine), _extintor(extintor), _estepe(estepe), _macaco(macaco),
+                               _chave_roda(chaveRoda), _triangulo(triangulo), _bateria(bateria), _calotas(calotas),
+                               _tapetes(tapetes), _radio(radio){
 
     }
 
@@ -135,22 +134,6 @@ namespace model {
 
     void Caminhao::set_radio(bool radio) {
         _radio = radio;
-    }
-
-    double Caminhao::get_diariaCaminhao() const {
-        return _diaria_caminhao;
-    }
-
-    void Caminhao::set_diariaCaminhao(double diariaCaminhao) {
-        _diaria_caminhao = diariaCaminhao;
-    }
-
-    double Caminhao::get_reboqueCaminhao() const {
-        return _reboque_caminhao;
-    }
-
-    void Caminhao::set_reboqueCaminhao(double reboqueCaminhao) {
-        _reboque_caminhao = reboqueCaminhao;
     }
     //end of gets and sets
 

@@ -5,7 +5,7 @@ namespace model {
 
     //Construtor Carro.h
 
-    Carro::Carro(const std::string &os, const std::string &solicitacao, const std::string &funcionario,
+    Carro::Carro(int os, const std::string &solicitacao, const std::string &funcionario,
                  const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                  const std::string &local, const std::string &placa, const std::string &marca,
                  const std::string &modelo, int ano, const std::string &cidade, const std::string &chassi, int km,
@@ -15,13 +15,10 @@ namespace model {
                  bool bateria, bool calotas, bool tapetes, bool radio, int portas, int capo, int painel, int teto) :
 
                 Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local,
-                placa, marca, modelo, ano, cidade, chassi, km, hodometro, ocorrencia, policial, data, horario,
-                objetos, observacoes, rodas, retrovisores), _extintor(extintor), _estepe(estepe), _macaco(macaco),
-                _chave_roda(chaveRoda), _triangulo(triangulo), _bateria(bateria), _calotas(calotas), _tapetes(tapetes),
-                _radio(radio), _portas(portas), _capo(capo), _painel(painel), _teto(teto){
-
-                _diaria_carro = 50.37;
-                _reboque_carro = 277.03;
+                        placa, marca, modelo, ano, cidade, chassi, km, hodometro, ocorrencia, policial,
+                        data, horario, objetos, observacoes, rodas, retrovisores), _extintor(extintor),
+                        _estepe(estepe), _macaco(macaco), _chave_roda(chaveRoda), _triangulo(triangulo), _bateria(bateria),
+                        _calotas(calotas), _tapetes(tapetes), _radio(radio), _portas(portas), _capo(capo), _painel(painel), _teto(teto){
 
     }
 
@@ -133,22 +130,6 @@ namespace model {
 
     void Carro:: set_teto(int teto) {
         _teto = teto;
-    }
-
-    double Carro::get_diariaCarro() const {
-        return _diaria_carro;
-    }
-
-    void Carro::set_diariaCarro(double diariaCarro) {
-        _diaria_carro = diariaCarro;
-    }
-
-    double Carro::get_reboqueCarro() const {
-        return _reboque_carro;
-    }
-
-    void Carro::set_reboqueCarro(double reboqueCarro) {
-        _reboque_carro = reboqueCarro;
     }
 
     //end of gets and sets
