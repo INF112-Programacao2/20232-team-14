@@ -3,7 +3,7 @@
 #include "Controller.h"
 #include "model/Carro.h"
 #include "view/Cli.h"
-#include "model/Model.h"
+#include "model/SqliteHook.h"
 #include "model/Moto.h"
 #include "model/Caminhao.h"
 
@@ -58,9 +58,9 @@ namespace controller {
                     break;
                 case 5:
                     //abre database
-                    model::Model::connectDB();
-                    model::Model::initDB();
-                    model::Model::closeDB();
+                    model::SqliteHook::connectDB();
+                    model::SqliteHook::initDB();
+                    model::SqliteHook::closeDB();
                     break;
             }
         }

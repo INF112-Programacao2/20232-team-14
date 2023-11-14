@@ -1,11 +1,11 @@
 #ifndef INC_20232_TEAM_14_VEICULO_H
 #define INC_20232_TEAM_14_VEICULO_H
 #include <string>
-#include "Model.h"
+#include "SqliteHook.h"
 
 namespace model {
 
-    class Veiculo : Model{
+    class Veiculo : SqliteHook{
 
     protected:
 

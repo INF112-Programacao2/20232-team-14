@@ -1,9 +1,6 @@
 #include <string>
 #include <sstream>
-#include <iostream>
 #include "Veiculo.h"
-
-using namespace std;
 
 namespace model {
 
@@ -203,7 +200,7 @@ namespace model {
 
     //end of gets and Sets
 
-    //função verifica se um ano é bissexto ou não (usada na função calcDiasApreensao)
+    //função verifica se um ano é bissexto ou não (usada para estabelecer o cálculo do orçamento baseado nas diárias)
 
     bool Veiculo::anoBissexto(int ano){
 

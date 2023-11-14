@@ -1,12 +1,12 @@
-#ifndef INC_20232_TEAM_14_MODEL_H
-#define INC_20232_TEAM_14_MODEL_H
+#ifndef INC_20232_TEAM_14_SQLITEHOOK_H
+#define INC_20232_TEAM_14_SQLITEHOOK_H
 
 #include <sqlite3.h>
 #include <string>
 
 namespace model {
 
-    class Model {
+    class SqliteHook {
         static sqlite3 *_db;
         //static std::string
 
@@ -28,4 +28,4 @@ namespace model {
 
 } // model
 
-#endif //INC_20232_TEAM_14_MODEL_H
+#endif //INC_20232_TEAM_14_SQLITEHOOK_H

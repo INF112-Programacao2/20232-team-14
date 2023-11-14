@@ -1,12 +1,12 @@
-#include "Model.h"
+#include "SqliteHook.h"
 #include <sqlite3.h>
 #include <cstdio>
 #include <string>
 // superclasse de persistencia model utilizando SQLite3
 namespace model {
-    sqlite3 *Model::_db = nullptr;
+    sqlite3 *SqliteHook::_db = nullptr;
 
-    int Model::connectDB() {
+    int SqliteHook::connectDB() {
 
         int dbresponse;
 
@@ -21,7 +21,7 @@ namespace model {
         }
     }
 
-    int Model::closeDB(){
+    int SqliteHook::closeDB(){
         sqlite3_close(_db);
         return 0;
     }
@@ -39,7 +39,7 @@ namespace model {
         return 0;
     }
 
-    int Model::initDB() {
+    int SqliteHook::initDB() {
         char *errorMsg = 0;
         int dbresponse;
         std::string sql;
@@ -73,19 +73,19 @@ namespace model {
         return 0;
     }
 
-    int Model::insert() {
+    int SqliteHook::insert() {
         return 0;
     }
 
-    int Model::remove() {
+    int SqliteHook::remove() {
         return 0;
     }
 
-    int Model::update() {
+    int SqliteHook::update() {
         return 0;
     }
 
-    int Model::select() {
+    int SqliteHook::select() {
         return 0;
     }
 
