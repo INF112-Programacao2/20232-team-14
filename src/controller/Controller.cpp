@@ -146,9 +146,7 @@ namespace controller {
     }
 
     void Controller::iniciarApreensao() {
-        if(_veiculos){ // basicamente, se _veiculos é nullptr, aloca o unordered map e o referencia. se já existe, não faz nada.
-
-        }else{
+        if(!_veiculos) { // basicamente, se _veiculos é nullptr, aloca o unordered map e o referencia. se já existe, não faz nada.
             _veiculos = new std::unordered_map<int, model::Veiculo *>();
         }
         int tipo;

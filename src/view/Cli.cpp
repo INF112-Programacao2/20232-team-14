@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map>
-#include <cstring>
 #include "Cli.h"
+#include <regex>
 
 namespace view {
 
@@ -32,19 +32,37 @@ namespace view {
         std::cin.sync();
         std::getline(std::cin, field);
     }
+    void Cli::leituraCampo(const std::string &label, std::string &field, const std::string &regex, const std::string &errorMsg) {
+        bool flag = true;
+        std::string input;
+        std::regex rules(regex);
+        std::cout << label << std::endl;
+
+        while (flag){
+            std::cin.sync();
+            std::getline(std::cin, field);
+            if(std::regex_match(field, rules)) {
+                flag = false;
+            }else{
+                std::cout << errorMsg << std::endl;
+                std::cout << label << std::endl;
+            }
+        }
+
+    }
+
+
+
 
     void Cli::coletaChecklist(std::unordered_map<std::string, std::string> &dados_veiculo){
         leituraCampo("Ordem de servico: ", dados_veiculo["OS"]);
         leituraCampo("Solicitacao: ", dados_veiculo["Solicitacao"]);
-        std::cout << "Funcionario responsavel por registrar o veiculo: ";
-        std::cin >> dados_veiculo["Funcionario"];
-        std::cout << "Placa do veiculo que realizou o reboque: ";
-        std::cin >> dados_veiculo["PlacaReboque"];
-        std::cout << "Motivo da apreensao: ";
-        std::cin >> dados_veiculo["Motivo"];
-        std::cout << "Estado do veiculo no momento de apreensao:\n";
-        std::cout << "1 - Ruim\n2 - Regular\n3 - Bom\n";
-        std::cin >> dados_veiculo["Estado"];
+        leituraCampo("Funcionario responsavel por registrar o veiculo: ", dados_veiculo["Funcionario"]);
+        leituraCampo("Placa do veiculo que realizou o reboque: ", dados_veiculo["PlacaReboque"]);
+        leituraCampo("Motivo da apreensao: ", dados_veiculo["Motivo"]);
+
+        leituraCampo("Estado do veiculo no momento de apreensao:\n1 - Ruim\n2 - Regular\n3 - Bom\n", dados_veiculo["Estado"], "/^[123]$/g", "Entrada deve ser um número da lista!");
+
         std::cout << "Informe se houve blitz (S/N):\n";
         std::cout << "**Responda com 1 em caso afirmativo ou com 0 em caso negativo**\n";
         std::cin >> dados_veiculo["Blitz"];

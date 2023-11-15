@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map>
+#include <regex>
 
 namespace view {
 
@@ -28,7 +29,8 @@ namespace view {
         void coletaChecklistCaminhao(std::unordered_map<std::string, std::string> &dados_caminhao);
         void coletaChecklistMoto(std::unordered_map<std::string, std::string> &dados_moto);
 
-        static void leituraCampo(const std::string &label, std::string &field);
+        void leituraCampo(const std::string &label, std::string &field);
+        void leituraCampo(const std::string &label, std::string &field, const std::string &check, const std::string &errorMsg);
     };
 
 } // View
