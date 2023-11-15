@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map>
+#include <cstring>
 #include "Cli.h"
 #include <regex>
 
@@ -60,137 +61,69 @@ namespace view {
         leituraCampo("Funcionario responsavel por registrar o veiculo: ", dados_veiculo["Funcionario"]);
         leituraCampo("Placa do veiculo que realizou o reboque: ", dados_veiculo["PlacaReboque"]);
         leituraCampo("Motivo da apreensao: ", dados_veiculo["Motivo"]);
-
-        leituraCampo("Estado do veiculo no momento de apreensao:\n1 - Ruim\n2 - Regular\n3 - Bom\n", dados_veiculo["Estado"], "/^[123]$/g", "Entrada deve ser um número da lista!");
-
-        std::cout << "Informe se houve blitz (S/N):\n";
-        std::cout << "**Responda com 1 em caso afirmativo ou com 0 em caso negativo**\n";
-        std::cin >> dados_veiculo["Blitz"];
-        std::cout << "Local de apreensao: ";
-        std::cin >> dados_veiculo["Local"];
-        std::cout << "Placa do veiculo apreendido: ";
-        std::cin >> dados_veiculo["Placa"];
-        std::cout << "Marca do veiculo apreendido: ";
-        std::cin >> dados_veiculo["Marca"];
-        std::cout << "Modelo do veiculo apreendido: ";
-        std::cin >> dados_veiculo["Modelo"];
-        std::cout << "Ano de apreensao do veiculo: ";
-        std::cin >> dados_veiculo["Ano"];
-        std::cout << "Cidade em que ocorreu a apreensao: ";
-        std::cin >> dados_veiculo["Cidade"];
-        std::cout << "Chassi do veiculo apreendido: ";
-        std::cin >> dados_veiculo["Chassi"];
-        std::cout << "Distancia do patio no momento de apreensao: ";
-        std::cin >> dados_veiculo["Distancia"];
-        std::cout << "Quilometragem do veiculo no momento de apreensao: ";
-        std::cin >> dados_veiculo["KM"];
-        std::cout << "Ocorrencia registrada: ";
-        std::cin >> dados_veiculo["Ocorrencia"];
-        std::cout << "Policial responsavel pela apreensao: ";
-        std::cin >> dados_veiculo["Policial"];
-        std::cout << "Data de apreensao do veiculo: ";
-        std::cin >> dados_veiculo["Data"];
-        std::cout << "Horario de apreensao: ";
-        std::cin >> dados_veiculo["Horario"];
-        std::cout << "Objetos que estavam no carro no momento de apreensao: ";
-        std::cin >> dados_veiculo["Objetos"];
-        std::cout << "Se desejar, acrescente alguma observacao, caso contrario digite 0 para continuar: ";
-        std::cin >> dados_veiculo["Obs"];
-        std::cout << "Estado das rodas do veiculo no momento de apreensao:\n";
-        std::cout << "0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado\n";
-        std::cin >> dados_veiculo["EstadoRodas"];
-        std::cout << "Estado dos retrovisores do veiculo no momento de apreensao:\n";
-        std::cout << "0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado\n";
-        std::cin >> dados_veiculo["EstadoRetro"];
+        leituraCampo("Estado do veiculo no momento de apreensao:\n1 - Ruim\n2 - Regular\n3 - Bom", dados_veiculo["Estado"]);
+        leituraCampo("Informe se houve blitz (S/N):\n**Responda com 1 em caso afirmativo ou com 0 em caso negativo**", dados_veiculo["Blitz"]);
+        leituraCampo("Local de apreensao: ", dados_veiculo["Local"]);
+        leituraCampo("Placa do veiculo apreendido: ", dados_veiculo["Placa"]);
+        leituraCampo("Marca do veiculo apreendido: ", dados_veiculo["Marca"]);
+        leituraCampo("Modelo do veiculo apreendido: ", dados_veiculo["Modelo"]);
+        leituraCampo("Ano de apreensao do veiculo: ", dados_veiculo["Ano"]);
+        leituraCampo("Cidade em que ocorreu a apreensao: ", dados_veiculo["Cidade"]);
+        leituraCampo("Chassi do veiculo apreendido: ", dados_veiculo["Chassi"]);
+        leituraCampo("Distancia do patio no momento de apreensao: ", dados_veiculo["Distancia"]);
+        leituraCampo("Quilometragem do veiculo no momento de apreensao: ", dados_veiculo["KM"]);
+        leituraCampo("Ocorrencia registrada: ", dados_veiculo["Ocorrencia"]);
+        leituraCampo("Policial responsavel pela apreensao: ", dados_veiculo["Policial"]);
+        leituraCampo("Data de apreensao do veiculo: ", dados_veiculo["Data"]);
+        leituraCampo("Horario de apreensao: ", dados_veiculo["Horario"]);
+        leituraCampo("Objetos que estavam no carro no momento de apreensao: ", dados_veiculo["Objetos"]);
+        leituraCampo("Se desejar, acrescente alguma observacao, caso contrario digite 0 para continuar: ", dados_veiculo["Obs"]);
+        leituraCampo("Estado das rodas do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRodas"]);
+        leituraCampo("Estado dos retrovisores do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRetro"]);
     }
 
     void Cli::coletaChecklistCarro(std::unordered_map<std::string, std::string> &dados_carro) {
-        std::cout << "Extintor(S/N):\n";
-        std::cin >> dados_carro["Extintor"];
-        std::cout << "Estepe(S/N): ";
-        std::cin >> dados_carro["Estepe"];
-        std::cout << "Macaco (S/N): ";
-        std::cin >> dados_carro["Macaco"];
-        std::cout << "Chave roda (S/N) : ";
-        std::cin >> dados_carro["ChaveRoda"];
-        std::cout << "Triangulo (S/N): ";
-        std::cin >> dados_carro["Triangulo"];
-        std::cout << "Bateria (S/N): ";
-        std::cin >> dados_carro["Bateria"];
-        std::cout << "Calotas (S/N): ";
-        std::cin >> dados_carro["Calotas"];
-        std::cout << "Tapetes (S/N): ";
-        std::cin >> dados_carro["Tapetes"];
-        std::cout << "Radio (S/N): ";
-        std::cin >> dados_carro["Radio"];
-        std::cout << "Portas: ";
-        std::cout << "(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado";
-        std::cin >> dados_carro["EstadoPortas"];
-        std::cout << "Capo: ";
-        std::cout << "(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado";
-        std::cin >> dados_carro["EstadoCapo"];
-        std::cout << "Painel: ";
-        std::cout << "(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado";
-        std::cin >> dados_carro["EstadoPainel"];
-        std::cout << "Teto: ";
-        std::cout << "(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado";
-        std::cin >> dados_carro["EstadoTeto"];
+        leituraCampo("Extintor(S/N):\n", dados_carro["Extintor"]);
+        leituraCampo("Estepe(S/N): ", dados_carro["Estepe"]);
+        leituraCampo("Macaco (S/N): ", dados_carro["Macaco"]);
+        leituraCampo("Chave roda (S/N) : ", dados_carro["ChaveRoda"]);
+        leituraCampo("Triangulo (S/N): ", dados_carro["Triangulo"]);
+        leituraCampo("Bateria (S/N): ", dados_carro["Bateria"]);
+        leituraCampo("Calotas (S/N): ", dados_carro["Calotas"]);
+        leituraCampo("Tapetes (S/N): ", dados_carro["Tapetes"]);
+        leituraCampo("Radio (S/N): ", dados_carro["Radio"]);
+        leituraCampo("Portas:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_carro["EstadoPortas"]);
+        leituraCampo("Capo:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_carro["EstadoCapo"]);
+        leituraCampo("Painel:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_carro["EstadoPainel"]);
+        leituraCampo("Teto:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_carro["EstadoTeto"]);
     }
 
     void Cli::coletaChecklistCaminhao(std::unordered_map<std::string, std::string> &dados_caminhao) {
-        std::cout << "Carroceria:\n";
-        std::cout << "(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado\n";
-        std::cin >> dados_caminhao["EstadoCarroceria"];
-        std::cout << "Eixo traseiro(S/N): ";
-        std::cin >> dados_caminhao["EixoTras"];
-        std::cout << "Cintas(S/N): ";
-        std::cin >> dados_caminhao["Cintas"];
-        std::cout << "Suspensao da cabine(S/N): ";
-        std::cin >> dados_caminhao["SuspensaoC"];
-        std::cout << "Extintor(S/N): ";
-        std::cin >> dados_caminhao["Extintor"];
-        std::cout << "Estepe(S/N): ";
-        std::cin >> dados_caminhao["Estepe"];
-        std::cout << "Macaco(S/N): ";
-        std::cin >> dados_caminhao["Macaco"];
-        std::cout << "Chave roda(S/N): ";
-        std::cin >> dados_caminhao["ChaveRoda"];
-        std::cout << "Triangulo(S/N): ";
-        std::cin >> dados_caminhao["Triangulo"];
-        std::cout << "Bateria(S/N): ";
-        std::cin >> dados_caminhao["Bateria"];
-        std::cout << "Calotas(S/N): ";
-        std::cin >> dados_caminhao["Calotas"];
-        std::cout << "Tapetes(S/N): ";
-        std::cin >> dados_caminhao["Tapetes"];
-        std::cout << "Radio(S/N): ";
-        std::cin >> dados_caminhao["Radio"];
+        leituraCampo("Carroceria:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_caminhao["EstadoCarroceria"]);
+        leituraCampo("Eixo traseiro(S/N): ", dados_caminhao["EixoTras"]);
+        leituraCampo("Cintas(S/N): ", dados_caminhao["Cintas"]);
+        leituraCampo("Suspensao da cabine(S/N): ", dados_caminhao["SuspensaoC"]);
+        leituraCampo("Extintor(S/N): ", dados_caminhao["Extintor"]);
+        leituraCampo("Estepe(S/N): ", dados_caminhao["Estepe"]);
+        leituraCampo("Macaco(S/N): ", dados_caminhao["Macaco"]);
+        leituraCampo("Chave roda(S/N): ", dados_caminhao["ChaveRoda"]);
+        leituraCampo("Triangulo(S/N): ", dados_caminhao["Triangulo"]);
+        leituraCampo("Bateria(S/N): ", dados_caminhao["Bateria"]);
+        leituraCampo("Calotas(S/N): ", dados_caminhao["Calotas"]);
+        leituraCampo("Tapetes(S/N): ", dados_caminhao["Tapetes"]);
+        leituraCampo("Radio(S/N): ", dados_caminhao["Radio"]);
     }
 
     void Cli::coletaChecklistMoto(std::unordered_map<std::string, std::string> &dados_moto) {
-        std::cout << "Capacete(S/N): ";
-        std::cin >> dados_moto["Capacete"];
-        std::cout << "Carenagem(S/N): ";
-        std::cin >> dados_moto["Carenagem"];
-        std::cout << "Bau(S/N): ";
-        std::cin >> dados_moto["Bau"];
-        std::cout << "Ferramentas(S/N): ";
-        std::cin >> dados_moto["Ferramentas"];
-        std::cout << "Suspensao dianteira:\n";
-        std::cout << "(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado\n";
-        std::cin >> dados_moto["SuspensaoD"];
-        std::cout << "Suspensao traseira:\n";
-        std::cout << "(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado\n";
-        std::cin >> dados_moto["SuspensaoT"];
-        std::cout << "Guidao:\n";
-        std::cout << "(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado\n";
-        std::cin >> dados_moto["Guidao"];
-        std::cout << "Sistema eletrico:\n";
-        std::cout << "(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado\n";
-        std::cin >> dados_moto["SistemaE"];
-        std::cout << "Escapamento:\n";
-        std::cout << "(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado\n";
-        std::cin >> dados_moto["Escapamento"];
+        leituraCampo("Capacete(S/N): ", dados_moto["Capacete"]);
+        leituraCampo("Carenagem(S/N): ", dados_moto["Carenagem"]);
+        leituraCampo("Bau(S/N): ", dados_moto["Bau"]);
+        leituraCampo("Ferramentas(S/N): ", dados_moto["Ferramentas"]);
+        leituraCampo("Suspensao dianteira:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["SuspensaoD"]);
+        leituraCampo("Suspensao traseira:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["SuspensaoT"]);
+        leituraCampo("Guidao:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["Guidao"]);
+        leituraCampo("Sistema eletrico:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["SistemaE"]);
+        leituraCampo("Escapamento:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["Escapamento"]);
     }
 
 
