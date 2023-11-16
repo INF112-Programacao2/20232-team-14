@@ -56,30 +56,30 @@ namespace view {
 
 
     void Cli::coletaChecklist(std::unordered_map<std::string, std::string> &dados_veiculo){
-        leituraCampo("Ordem de servico: ", dados_veiculo["OS"]);
-        leituraCampo("Solicitacao: ", dados_veiculo["Solicitacao"]);
-        leituraCampo("Funcionario responsavel por registrar o veiculo: ", dados_veiculo["Funcionario"]);
-        leituraCampo("Placa do veiculo que realizou o reboque: ", dados_veiculo["PlacaReboque"]);
-        leituraCampo("Motivo da apreensao: ", dados_veiculo["Motivo"]);
-        leituraCampo("Estado do veiculo no momento de apreensao:\n1 - Ruim\n2 - Regular\n3 - Bom", dados_veiculo["Estado"]);
-        leituraCampo("Informe se houve blitz (S/N):\n**Responda com 1 em caso afirmativo ou com 0 em caso negativo**", dados_veiculo["Blitz"]);
-        leituraCampo("Local de apreensao: ", dados_veiculo["Local"]);
-        leituraCampo("Placa do veiculo apreendido: ", dados_veiculo["Placa"]);
-        leituraCampo("Marca do veiculo apreendido: ", dados_veiculo["Marca"]);
-        leituraCampo("Modelo do veiculo apreendido: ", dados_veiculo["Modelo"]);
-        leituraCampo("Ano de apreensao do veiculo: ", dados_veiculo["Ano"]);
-        leituraCampo("Cidade em que ocorreu a apreensao: ", dados_veiculo["Cidade"]);
-        leituraCampo("Chassi do veiculo apreendido: ", dados_veiculo["Chassi"]);
-        leituraCampo("Distancia do patio no momento de apreensao: ", dados_veiculo["Distancia"]);
-        leituraCampo("Quilometragem do veiculo no momento de apreensao: ", dados_veiculo["KM"]);
-        leituraCampo("Ocorrencia registrada: ", dados_veiculo["Ocorrencia"]);
-        leituraCampo("Policial responsavel pela apreensao: ", dados_veiculo["Policial"]);
-        leituraCampo("Data de apreensao do veiculo: ", dados_veiculo["Data"]);
-        leituraCampo("Horario de apreensao: ", dados_veiculo["Horario"]);
-        leituraCampo("Objetos que estavam no carro no momento de apreensao: ", dados_veiculo["Objetos"]);
-        leituraCampo("Se desejar, acrescente alguma observacao, caso contrario digite 0 para continuar: ", dados_veiculo["Obs"]);
-        leituraCampo("Estado das rodas do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRodas"]);
-        leituraCampo("Estado dos retrovisores do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRetro"]);
+        leituraCampo("Ordem de servico: ", dados_veiculo["OS"],"^[\\d]+$","Ordem de servico invalida.");
+        leituraCampo("Solicitacao: ", dados_veiculo["Solicitacao"],"^[a-zA-Z]+$","Solicitacao invalida.");
+        leituraCampo("Funcionario responsavel por registrar o veiculo: ", dados_veiculo["Funcionario"],"^[A-Za-z]+(?: [A-Za-z]+)?$","Nome de funcionario invalido.");
+        leituraCampo("Placa do veiculo que realizou o reboque: ", dados_veiculo["PlacaReboque"], "^[A-Z]{3}[0-9][A-Z][0-9]{2}$", "Placa invalida.");
+        leituraCampo("Motivo da apreensao: ", dados_veiculo["Motivo"], "^[A-Za-z ]+$","Motivo invalido.");
+        leituraCampo("Estado do veiculo no momento de apreensao:\n1 - Ruim\n2 - Regular\n3 - Bom", dados_veiculo["Estado"],"^[123]$", "Estado invalido selecionado. Resposta deve conter um numero de um a tres.");
+        leituraCampo("Informe se houve blitz (S/N): ", dados_veiculo["Blitz"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Local de apreensao: ", dados_veiculo["Local"], "^[A-Za-z]+(?: [A-Za-z]+)?$", "Local invalido.");
+        leituraCampo("Placa do veiculo apreendido: ", dados_veiculo["Placa"],"^[A-Z]{3}[0-9][A-Z][0-9]{2}$","Placa invalida.");
+        leituraCampo("Marca do veiculo apreendido: ", dados_veiculo["Marca"], "^[A-Za-z]+(?: [A-Za-z]+)?$", "Marca invalida.");
+        leituraCampo("Modelo do veiculo apreendido: ", dados_veiculo["Modelo"], "^[A-Za-z]+(?: [A-Za-z]+)?$", "Modelo invalido.");
+        leituraCampo("Ano de apreensao do veiculo: ", dados_veiculo["Ano"], "^(200[0-9]|20[01][0-9]|202[0-3])$", "Ano invalido");
+        leituraCampo("Cidade em que ocorreu a apreensao: ", dados_veiculo["Cidade"], "^[A-Za-z]+(?: [A-Za-z]+)?$", "Cidade invalida.");
+        leituraCampo("Chassi do veiculo apreendido: ", dados_veiculo["Chassi"], "^[A-Za-z0-9]{3,17}$", "Chassi invalido.");
+        leituraCampo("Distancia em quilometro do patio no momento de apreensao: ", dados_veiculo["Distancia"], "^[0-9]+$", "distancia invalida");
+        leituraCampo("Quilometragem do veiculo no momento de apreensao: ", dados_veiculo["KM"], "^[0-9]+$", "Quilometragem invalida");
+        leituraCampo("Ocorrencia registrada: ", dados_veiculo["Ocorrencia"], "^[A-Za-z ]+$", "Ocorrencia invalida");
+        leituraCampo("Policial responsavel pela apreensao: ", dados_veiculo["Policial"], "^[A-Za-z]+(?: [A-Za-z]+)?$", "Nome de policial invalido");
+        leituraCampo("Data de apreensao do veiculo:\nConsidere o formato dd/mm/aaaa", dados_veiculo["Data"], "\\b\\d{1,2}/\\d{1,2}/\\d{2,4}\\b", "Data invalida.");
+        leituraCampo("Horario de apreensao: ", dados_veiculo["Horario"], "\\b([01]?[0-9]|2[0-3]):[0-5][0-9]\\b", "Horario invalido.");
+        leituraCampo("Objetos que estavam no carro no momento de apreensao: ", dados_veiculo["Objetos"], "\\b(\\w+)(?:,\\s*\\w+)*\\b", "Lista de objetos invalida.");
+        leituraCampo("Se desejar, acrescente alguma observacao, caso contrario digite 0 para continuar: ", dados_veiculo["Obs"], "^[A-Za-z0 ]+$", "Observacao invalida.");
+        leituraCampo("Estado das rodas do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRodas"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero de um a quatro");
+        leituraCampo("Estado dos retrovisores do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRetro"], "^[1234]$", "Estado invalido selecionado. deve conter um numero de um a quatro");
     }
 
     void Cli::coletaChecklistCarro(std::unordered_map<std::string, std::string> &dados_carro) {
@@ -92,38 +92,38 @@ namespace view {
         leituraCampo("Calotas (S/N): ", dados_carro["Calotas"]);
         leituraCampo("Tapetes (S/N): ", dados_carro["Tapetes"]);
         leituraCampo("Radio (S/N): ", dados_carro["Radio"]);
-        leituraCampo("Portas:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_carro["EstadoPortas"]);
-        leituraCampo("Capo:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_carro["EstadoCapo"]);
-        leituraCampo("Painel:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_carro["EstadoPainel"]);
-        leituraCampo("Teto:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_carro["EstadoTeto"]);
+        leituraCampo("Portas:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_carro["EstadoPortas"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero de um a quatro");
+        leituraCampo("Capo:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_carro["EstadoCapo"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero de um a quatro");
+        leituraCampo("Painel:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_carro["EstadoPainel"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero de um a quatro");
+        leituraCampo("Teto:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_carro["EstadoTeto"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero de um a quatro");
     }
 
     void Cli::coletaChecklistCaminhao(std::unordered_map<std::string, std::string> &dados_caminhao) {
-        leituraCampo("Carroceria:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_caminhao["EstadoCarroceria"]);
-        leituraCampo("Eixo traseiro(S/N): ", dados_caminhao["EixoTras"]);
-        leituraCampo("Cintas(S/N): ", dados_caminhao["Cintas"]);
-        leituraCampo("Suspensao da cabine(S/N): ", dados_caminhao["SuspensaoC"]);
-        leituraCampo("Extintor(S/N): ", dados_caminhao["Extintor"]);
-        leituraCampo("Estepe(S/N): ", dados_caminhao["Estepe"]);
-        leituraCampo("Macaco(S/N): ", dados_caminhao["Macaco"]);
-        leituraCampo("Chave roda(S/N): ", dados_caminhao["ChaveRoda"]);
-        leituraCampo("Triangulo(S/N): ", dados_caminhao["Triangulo"]);
-        leituraCampo("Bateria(S/N): ", dados_caminhao["Bateria"]);
-        leituraCampo("Calotas(S/N): ", dados_caminhao["Calotas"]);
-        leituraCampo("Tapetes(S/N): ", dados_caminhao["Tapetes"]);
-        leituraCampo("Radio(S/N): ", dados_caminhao["Radio"]);
+        leituraCampo("Carroceria:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_caminhao["EstadoCarroceria"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero de um a quatro");
+        leituraCampo("Eixo traseiro(S/N): ", dados_caminhao["EixoTras"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Cintas(S/N): ", dados_caminhao["Cintas"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Suspensao da cabine(S/N): ", dados_caminhao["SuspensaoC"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Extintor(S/N): ", dados_caminhao["Extintor"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Estepe(S/N): ", dados_caminhao["Estepe"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Macaco(S/N): ", dados_caminhao["Macaco"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Chave roda(S/N): ", dados_caminhao["ChaveRoda"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Triangulo(S/N): ", dados_caminhao["Triangulo"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Bateria(S/N): ", dados_caminhao["Bateria"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Calotas(S/N): ", dados_caminhao["Calotas"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Tapetes(S/N): ", dados_caminhao["Tapetes"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Radio(S/N): ", dados_caminhao["Radio"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
     }
 
     void Cli::coletaChecklistMoto(std::unordered_map<std::string, std::string> &dados_moto) {
-        leituraCampo("Capacete(S/N): ", dados_moto["Capacete"]);
-        leituraCampo("Carenagem(S/N): ", dados_moto["Carenagem"]);
-        leituraCampo("Bau(S/N): ", dados_moto["Bau"]);
-        leituraCampo("Ferramentas(S/N): ", dados_moto["Ferramentas"]);
-        leituraCampo("Suspensao dianteira:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["SuspensaoD"]);
-        leituraCampo("Suspensao traseira:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["SuspensaoT"]);
-        leituraCampo("Guidao:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["Guidao"]);
-        leituraCampo("Sistema eletrico:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["SistemaE"]);
-        leituraCampo("Escapamento:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["Escapamento"]);
+        leituraCampo("Capacete(S/N): ", dados_moto["Capacete"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Carenagem(S/N): ", dados_moto["Carenagem"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Bau(S/N): ", dados_moto["Bau"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Ferramentas(S/N): ", dados_moto["Ferramentas"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Suspensao dianteira:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["SuspensaoD"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero de um a quatro");
+        leituraCampo("Suspensao traseira:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["SuspensaoT"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero de um a quatro");
+        leituraCampo("Guidao:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["Guidao"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero de um a quatro");
+        leituraCampo("Sistema eletrico:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["SistemaE"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero de um a quatro");
+        leituraCampo("Escapamento:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["Escapamento"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero de um a quatro");
     }
 
 
