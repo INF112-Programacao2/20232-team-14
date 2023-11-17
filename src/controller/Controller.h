@@ -9,7 +9,7 @@ namespace controller {
 
     class Controller {
     private:
-        std::unordered_map<int, model::Veiculo *> *_veiculos; //unordered map de chave ordem de servico por valor endereco objeto veiculo
+        std::vector<model::Veiculo *> *_veiculos;
 
     public:
         Controller();

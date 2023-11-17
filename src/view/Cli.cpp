@@ -13,9 +13,9 @@ namespace view {
 
         int input;
 
-        std::cout << "\n1. Inserir Apreensão (nao ta funcionando)" << std::endl;
+        std::cout << "\n1. Inserir Apreensão (test insert)" << std::endl;
         std::cout << "2. Editar checklist (nao ta funcionando) " << std::endl;
-        std::cout << "3. Realizar orçamento (nao ta funcionando)" << std::endl;
+        std::cout << "3. Realizar orçamento (test print/persist)" << std::endl;
         std::cout << "4. Liberar veículo. (nao ta funcionando)" << std::endl;
         std::cout << "5. Consultar veículo. (nao ta funcionando)" << std::endl;
         std::cout << "6. Test Database" << std::endl;
@@ -53,31 +53,29 @@ namespace view {
     }
 
 
-
-
     void Cli::coletaChecklist(std::unordered_map<std::string, std::string> &dados_veiculo){
-        leituraCampo("Ordem de servico: ", dados_veiculo["OS"],"^[\\d]+$","Ordem de servico invalida.");
-        leituraCampo("Solicitacao: ", dados_veiculo["Solicitacao"],"^[a-zA-Z]+$","Solicitacao invalida.");
-        leituraCampo("Funcionario responsavel por registrar o veiculo: ", dados_veiculo["Funcionario"],"^[A-Za-z]+(?: [A-Za-z]+)?$","Nome de funcionario invalido.");
-        leituraCampo("Placa do veiculo que realizou o reboque: ", dados_veiculo["PlacaReboque"], "^[A-Z]{3}[0-9][A-Z][0-9]{2}$", "Placa invalida.");
-        leituraCampo("Motivo da apreensao: ", dados_veiculo["Motivo"], "^[A-Za-z ]+$","Motivo invalido.");
+        leituraCampo("Ordem de servico: ", dados_veiculo["OS"],"^[0-9]+$","Ordem de servico invalida.");
+        leituraCampo("Solicitacao: ", dados_veiculo["Solicitacao"]);
+        leituraCampo("Funcionario responsavel por registrar o veiculo: ", dados_veiculo["Funcionario"]);
+        leituraCampo("Placa do veiculo que realizou o reboque: ", dados_veiculo["PlacaReboque"], "^[A-Z]{3}-?[0-9][0-9A-Z][0-9][0-9]$", "Placa invalida.");
+        leituraCampo("Motivo da apreensao: ", dados_veiculo["Motivo"]);
         leituraCampo("Estado do veiculo no momento de apreensao:\n1 - Ruim\n2 - Regular\n3 - Bom", dados_veiculo["Estado"],"^[123]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e tres.");
         leituraCampo("Informe se houve blitz (S/N): ", dados_veiculo["Blitz"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
-        leituraCampo("Local de apreensao: ", dados_veiculo["Local"], "^[A-Za-z]+(?: [A-Za-z]+)?$", "Local invalido.");
-        leituraCampo("Placa do veiculo apreendido: ", dados_veiculo["Placa"],"^[A-Z]{3}[0-9][A-Z][0-9]{2}$","Placa invalida.");
-        leituraCampo("Marca do veiculo apreendido: ", dados_veiculo["Marca"], "^[A-Za-z]+(?: [A-Za-z]+)?$", "Marca invalida.");
-        leituraCampo("Modelo do veiculo apreendido: ", dados_veiculo["Modelo"], "^[A-Za-z]+(?: [A-Za-z]+)?$", "Modelo invalido.");
-        leituraCampo("Ano de apreensao do veiculo: ", dados_veiculo["Ano"], "^(200[0-9]|20[01][0-9]|202[0-3])$", "Ano invalido");
-        leituraCampo("Cidade em que ocorreu a apreensao: ", dados_veiculo["Cidade"], "^[A-Za-z]+(?: [A-Za-z]+)?$", "Cidade invalida.");
-        leituraCampo("Chassi do veiculo apreendido: ", dados_veiculo["Chassi"], "^[A-Za-z0-9]{3,17}$", "Chassi invalido.");
-        leituraCampo("Distancia em quilometro do patio no momento de apreensao: ", dados_veiculo["Distancia"], "^[0-9]+$", "distancia invalida");
+        leituraCampo("Local de apreensao: ", dados_veiculo["Local"]);
+        leituraCampo("Placa do veiculo apreendido: ", dados_veiculo["Placa"],"^[A-Z]{3}-?[0-9][0-9A-Z][0-9][0-9]$","Placa invalida.");
+        leituraCampo("Marca do veiculo apreendido: ", dados_veiculo["Marca"]);
+        leituraCampo("Modelo do veiculo apreendido: ", dados_veiculo["Modelo"]);
+        leituraCampo("Ano de apreensao do veiculo: ", dados_veiculo["Ano"], "^(19[012][0-9]|20[0-9]{2})$", "Ano invalido");
+        leituraCampo("Cidade em que ocorreu a apreensao: ", dados_veiculo["Cidade"]);
+        leituraCampo("Chassi do veiculo apreendido: ", dados_veiculo["Chassi"]);
+        leituraCampo("Distancia em quilometro do patio no momento de apreensao: ", dados_veiculo["Distancia"], "^[0-9]+$", "Distancia invalida");
         leituraCampo("Quilometragem do veiculo no momento de apreensao: ", dados_veiculo["KM"], "^[0-9]+$", "Quilometragem invalida");
-        leituraCampo("Ocorrencia registrada: ", dados_veiculo["Ocorrencia"], "^[A-Za-z ]+$", "Ocorrencia invalida");
-        leituraCampo("Policial responsavel pela apreensao: ", dados_veiculo["Policial"], "^[A-Za-z]+(?: [A-Za-z]+)?$", "Nome de policial invalido");
-        leituraCampo("Data de apreensao do veiculo:\nConsidere o formato dd/mm/aaaa", dados_veiculo["Data"], "\\b\\d{1,2}/\\d{1,2}/\\d{2,4}\\b", "Data invalida.");
-        leituraCampo("Horario de apreensao: ", dados_veiculo["Horario"], "\\b([01]?[0-9]|2[0-3]):[0-5][0-9]\\b", "Horario invalido.");
-        leituraCampo("Objetos que estavam no carro no momento de apreensao: ", dados_veiculo["Objetos"], "\\b(\\w+)(?:,\\s*\\w+)*\\b", "Lista de objetos invalida.");
-        leituraCampo("Se desejar, acrescente alguma observacao, caso contrario digite 0 para continuar: ", dados_veiculo["Obs"], "^[A-Za-z0 ]+$", "Observacao invalida.");
+        leituraCampo("Ocorrencia registrada: ", dados_veiculo["Ocorrencia"]);
+        leituraCampo("Policial responsavel pela apreensao: ", dados_veiculo["Policial"]);
+        leituraCampo("Data de apreensao do veiculo:\nConsidere o formato dd/mm/aaaa", dados_veiculo["Data"]); // TODO: REFAZER ESSE REGEX
+        leituraCampo("Horario de apreensao: ", dados_veiculo["Horario"], "^([0-9]|0[0-9]|1[0-9]|2[0-3]):?[0-5][0-9]$", "Horario invalido.");
+        leituraCampo("Objetos que estavam no carro no momento de apreensao: ", dados_veiculo["Objetos"]);
+        leituraCampo("Se desejar, acrescente alguma observacao, caso contrario digite 0 para continuar: ", dados_veiculo["Obs"]);
         leituraCampo("Estado das rodas do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRodas"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
         leituraCampo("Estado dos retrovisores do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRetro"], "^[1234]$", "Estado invalido selecionado. deve conter um numero entre um e quatro");
     }
@@ -156,6 +154,7 @@ namespace view {
         std::cout << "3. Caminhao" << std::endl;
         std::cin >> input;
         std::cin.ignore(); // preciso fazer uma implementacao mais limpa, mas ignore() limpa o inputstream apos um read
+        return input;
     }
 
 
