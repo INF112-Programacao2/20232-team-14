@@ -82,7 +82,7 @@ namespace controller {
                     model::SqliteHook::connectDB();
                     model::SqliteHook::initDB(sql);
                     model::SqliteHook::select();
-                    model::SqliteHook::printTest();
+                    //model::SqliteHook::printTest();
                     model::SqliteHook::closeDB();
                     break;
             }

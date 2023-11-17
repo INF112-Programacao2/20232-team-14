@@ -5,7 +5,7 @@
 // superclasse de persistencia model utilizando SQLite3
 namespace model {
     sqlite3 *SqliteHook::_db = nullptr;
-
+    std::vector<std::vector<std::string>*> *_resultado = nullptr;
     int SqliteHook::connectDB() {
 
         int dbresponse;
@@ -27,11 +27,13 @@ namespace model {
     }
 
     static int callback(void *_, int numCol, char **row, char **colName) {
-
         //void star eh oq eu quiser
         //mesmo cara que eu passo na chamada do exec (tipo contexto da execucao)
         //posso fazer ser um vector e retornar ele no final de cada execucao
         // anotacao pessoal feita por eu caio pra mexer dps no codigo
+        if(!_resultado){
+            _resultado = new std::vector<std::vector< std::string> *>;
+        }
         for(int i = 0; i<numCol; i++) {
             printf("%s = %s\n", colName[i], row[i] ? row[i] : "NULL");
         }
@@ -55,6 +57,12 @@ namespace model {
         return 0;
     }
 
+    void SqliteHook::printTest(){
+        //for (std::vector<std::string> *line: *_resultado) {
+            //fprintf(stdout, "ID: %s");
+        //}
+    }
+
     int SqliteHook::insert() {
         return 0;
     }
@@ -68,8 +76,21 @@ namespace model {
     }
 
     int SqliteHook::select() {
+        std::string sql = "SELECT * FROM PATIO";
+        char *errorMsg = 0;
+        int dbresponse;
+
+        dbresponse = sqlite3_exec(_db, sql.c_str(), callback, 0, &errorMsg);
+        if( dbresponse != SQLITE_OK ){
+            fprintf(stderr, "SQL error: %s\n", errorMsg);
+            sqlite3_free(errorMsg);
+            return -1;
+        }
+
         return 0;
     }
+
+
 
 
 

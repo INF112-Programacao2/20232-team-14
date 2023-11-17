@@ -3,12 +3,14 @@
 
 #include <sqlite3.h>
 #include <string>
+#include <vector>
+#include <unordered_map>
 
 namespace model {
 
     class SqliteHook {
         static sqlite3 *_db;
-        //static std::string
+        static std::vector<std::vector<std::string>*> *_resultado;
 
     public:
         static int connectDB(); // realiza a conexão com o banco de dados e retorna um int status code
@@ -24,6 +26,7 @@ namespace model {
         static int select(); // realiza query
 
         static int closeDB(); // fecha a conexão
+        static void printTest();
     };
 
 } // model
