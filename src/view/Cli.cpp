@@ -144,6 +144,79 @@ namespace view {
         leituraCampo("Escapamento:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["Escapamento"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
     }
 
+    void Cli::printChecklist(std::unordered_map<std::string, std::string> &dados_veiculo) {
+        std::cout << "Ordem de servico: " << dados_veiculo["OS"] << std::endl;
+        std::cout << "Solicitacao: " << dados_veiculo["Solicitacao"] << std::endl;
+        std::cout << "Funcionario responsavel por registrar o veiculo: " << dados_veiculo["Funcionario"] << std::endl;
+        std::cout << "Placa do veiculo que realizou o reboque: " << dados_veiculo["PlacaReboque"] << std::endl;
+        std::cout << "Motivo da apreensao: " << dados_veiculo["Motivo"] << std::endl;
+        std::cout << "Estado do veiculo no momento de apreensao: " << dados_veiculo["Estado"] << std::endl;
+        std::cout << "Ocorrencia de Blitz: " << dados_veiculo["Blitz"] << std::endl;
+        std::cout << "Local de apreensao: " << dados_veiculo["Local"] << std::endl;
+        std::cout << "Placa do veiculo apreendido: " << dados_veiculo["Placa"] << std::endl;
+        std::cout << "Marca do veiculo apreendido: " << dados_veiculo["Marca"] << std::endl;
+        std::cout << "Modelo do veiculo apreendido: " << dados_veiculo["Modelo"] << std::endl;
+        std::cout << "Ano de apreensao do veiculo: " << dados_veiculo["Ano"] << std::endl;
+        std::cout << "Cidade em que ocorreu a apreensao: " << dados_veiculo["Cidade"] << std::endl;
+        std::cout << "Chassi do veiculo apreendido: " << dados_veiculo["Chassi"] << std::endl;
+        std::cout << "Distancia em quilometro do patio no momento de apreensao: " << dados_veiculo["Distancia"] << std::endl;
+        std::cout << "Quilometragem do veiculo no momento de apreensao: " << dados_veiculo["KM"] << std::endl;
+        std::cout << "Ocorrencia registrada: " << dados_veiculo["Ocorrencia"] << std::endl;
+        std::cout << "Policial responsavel pela apreensao: " << dados_veiculo["Policial"] << std::endl;
+        std::cout << "Data de apreensao do veiculo: " << dados_veiculo["Data"] << std::endl;
+        std::cout << "Horario de apreensao: " << dados_veiculo["Horario"] << std::endl;
+        std::cout << "Objetos que estavam no carro no momento de apreensao: " << dados_veiculo["Objetos"] << std::endl;
+        std::cout << "Se desejar, acrescente alguma observacao, caso contrario digite 0 para continuar: " << dados_veiculo["Obs"] << std::endl;
+        std::cout << "Estado das rodas do veiculo no momento de apreensao: " << dados_veiculo["EstadoRodas"] << std::endl;
+        std::cout << "Estado dos retrovisores do veiculo no momento de apreensao: " << dados_veiculo["EstadoRetro"] << std::endl;
+        std::cout << "Tipo do veículo: " << dados_veiculo["Tipo"] << std::endl;
+    }
+
+    void Cli::printChecklistCarro(std::unordered_map<std::string, std::string> &dados_carro) {
+        std::cout << "Extintor: " << dados_carro["Extintor"] << std::endl;
+        std::cout << "Estepe: " << dados_carro["Estepe"] << std::endl;
+        std::cout << "Macaco: " << dados_carro["Macaco"] << std::endl;
+        std::cout << "Chave roda: " << dados_carro["ChaveRoda"] << std::endl;
+        std::cout << "Triangulo: " << dados_carro["Triangulo"] << std::endl;
+        std::cout << "Bateria: " << dados_carro["Bateria"] << std::endl;
+        std::cout <<"Calotas " << dados_carro["Calotas"] << std::endl;
+        std::cout <<"Tapetes: " << dados_carro["Tapetes"] << std::endl;
+        std::cout << "Radio: " << dados_carro["Radio"] << std::endl;
+        std::cout << "Portas: " << dados_carro["EstadoPortas"] << std::endl;
+        std::cout << "Capo: " << dados_carro["EstadoCapo"] << std::endl;
+        std::cout << "Painel: " << dados_carro["EstadoPainel"] << std::endl;
+        std::cout << "Teto: " << dados_carro["EstadoTeto"] << std::endl;
+    }
+
+    void Cli::printChecklistCaminhao(std::unordered_map<std::string, std::string> &dados_caminhao) {
+        std::cout << "Carroceria: " << dados_caminhao["EstadoCarroceria"] << std::endl;
+        std::cout << "Eixo traseiro: " << dados_caminhao["EixoTras"] << std::endl;
+        std::cout << "Cintas: " << dados_caminhao["Cintas"] << std::endl;
+        std::cout << "Suspensao da cabine: " << dados_caminhao["SuspensaoC"] << std::endl;
+        std::cout << "Extintor: " << dados_caminhao["Extintor"] << std::endl;
+        std::cout << "Estepe: " << dados_caminhao["Estepe"]  << std::endl;
+        std::cout << "Macaco: " << dados_caminhao["Macaco"]  << std::endl;
+        std::cout << "Chave roda: " << dados_caminhao["ChaveRoda"] << std::endl;
+        std::cout << "Triangulo: " << dados_caminhao["Triangulo"] << std:: endl;
+        std::cout << "Bateria: " << dados_caminhao["Bateria"] << std:: endl;
+        std::cout << "Calotas: " << dados_caminhao["Calotas"] << std:: endl;
+        std::cout << "Tapetes: " << dados_caminhao["Tapetes"] << std:: endl;
+        std::cout << "Radio: " << dados_caminhao["Radio"] << std:: endl;
+    }
+
+    void Cli::printChecklistMoto(std::unordered_map<std::string, std::string> &dados_moto) {
+        std::cout << "Capacete: " << dados_moto["Capacete"] << std::endl;
+        std::cout << "Carenagem: " << dados_moto["Carenagem"] << std::endl;
+        std::cout << "Bau: " << dados_moto["Bau"] << std::endl;
+        std::cout << "Ferramentas: " << dados_moto["Ferramentas"] << std::endl;
+        std::cout << "Suspensao dianteira: " << dados_moto["SuspensaoD"] << std::endl;
+        std::cout << "Suspensao traseira: " << dados_moto["SuspensaoT"] << std::endl;
+        std::cout << "Guidao: " << dados_moto["Guidao"] << std::endl;
+        std::cout << "Sistema eletrico: " << dados_moto["SistemaE"] << std::endl;
+        std::cout << "Escapamento: " << dados_moto["Escapamento"] << std::endl;
+    }
+
+
 
     std::string Cli::readUserInput(){
 

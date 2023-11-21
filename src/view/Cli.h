@@ -27,7 +27,10 @@ namespace view {
         void coletaChecklistCarro(std::unordered_map<std::string, std::string> &dados_carro);
         void coletaChecklistCaminhao(std::unordered_map<std::string, std::string> &dados_caminhao);
         void coletaChecklistMoto(std::unordered_map<std::string, std::string> &dados_moto);
-
+        void printChecklist(std::unordered_map<std::string, std::string> &dados_veiculo);
+        void printChecklistCarro(std::unordered_map<std::string, std::string> &dados_carro);
+        void printChecklistCaminhao(std::unordered_map<std::string, std::string> &dados_caminhao);
+        void printChecklistMoto(std::unordered_map<std::string, std::string> &dados_moto);
         void leituraCampo(const std::string &label, std::string &field);
         void leituraCampo(const std::string &label, std::string &field, const std::string &check, const std::string &errorMsg);
     };
