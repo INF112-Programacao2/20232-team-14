@@ -222,6 +222,14 @@ namespace model {
         _retrovisores=retrovisores;
     }
 
+    int Veiculo::get_tipo() const {
+        return _tipo;
+    }
+
+    void Veiculo::set_tipo(int tipo){
+        _tipo=tipo;
+    }
+
     //end of gets and Sets
 
     //função verifica se um ano é bissexto ou não (usada para estabelecer o cálculo do orçamento baseado nas diárias)

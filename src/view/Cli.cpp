@@ -95,6 +95,8 @@ namespace view {
         leituraCampo("Se desejar, acrescente alguma observacao, caso contrario digite 0 para continuar: ", dados_veiculo["Obs"]);
         leituraCampo("Estado das rodas do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRodas"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
         leituraCampo("Estado dos retrovisores do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRetro"], "^[1234]$", "Estado invalido selecionado. deve conter um numero entre um e quatro");
+        leituraCampo("Tipo do veículo:\n1-Carro\n2-Moto\n3-Caminhao", dados_veiculo["Tipo"], "^[123]$", "Tipo invalido selecionado. Resposta deve conter um numero entre 1 e 3.");
+
     }
 
     void Cli::coletaChecklistCarro(std::unordered_map<std::string, std::string> &dados_carro) {
@@ -163,18 +165,6 @@ namespace view {
         std::cerr << "ERRO: "<< e.what() << std::endl; //what() transforma a excecao em uma string legivel
 
     }
-
-    int Cli::recebeTipo() {
-        int input;
-        std::cout << "\n1. Moto" << std::endl;
-        std::cout << "2. Carro" << std::endl;
-        std::cout << "3. Caminhao" << std::endl;
-        std::cin >> input;
-        std::cin.ignore(); // preciso fazer uma implementacao mais limpa, mas ignore() limpa o inputstream apos um read
-        return input;
-    }
-
-
 
     //mais tarde, para abrir caminho para a implementacao de uma GUI, deveremos implementar chamadas especificas as maneiras diferentes de exibir dados na tela
     //de certa forma, "especificas ao metodo" com o qual elas estao relacionadas

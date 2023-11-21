@@ -23,7 +23,6 @@ namespace view {
 
         void errorMsg(const std::exception& e);
 
-        int recebeTipo();
         void coletaChecklist(std::unordered_map<std::string, std::string> &dados_veiculo);
         void coletaChecklistCarro(std::unordered_map<std::string, std::string> &dados_carro);
         void coletaChecklistCaminhao(std::unordered_map<std::string, std::string> &dados_caminhao);
