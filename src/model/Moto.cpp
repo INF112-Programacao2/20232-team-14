@@ -11,11 +11,11 @@ namespace model {
                int ano, const std::string &cidade, const std::string &chassi, int km, int hodometro,
                const std::string &ocorrencia, const std::string &policial, const std::string &data_apreensao,
                const std::string &horario, const std::string &objetos, const std::string &observacoes, int rodas,
-               int retrovisores, bool capacete, bool carenagem, bool bau, bool ferramentas,
+               int retrovisores, int tipo, bool capacete, bool carenagem, bool bau, bool ferramentas,
                int suspDianteira, int suspTraseira, int guidao, int sistEletrico, int escapamento):
 
                Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local, placa, marca, modelo,
-                       ano, cidade, chassi, km, hodometro, ocorrencia, policial, data_apreensao, horario, objetos, observacoes, rodas, retrovisores), _capacete(capacete), _carenagem(carenagem), _bau(bau), _ferramentas(ferramentas), _suspDianteira(suspDianteira),
+                       ano, cidade, chassi, km, hodometro, ocorrencia, policial, data_apreensao, horario, objetos, observacoes, rodas, retrovisores, tipo), _capacete(capacete), _carenagem(carenagem), _bau(bau), _ferramentas(ferramentas), _suspDianteira(suspDianteira),
                        _suspTraseira(suspTraseira), _guidao(guidao), _sistEletrico(sistEletrico), _escapamento(escapamento){
 
         _diaria_moto = 30.22;

@@ -11,12 +11,12 @@ namespace model {
                  const std::string &modelo, int ano, const std::string &cidade, const std::string &chassi, int km,
                  int hodometro, const std::string &ocorrencia, const std::string &policial, const std::string &data_apreensao,
                  const std::string &horario, const std::string &objetos, const std::string &observacoes, int rodas,
-                 int retrovisores, bool extintor, bool estepe, bool macaco, bool chaveRoda, bool triangulo,
+                 int retrovisores, int tipo, bool extintor, bool estepe, bool macaco, bool chaveRoda, bool triangulo,
                  bool bateria, bool calotas, bool tapetes, bool radio, int portas, int capo, int painel, int teto) :
 
                 Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local,
                         placa, marca, modelo, ano, cidade, chassi, km, hodometro, ocorrencia, policial,
-                        data_apreensao, horario, objetos, observacoes, rodas, retrovisores), _extintor(extintor),
+                        data_apreensao, horario, objetos, observacoes, rodas, retrovisores, tipo), _extintor(extintor),
                         _estepe(estepe), _macaco(macaco), _chave_roda(chaveRoda), _triangulo(triangulo), _bateria(bateria),
                         _calotas(calotas), _tapetes(tapetes), _radio(radio), _portas(portas), _capo(capo), _painel(painel), _teto(teto){
 

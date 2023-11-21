@@ -37,7 +37,7 @@ namespace model {
               int ano, const std::string &cidade, const std::string &chassi, int km, int hodometro,
               const std::string &ocorrencia, const std::string &policial, const std::string &data_apreensao,
               const std::string &horario, const std::string &objetos, const std::string &observacoes, int rodas,
-              int retrovisores, bool extintor, bool estepe, bool macaco, bool chaveRoda,
+              int retrovisores, int tipo, bool extintor, bool estepe, bool macaco, bool chaveRoda,
               bool triangulo, bool bateria, bool calotas, bool tapetes, bool radio, int portas, int capo, int painel,
               int teto);
 

@@ -10,6 +10,7 @@ namespace controller {
     class Controller {
     private:
         std::vector<model::Veiculo *> *_veiculos;
+        unsigned int _id_patio;
 
     public:
         Controller();

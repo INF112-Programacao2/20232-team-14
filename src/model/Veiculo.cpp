@@ -12,11 +12,11 @@ namespace model {
                      const std::string &modelo, int ano, const std::string &cidade, const std::string &chassi, int km,
                      int hodometro, const std::string &ocorrencia, const std::string &policial, const std::string &data_apreensao,
                      const std::string &horario, const std::string &objetos, const std::string &observacoes, int rodas,
-                     int retrovisores) : _os(os), _solicitacao(solicitacao), _funcionario(funcionario),
+                     int retrovisores, int tipo) : _os(os), _solicitacao(solicitacao), _funcionario(funcionario),
                      _placa_reboque(placaReboque), _motivo(motivo), _estado_veiculo(estadoVeiculo),
                      _blitz(blitz), _local(local), _placa(placa), _marca(marca),  _modelo(modelo), _ano(ano), _cidade(cidade),
                      _chassi(chassi), _km(km), _hodometro(hodometro), _ocorrencia(ocorrencia), _policial(policial), _data_apreensao(data_apreensao),
-                     _horario(horario), _objetos(objetos), _observacoes(observacoes), _rodas(rodas), _retrovisores(retrovisores) {
+                     _horario(horario), _objetos(objetos), _observacoes(observacoes), _rodas(rodas), _retrovisores(retrovisores), _tipo(tipo) {
 
     }
 

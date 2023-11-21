@@ -29,27 +29,44 @@ namespace view {
 
     void Cli::leituraCampo(const std::string &label, std::string &field){
         std::cout << label << std::endl;
-
+        std::string input;
+        if(!field.empty()){
+            std::cout << "Valor atual: " << field << "\nPressione enter para manter o valor atual." << std::endl;
+        }
         std::cin.sync();
-        std::getline(std::cin, field);
+        std::getline(std::cin, input);
+        if(input.empty()){
+            if(field.empty()){
+                std::cout << "Campo não pode ser vazio!" << std::endl;
+                std::cout << label << std::endl;
+            }else{
+                return;
+            }
+        }else{
+            field = input;
+            return;
+        }
     }
     void Cli::leituraCampo(const std::string &label, std::string &field, const std::string &regex, const std::string &errorMsg) {
-        bool flag = true;
         std::string input;
         std::regex rules(regex);
-        std::cout << label << std::endl;
-
-        while (flag){
+        if(!field.empty()){
+            std::cout << "Valor atual: " << field << "\nPressione enter para manter o valor atual." << std::endl;
+        }
+        std::cout << field << std::endl;
+        while (true){
             std::cin.sync();
-            std::getline(std::cin, field);
-            if(std::regex_match(field, rules)) {
-                flag = false;
-            }else{
+            std::getline(std::cin, input);
+            if(std::regex_match(input, rules)) {
+                field = input;
+                return;
+            }else if(field.empty()){
                 std::cout << errorMsg << std::endl;
                 std::cout << label << std::endl;
+            }else{
+                return;
             }
         }
-
     }
 
 
