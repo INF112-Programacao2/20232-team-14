@@ -31,7 +31,7 @@ namespace model {
 
         //Construtor Carro.h
 
-        Carro(int os, const std::string &solicitacao, const std::string &funcionario,
+        Carro(int os, int patio_id, const std::string &solicitacao, const std::string &funcionario,
               const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
               const std::string &local, const std::string &placa, const std::string &marca, const std::string &modelo,
               int ano, const std::string &cidade, const std::string &chassi, int km, int hodometro,

@@ -6,7 +6,7 @@ namespace model {
 
     //Construtor Caminhao.h
 
-    Caminhao::Caminhao(int os, const std::string &solicitacao, const std::string &funcionario,
+    Caminhao::Caminhao(int os, int patio_id, const std::string &solicitacao, const std::string &funcionario,
                        const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                        const std::string &local, const std::string &placa, const std::string &marca,
                        const std::string &modelo, int ano, const std::string &cidade, const std::string &chassi, int km,
@@ -16,7 +16,7 @@ namespace model {
                        bool cintas, int suspCabine, bool extintor, bool estepe, bool macaco, bool chaveRoda, bool triangulo,
                        bool bateria, bool calotas, bool tapetes, bool radio) :
 
-                       Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz,
+                       Veiculo(os, patio_id, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz,
                                local, placa, marca, modelo, ano, cidade, chassi, km, hodometro,
                                ocorrencia, policial, data_apreensao, horario, objetos, observacoes, rodas, retrovisores, tipo)
                                , _carroceria(carroceria), _eixoTraseiro(eixoTraseiro), _cintas(cintas),

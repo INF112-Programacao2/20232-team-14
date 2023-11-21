@@ -5,7 +5,7 @@ namespace model {
 
     //Construtor Carro.h
 
-    Carro::Carro(int os, const std::string &solicitacao, const std::string &funcionario,
+    Carro::Carro(int os, int patio_id, const std::string &solicitacao, const std::string &funcionario,
                  const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                  const std::string &local, const std::string &placa, const std::string &marca,
                  const std::string &modelo, int ano, const std::string &cidade, const std::string &chassi, int km,
@@ -14,7 +14,7 @@ namespace model {
                  int retrovisores, int tipo, bool extintor, bool estepe, bool macaco, bool chaveRoda, bool triangulo,
                  bool bateria, bool calotas, bool tapetes, bool radio, int portas, int capo, int painel, int teto) :
 
-                Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local,
+                Veiculo(os, patio_id, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local,
                         placa, marca, modelo, ano, cidade, chassi, km, hodometro, ocorrencia, policial,
                         data_apreensao, horario, objetos, observacoes, rodas, retrovisores, tipo), _extintor(extintor),
                         _estepe(estepe), _macaco(macaco), _chave_roda(chaveRoda), _triangulo(triangulo), _bateria(bateria),

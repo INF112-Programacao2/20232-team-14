@@ -5,7 +5,7 @@ namespace model {
 
     //Construtor Moto.h
 
-    Moto::Moto(int os, const std::string &solicitacao, const std::string &funcionario,
+    Moto::Moto(int os, int patio_id, const std::string &solicitacao, const std::string &funcionario,
                const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                const std::string &local, const std::string &placa, const std::string &marca, const std::string &modelo,
                int ano, const std::string &cidade, const std::string &chassi, int km, int hodometro,
@@ -14,7 +14,7 @@ namespace model {
                int retrovisores, int tipo, bool capacete, bool carenagem, bool bau, bool ferramentas,
                int suspDianteira, int suspTraseira, int guidao, int sistEletrico, int escapamento):
 
-               Veiculo(os, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local, placa, marca, modelo,
+               Veiculo(os, patio_id, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local, placa, marca, modelo,
                        ano, cidade, chassi, km, hodometro, ocorrencia, policial, data_apreensao, horario, objetos, observacoes, rodas, retrovisores, tipo), _capacete(capacete), _carenagem(carenagem), _bau(bau), _ferramentas(ferramentas), _suspDianteira(suspDianteira),
                        _suspTraseira(suspTraseira), _guidao(guidao), _sistEletrico(sistEletrico), _escapamento(escapamento){
 
