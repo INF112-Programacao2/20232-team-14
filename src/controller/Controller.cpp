@@ -160,10 +160,21 @@ namespace controller {
             interface.displayOutput(v->get_policial());
         }
     }
-
-    void Controller::editarChecklist() { //busca no bd um veículo pela OS, que retorna um unordered map com os dados - posteriormente, as informações são mostradas e é oferecida a oportunidade de alterá-las
-
-    }
+//    void Controller::preencheVetores(const model::Veiculo &v, std::unordered_map<std::string, std::string> &dados_veiculo, std::unordered_map<std::string, std::string> &dados_especificos){
+//
+//    }
+//    void Controller::editarChecklist() { //busca no vetor um veículo pela OS, posteriormente, as informações são mostradas e é oferecida a oportunidade de alterá-las
+//        //pede a interface para ler uma OS
+//        //recebe esse inteiro
+//        //itera veiculos dessa forma procurando a os recebida
+//        for(model::Veiculo *v : *_veiculos){
+//            if(v->get_os() == osRecebida){
+//                std::unordered_map<std::string, std::string> dados_veiculo;
+//                chamaredicao()
+//
+//            }
+//        }
+//    }
 
     void Controller::realizarOrcamento() {
 
