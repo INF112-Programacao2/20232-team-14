@@ -194,8 +194,8 @@ namespace view {
         std::cout << "Cintas: " << dados_caminhao["Cintas"] << std::endl;
         std::cout << "Suspensao da cabine: " << dados_caminhao["SuspensaoC"] << std::endl;
         std::cout << "Extintor: " << dados_caminhao["Extintor"] << std::endl;
-        std::cout << "Estepe: " << dados_caminhao["Estepe"]  << std::endl;
-        std::cout << "Macaco: " << dados_caminhao["Macaco"]  << std::endl;
+        std::cout << "Estepe: " << dados_caminhao["Estepe"] << std::endl;
+        std::cout << "Macaco: " << dados_caminhao["Macaco"] << std::endl;
         std::cout << "Chave roda: " << dados_caminhao["ChaveRoda"] << std::endl;
         std::cout << "Triangulo: " << dados_caminhao["Triangulo"] << std:: endl;
         std::cout << "Bateria: " << dados_caminhao["Bateria"] << std:: endl;
