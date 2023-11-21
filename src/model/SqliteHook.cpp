@@ -13,10 +13,10 @@ namespace model {
         dbresponse = sqlite3_open("../test.db", &_db);
 
         if(dbresponse){
-            //fprintf(stderr, "Nao pode abrir banco de dados: %s\n", sqlite3_errmsg(_db));
+            fprintf(stderr, "Nao pode abrir banco de dados: %s\n", sqlite3_errmsg(_db));
             return -1;
         }else{
-            //fprintf(stderr, "Banco de dados aberto");
+            fprintf(stderr, "Banco de dados aberto");
             return 0;
         }
     }

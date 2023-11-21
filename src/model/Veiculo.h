@@ -28,7 +28,7 @@ namespace model {
         std::string _ocorrencia;                //Número da ocorrência da apreensão
         std::string _policial;                  //Policial responsável pela apreensão
         std::string _data_apreensao;            //Data de Apreensão (mandada pro construtor)
-        std::string _data_liberacao;            //Data de Apreensão (eniada somente depois, não consta no construtor)
+        std::string _data_liberacao;            //Data de Apreensão (enviada somente depois, não consta no construtor)
         std::string _horario;                   //Horário de Apreensão
         std::string _objetos;                   //Objetos que estavam dentro do veículo
         std::string _observacoes;               //Observações a mais, se for necessário

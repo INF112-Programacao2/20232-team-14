@@ -13,6 +13,9 @@ namespace controller {
 
     public:
         Controller();
+
+        virtual ~Controller();
+
         void startProgram();
         void iniciarApreensao();
         void editarChecklist();

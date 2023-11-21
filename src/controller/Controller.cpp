@@ -190,5 +190,11 @@ namespace controller {
 
     }
 
+    Controller::~Controller() {
+        for(model::Veiculo *v : *_veiculos){ // preciso disso funcional pra nao dar um leak de memoria bizonho
+            //delete(v);
+        }
+    }
+
 
 } // controller
