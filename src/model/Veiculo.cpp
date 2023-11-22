@@ -6,17 +6,17 @@ namespace model {
 
     //Construtor Veiculo.h
 
-    Veiculo::Veiculo(int os, int patio_id, bool sit_veiculo, const std::string &solicitacao, const std::string &funcionario,
+    Veiculo::Veiculo(int os, int id_patio, const std::string &solicitacao, const std::string &funcionario,
                      const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                      const std::string &local, const std::string &placa, const std::string &marca,
                      const std::string &modelo, int ano, const std::string &cidade, const std::string &chassi, int km,
                      int hodometro, const std::string &ocorrencia, const std::string &policial, const std::string &data_apreensao,
                      const std::string &horario, const std::string &objetos, const std::string &observacoes, int rodas,
-                     int retrovisores, int tipo) : _os(os), _patio_id(patio_id), _sit_veiculo(true), _solicitacao(solicitacao), _funcionario(funcionario),
-                     _placa_reboque(placaReboque), _motivo(motivo), _estado_veiculo(estadoVeiculo),
-                     _blitz(blitz), _local(local), _placa(placa), _marca(marca),  _modelo(modelo), _ano(ano), _cidade(cidade),
-                     _chassi(chassi), _km(km), _hodometro(hodometro), _ocorrencia(ocorrencia), _policial(policial), _data_apreensao(data_apreensao),
-                     _horario(horario), _objetos(objetos), _observacoes(observacoes), _rodas(rodas), _retrovisores(retrovisores), _tipo(tipo) {
+                     int retrovisores, int tipo) : _os(os), _id_patio(id_patio), _sit_veiculo(true), _solicitacao(solicitacao), _funcionario(funcionario),
+                                                   _placa_reboque(placaReboque), _motivo(motivo), _estado_veiculo(estadoVeiculo),
+                                                   _blitz(blitz), _local(local), _placa(placa), _marca(marca), _modelo(modelo), _ano(ano), _cidade(cidade),
+                                                   _chassi(chassi), _km(km), _hodometro(hodometro), _ocorrencia(ocorrencia), _policial(policial), _data_apreensao(data_apreensao),
+                                                   _horario(horario), _objetos(objetos), _observacoes(observacoes), _rodas(rodas), _retrovisores(retrovisores), _tipo(tipo) {
 
     }
 
@@ -31,11 +31,11 @@ namespace model {
     }
 
     int Veiculo::get_patio_id() const {
-        return _patio_id;
+        return _id_patio;
     }
 
     void Veiculo::set_patio_id(int patio_id) {
-        _patio_id = patio_id;
+        _id_patio = patio_id;
     }
 
     bool Veiculo::get_sit_veiculo() const {

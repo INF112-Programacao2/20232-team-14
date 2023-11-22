@@ -5,7 +5,7 @@ namespace model {
 
     //Construtor Carro.h
 
-    Carro::Carro(int os, int patio_id, const std::string &solicitacao, const std::string &funcionario,
+    Carro::Carro(int os, int id_patio, const std::string &solicitacao, const std::string &funcionario,
                  const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                  const std::string &local, const std::string &placa, const std::string &marca,
                  const std::string &modelo, int ano, const std::string &cidade, const std::string &chassi, int km,
@@ -14,7 +14,7 @@ namespace model {
                  int retrovisores, int tipo, bool extintor, bool estepe, bool macaco, bool chaveRoda, bool triangulo,
                  bool bateria, bool calotas, bool tapetes, bool radio, int portas, int capo, int painel, int teto) :
 
-                Veiculo(os, patio_id, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local,
+                Veiculo(os, id_patio, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local,
                         placa, marca, modelo, ano, cidade, chassi, km, hodometro, ocorrencia, policial,
                         data_apreensao, horario, objetos, observacoes, rodas, retrovisores, tipo), _extintor(extintor),
                         _estepe(estepe), _macaco(macaco), _chave_roda(chaveRoda), _triangulo(triangulo), _bateria(bateria),
@@ -153,6 +153,49 @@ namespace model {
 
         return (_diaria_carro * (calcDiasApreensao()) + (_reboque_carro) + (2.5 * _km));
 
+    }
+
+    void Carro::veiculoToMap(std::unordered_map<std::string, std::string> &dados_veiculo,
+                             std::unordered_map<std::string, std::string> &dados_especificos) {
+        dados_veiculo["OS"] = std::to_string(_os);
+        dados_veiculo["Patio"] = std::to_string(_id_patio);
+        dados_veiculo["Solicitacao"] = _solicitacao;
+        dados_veiculo["Funcionario"] = _funcionario;
+        dados_veiculo["PlacaReboque"] = _placa_reboque;
+        dados_veiculo["Motivo"] = _motivo;
+        dados_veiculo["Estado"] = std::to_string(_estado_veiculo);
+        dados_veiculo["Blitz"] = std::to_string(_blitz);
+        dados_veiculo["Local"] = _local;
+        dados_veiculo["Placa"] = _placa;
+        dados_veiculo["Marca"] = _marca;
+        dados_veiculo["Modelo"] = _modelo;
+        dados_veiculo["Ano"] = std::to_string(_ano);
+        dados_veiculo["Cidade"] = _cidade;
+        dados_veiculo["Chassi"] = _chassi;
+        dados_veiculo["Distancia"] = std::to_string(_km);
+        dados_veiculo["KM"] = std::to_string(_hodometro);
+        dados_veiculo["Ocorrencia"] = _ocorrencia;
+        dados_veiculo["Policial"] = _policial;
+        dados_veiculo["Data"] = _data_apreensao;
+        dados_veiculo["Horario"] = _horario;
+        dados_veiculo["Objetos"] = _objetos;
+        dados_veiculo["Obs"] = _observacoes;
+        dados_veiculo["EstadoRodas"] = std::to_string(_rodas);
+        dados_veiculo["EstadoRetro"] = std::to_string(_retrovisores);
+        dados_veiculo["Tipo"] = "3";
+        dados_especificos["Extintor"] = std::to_string(_extintor);
+        dados_especificos["Estepe"] = std::to_string(_estepe);
+        dados_especificos["Macaco"] = std::to_string(_macaco);
+        dados_especificos["ChaveRoda"] = std::to_string(_chave_roda);
+        dados_especificos["Triangulo"] = std::to_string(_triangulo);
+        dados_especificos["Bateria"] = std::to_string(_bateria);
+        dados_especificos["Calotas"] = std::to_string(_calotas);
+        dados_especificos["Tapetes"] = std::to_string(_tapetes);
+        dados_especificos["Radio"] = std::to_string(_radio);
+        dados_especificos["EstadoPortas"] = std::to_string(_portas);
+        dados_especificos["EstadoCapo"] = std::to_string(_capo);
+        dados_especificos["EstadoPainel"] = std::to_string(_painel);
+        dados_especificos["EstadoTeto"] = std::to_string(_teto);
     }
 
 };

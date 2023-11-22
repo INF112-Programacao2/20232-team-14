@@ -10,7 +10,7 @@ namespace model {
     protected:
 
         int _os;                                //Ordem de serviço
-        int _patio_id;                          //ID Patio
+        int _id_patio;                          //ID Patio
         bool _sit_veiculo;                      //Situacao do veiculo: true - apreendido, false - liberado
         std::string _solicitacao;               //Quem solicitou a apreensão (PM, PRV, etc...)
         std::string _funcionario;               //Funcionário que realizou a apreensão
@@ -42,7 +42,7 @@ namespace model {
 
         //Construtor Veiculo.h
 
-        Veiculo(int os, int patio_id, bool sit_veiculo, const std::string &solicitacao, const std::string &funcionario,
+        Veiculo(int os, int id_patio, const std::string &solicitacao, const std::string &funcionario,
                 const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                 const std::string &local, const std::string &placa, const std::string &marca, const std::string &modelo,
                 int ano, const std::string &cidade, const std::string &chassi, int km, int hodometro,
@@ -118,6 +118,8 @@ namespace model {
         //Realiza o orçamento de um veículo baseado no seu tipo e na quantidade de dias que permaneceu no patio
         //Será sobrescrita pois há variáveis dependentes de cada subclasse
         virtual double calcOrcamento() = 0;
+
+        virtual void veiculoToMap(std::unordered_map<std::string, std::string> &dados_veiculo, std::unordered_map<std::string, std::string> &dados_especificos) = 0;
 
     };
 

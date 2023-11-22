@@ -5,7 +5,7 @@ namespace model {
 
     //Construtor Moto.h
 
-    Moto::Moto(int os, int patio_id, const std::string &solicitacao, const std::string &funcionario,
+    Moto::Moto(int os, int id_patio, const std::string &solicitacao, const std::string &funcionario,
                const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                const std::string &local, const std::string &placa, const std::string &marca, const std::string &modelo,
                int ano, const std::string &cidade, const std::string &chassi, int km, int hodometro,
@@ -14,7 +14,7 @@ namespace model {
                int retrovisores, int tipo, bool capacete, bool carenagem, bool bau, bool ferramentas,
                int suspDianteira, int suspTraseira, int guidao, int sistEletrico, int escapamento):
 
-               Veiculo(os, patio_id, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local, placa, marca, modelo,
+               Veiculo(os, id_patio, solicitacao, funcionario, placaReboque, motivo, estadoVeiculo, blitz, local, placa, marca, modelo,
                        ano, cidade, chassi, km, hodometro, ocorrencia, policial, data_apreensao, horario, objetos, observacoes, rodas, retrovisores, tipo), _capacete(capacete), _carenagem(carenagem), _bau(bau), _ferramentas(ferramentas), _suspDianteira(suspDianteira),
                        _suspTraseira(suspTraseira), _guidao(guidao), _sistEletrico(sistEletrico), _escapamento(escapamento){
 
@@ -121,6 +121,46 @@ namespace model {
     double Moto::calcOrcamento(){
 
         return (_diaria_moto * (calcDiasApreensao()) + (_reboque_moto) + (2.5 * _km));
+
+    }
+
+    void Moto::veiculoToMap(std::unordered_map<std::string, std::string> &dados_veiculo, std::unordered_map<std::string, std::string> &dados_especificos) {
+        dados_veiculo["OS"] = std::to_string(_os);
+        dados_veiculo["Patio"] = std::to_string(_id_patio);
+        dados_veiculo["Solicitacao"] = _solicitacao;
+        dados_veiculo["Funcionario"] = _funcionario;
+        dados_veiculo["PlacaReboque"] = _placa_reboque;
+        dados_veiculo["Motivo"] = _motivo;
+        dados_veiculo["Estado"] = std::to_string(_estado_veiculo);
+        dados_veiculo["Blitz"] = std::to_string(_blitz);
+        dados_veiculo["Local"] = _local;
+        dados_veiculo["Placa"] = _placa;
+        dados_veiculo["Marca"] = _marca;
+        dados_veiculo["Modelo"] = _modelo;
+        dados_veiculo["Ano"] = std::to_string(_ano);
+        dados_veiculo["Cidade"] = _cidade;
+        dados_veiculo["Chassi"] = _chassi;
+        dados_veiculo["Distancia"] = std::to_string(_km);
+        dados_veiculo["KM"] = std::to_string(_hodometro);
+        dados_veiculo["Ocorrencia"] = _ocorrencia;
+        dados_veiculo["Policial"] = _policial;
+        dados_veiculo["Data"] = _data_apreensao;
+        dados_veiculo["Horario"] = _horario;
+        dados_veiculo["Objetos"] = _objetos;
+        dados_veiculo["Obs"] = _observacoes;
+        dados_veiculo["EstadoRodas"] = std::to_string(_rodas);
+        dados_veiculo["EstadoRetro"] = std::to_string(_retrovisores);
+        dados_veiculo["Tipo"] = "3";
+        dados_especificos["Capacete"] = std::to_string(_capacete);
+        dados_especificos["Carenagem"] = std::to_string(_carenagem);
+        dados_especificos["Bau"] = std::to_string(_bau);
+        dados_especificos["Ferramentas"] = std::to_string(_ferramentas);
+        dados_especificos["SuspensaoD"] = std::to_string(_suspDianteira);
+        dados_especificos["SuspensaoT"] = std::to_string(_suspTraseira);
+        dados_especificos["Guidao"] = std::to_string(_guidao);
+        dados_especificos["SistemaE"] = std::to_string(_sistEletrico);
+        dados_especificos["Escapamento"] = std::to_string(_escapamento);
+
 
     }
 

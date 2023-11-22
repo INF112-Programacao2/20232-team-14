@@ -139,9 +139,6 @@ namespace controller {
             interface.displayOutput(v->get_policial());
         }
     }
-    void Controller::veiculoToMap(const model::Veiculo &v, std::unordered_map<std::string, std::string> &dados_veiculo, std::unordered_map<std::string, std::string> &dados_especificos){
-
-    }
 
     model::Veiculo* Controller::searchByOS(const int &OS){
         for(model::Veiculo *v : *_veiculos){
