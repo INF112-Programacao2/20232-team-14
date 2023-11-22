@@ -35,13 +35,13 @@ namespace model {
         std::string _observacoes;               //Observações a mais, se for necessário
         int _rodas;                             //(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado
         int _retrovisores;                      //(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado
-        int _tipo;
+        int _tipo;                              //(1)Carro/(2)Moto/(3)Caminhao
 
     public:
 
         //Construtor Veiculo.h
 
-        Veiculo(int os, int _patio_id, const std::string &solicitacao, const std::string &funcionario,
+        Veiculo(int os, int patio_id, const std::string &solicitacao, const std::string &funcionario,
                 const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                 const std::string &local, const std::string &placa, const std::string &marca, const std::string &modelo,
                 int ano, const std::string &cidade, const std::string &chassi, int km, int hodometro,

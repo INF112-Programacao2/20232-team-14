@@ -29,50 +29,33 @@ namespace view {
 
     void Cli::leituraCampo(const std::string &label, std::string &field){
         std::cout << label << std::endl;
-        std::string input;
-        if(!field.empty()){
-            std::cout << "Valor atual: " << field << "\nPressione enter para manter o valor atual." << std::endl;
-        }
+
         std::cin.sync();
-        std::getline(std::cin, input);
-        if(input.empty()){
-            if(field.empty()){
-                std::cout << "Campo não pode ser vazio!" << std::endl;
-                std::cout << label << std::endl;
-            }else{
-                return;
-            }
-        }else{
-            field = input;
-            return;
-        }
+        std::getline(std::cin, field);
     }
     void Cli::leituraCampo(const std::string &label, std::string &field, const std::string &regex, const std::string &errorMsg) {
+        bool flag = true;
         std::string input;
         std::regex rules(regex);
-        if(!field.empty()){
-            std::cout << "Valor atual: " << field << "\nPressione enter para manter o valor atual." << std::endl;
-        }
-        std::cout << field << std::endl;
-        while (true){
+        std::cout << label << std::endl;
+
+        while (flag){
             std::cin.sync();
-            std::getline(std::cin, input);
-            if(std::regex_match(input, rules)) {
-                field = input;
-                return;
-            }else if(field.empty()){
+            std::getline(std::cin, field);
+            if(std::regex_match(field, rules)) {
+                flag = false;
+            }else{
                 std::cout << errorMsg << std::endl;
                 std::cout << label << std::endl;
-            }else{
-                return;
             }
         }
+
     }
 
 
     void Cli::coletaChecklist(std::unordered_map<std::string, std::string> &dados_veiculo){
         leituraCampo("Ordem de servico: ", dados_veiculo["OS"],"^[0-9]+$","Ordem de servico invalida.");
-        leituraCampo("ID_Patio: ", dados_veiculo["PatioID"]);  //OBS: nao sei regex, informar caio pra alterar depois
+        leituraCampo("ID do patio: ", dados_veiculo["PatioID"]); // TODO: FAZER REGEX
         leituraCampo("Solicitacao: ", dados_veiculo["Solicitacao"]);
         leituraCampo("Funcionario responsavel por registrar o veiculo: ", dados_veiculo["Funcionario"]);
         leituraCampo("Placa do veiculo que realizou o reboque: ", dados_veiculo["PlacaReboque"], "^[A-Z]{3}-?[0-9][0-9A-Z][0-9][0-9]$", "Placa invalida.");
@@ -96,7 +79,7 @@ namespace view {
         leituraCampo("Se desejar, acrescente alguma observacao, caso contrario digite 0 para continuar: ", dados_veiculo["Obs"]);
         leituraCampo("Estado das rodas do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRodas"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
         leituraCampo("Estado dos retrovisores do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRetro"], "^[1234]$", "Estado invalido selecionado. deve conter um numero entre um e quatro");
-        leituraCampo("Tipo do veículo:\n1-Carro\n2-Moto\n3-Caminhao", dados_veiculo["Tipo"], "^[123]$", "Tipo invalido selecionado. Resposta deve conter um numero entre 1 e 3.");
+        leituraCampo("Tipo do veículo:\n0-inexistente\n1-Carro\n2-Moto\n3-Caminhao", dados_veiculo["Tipo"], "^[123]$", "Estado invalido selecionado, deve conter um numero entre um e tres"); // TODO: VERIFICAR ESSE REGEX
 
     }
 
@@ -166,6 +149,8 @@ namespace view {
         std::cerr << "ERRO: "<< e.what() << std::endl; //what() transforma a excecao em uma string legivel
 
     }
+
+
 
     //mais tarde, para abrir caminho para a implementacao de uma GUI, deveremos implementar chamadas especificas as maneiras diferentes de exibir dados na tela
     //de certa forma, "especificas ao metodo" com o qual elas estao relacionadas
