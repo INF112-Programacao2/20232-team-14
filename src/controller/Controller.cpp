@@ -176,7 +176,6 @@ namespace controller {
 
     void Controller::consultarVeiculo() {
 
-
     }
 
     Controller::~Controller() {
