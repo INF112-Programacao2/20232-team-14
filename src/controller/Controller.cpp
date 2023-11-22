@@ -25,39 +25,18 @@ namespace controller {
             switch(interface.mainMenu()) {
 
                 case 0:
-                    loop = false;
-                    break;
+                    return;
                 case 1:
-                    //teria aqui uma instanciação de c
                     iniciarApreensao();
-                    //_dados_veiculo.clear(); //esvaziando o vetor apos seus dados serem transferidos para o objeto veiculo
                     break;
                 case 2:
-                    /* interface.displayOutput("*Digite 0 a qualquer momento caso queira desistir da operacao*\n");
-                    do {
-                    try { //try catch pois stoi retorna excecao de invalid_argument
-                        interface.displayOutput("Horario de registro do veiculo: ");
-                        c.setHoras(stoi(interface.readUserInput()));
-                        if (c.getHoras()==0) {
-                            break;
-                        }
-                        interface.displayOutput("Horario de liberacao do veiculo: ");
-                        c.setPHora(stoi(interface.readUserInput()));
-                        if (c.getPHora()==0) {
-                            break;
-                        }
-                        erro = false;
-                    } catch (std::exception& e) { //catch chama a interface para exibir a mensagem de erro, no formato exception
-                        interface.errorMsg(e);
-                        erro = true;
-                    }
-                    } while (erro); */
+
                     break;
                 case 3:
                     persistChecklists();
                     break;
                 case 4:
-                    //teria aqui um delete c
+                    liberarVeiculo();
                     break;
                 case 5:
                     //abre database
@@ -191,7 +170,7 @@ namespace controller {
 
     }
 
-    void Controller::liberarVeiculo() { // suponho que venha a ser uma variante da edição
+    void Controller::liberarVeiculo() { // receber OS da view, verificar se ja esta liberado, se nao estiver libera, se ja estiver mensagem de erro e aborta função
 
     }
 
