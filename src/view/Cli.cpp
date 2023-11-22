@@ -21,8 +21,7 @@ namespace view {
         std::cout << "6. Test Database" << std::endl;
         std::cout << "0. Encerra Programa" << std::endl;
         std::cin >> input;
-        std::cin.ignore(); // preciso fazer uma implementacao mais limpa, mas ignore() limpa o inputstream apos um read
-
+        std::cin.ignore();
         return input;
 
     }
@@ -53,7 +52,7 @@ namespace view {
         if(!field.empty()){
             std::cout << "Valor atual: " << field << "\nPressione enter para manter o valor atual." << std::endl;
         }
-        std::cout << field << std::endl;
+        std::cout << label << std::endl;
         while (true){
             std::cin.sync();
             std::getline(std::cin, input);
@@ -92,7 +91,7 @@ namespace view {
         leituraCampo("Data de apreensao do veiculo:\nConsidere o formato dd/mm/aaaa", dados_veiculo["Data"]); // TODO: REFAZER ESSE REGEX
         leituraCampo("Horario de apreensao: ", dados_veiculo["Horario"], "^([0-9]|0[0-9]|1[0-9]|2[0-3]):?[0-5][0-9]$", "Horario invalido.");
         leituraCampo("Objetos que estavam no carro no momento de apreensao: ", dados_veiculo["Objetos"]);
-        leituraCampo("Se desejar, acrescente alguma observacao, caso contrario digite 0 para continuar: ", dados_veiculo["Obs"]);
+        leituraCampo("Se desejar, acrescente alguma observacao", dados_veiculo["Obs"]);
         leituraCampo("Estado das rodas do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRodas"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
         leituraCampo("Estado dos retrovisores do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRetro"], "^[1234]$", "Estado invalido selecionado. deve conter um numero entre um e quatro");
         leituraCampo("Tipo do veículo:\n1-Carro\n2-Moto\n3-Caminhao", dados_veiculo["Tipo"], "^[123]$", "Tipo invalido selecionado. Resposta deve conter um numero entre 1 e 3.");
@@ -141,6 +140,17 @@ namespace view {
         leituraCampo("Guidao:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["Guidao"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
         leituraCampo("Sistema eletrico:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["SistemaE"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
         leituraCampo("Escapamento:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["Escapamento"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
+    }
+
+    int Cli::readOS(){
+        std::string os;
+        leituraCampo("Ordem de servico: ", os,"^[0-9]+$","Ordem de servico invalida.");
+        return stoi(os);
+    }
+    std::string Cli::readPlate(){
+        std::string plate;
+        leituraCampo("Placa do veiculo: ", plate,"^[A-Z]{3}-?[0-9][0-9A-Z][0-9][0-9]$","Placa invalida.");
+        return plate;
     }
 
     void Cli::printChecklist(std::unordered_map<std::string, std::string> &dados_veiculo) {
@@ -214,7 +224,6 @@ namespace view {
         std::cout << "Sistema eletrico: " << dados_moto["SistemaE"] << std::endl;
         std::cout << "Escapamento: " << dados_moto["Escapamento"] << std::endl;
     }
-
 
 
     std::string Cli::readUserInput(){

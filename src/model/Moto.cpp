@@ -150,7 +150,7 @@ namespace model {
         dados_veiculo["Obs"] = _observacoes;
         dados_veiculo["EstadoRodas"] = std::to_string(_rodas);
         dados_veiculo["EstadoRetro"] = std::to_string(_retrovisores);
-        dados_veiculo["Tipo"] = "3";
+        dados_veiculo["Tipo"] = "2";
         dados_especificos["Capacete"] = std::to_string(_capacete);
         dados_especificos["Carenagem"] = std::to_string(_carenagem);
         dados_especificos["Bau"] = std::to_string(_bau);

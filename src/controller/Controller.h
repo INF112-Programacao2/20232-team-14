@@ -36,6 +36,8 @@ namespace controller {
         model::Veiculo* searchByOS(const int &OS);
 
         model::Veiculo *searchByPlate(const std::string &plate);
+
+        void printVeiculo(model::Veiculo *v);
     };
 
 }

@@ -30,7 +30,7 @@ namespace controller {
                     iniciarApreensao();
                     break;
                 case 2:
-
+                    editarChecklist();
                     break;
                 case 3:
                     persistChecklists();
@@ -39,6 +39,10 @@ namespace controller {
                     liberarVeiculo();
                     break;
                 case 5:
+                    //teste, limpar implementacao dps
+                    printVeiculo(searchByOS(interface.readOS()));
+                    break;
+                case 6:
                     //abre database
                     std::string sql;
                     sql = "CREATE TABLE IF NOT EXISTS patios("  \
@@ -134,6 +138,23 @@ namespace controller {
         }
     }
 
+    void Controller::printVeiculo(model::Veiculo *v){
+        std::unordered_map<std::string, std::string> dados_veiculo;
+        std::unordered_map<std::string, std::string> dados_especificos;
+        v->veiculoToMap(dados_veiculo, dados_especificos);
+        interface.printChecklist(dados_veiculo);
+        switch(v->get_tipo()){
+            case 1:
+                interface.printChecklistCarro(dados_especificos);
+                break;
+            case 2:
+                interface.printChecklistMoto(dados_especificos);
+                break;
+            case 3:
+                interface.printChecklistCaminhao(dados_especificos);
+                break;
+        }
+    }
     void Controller::persistChecklists(){ //para cada veiculo em _veiculos, chama a funcao de persistencia respectiva (salva as alterações)
         for (model::Veiculo *v : *_veiculos){
             interface.displayOutput(v->get_policial());

@@ -33,6 +33,10 @@ namespace view {
         void printChecklistMoto(std::unordered_map<std::string, std::string> &dados_moto);
         void leituraCampo(const std::string &label, std::string &field);
         void leituraCampo(const std::string &label, std::string &field, const std::string &check, const std::string &errorMsg);
+
+        int readOS();
+
+        std::string readPlate();
     };
 
 } // View
