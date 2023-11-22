@@ -72,7 +72,6 @@ namespace view {
 
     void Cli::coletaChecklist(std::unordered_map<std::string, std::string> &dados_veiculo){
         leituraCampo("Ordem de servico: ", dados_veiculo["OS"],"^[0-9]+$","Ordem de servico invalida.");
-        leituraCampo("ID_Patio: ", dados_veiculo["PatioID"]);  //OBS: nao sei regex, informar caio pra alterar depois
         leituraCampo("Solicitacao: ", dados_veiculo["Solicitacao"]);
         leituraCampo("Funcionario responsavel por registrar o veiculo: ", dados_veiculo["Funcionario"]);
         leituraCampo("Placa do veiculo que realizou o reboque: ", dados_veiculo["PlacaReboque"], "^[A-Z]{3}-?[0-9][0-9A-Z][0-9][0-9]$", "Placa invalida.");

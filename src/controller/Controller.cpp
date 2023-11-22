@@ -96,7 +96,7 @@ namespace controller {
     void Controller::criarCarro(std::unordered_map<std::string, std::string> &dados_veiculo) {
         std::unordered_map<std::string, std::string> dados_carro;
         interface.coletaChecklistCarro(dados_carro);
-        model::Veiculo *car = new model::Carro(stoi(dados_veiculo["OS"]), stoi(dados_veiculo["PatioID"]),dados_veiculo["Solicitacao"], dados_veiculo["Funcionario"], dados_veiculo["PlacaReboque"], dados_veiculo["Motivo"],
+        model::Veiculo *car = new model::Carro(stoi(dados_veiculo["OS"]), _id_patio,dados_veiculo["Solicitacao"], dados_veiculo["Funcionario"], dados_veiculo["PlacaReboque"], dados_veiculo["Motivo"],
                                                stoi(dados_veiculo["Estado"]), stob(dados_veiculo["Blitz"]), dados_veiculo["Local"], dados_veiculo["Placa"], dados_veiculo["Marca"],
                                                dados_veiculo["Modelo"], stoi(dados_veiculo["Ano"]), dados_veiculo["Cidade"], dados_veiculo["Chassi"], stoi(dados_veiculo["Distancia"]),
                                                stoi(dados_veiculo["KM"]), dados_veiculo["Ocorrencia"], dados_veiculo["Policial"], dados_veiculo["Data"], dados_veiculo["Horario"],
@@ -110,7 +110,7 @@ namespace controller {
     void Controller::criarCaminhao(std::unordered_map<std::string, std::string> &dados_veiculo) {
         std::unordered_map<std::string, std::string> dados_caminhao;
         interface.coletaChecklistCaminhao(dados_caminhao);
-        model::Veiculo *truck = new model::Caminhao(stoi(dados_veiculo["OS"]), stoi(dados_veiculo["PatioID"]),dados_veiculo["Solicitacao"], dados_veiculo["Funcionario"], dados_veiculo["PlacaReboque"], dados_veiculo["Motivo"],
+        model::Veiculo *truck = new model::Caminhao(stoi(dados_veiculo["OS"]), _id_patio,dados_veiculo["Solicitacao"], dados_veiculo["Funcionario"], dados_veiculo["PlacaReboque"], dados_veiculo["Motivo"],
                                                     stoi(dados_veiculo["Estado"]), stob(dados_veiculo["Blitz"]), dados_veiculo["Local"], dados_veiculo["Placa"], dados_veiculo["Marca"],
                                                     dados_veiculo["Modelo"], stoi(dados_veiculo["Ano"]), dados_veiculo["Cidade"], dados_veiculo["Chassi"], stoi(dados_veiculo["Distancia"]),
                                                     stoi(dados_veiculo["KM"]), dados_veiculo["Ocorrencia"], dados_veiculo["Policial"], dados_veiculo["Data"], dados_veiculo["Horario"],
@@ -125,7 +125,7 @@ namespace controller {
     void Controller::criarMoto(std::unordered_map<std::string, std::string> &dados_veiculo) {
         std::unordered_map<std::string, std::string> dados_moto;
         interface.coletaChecklistMoto(dados_moto);
-        model::Veiculo *motorcycle = new  model::Moto(stoi(dados_veiculo["OS"]), stoi(dados_veiculo["PatioID"]),dados_veiculo["Solicitacao"], dados_veiculo["Funcionario"], dados_veiculo["PlacaReboque"], dados_veiculo["Motivo"],
+        model::Veiculo *motorcycle = new  model::Moto(stoi(dados_veiculo["OS"]), _id_patio,dados_veiculo["Solicitacao"], dados_veiculo["Funcionario"], dados_veiculo["PlacaReboque"], dados_veiculo["Motivo"],
                                                      stoi(dados_veiculo["Estado"]), stob(dados_veiculo["Blitz"]), dados_veiculo["Local"], dados_veiculo["Placa"], dados_veiculo["Marca"],
                                                      dados_veiculo["Modelo"], stoi(dados_veiculo["Ano"]), dados_veiculo["Cidade"], dados_veiculo["Chassi"], stoi(dados_veiculo["Distancia"]),
                                                      stoi(dados_veiculo["KM"]), dados_veiculo["Ocorrencia"], dados_veiculo["Policial"], dados_veiculo["Data"], dados_veiculo["Horario"],
@@ -160,21 +160,32 @@ namespace controller {
             interface.displayOutput(v->get_policial());
         }
     }
-//    void Controller::preencheVetores(const model::Veiculo &v, std::unordered_map<std::string, std::string> &dados_veiculo, std::unordered_map<std::string, std::string> &dados_especificos){
-//
-//    }
-//    void Controller::editarChecklist() { //busca no vetor um veículo pela OS, posteriormente, as informações são mostradas e é oferecida a oportunidade de alterá-las
+    void Controller::veiculoToMap(const model::Veiculo &v, std::unordered_map<std::string, std::string> &dados_veiculo, std::unordered_map<std::string, std::string> &dados_especificos){
+
+    }
+
+    model::Veiculo* Controller::searchByOS(const int &OS){
+        for(model::Veiculo *v : *_veiculos){
+            if(v->get_os() == OS){
+                return v;
+            }
+        }
+    }
+
+    model::Veiculo* Controller::searchByPlate(const std::string &plate){
+        for(model::Veiculo *v : *_veiculos){
+            if(v->get_placa() == plate){
+                return v;
+            }
+        }
+    }
+
+    void Controller::editarChecklist() { //busca no vetor um veículo pela OS, posteriormente, as informações são mostradas e é oferecida a oportunidade de alterá-las
 //        //pede a interface para ler uma OS
 //        //recebe esse inteiro
-//        //itera veiculos dessa forma procurando a os recebida
-//        for(model::Veiculo *v : *_veiculos){
-//            if(v->get_os() == osRecebida){
-//                std::unordered_map<std::string, std::string> dados_veiculo;
-//                chamaredicao()
-//
-//            }
-//        }
-//    }
+
+
+    }
 
     void Controller::realizarOrcamento() {
 

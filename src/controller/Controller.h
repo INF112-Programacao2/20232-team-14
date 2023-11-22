@@ -10,7 +10,7 @@ namespace controller {
     class Controller {
     private:
         std::vector<model::Veiculo *> *_veiculos;
-        unsigned int _id_patio;
+        int _id_patio;
 
     public:
         Controller();
@@ -29,6 +29,13 @@ namespace controller {
         void criarMoto(std::unordered_map<std::string, std::string> &dados_veiculo);
 
         void persistChecklists();
+
+        void veiculoToMap(const model::Veiculo &v, std::unordered_map<std::string, std::string> &dados_veiculo,
+                             std::unordered_map<std::string, std::string> &dados_especificos);
+
+        model::Veiculo* searchByOS(const int &OS);
+
+        model::Veiculo *searchByPlate(const std::string &plate);
     };
 
 }
