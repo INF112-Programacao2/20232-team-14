@@ -6,13 +6,13 @@ namespace model {
 
     //Construtor Veiculo.h
 
-    Veiculo::Veiculo(int os, int patio_id, const std::string &solicitacao, const std::string &funcionario,
+    Veiculo::Veiculo(int os, int patio_id, bool sit_veiculo, const std::string &solicitacao, const std::string &funcionario,
                      const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                      const std::string &local, const std::string &placa, const std::string &marca,
                      const std::string &modelo, int ano, const std::string &cidade, const std::string &chassi, int km,
                      int hodometro, const std::string &ocorrencia, const std::string &policial, const std::string &data_apreensao,
                      const std::string &horario, const std::string &objetos, const std::string &observacoes, int rodas,
-                     int retrovisores, int tipo) : _os(os), _patio_id(patio_id), _solicitacao(solicitacao), _funcionario(funcionario),
+                     int retrovisores, int tipo) : _os(os), _patio_id(patio_id), _sit_veiculo(true), _solicitacao(solicitacao), _funcionario(funcionario),
                      _placa_reboque(placaReboque), _motivo(motivo), _estado_veiculo(estadoVeiculo),
                      _blitz(blitz), _local(local), _placa(placa), _marca(marca),  _modelo(modelo), _ano(ano), _cidade(cidade),
                      _chassi(chassi), _km(km), _hodometro(hodometro), _ocorrencia(ocorrencia), _policial(policial), _data_apreensao(data_apreensao),
@@ -36,6 +36,14 @@ namespace model {
 
     void Veiculo::set_patio_id(int patio_id) {
         _patio_id = patio_id;
+    }
+
+    bool Veiculo::get_sit_veiculo() const {
+        return _sit_veiculo;
+    }
+
+    void Veiculo::set_sit_veiculo(int sit_veiculo) {
+        _sit_veiculo = sit_veiculo;
     }
 
     const std::string &Veiculo::get_solicitacao() const{

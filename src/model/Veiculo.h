@@ -11,6 +11,7 @@ namespace model {
 
         int _os;                                //Ordem de serviço
         int _patio_id;                          //ID Patio
+        bool _sit_veiculo;                      //Situacao do veiculo: true - apreendido, false - liberado
         std::string _solicitacao;               //Quem solicitou a apreensão (PM, PRV, etc...)
         std::string _funcionario;               //Funcionário que realizou a apreensão
         std::string _placa_reboque;             //Placa do veículo do pátio (caminhão ou carro) que realizou a apreensão
@@ -41,7 +42,7 @@ namespace model {
 
         //Construtor Veiculo.h
 
-        Veiculo(int os, int patio_id, const std::string &solicitacao, const std::string &funcionario,
+        Veiculo(int os, int patio_id, bool sit_veiculo, const std::string &solicitacao, const std::string &funcionario,
                 const std::string &placaReboque, const std::string &motivo, int estadoVeiculo, bool blitz,
                 const std::string &local, const std::string &placa, const std::string &marca, const std::string &modelo,
                 int ano, const std::string &cidade, const std::string &chassi, int km, int hodometro,
@@ -54,6 +55,8 @@ namespace model {
         virtual void set_os(int os);
         virtual int get_patio_id() const;
         virtual void set_patio_id(int patio_id);
+        virtual bool get_sit_veiculo() const;
+        virtual void set_sit_veiculo(int sit_veiculo);
         virtual const std::string &get_solicitacao() const;
         virtual void set_solicitacao(const std::string &solicitacao);
         virtual const std::string &get_funcionario() const;
