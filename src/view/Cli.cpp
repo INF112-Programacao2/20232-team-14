@@ -144,12 +144,12 @@ namespace view {
 
     int Cli::readOS(){
         std::string os;
-        leituraCampo("Ordem de servico: ", os,"^[0-9]+$","Ordem de servico invalida.");
+        leituraCampo("Informe a ordem de servico: ", os,"^[0-9]+$","Ordem de servico invalida.");
         return stoi(os);
     }
     std::string Cli::readPlate(){
         std::string plate;
-        leituraCampo("Placa do veiculo: ", plate,"^[A-Z]{3}-?[0-9][0-9A-Z][0-9][0-9]$","Placa invalida.");
+        leituraCampo("Informe a placa do veiculo: ", plate,"^[A-Z]{3}-?[0-9][0-9A-Z][0-9][0-9]$","Placa invalida.");
         return plate;
     }
 

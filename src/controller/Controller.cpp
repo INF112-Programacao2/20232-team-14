@@ -127,10 +127,10 @@ namespace controller {
         interface.coletaChecklist(dados_veiculo);
         switch (stoi(dados_veiculo["Tipo"])) {
             case 1:
-                criarMoto(dados_veiculo);
+                criarCarro(dados_veiculo);
                 break;
             case 2:
-                criarCarro(dados_veiculo);
+                criarMoto(dados_veiculo);
                 break;
             case 3:
                 criarCaminhao(dados_veiculo);
