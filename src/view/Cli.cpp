@@ -81,7 +81,7 @@ namespace view {
         leituraCampo("Placa do veiculo apreendido: ", dados_veiculo["Placa"],"^[A-Z]{3}-?[0-9][0-9A-Z][0-9][0-9]$","Placa invalida.");
         leituraCampo("Marca do veiculo apreendido: ", dados_veiculo["Marca"]);
         leituraCampo("Modelo do veiculo apreendido: ", dados_veiculo["Modelo"]);
-        leituraCampo("Ano de apreensao do veiculo: ", dados_veiculo["Ano"], "^(19[012][0-9]|20[0-9]{2})$", "Ano invalido");
+        leituraCampo("Ano de fabricação do veiculo: ", dados_veiculo["Ano"], "^(19[012][0-9]|20[0-9]{2})$", "Ano invalido");
         leituraCampo("Cidade em que ocorreu a apreensao: ", dados_veiculo["Cidade"]);
         leituraCampo("Chassi do veiculo apreendido: ", dados_veiculo["Chassi"]);
         leituraCampo("Distancia em quilometro do patio no momento de apreensao: ", dados_veiculo["Distancia"], "^[0-9]+$", "Distancia invalida");
@@ -89,11 +89,11 @@ namespace view {
         leituraCampo("Ocorrencia registrada: ", dados_veiculo["Ocorrencia"]);
         leituraCampo("Policial responsavel pela apreensao: ", dados_veiculo["Policial"]);
         leituraCampo("Data de apreensao do veiculo:\nConsidere o formato dd/mm/aaaa", dados_veiculo["Data"]); // TODO: REFAZER ESSE REGEX
-        leituraCampo("Horario de apreensao: ", dados_veiculo["Horario"], "^([0-9]|0[0-9]|1[0-9]|2[0-3]):?[0-5][0-9]$", "Horario invalido.");
+        leituraCampo("Horario de apreensao: ", dados_veiculo["Horario"], "^([0-9]|0[0-9]|1[0-9]|2[0-3]):?[0-5][0-9]$", "Horario invalido."); // TODO: REVER ESSE REGEX
         leituraCampo("Objetos que estavam no carro no momento de apreensao: ", dados_veiculo["Objetos"]);
         leituraCampo("Se desejar, acrescente alguma observacao", dados_veiculo["Obs"]);
-        leituraCampo("Estado das rodas do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRodas"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
-        leituraCampo("Estado dos retrovisores do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRetro"], "^[1234]$", "Estado invalido selecionado. deve conter um numero entre um e quatro");
+        leituraCampo("Estado das rodas do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRodas"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro"); // TODO: REVER ESSE REGEX
+        leituraCampo("Estado dos retrovisores do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRetro"], "^[1234]$", "Estado invalido selecionado. deve conter um numero entre um e quatro"); // TODO: REVER ESSE REGEX
         leituraCampo("Tipo do veículo:\n1-Carro\n2-Moto\n3-Caminhao", dados_veiculo["Tipo"], "^[123]$", "Tipo invalido selecionado. Resposta deve conter um numero entre 1 e 3.");
 
     }
@@ -115,7 +115,7 @@ namespace view {
     }
 
     void Cli::coletaChecklistCaminhao(std::unordered_map<std::string, std::string> &dados_caminhao) {
-        leituraCampo("Carroceria:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_caminhao["EstadoCarroceria"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
+        leituraCampo("Carroceria:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_caminhao["EstadoCarroceria"], "^[1234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro"); // TODO: REVER ESSE REGEX
         leituraCampo("Eixo traseiro(S/N): ", dados_caminhao["EixoTras"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
         leituraCampo("Cintas(S/N): ", dados_caminhao["Cintas"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
         leituraCampo("Suspensao da cabine(S/N): ", dados_caminhao["SuspensaoC"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
