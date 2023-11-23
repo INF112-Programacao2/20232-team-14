@@ -33,7 +33,8 @@ namespace controller {
                     editarChecklist();
                     break;
                 case 3:
-                    persistChecklists();
+                    realizarOrcamento(searchByPlate(interface.readPlate()));
+                    //persistChecklists();
                     break;
                 case 4:
                     liberarVeiculo();
@@ -184,7 +185,10 @@ namespace controller {
 
     }
 
-    void Controller::realizarOrcamento() {
+    void Controller::realizarOrcamento(model::Veiculo *pVeiculo) {
+
+        interface.displayOutput(std::to_string(pVeiculo->calcOrcamento(interface.supostaDataLiberacao()))); //TODO: formatar o valor de saída para RR.CC (real e centavos)
+        interface.displayOutput(" R$");
 
     }
 

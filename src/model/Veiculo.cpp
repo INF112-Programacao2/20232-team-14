@@ -264,7 +264,7 @@ namespace model {
 
     }
 
-    int Veiculo::calcDiasApreensao() {
+    int Veiculo::calcDiasApreensao(std::string data_liberacao_desejado) {
 
         //Obtém dia, mes e ano das strings de data recebidas, guardando os valores nas variáveis abaixo
         int dia_Apreensao, mes_Apreensao, ano_Apreensao;
@@ -272,7 +272,8 @@ namespace model {
         char discard;
         std::stringstream ss_apreensao(_data_apreensao);
         ss_apreensao >> dia_Apreensao >> discard >> mes_Apreensao >> discard >> ano_Apreensao;
-        std::stringstream ss_liberacao(_data_liberacao);
+
+        std::stringstream ss_liberacao(data_liberacao_desejado);
         ss_liberacao >> dia_Liberacao >> discard >> mes_Liberacao >> discard >> ano_Liberacao;
 
         int calendario_Entrada[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -286,7 +287,7 @@ namespace model {
         int dias_apreensao = 0;
         int cont_dias = 0;
 
-        /*Verificando se os anos de entrada e 
+        /*Verificando se os anos de entrada e
         saída sao bissextos e adicionando 1 dia em fevereiro caso sejam*/
 
         if (anoBissexto(ano_Apreensao)) {

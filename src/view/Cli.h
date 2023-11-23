@@ -37,6 +37,8 @@ namespace view {
         int readOS();
 
         std::string readPlate();
+
+        std::string supostaDataLiberacao();
     };
 
 } // View

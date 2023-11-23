@@ -118,9 +118,9 @@ namespace model {
     }
     //end of gets and sets
 
-    double Moto::calcOrcamento(){
+    double Moto::calcOrcamento(std::string data_liberacao_desejado){
 
-        return (_diaria_moto * (calcDiasApreensao()) + (_reboque_moto) + (2.5 * _km));
+        return (_diaria_moto * (calcDiasApreensao(data_liberacao_desejado)) + (_reboque_moto) + (2.5 * _km));
 
     }
 

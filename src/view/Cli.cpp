@@ -248,6 +248,26 @@ namespace view {
 
     }
 
+    //Pensei que a data de liberação não é a mesma que a pretensão do usuário liberar
+    //As vezes queme sta usando o programa quer apenas calcular orcamento, sem pretensao de liberar o carro de fato
+    //nesse caso, o atributo _data_liberacao da classe Veiculo, nao deveria ser mudado, sem que, de fato, o carro seja liberado
+    //Essa funcao vai receber a pretensao da data de liberação, e será usada pela funcao CalcDiasApreensao da classe Veiculo
+    std::string Cli::supostaDataLiberacao() {
+
+        std::string data_lib;
+
+        std::cout << "Insira a pretensão do dia de liberação: "; // TODO: FAZER UM REGEX PARA ESSE CASO
+
+        /* TODO: Alem disso, outra implementação que ainda nao está pronta, é que quando o orçamento é feito, na inserção da placa do
+        TODO: veiculo que vai ser liberado, a mesma nao é consultada se o veiculo ja consta no patio ou nao*/
+
+        std::cin >> data_lib;
+
+        displayOutput("Orçamento para liberação do veículo: "); //TODO: lembrar de mudar isso depois, gambiarra feia para formatação do orçamento
+
+        return data_lib;
+    }
+
     //mais tarde, para abrir caminho para a implementacao de uma GUI, deveremos implementar chamadas especificas as maneiras diferentes de exibir dados na tela
     //de certa forma, "especificas ao metodo" com o qual elas estao relacionadas
     //displayOutput nao vai ser necessariamente descontinuada, mas teremos outras opcoes para permitir maior intercambiabilidade da view

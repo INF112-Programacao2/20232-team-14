@@ -24,6 +24,9 @@ namespace model {
                                _chave_roda(chaveRoda), _triangulo(triangulo), _bateria(bateria), _calotas(calotas),
                                _tapetes(tapetes), _radio(radio){
 
+        _diaria_caminhao = 60.44;
+        _reboque_caminhao = 367.69;
+
     }
 
     //Gets and Sets
@@ -153,9 +156,9 @@ namespace model {
     }
     //end of gets and sets
 
-    double Caminhao::calcOrcamento(){
+    double Caminhao::calcOrcamento(std::string data_liberacao_desejado){
 
-        return (_diaria_caminhao * (calcDiasApreensao()) + (_reboque_caminhao) + (2.5 * _km));
+        return (_diaria_caminhao * (calcDiasApreensao(data_liberacao_desejado)) + (_reboque_caminhao) + (2.5 * _km));
 
     }
 

@@ -20,6 +20,9 @@ namespace model {
                         _estepe(estepe), _macaco(macaco), _chave_roda(chaveRoda), _triangulo(triangulo), _bateria(bateria),
                         _calotas(calotas), _tapetes(tapetes), _radio(radio), _portas(portas), _capo(capo), _painel(painel), _teto(teto){
 
+                _diaria_carro = 50.37;
+                _reboque_carro = 277.03;
+
     }
 
     //Gets and Sets
@@ -149,9 +152,9 @@ namespace model {
     }
 
     //end of gets and sets
-    double Carro::calcOrcamento(){
+    double Carro::calcOrcamento(std::string data_liberacao_desejado){
 
-        return (_diaria_carro * (calcDiasApreensao()) + (_reboque_carro) + (2.5 * _km));
+        return (_diaria_carro * (calcDiasApreensao(data_liberacao_desejado)) + (_reboque_carro) + (2.5 * _km));
 
     }
 
