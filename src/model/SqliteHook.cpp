@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <string>
 #include <iostream>
+#include <fstream>
 // superclasse de persistencia model utilizando SQLite3
 namespace model {
     sqlite3 *SqliteHook::_db = nullptr;
@@ -47,9 +48,19 @@ namespace model {
         return 0;
     }
 
-    int SqliteHook::initDB(const std::string &sql) {
+    int SqliteHook::initDB() {
         char *errorMsg = 0;
         int dbresponse;
+
+        std::string sql;
+        std::ifstream fin("../database.sql");
+        for (std::string line; std::getline(fin, line);)
+        {
+            if(line.find('\r') != std::string::npos){
+                line.pop_back();//removendo o \r
+            }
+            sql.append(line);
+        }
 
         dbresponse = sqlite3_exec(_db, sql.c_str(), callback, 0, &errorMsg); //0 pode ser literalmente qualquer coisa pois vai pra void *
 
@@ -74,6 +85,17 @@ namespace model {
     }
 
     int SqliteHook::insert() {
+        std::string sql = "INSERT INTO patios VALUES(12, \"Jaozinho\", 3, \"nao sei onde\", \"Joaozao\", \"celular\", 3.44)";
+        char *errorMsg = 0;
+        int dbresponse;
+
+        dbresponse = sqlite3_exec(_db, sql.c_str(), callback, 0, &errorMsg);
+        if( dbresponse != SQLITE_OK ){
+            fprintf(stderr, "SQL error: %s\n", errorMsg);
+            sqlite3_free(errorMsg);
+            return -1;
+        }
+
         return 0;
     }
 
@@ -86,7 +108,22 @@ namespace model {
     }
 
     int SqliteHook::select() {
-        std::string sql = "SELECT * FROM PATIO";
+        std::string sql = "SELECT * FROM patios";
+        char *errorMsg = 0;
+        int dbresponse;
+
+        dbresponse = sqlite3_exec(_db, sql.c_str(), callback, 0, &errorMsg);
+        if( dbresponse != SQLITE_OK ){
+            fprintf(stderr, "SQL error: %s\n", errorMsg);
+            sqlite3_free(errorMsg);
+            return -1;
+        }
+
+        return 0;
+    }
+
+    int SqliteHook::dropTables(){
+        std::string sql = "DROP TABLE carros; DROP TABLE patios;";
         char *errorMsg = 0;
         int dbresponse;
 

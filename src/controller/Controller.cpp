@@ -44,18 +44,10 @@ namespace controller {
                     printVeiculo(searchByOS(interface.readOS()));
                     break;
                 case 6:
-                    //abre database
-                    std::string sql;
-                    sql = "CREATE TABLE IF NOT EXISTS patios("  \
-                        "ID             INT PRIMARY KEY NOT NULL," \
-                        "NAME           TEXT    NOT NULL," \
-                        "CAPACITY       INT     NOT NULL," \
-                        "ADDRESS        CHAR(50)," \
-                        "PROPRIETARY    CHAR(50)," \
-                        "CONTACT        CHAR(12)," \
-                        "DAILY_FEE      REAL);";
                     model::SqliteHook::connectDB();
-                    model::SqliteHook::initDB(sql);
+                    model::SqliteHook::dropTables();
+                    model::SqliteHook::initDB();
+                    model::SqliteHook::insert();
                     model::SqliteHook::select();
                     model::SqliteHook::printTest();
                     model::SqliteHook::closeDB();
