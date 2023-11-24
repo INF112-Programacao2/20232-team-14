@@ -10,7 +10,7 @@ namespace model {
 
     class SqliteHook {
         static sqlite3 *_db;
-        static std::vector<std::vector<std::string>*> *_resultado;
+        static std::vector<std::vector<std::string *> *>* _resultado;
 
     public:
         static int connectDB(); // realiza a conexão com o banco de dados e retorna um int status code
@@ -27,6 +27,8 @@ namespace model {
 
         static int closeDB(); // fecha a conexão
         static void printTest();
+
+        static int callback(void *_, int numCol, char **row, char **colName);
     };
 
 } // model

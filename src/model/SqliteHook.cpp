@@ -2,10 +2,12 @@
 #include <sqlite3.h>
 #include <cstdio>
 #include <string>
+#include <iostream>
 // superclasse de persistencia model utilizando SQLite3
 namespace model {
     sqlite3 *SqliteHook::_db = nullptr;
-    std::vector<std::vector<std::string>*> *_resultado = nullptr;
+    std::vector<std::vector<std::string *> *>* SqliteHook::_resultado = nullptr;
+
     int SqliteHook::connectDB() {
 
         int dbresponse;
@@ -26,17 +28,21 @@ namespace model {
         return 0;
     }
 
-    static int callback(void *_, int numCol, char **row, char **colName) {
+
+
+    int SqliteHook::callback(void *_, int numCol, char **row, char **colName) {
         //void star eh oq eu quiser
         //mesmo cara que eu passo na chamada do exec (tipo contexto da execucao)
         //posso fazer ser um vector e retornar ele no final de cada execucao
         // anotacao pessoal feita por eu caio pra mexer dps no codigo
         if(!_resultado){
-            _resultado = new std::vector<std::vector< std::string> *>;
+            _resultado = new std::vector<std::vector<std::string *> *>;
         }
+        std::vector <std::string *> *v = new std::vector<std::string *>;
         for(int i = 0; i<numCol; i++) {
-            printf("%s = %s\n", colName[i], row[i] ? row[i] : "NULL");
+            v->push_back(new std::string(row[i] ? row[i] : "NULL"));
         }
+        _resultado->push_back(v);
         printf("\n");
         return 0;
     }
@@ -58,9 +64,13 @@ namespace model {
     }
 
     void SqliteHook::printTest(){
-        //for (std::vector<std::string> *line: *_resultado) {
-            //fprintf(stdout, "ID: %s");
-        //}
+        if(_resultado){
+            for (std::vector<std::string *> *v: *_resultado) {
+                for (std::string *s: *v) {
+                    std::cout << *s << std::endl;
+                }
+            }
+        }
     }
 
     int SqliteHook::insert() {
