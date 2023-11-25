@@ -123,7 +123,7 @@ namespace model {
     }
 
     int SqliteHook::dropTables(){
-        std::string sql = "DROP TABLE carros; DROP TABLE patios;";
+        std::string sql = "DROP TABLE IF EXISTS carros; DROP TABLE IF EXISTS patios;";
         char *errorMsg = 0;
         int dbresponse;
 
@@ -137,8 +137,23 @@ namespace model {
         return 0;
     }
 
+    int SqliteHook::executeQuery(std::string &sql) {
+        char *errorMsg = 0;
+        int dbresponse;
 
+        dbresponse = sqlite3_exec(_db, sql.c_str(), callback, 0, &errorMsg);
+        if( dbresponse != SQLITE_OK ){
+            fprintf(stderr, "SQL error: %s\n", errorMsg);
+            sqlite3_free(errorMsg);
+            return -1;
+        }
 
+        return 0;
+    }
+
+    std::vector<std::vector<std::string *> *>* SqliteHook::fetchResult() {
+        return _resultado;
+    }
 
 
 } // model

@@ -5,7 +5,7 @@
 
 namespace model {
 
-    class Veiculo : SqliteHook{
+    class Veiculo{
 
     protected:
 
@@ -121,6 +121,10 @@ namespace model {
 
         virtual void veiculoToMap(std::unordered_map<std::string, std::string> &dados_veiculo, std::unordered_map<std::string, std::string> &dados_especificos) = 0;
 
+        virtual void persistVeiculo() = 0; // insert
+        virtual void deleteRecord() = 0; // delete
+        virtual void recordToVeiculo() = 0; // select
+        bool hasRecord();
     };
 
 } // model

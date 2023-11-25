@@ -27,9 +27,6 @@ namespace model {
 
     //Gets and Sets
 
-    const std::string &Carro::get_id() const {
-        return _id;
-    }
 
     bool Carro::get_extintor() const {
         return _extintor;
@@ -201,6 +198,66 @@ namespace model {
         dados_especificos["EstadoTeto"] = std::to_string(_teto);
     }
 
+    void Carro::persistVeiculo() {
+        std::string sql = "INSERT INTO caminhoes VALUES("
+                          + std::to_string(_os) + ", "
+                          + std::to_string(_id_patio) + ", "
+                          + std::to_string(_sit_veiculo) + ", "
+                          + "\'" + _solicitacao + "\', "
+                          + "\'" + _funcionario + "\', "
+                          + "\'" + _placa_reboque + "\', "
+                          + "\'" + _motivo + "\', "
+                          + std::to_string(_estado_veiculo) + ", "
+                          + std::to_string(_blitz) + ", "
+                          + "\'" + _local + "\', "
+                          + "\'" + _placa + "\', "
+                          + "\'" + _marca + "\', "
+                          + "\'" + _modelo + "\', "
+                          + std::to_string(_ano) + ", "
+                          + "\'" + _cidade + "\', "
+                          + "\'" + _chassi + "\', "
+                          + std::to_string(_km) + ", "
+                          + std::to_string(_hodometro) + ", "
+                          + "\'" + _ocorrencia + "\', "
+                          + "\'" + _policial + "\', "
+                          + "\'" + _data_apreensao + "\', "
+                          + "NULL" + ", "
+                          + "\'" + _horario + "\', "
+                          + "\'" + _objetos + "\', "
+                          + "\'" + _observacoes + "\', "
+                          + std::to_string(_rodas) + ", "
+                          + std::to_string(_retrovisores) + ", "
+                          + "3" + ", "
+                          + std::to_string(_extintor) + ", "
+                          + std::to_string(_estepe) + ", "
+                          + std::to_string(_macaco) + ", "
+                          + std::to_string(_chave_roda) + ", "
+                          + std::to_string(_triangulo) + ", "
+                          + std::to_string(_bateria) + ", "
+                          + std::to_string(_calotas) + ")"
+                          + std::to_string(_tapetes) + ")"
+                          + std::to_string(_radio) + ")"
+                          + std::to_string(_portas) + ", "
+                          + std::to_string(_capo) + ", "
+                          + std::to_string(_painel) + ", "
+                          + std::to_string(_teto) + ", "
+                          + std::to_string(_diaria_carro) + ", "
+                          + std::to_string(_reboque_carro) + ")"
+        ;
+
+
+
+        model::SqliteHook::executeQuery(sql);
+    }
+
+
+    void Carro::deleteRecord() {
+
+    }
+
+    void Carro::recordToVeiculo() {
+
+    }
 };
 
 // model

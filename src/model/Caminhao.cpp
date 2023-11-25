@@ -203,4 +203,65 @@ namespace model {
         dados_especificos["Tapetes"] = std::to_string(_tapetes);
         dados_especificos["Radio"] = std::to_string(_radio);
     }
+
+    void Caminhao::persistVeiculo() {
+        std::string sql = "INSERT INTO caminhoes VALUES("
+                          + std::to_string(_os) + ", "
+                          + std::to_string(_id_patio) + ", "
+                          + std::to_string(_sit_veiculo) + ", "
+                          + "\'" + _solicitacao + "\', "
+                          + "\'" + _funcionario + "\', "
+                          + "\'" + _placa_reboque + "\', "
+                          + "\'" + _motivo + "\', "
+                          + std::to_string(_estado_veiculo) + ", "
+                          + std::to_string(_blitz) + ", "
+                          + "\'" + _local + "\', "
+                          + "\'" + _placa + "\', "
+                          + "\'" + _marca + "\', "
+                          + "\'" + _modelo + "\', "
+                          + std::to_string(_ano) + ", "
+                          + "\'" + _cidade + "\', "
+                          + "\'" + _chassi + "\', "
+                          + std::to_string(_km) + ", "
+                          + std::to_string(_hodometro) + ", "
+                          + "\'" + _ocorrencia + "\', "
+                          + "\'" + _policial + "\', "
+                          + "\'" + _data_apreensao + "\', "
+                          + "NULL" + ", "
+                          + "\'" + _horario + "\', "
+                          + "\'" + _objetos + "\', "
+                          + "\'" + _observacoes + "\', "
+                          + std::to_string(_rodas) + ", "
+                          + std::to_string(_retrovisores) + ", "
+                          + "3" + ", "
+                          + std::to_string(_carroceria) + ", "
+                          + std::to_string(_eixoTraseiro) + ", "
+                          + std::to_string(_cintas) + ", "
+                          + std::to_string(_suspCabine) + ", "
+                          + std::to_string(_extintor) + ", "
+                          + std::to_string(_estepe) + ", "
+                          + std::to_string(_macaco) + ", "
+                          + std::to_string(_chave_roda) + ", "
+                          + std::to_string(_triangulo) + ", "
+                          + std::to_string(_bateria) + ", "
+                          + std::to_string(_calotas) + ", "
+                          + std::to_string(_tapetes) + ", "
+                          + std::to_string(_radio) + ", "
+                          + std::to_string(_diaria_caminhao) + ", "
+                          + std::to_string(_reboque_caminhao) + ")"
+        ;
+
+
+
+        model::SqliteHook::executeQuery(sql);
+    }
+
+    void Caminhao::updateRecord() {
+    }
+
+    void Caminhao::deleteRecord() {
+    }
+
+    void Caminhao::recordToVeiculo() {
+    }
 }

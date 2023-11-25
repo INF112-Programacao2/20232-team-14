@@ -31,6 +31,10 @@ namespace model {
         static int callback(void *_, int numCol, char **row, char **colName);
 
         static int dropTables();
+
+        static int executeQuery(std::string &sql); //
+
+        static std::vector<std::vector<std::string *> *>* fetchResult();
     };
 
 } // model

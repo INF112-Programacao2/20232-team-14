@@ -1,6 +1,6 @@
 #include "Moto.h"
 #include <string>
-
+#include "SqliteHook.h"
 namespace model {
 
     //Construtor Moto.h
@@ -161,6 +161,66 @@ namespace model {
         dados_especificos["SistemaE"] = std::to_string(_sistEletrico);
         dados_especificos["Escapamento"] = std::to_string(_escapamento);
 
+
+    }
+
+    void Moto::persistVeiculo() {
+        std::string sql = "INSERT INTO motos VALUES("
+                        + std::to_string(_os) + ", "
+                        + std::to_string(_id_patio) + ", "
+                        + std::to_string(_sit_veiculo) + ", "
+                        + "\'" + _solicitacao + "\', "
+                        + "\'" + _funcionario + "\', "
+                        + "\'" + _placa_reboque + "\', "
+                        + "\'" + _motivo + "\', "
+                        + std::to_string(_estado_veiculo) + ", "
+                        + std::to_string(_blitz) + ", "
+                        + "\'" + _local + "\', "
+                        + "\'" + _placa + "\', "
+                        + "\'" + _marca + "\', "
+                        + "\'" + _modelo + "\', "
+                        + std::to_string(_ano) + ", "
+                        + "\'" + _cidade + "\', "
+                        + "\'" + _chassi + "\', "
+                        + std::to_string(_km) + ", "
+                        + std::to_string(_hodometro) + ", "
+                        + "\'" + _ocorrencia + "\', "
+                        + "\'" + _policial + "\', "
+                        + "\'" + _data_apreensao + "\', "
+                        + "NULL" + ", "
+                        + "\'" + _horario + "\', "
+                        + "\'" + _objetos + "\', "
+                        + "\'" + _observacoes + "\', "
+                        + std::to_string(_rodas) + ", "
+                        + std::to_string(_retrovisores) + ", "
+                        + "2" + ", "
+                        + std::to_string(_capacete) + ", "
+                        + std::to_string(_carenagem) + ", "
+                        + std::to_string(_bau) + ", "
+                        + std::to_string(_ferramentas) + ", "
+                        + std::to_string(_suspDianteira) + ", "
+                        + std::to_string(_suspTraseira) + ", "
+                        + std::to_string(_guidao) + ", "
+                        + std::to_string(_sistEletrico) + ", "
+                        + std::to_string(_escapamento) + ", "
+                        + std::to_string(_diaria_moto) + ", "
+                        + std::to_string(_reboque_moto) + ")"
+        ;
+
+
+
+        model::SqliteHook::executeQuery(sql);
+    }
+
+    void Moto::updateRecord() {
+
+    }
+
+    void Moto::deleteRecord() {
+
+    }
+
+    void Moto::recordToVeiculo() {
 
     }
 

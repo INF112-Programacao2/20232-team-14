@@ -66,6 +66,14 @@ namespace model {
 
         void veiculoToMap(std::unordered_map<std::string, std::string> &dados_veiculo, std::unordered_map<std::string, std::string> &dados_especificos) override;
 
+        void persistVeiculo() override;
+
+        void updateRecord() override;
+
+        void deleteRecord() override;
+
+        void recordToVeiculo() override;
+
     };
 
 }

@@ -377,5 +377,22 @@ namespace model {
 
     }
 
+    bool Veiculo::hasRecord(){
+        std::string sql =  "SELECT PLACA FROM carros WHERE ID = "
+                + std::to_string(_os)
+                + " UNION SELECT PLACA FROM motos WHERE ID = "
+                + std::to_string(_os)
+                + " UNION SELECT PLACA FROM caminhoes WHERE ID = "
+                + std::to_string(_os);
+
+        SqliteHook::executeQuery(sql);
+        std::vector<std::vector<std::string*>*>* result = SqliteHook::fetchResult();
+        if(!result->empty())
+            this->recordToVeiculo();
+        return result->empty();
+    }
+
+
+
 
 } // model

@@ -45,7 +45,6 @@ namespace controller {
                     break;
                 case 6:
                     model::SqliteHook::connectDB();
-                    model::SqliteHook::dropTables();
                     model::SqliteHook::initDB();
                     model::SqliteHook::insert();
                     model::SqliteHook::select();
@@ -108,7 +107,9 @@ namespace controller {
                                                      dados_veiculo["Objetos"], dados_veiculo["Obs"], stoi(dados_veiculo["EstadoRodas"]), stoi(dados_veiculo["EstadoRetro"]), stoi(dados_veiculo["Tipo"]),
                                                      stob(dados_moto["Capacete"]), stob(dados_moto["Carenagem"]), stob(dados_moto["Bau"]), stob(dados_moto["Ferramentas"]), stoi(dados_moto["SuspensaoD"]),
                                                      stoi(dados_moto["SuspensaoT"]), stoi(dados_moto["Guidao"]), stoi(dados_moto["SistemaE"]), stoi(dados_moto["Escapamento"]));
-
+        model::SqliteHook::connectDB();
+        motorcycle->persistVeiculo();
+        model::SqliteHook::closeDB();
         _veiculos->push_back(motorcycle);
     }
 
