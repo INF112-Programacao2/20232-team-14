@@ -10,7 +10,6 @@ namespace model {
 
     private:
 
-        std::string _id;
         bool _extintor;             //(1)Sim/(2)Não
         bool _estepe;               //(1)Sim/(2)Não
         bool _macaco;               //(1)Sim/(2)Não

@@ -31,10 +31,6 @@ namespace model {
 
     //Gets and Sets
 
-    const std::string &Caminhao::get_id() const {
-        return _id;
-    }
-
     int Caminhao::get_carroceria() const {
         return _carroceria;
     }

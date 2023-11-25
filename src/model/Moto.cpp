@@ -25,10 +25,6 @@ namespace model {
 
     //Gets and Sets
 
-    const std::string &model::Moto::get_id() const {
-        return _id;
-    }
-
     bool Moto::get_capacete() const {
         return _capacete;
     }
