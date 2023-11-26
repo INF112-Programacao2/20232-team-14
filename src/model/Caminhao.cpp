@@ -252,8 +252,6 @@ namespace model {
         model::SqliteHook::executeQuery(sql);
     }
 
-    void Caminhao::updateRecord() {
-    }
 
     void Caminhao::deleteRecord() {
     }

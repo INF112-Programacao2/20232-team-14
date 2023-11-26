@@ -79,7 +79,6 @@ namespace model {
 
         void persistVeiculo() override;
 
-        void updateRecord() override;
 
         void deleteRecord() override;
 

@@ -386,9 +386,7 @@ namespace model {
                 + std::to_string(_os);
 
         SqliteHook::executeQuery(sql);
-        std::vector<std::vector<std::string*>*>* result = SqliteHook::fetchResult();
-        if(!result->empty())
-            this->recordToVeiculo();
+        std::vector<std::vector<std::string>*>* result = SqliteHook::fetchResult();
         return result->empty();
     }
 

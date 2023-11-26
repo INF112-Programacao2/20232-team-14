@@ -7,7 +7,7 @@
 // superclasse de persistencia model utilizando SQLite3
 namespace model {
     sqlite3 *SqliteHook::_db = nullptr;
-    std::vector<std::vector<std::string *> *>* SqliteHook::_resultado = nullptr;
+    std::vector<std::vector<std::string> *>* SqliteHook::_resultado = nullptr;
 
     int SqliteHook::connectDB() {
 
@@ -29,6 +29,18 @@ namespace model {
         return 0;
     }
 
+    void SqliteHook::deleteResult(){
+        if(_resultado){
+            for (std::vector<std::string> *v: *_resultado) {
+                for (std::string s: *v) {
+                    s.clear();
+                    s.shrink_to_fit();
+                }
+                delete v;
+            }
+            delete _resultado;
+        }
+    }
 
 
     int SqliteHook::callback(void *_, int numCol, char **row, char **colName) {
@@ -37,11 +49,13 @@ namespace model {
         //posso fazer ser um vector e retornar ele no final de cada execucao
         // anotacao pessoal feita por eu caio pra mexer dps no codigo
         if(!_resultado){
-            _resultado = new std::vector<std::vector<std::string *> *>;
+            _resultado = new std::vector<std::vector<std::string> *>;
+        }else{
+            deleteResult();
         }
-        std::vector <std::string *> *v = new std::vector<std::string *>;
+        std::vector <std::string> *v = new std::vector<std::string>;
         for(int i = 0; i<numCol; i++) {
-            v->push_back(new std::string(row[i] ? row[i] : "NULL"));
+            v->emplace_back(row[i] ? row[i] : "NULL");
         }
         _resultado->push_back(v);
         printf("\n");
@@ -76,9 +90,9 @@ namespace model {
 
     void SqliteHook::printTest(){
         if(_resultado){
-            for (std::vector<std::string *> *v: *_resultado) {
-                for (std::string *s: *v) {
-                    std::cout << *s << std::endl;
+            for (std::vector<std::string> *v: *_resultado) {
+                for (std::string s: *v) {
+                    std::cout << s << std::endl;
                 }
             }
         }
@@ -151,7 +165,7 @@ namespace model {
         return 0;
     }
 
-    std::vector<std::vector<std::string *> *>* SqliteHook::fetchResult() {
+    std::vector<std::vector<std::string> *>* SqliteHook::fetchResult() {
         return _resultado;
     }
 

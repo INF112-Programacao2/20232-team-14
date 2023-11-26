@@ -208,9 +208,6 @@ namespace model {
         model::SqliteHook::executeQuery(sql);
     }
 
-    void Moto::updateRecord() {
-
-    }
 
     void Moto::deleteRecord() {
 

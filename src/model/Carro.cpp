@@ -252,11 +252,29 @@ namespace model {
 
 
     void Carro::deleteRecord() {
-
+        std::string sql = "DELETE FROM carros WHERE ID = " + std::to_string(_os);
+        model::SqliteHook::executeQuery(sql);
     }
 
     void Carro::recordToVeiculo() {
+        std::string sql =  "SELECT PLACA FROM carros WHERE ID = "
+                            + std::to_string(_os)
+                            + " UNION SELECT PLACA FROM motos WHERE ID = "
+                            + std::to_string(_os)
+                            + " UNION SELECT PLACA FROM caminhoes WHERE ID = "
+                            + std::to_string(_os);
 
+        SqliteHook::executeQuery(sql);
+        std::vector<std::vector<std::string>*>* result = SqliteHook::fetchResult();
+
+        if(result->empty()){
+            sql = "SELECT * FROM carros WHERE ID = " + std::to_string(_os);
+            model::SqliteHook::executeQuery(sql);
+            result = model::SqliteHook::fetchResult();
+            if(result){
+                _policial = (*(*result)[0])[0];
+            }
+        }
     }
 };
 
