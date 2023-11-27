@@ -1,0 +1,173 @@
+#include "SqliteHook.h"
+#include <sqlite3.h>
+#include <cstdio>
+#include <string>
+#include <iostream>
+#include <fstream>
+// superclasse de persistencia model utilizando SQLite3
+namespace model {
+    sqlite3 *SqliteHook::_db = nullptr;
+    std::vector<std::vector<std::string> *>* SqliteHook::_resultado = nullptr;
+
+    int SqliteHook::connectDB() {
+
+        int dbresponse;
+
+        dbresponse = sqlite3_open("../test.db", &_db);
+
+        if(dbresponse){
+            fprintf(stderr, "Nao pode abrir banco de dados: %s\n", sqlite3_errmsg(_db));
+            return -1;
+        }else{
+            fprintf(stderr, "Banco de dados aberto");
+            return 0;
+        }
+    }
+
+    int SqliteHook::closeDB(){
+        sqlite3_close(_db);
+        return 0;
+    }
+
+    void SqliteHook::deleteResult(){
+        if(_resultado){
+            for (std::vector<std::string> *v: *_resultado) {
+                for (std::string s: *v) {
+                    s.clear();
+                    s.shrink_to_fit();
+                }
+                delete v;
+            }
+            delete _resultado;
+        }
+    }
+
+
+    int SqliteHook::callback(void *_, int numCol, char **row, char **colName) {
+        //void star eh oq eu quiser
+        //mesmo cara que eu passo na chamada do exec (tipo contexto da execucao)
+        //posso fazer ser um vector e retornar ele no final de cada execucao
+        // anotacao pessoal feita por eu caio pra mexer dps no codigo
+        if(!_resultado){
+            _resultado = new std::vector<std::vector<std::string> *>;
+        }else{
+            deleteResult();
+        }
+        std::vector <std::string> *v = new std::vector<std::string>;
+        for(int i = 0; i<numCol; i++) {
+            v->emplace_back(row[i] ? row[i] : "NULL");
+        }
+        _resultado->push_back(v);
+        printf("\n");
+        return 0;
+    }
+
+    int SqliteHook::initDB() {
+        char *errorMsg = 0;
+        int dbresponse;
+
+        std::string sql;
+        std::ifstream fin("../database.sql");
+        for (std::string line; std::getline(fin, line);)
+        {
+            if(line.find('\r') != std::string::npos){
+                line.pop_back();//removendo o \r
+            }
+            sql.append(line);
+        }
+
+        dbresponse = sqlite3_exec(_db, sql.c_str(), callback, 0, &errorMsg); //0 pode ser literalmente qualquer coisa pois vai pra void *
+
+        if( dbresponse != SQLITE_OK ){
+            fprintf(stderr, "SQL error: %s\n", errorMsg);
+            sqlite3_free(errorMsg);
+            return -1;
+        } else {
+            fprintf(stdout, "Tabela criada com sucesso\n");
+        }
+        return 0;
+    }
+
+    void SqliteHook::printTest(){
+        if(_resultado){
+            for (std::vector<std::string> *v: *_resultado) {
+                for (std::string s: *v) {
+                    std::cout << s << std::endl;
+                }
+            }
+        }
+    }
+
+    int SqliteHook::insert() {
+        std::string sql = "INSERT INTO patios VALUES(12, \"Jaozinho\", 3, \"nao sei onde\", \"Joaozao\", \"celular\", 3.44)";
+        char *errorMsg = 0;
+        int dbresponse;
+
+        dbresponse = sqlite3_exec(_db, sql.c_str(), callback, 0, &errorMsg);
+        if( dbresponse != SQLITE_OK ){
+            fprintf(stderr, "SQL error: %s\n", errorMsg);
+            sqlite3_free(errorMsg);
+            return -1;
+        }
+
+        return 0;
+    }
+
+    int SqliteHook::remove() {
+        return 0;
+    }
+
+    int SqliteHook::update() {
+        return 0;
+    }
+
+    int SqliteHook::select() {
+        std::string sql = "SELECT * FROM patios";
+        char *errorMsg = 0;
+        int dbresponse;
+
+        dbresponse = sqlite3_exec(_db, sql.c_str(), callback, 0, &errorMsg);
+        if( dbresponse != SQLITE_OK ){
+            fprintf(stderr, "SQL error: %s\n", errorMsg);
+            sqlite3_free(errorMsg);
+            return -1;
+        }
+
+        return 0;
+    }
+
+    int SqliteHook::dropTables(){
+        std::string sql = "DROP TABLE IF EXISTS carros; DROP TABLE IF EXISTS patios;";
+        char *errorMsg = 0;
+        int dbresponse;
+
+        dbresponse = sqlite3_exec(_db, sql.c_str(), callback, 0, &errorMsg);
+        if( dbresponse != SQLITE_OK ){
+            fprintf(stderr, "SQL error: %s\n", errorMsg);
+            sqlite3_free(errorMsg);
+            return -1;
+        }
+
+        return 0;
+    }
+
+    int SqliteHook::executeQuery(std::string &sql) {
+        char *errorMsg = 0;
+        int dbresponse;
+
+        dbresponse = sqlite3_exec(_db, sql.c_str(), callback, 0, &errorMsg);
+        if( dbresponse != SQLITE_OK ){
+            fprintf(stderr, "SQL error: %s\n", errorMsg);
+            sqlite3_free(errorMsg);
+            return -1;
+        }
+
+        return 0;
+    }
+
+    std::vector<std::vector<std::string> *>* SqliteHook::fetchResult() {
+        return _resultado;
+    }
+
+
+} // model
