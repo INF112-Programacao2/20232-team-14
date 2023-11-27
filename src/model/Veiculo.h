@@ -125,6 +125,8 @@ namespace model {
         virtual void deleteRecord() = 0; // delete
         virtual void recordToVeiculo() = 0; // select
         bool hasRecord();
+
+        virtual ~Veiculo();
     };
 
 } // model

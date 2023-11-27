@@ -390,7 +390,7 @@ namespace model {
         return result->empty();
     }
 
-
+    Veiculo::~Veiculo() = default;
 
 
 } // model

@@ -46,7 +46,6 @@ namespace controller {
                 case 6:
                     model::SqliteHook::connectDB();
                     model::SqliteHook::initDB();
-                    model::SqliteHook::insert();
                     model::SqliteHook::select();
                     model::SqliteHook::printTest();
                     model::SqliteHook::closeDB();
@@ -107,9 +106,6 @@ namespace controller {
                                                      dados_veiculo["Objetos"], dados_veiculo["Obs"], stoi(dados_veiculo["EstadoRodas"]), stoi(dados_veiculo["EstadoRetro"]), stoi(dados_veiculo["Tipo"]),
                                                      stob(dados_moto["Capacete"]), stob(dados_moto["Carenagem"]), stob(dados_moto["Bau"]), stob(dados_moto["Ferramentas"]), stoi(dados_moto["SuspensaoD"]),
                                                      stoi(dados_moto["SuspensaoT"]), stoi(dados_moto["Guidao"]), stoi(dados_moto["SistemaE"]), stoi(dados_moto["Escapamento"]));
-        model::SqliteHook::connectDB();
-        motorcycle->persistVeiculo();
-        model::SqliteHook::closeDB();
         _veiculos->push_back(motorcycle);
     }
 
@@ -151,7 +147,8 @@ namespace controller {
     }
     void Controller::persistChecklists(){ //para cada veiculo em _veiculos, chama a funcao de persistencia respectiva (salva as alterações)
         for (model::Veiculo *v : *_veiculos){
-            interface.displayOutput(v->get_policial());
+            v->persistVeiculo();
+            delete v;
         }
     }
 
@@ -195,7 +192,7 @@ namespace controller {
 
     Controller::~Controller() {
         for(model::Veiculo *v : *_veiculos){ // preciso disso funcional pra nao dar um leak de memoria bizonho
-            //delete(v);
+            delete(v);
         }
         delete _veiculos;
     }

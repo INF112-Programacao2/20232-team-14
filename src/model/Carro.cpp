@@ -272,10 +272,51 @@ namespace model {
             model::SqliteHook::executeQuery(sql);
             result = model::SqliteHook::fetchResult();
             if(result){
-                _policial = (*(*result)[0])[0];
+                _os = stoi((*(*result)[0])[0]);
+                _id_patio = stoi((*(*result)[0])[1]);
+                _sit_veiculo = (*(*result)[0])[2] == "true"; // oq for booleano pd fazer assim
+                _solicitacao = (*(*result)[0])[3];
+                _funcionario = (*(*result)[0])[4];
+                _placa_reboque = (*(*result)[0])[5];
+                _motivo = (*(*result)[0])[6];
+                _estado_veiculo = stoi((*(*result)[0])[7]);
+                _blitz = (*(*result)[0])[8] == "true";
+                _local = (*(*result)[0])[9];
+                _placa = (*(*result)[0])[10];
+                _marca = (*(*result)[0])[11];
+                _modelo = (*(*result)[0])[12];
+                _ano = stoi((*(*result)[0])[13]);
+                _cidade = (*(*result)[0])[14];
+                _chassi = (*(*result)[0])[15];
+                _km = stoi((*(*result)[0])[16]);
+                _hodometro = stoi((*(*result)[0])[17]);
+                _ocorrencia = (*(*result)[0])[18];
+                _policial = (*(*result)[0])[19];
+                _data_apreensao = (*(*result)[0])[20];
+                _data_liberacao = (*(*result)[0])[21];
+                _horario = (*(*result)[0])[22];
+                _objetos = (*(*result)[0])[23];
+                _observacoes = (*(*result)[0])[24];
+                _rodas = stoi((*(*result)[0])[25]);
+                _retrovisores = stoi((*(*result)[0])[26]);
+                _tipo = stoi((*(*result)[0])[27]);
+                _extintor = stoi((*(*result)[0])[28]);
+                _estepe = stoi((*(*result)[0])[29]);
+                _macaco = stoi((*(*result)[0])[30]);
+                _chave_roda = stoi((*(*result)[0])[31]);
+                _triangulo = stoi((*(*result)[0])[32]);
+                _bateria = stoi((*(*result)[0])[33]);
+                _calotas = stoi((*(*result)[0])[34]);
+                _tapetes = stoi((*(*result)[0])[35]);
+                _radio = stoi((*(*result)[0])[36]);
+                _portas = stoi((*(*result)[0])[37]);
+                _capo = stoi((*(*result)[0])[38]);
+                _painel = stoi((*(*result)[0])[39]);
+                _diaria_carro = stod((*(*result)[0])[40]);
+                _reboque_carro = stod((*(*result)[0])[41]);
             }
         }
     }
-};
+}
 
 // model
