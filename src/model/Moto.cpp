@@ -23,6 +23,14 @@ namespace model {
 
     }
 
+    Moto::Moto(int os) : Veiculo(os) {
+
+    }
+
+    Moto::Moto(std::string placa) : Veiculo(placa){
+
+    }
+
     //Gets and Sets
 
     bool Moto::get_capacete() const {
@@ -210,7 +218,8 @@ namespace model {
 
 
     void Moto::deleteRecord() {
-
+        std::string sql = "DELETE * FROM motos WHERE ID = " + std::to_string(_os);
+        SqliteHook::executeQuery(sql);
     }
 
     void Moto::recordToVeiculo() {
@@ -224,8 +233,8 @@ namespace model {
         SqliteHook::executeQuery(sql);
         std::vector<std::vector<std::string>*>* result = SqliteHook::fetchResult();
 
-        if(result->empty()){
-            sql = "SELECT * FROM carros WHERE ID = " + std::to_string(_os);
+        if(!result->empty()){
+            sql = "SELECT * FROM motos WHERE ID = " + std::to_string(_os);
             model::SqliteHook::executeQuery(sql);
             result = model::SqliteHook::fetchResult();
             if(result){

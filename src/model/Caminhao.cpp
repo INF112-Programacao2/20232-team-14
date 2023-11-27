@@ -254,6 +254,8 @@ namespace model {
 
 
     void Caminhao::deleteRecord() {
+        std::string sql = "DELETE * FROM caminhoes WHERE ID = " + std::to_string(_os);
+        SqliteHook::executeQuery(sql);
     }
 
     void Caminhao::recordToVeiculo() {
@@ -268,7 +270,7 @@ namespace model {
         std::vector<std::vector<std::string>*>* result = SqliteHook::fetchResult();
 
         if(result->empty()){
-            sql = "SELECT * FROM carros WHERE ID = " + std::to_string(_os);
+            sql = "SELECT * FROM caminhoes WHERE ID = " + std::to_string(_os);
             model::SqliteHook::executeQuery(sql);
             result = model::SqliteHook::fetchResult();
             if(result){
@@ -317,4 +319,5 @@ namespace model {
             }
         }
     }
+
 }

@@ -46,8 +46,9 @@ namespace controller {
                 case 6:
                     model::SqliteHook::connectDB();
                     model::SqliteHook::initDB();
-                    model::SqliteHook::select();
-                    model::SqliteHook::printTest();
+                    model::Moto *m = new model::Moto(123);
+                    m->recordToVeiculo();
+                    printVeiculo(m);
                     model::SqliteHook::closeDB();
                     break;
             }

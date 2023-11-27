@@ -199,7 +199,7 @@ namespace model {
     }
 
     void Carro::persistVeiculo() {
-        std::string sql = "INSERT INTO caminhoes VALUES("
+        std::string sql = "INSERT INTO carros VALUES("
                           + std::to_string(_os) + ", "
                           + std::to_string(_id_patio) + ", "
                           + std::to_string(_sit_veiculo) + ", "
@@ -227,7 +227,7 @@ namespace model {
                           + "\'" + _observacoes + "\', "
                           + std::to_string(_rodas) + ", "
                           + std::to_string(_retrovisores) + ", "
-                          + "3" + ", "
+                          + "1" + ", "
                           + std::to_string(_extintor) + ", "
                           + std::to_string(_estepe) + ", "
                           + std::to_string(_macaco) + ", "
