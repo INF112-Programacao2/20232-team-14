@@ -13,6 +13,4 @@ add_executable(20232_team_14 ${PROJ_FILES}
         src/model/Moto.cpp
 )
 
-find_package(SQLite3 REQUIRED)
-target_include_directories(20232_team_14 PRIVATE ${SQLite3_INCLUDE_DIRS} src)
-target_link_libraries(20232_team_14 ${SQLite3_LIBRARIES})
+target_include_directories(20232_team_14 PRIVATE src)

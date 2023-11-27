@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map>
-#include <cstring>
 #include "Cli.h"
 #include <regex>
 
@@ -15,10 +14,10 @@ namespace view {
 
         std::cout << "\n1. Inserir Apreensão (test insert)" << std::endl;
         std::cout << "2. Editar checklist (nao ta funcionando) " << std::endl;
-        std::cout << "3. Realizar orçamento (test print/persist)" << std::endl;
+        std::cout << "3. Realizar orçamento (nao ta funcionando" << std::endl;
         std::cout << "4. Liberar veículo. (nao ta funcionando)" << std::endl;
-        std::cout << "5. Consultar veículo. (nao ta funcionando)" << std::endl;
-        std::cout << "6. Test Database" << std::endl;
+        std::cout << "5. Consultar veículo por OS. (nao ta funcionando)" << std::endl;
+        std::cout << "6. Consultar veículo por Placa. (nao ta funcionando)" << std::endl;
         std::cout << "0. Encerra Programa" << std::endl;
         std::cin >> input;
         std::cin.ignore();

@@ -76,13 +76,6 @@ namespace model {
         virtual double calcOrcamento(std::string data_liberacao_desejado) override;
 
         void veiculoToMap(std::unordered_map<std::string, std::string> &dados_veiculo, std::unordered_map<std::string, std::string> &dados_especificos) override;
-
-        void persistVeiculo() override;
-
-
-        void deleteRecord() override;
-
-        void recordToVeiculo() override;
     };
 
 }

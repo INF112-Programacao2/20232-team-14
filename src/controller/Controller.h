@@ -28,14 +28,13 @@ namespace controller {
         void criarCaminhao(std::unordered_map<std::string, std::string> &dados_veiculo);
         void criarMoto(std::unordered_map<std::string, std::string> &dados_veiculo);
 
-        void persistChecklists();
+        void deleteAll();
 
-        void veiculoToMap(const model::Veiculo &v, std::unordered_map<std::string, std::string> &dados_veiculo,
-                             std::unordered_map<std::string, std::string> &dados_especificos);
+        void printAll();
 
         model::Veiculo* searchByOS(const int &OS);
 
-        model::Veiculo *searchByPlate(const std::string &plate);
+        void searchByPlate(const std::string &plate);
 
         void printVeiculo(model::Veiculo *v);
     };

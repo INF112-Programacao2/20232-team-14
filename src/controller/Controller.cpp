@@ -3,7 +3,6 @@
 #include "Controller.h"
 #include "model/Carro.h"
 #include "view/Cli.h"
-#include "model/SqliteHook.h"
 #include "model/Moto.h"
 #include "model/Caminhao.h"
 
@@ -15,7 +14,6 @@ namespace controller {
 
     void Controller::startProgram() {
         bool loop = true;
-        bool erro = false; //responsavel por solicitar novamente entradas consideradas invalidas
         _veiculos = nullptr;
         _id_patio = 1;
 
@@ -33,23 +31,12 @@ namespace controller {
                     editarChecklist();
                     break;
                 case 3:
-                    realizarOrcamento(searchByPlate(interface.readPlate()));
-                    //persistChecklists();
+
                     break;
                 case 4:
                     liberarVeiculo();
                     break;
                 case 5:
-                    //teste, limpar implementacao dps
-                    printVeiculo(searchByOS(interface.readOS()));
-                    break;
-                case 6:
-                    model::SqliteHook::connectDB();
-                    model::SqliteHook::initDB();
-                    model::Moto *m = new model::Moto(123);
-                    m->recordToVeiculo();
-                    printVeiculo(m);
-                    model::SqliteHook::closeDB();
                     break;
             }
         }
@@ -146,10 +133,14 @@ namespace controller {
                 break;
         }
     }
-    void Controller::persistChecklists(){ //para cada veiculo em _veiculos, chama a funcao de persistencia respectiva (salva as alterações)
+    void Controller::deleteAll(){ //para cada veiculo em _veiculos, chama a funcao de persistencia respectiva (salva as alterações)
         for (model::Veiculo *v : *_veiculos){
-            v->persistVeiculo();
             delete v;
+        }
+    }
+    void Controller::printAll() {
+        for (model::Veiculo *v : *_veiculos){
+            printVeiculo(v);
         }
     }
 
@@ -161,17 +152,15 @@ namespace controller {
         }
     }
 
-    model::Veiculo* Controller::searchByPlate(const std::string &plate){
+    void Controller::searchByPlate(const std::string &plate){
         for(model::Veiculo *v : *_veiculos){
             if(v->get_placa() == plate){
-                return v;
+                printVeiculo(v);
             }
         }
     }
 
-    void Controller::editarChecklist() { //busca no vetor um veículo pela OS, posteriormente, as informações são mostradas e é oferecida a oportunidade de alterá-las
-//        //pede a interface para ler uma OS
-//        //recebe esse inteiro
+    void Controller::editarChecklist() {
 
 
     }
@@ -197,6 +186,8 @@ namespace controller {
         }
         delete _veiculos;
     }
+
+
 
 
 } // controller

@@ -1,6 +1,5 @@
 #include <string>
 #include <sstream>
-#include <utility>
 #include "Veiculo.h"
 
 namespace model {
@@ -378,29 +377,6 @@ namespace model {
 
     }
 
-    bool Veiculo::hasRecord(){
-        std::string sql =  "SELECT PLACA FROM carros WHERE ID = "
-                + std::to_string(_os)
-                + " UNION SELECT PLACA FROM motos WHERE ID = "
-                + std::to_string(_os)
-                + " UNION SELECT PLACA FROM caminhoes WHERE ID = "
-                + std::to_string(_os);
-
-        SqliteHook::executeQuery(sql);
-        std::vector<std::vector<std::string>*>* result = SqliteHook::fetchResult();
-        return result->empty();
-    }
-
-    Veiculo::Veiculo(int os): _os(os){
-
-    }
-    Veiculo::Veiculo(std::string placa): _placa(std::move(placa)){
-
-    }
-
-    void Veiculo::fetchByPlate() {
-
-    }
 
     Veiculo::~Veiculo() = default;
 
