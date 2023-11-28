@@ -91,9 +91,9 @@ namespace view {
         leituraCampo("Data de apreensao do veiculo:\nConsidere o formato dd/mm/aaaa", dados_veiculo["Data"]); // TODO: REFAZER ESSE REGEX
         leituraCampo("Horario de apreensao: ", dados_veiculo["Horario"], "^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$", "Horario invalido.");
         leituraCampo("Objetos que estavam no carro no momento de apreensao: ", dados_veiculo["Objetos"]);
-        leituraCampo("Se desejar, acrescente alguma observacao", dados_veiculo["Obs"]);
-        leituraCampo("Estado das rodas do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRodas"], "^[01234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
-        leituraCampo("Estado dos retrovisores do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRetro"], "^[01234]$", "Estado invalido selecionado. deve conter um numero entre um e quatro");
+        leituraCampo("Observacao (se nao houver, pressione zero): ", dados_veiculo["Obs"]);
+        leituraCampo("Estado das rodas do veiculo no momento de apreensao:\n1-inexistente\n2-amassado\n3-riscado\n4-quebrado\n5-bom estado", dados_veiculo["EstadoRodas"], "^[01234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
+        leituraCampo("Estado dos retrovisores do veiculo no momento de apreensao:\n1-inexistente\n2-amassado\n3-riscado\n4-quebrado\n5-bom estado", dados_veiculo["EstadoRetro"], "^[01234]$", "Estado invalido selecionado. deve conter um numero entre um e quatro");
         leituraCampo("Tipo do veículo:\n1-Carro\n2-Moto\n3-Caminhao", dados_veiculo["Tipo"], "^[123]$", "Tipo invalido selecionado. Resposta deve conter um numero entre 1 e 3.");
 
     }
@@ -160,7 +160,13 @@ namespace view {
         std::cout << "Funcionario responsavel por registrar o veiculo: " << dados_veiculo["Funcionario"] << std::endl;
         std::cout << "Placa do veiculo que realizou o reboque: " << dados_veiculo["PlacaReboque"] << std::endl;
         std::cout << "Motivo da apreensao: " << dados_veiculo["Motivo"] << std::endl;
-        std::cout << "Estado do veiculo no momento de apreensao: " << dados_veiculo["Estado"] << std::endl;
+        std::cout << "Estado do veiculo no momento de apreensao: ";
+        if (std::stoi(dados_veiculo["Estado"])==1)
+            std::cout << "Ruim\n";
+        else if (std::stoi(dados_veiculo["Estado"])==2)
+            std::cout << "Regular\n";
+        else
+            std::cout << "Bom\n";
         std::cout << "Ocorrencia de Blitz: " << dados_veiculo["Blitz"] << std::endl;
         std::cout << "Local de apreensao: " << dados_veiculo["Local"] << std::endl;
         std::cout << "Placa do veiculo apreendido: " << dados_veiculo["Placa"] << std::endl;
@@ -176,9 +182,31 @@ namespace view {
         std::cout << "Data de apreensao do veiculo: " << dados_veiculo["Data"] << std::endl;
         std::cout << "Horario de apreensao: " << dados_veiculo["Horario"] << std::endl;
         std::cout << "Objetos que estavam no carro no momento de apreensao: " << dados_veiculo["Objetos"] << std::endl;
-        std::cout << "Se desejar, acrescente alguma observacao, caso contrario digite 0 para continuar: " << dados_veiculo["Obs"] << std::endl;
-        std::cout << "Estado das rodas do veiculo no momento de apreensao: " << dados_veiculo["EstadoRodas"] << std::endl;
-        std::cout << "Estado dos retrovisores do veiculo no momento de apreensao: " << dados_veiculo["EstadoRetro"] << std::endl;
+        if (std::stoi(dados_veiculo["Obs"])!=0) {
+            std::cout << "Observacao: " << dados_veiculo["Obs"] << std::endl;
+        }
+        std::cout << "Estado das rodas do veiculo no momento de apreensao: ";
+        if (std::stoi(dados_veiculo["EstadoRodas"])==1)
+            std::cout << "Inexistente\n";
+        else if (std::stoi(dados_veiculo["EstadoRodas"])==2)
+            std::cout << "Amassado\n";
+        else if (std::stoi(dados_veiculo["EstadoRodas"])==3)
+            std::cout << "Riscado\n";
+        else if (std::stoi(dados_veiculo["EstadoRodas"])==4)
+            std::cout << "Quebrado\n";
+        else
+            std::cout << "Bom estado\n";
+        std::cout << "Estado dos retrovisores do veiculo no momento de apreensao: ";
+        if (std::stoi(dados_veiculo["EstadoRetro"])==1)
+            std::cout << "Inexistente\n";
+        else if (std::stoi(dados_veiculo["EstadoRetro"])==2)
+            std::cout << "Amassado\n";
+        else if (std::stoi(dados_veiculo["EstadoRetro"])==3)
+            std::cout << "Riscado\n";
+        else if (std::stoi(dados_veiculo["EstadoRetro"])==4)
+            std::cout << "Quebrado\n";
+        else
+            std::cout << "Bom estado\n";
         std::cout << "Tipo do veículo: " << dados_veiculo["Tipo"] << std::endl;
     }
 
