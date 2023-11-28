@@ -70,7 +70,7 @@ namespace view {
 
 
     void Cli::coletaChecklist(std::unordered_map<std::string, std::string> &dados_veiculo){
-        leituraCampo("Ordem de servico: ", dados_veiculo["OS"],"^[0-9]+$","Ordem de servico invalida.");
+        leituraCampo("Ordem de servico: ", dados_veiculo["OS"],"^[0-9]+$","Ordem de servico invalida. Este campo deve conter apenas numeros.");
         leituraCampo("Solicitacao: ", dados_veiculo["Solicitacao"]);
         leituraCampo("Funcionario responsavel por registrar o veiculo: ", dados_veiculo["Funcionario"]);
         leituraCampo("Placa do veiculo que realizou o reboque: ", dados_veiculo["PlacaReboque"], "^[A-Za-z]{3}-?[0-9][0-9A-Za-z][0-9][0-9]$", "Placa invalida.");
@@ -81,28 +81,28 @@ namespace view {
         leituraCampo("Placa do veiculo apreendido: ", dados_veiculo["Placa"],"^[A-Z]{3}-?[0-9][0-9A-Z][0-9][0-9]$","Placa invalida.");
         leituraCampo("Marca do veiculo apreendido: ", dados_veiculo["Marca"]);
         leituraCampo("Modelo do veiculo apreendido: ", dados_veiculo["Modelo"]);
-        leituraCampo("Ano de fabricação do veiculo: ", dados_veiculo["Ano"], "^(19[012][0-9]|20[0-9]{2})$", "Ano invalido");
+        leituraCampo("Ano de fabricação do veiculo: ", dados_veiculo["Ano"], "^(19[012][0-9]|20[0-9]{2})$", "Ano invalido.");
         leituraCampo("Cidade em que ocorreu a apreensao: ", dados_veiculo["Cidade"]);
         leituraCampo("Chassi do veiculo apreendido: ", dados_veiculo["Chassi"]);
-        leituraCampo("Distancia em quilometro do patio no momento de apreensao: ", dados_veiculo["Distancia"], "^[0-9]+$", "Distancia invalida");
-        leituraCampo("Quilometragem do veiculo no momento de apreensao: ", dados_veiculo["KM"], "^[0-9]+$", "Quilometragem invalida");
+        leituraCampo("Distancia em quilometro do patio no momento de apreensao: ", dados_veiculo["Distancia"], "^[0-9]+$", "Distancia invalida. Este campo deve conter apenas numeros.");
+        leituraCampo("Quilometragem do veiculo no momento de apreensao: ", dados_veiculo["KM"], "^[0-9]+$", "Quilometragem invalida. Este campo deve conter apenas numeros.");
         leituraCampo("Ocorrencia registrada: ", dados_veiculo["Ocorrencia"]);
         leituraCampo("Policial responsavel pela apreensao: ", dados_veiculo["Policial"]);
         leituraCampo("Data de apreensao do veiculo:\nConsidere o formato dd/mm/aaaa", dados_veiculo["Data"]); // TODO: REFAZER ESSE REGEX
-        leituraCampo("Horario de apreensao: ", dados_veiculo["Horario"], "^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$", "Horario invalido.");
+        leituraCampo("Horario de apreensao:", dados_veiculo["Horario"], "^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$", "Horario invalido.");
         leituraCampo("Objetos que estavam no carro no momento de apreensao: ", dados_veiculo["Objetos"]);
-        leituraCampo("Observacao (se nao houver, pressione zero): ", dados_veiculo["Obs"]);
-        leituraCampo("Estado das rodas do veiculo no momento de apreensao:\n1-inexistente\n2-amassado\n3-riscado\n4-quebrado\n5-bom estado", dados_veiculo["EstadoRodas"], "^[01234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
-        leituraCampo("Estado dos retrovisores do veiculo no momento de apreensao:\n1-inexistente\n2-amassado\n3-riscado\n4-quebrado\n5-bom estado", dados_veiculo["EstadoRetro"], "^[01234]$", "Estado invalido selecionado. deve conter um numero entre um e quatro");
+        leituraCampo("Observacao (se nao houver, pressione 'N'): ", dados_veiculo["Obs"]);
+        leituraCampo("Estado das rodas do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRodas"], "^[01234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
+        leituraCampo("Estado dos retrovisores do veiculo no momento de apreensao:\n0-inexistente\n1-amassado\n2-riscado\n3-quebrado\n4-bom estado", dados_veiculo["EstadoRetro"], "^[01234]$", "Estado invalido selecionado. deve conter um numero entre um e quatro");
         leituraCampo("Tipo do veículo:\n1-Carro\n2-Moto\n3-Caminhao", dados_veiculo["Tipo"], "^[123]$", "Tipo invalido selecionado. Resposta deve conter um numero entre 1 e 3.");
 
     }
 
     void Cli::coletaChecklistCarro(std::unordered_map<std::string, std::string> &dados_carro) {
-        leituraCampo("Extintor(S/N):\n", dados_carro["Extintor"]);
+        leituraCampo("Extintor(S/N):", dados_carro["Extintor"]);
         leituraCampo("Estepe(S/N): ", dados_carro["Estepe"]);
         leituraCampo("Macaco (S/N): ", dados_carro["Macaco"]);
-        leituraCampo("Chave roda (S/N) : ", dados_carro["ChaveRoda"]);
+        leituraCampo("Chave roda (S/N): ", dados_carro["ChaveRoda"]);
         leituraCampo("Triangulo (S/N): ", dados_carro["Triangulo"]);
         leituraCampo("Bateria (S/N): ", dados_carro["Bateria"]);
         leituraCampo("Calotas (S/N): ", dados_carro["Calotas"]);
@@ -182,32 +182,31 @@ namespace view {
         std::cout << "Data de apreensao do veiculo: " << dados_veiculo["Data"] << std::endl;
         std::cout << "Horario de apreensao: " << dados_veiculo["Horario"] << std::endl;
         std::cout << "Objetos que estavam no carro no momento de apreensao: " << dados_veiculo["Objetos"] << std::endl;
-        if (std::stoi(dados_veiculo["Obs"])!=0) {
+        if (dados_veiculo["Obs"]!="N" && dados_veiculo["Obs"]!="n" ) {
             std::cout << "Observacao: " << dados_veiculo["Obs"] << std::endl;
         }
         std::cout << "Estado das rodas do veiculo no momento de apreensao: ";
-        if (std::stoi(dados_veiculo["EstadoRodas"])==1)
+        if (std::stoi(dados_veiculo["EstadoRodas"])==0)
             std::cout << "Inexistente\n";
-        else if (std::stoi(dados_veiculo["EstadoRodas"])==2)
+        else if (std::stoi(dados_veiculo["EstadoRodas"])==1)
             std::cout << "Amassado\n";
-        else if (std::stoi(dados_veiculo["EstadoRodas"])==3)
+        else if (std::stoi(dados_veiculo["EstadoRodas"])==2)
             std::cout << "Riscado\n";
-        else if (std::stoi(dados_veiculo["EstadoRodas"])==4)
+        else if (std::stoi(dados_veiculo["EstadoRodas"])==3)
             std::cout << "Quebrado\n";
         else
             std::cout << "Bom estado\n";
         std::cout << "Estado dos retrovisores do veiculo no momento de apreensao: ";
-        if (std::stoi(dados_veiculo["EstadoRetro"])==1)
+        if (std::stoi(dados_veiculo["EstadoRetro"])==0)
             std::cout << "Inexistente\n";
-        else if (std::stoi(dados_veiculo["EstadoRetro"])==2)
+        else if (std::stoi(dados_veiculo["EstadoRetro"])==1)
             std::cout << "Amassado\n";
-        else if (std::stoi(dados_veiculo["EstadoRetro"])==3)
+        else if (std::stoi(dados_veiculo["EstadoRetro"])==2)
             std::cout << "Riscado\n";
-        else if (std::stoi(dados_veiculo["EstadoRetro"])==4)
+        else if (std::stoi(dados_veiculo["EstadoRetro"])==3)
             std::cout << "Quebrado\n";
         else
             std::cout << "Bom estado\n";
-        std::cout << "Tipo do veículo: " << dados_veiculo["Tipo"] << std::endl;
     }
 
     void Cli::printChecklistCarro(std::unordered_map<std::string, std::string> &dados_carro) {
