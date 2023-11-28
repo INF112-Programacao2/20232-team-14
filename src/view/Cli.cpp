@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <unordered_map>
 #include "Cli.h"
@@ -14,7 +15,7 @@ namespace view {
 
         std::cout << "\n1. Inserir Apreensão (test insert)" << std::endl;
         std::cout << "2. Editar checklist (nao ta funcionando) " << std::endl;
-        std::cout << "3. Realizar orçamento (nao ta funcionando" << std::endl;
+        std::cout << "3. Realizar orçamento (aguardando verificação)" << std::endl;
         std::cout << "4. Liberar veículo. (nao ta funcionando)" << std::endl;
         std::cout << "5. Consultar veículo por OS. (nao ta funcionando)" << std::endl;
         std::cout << "6. Consultar veículo por Placa. (nao ta funcionando)" << std::endl;
@@ -141,11 +142,12 @@ namespace view {
         leituraCampo("Escapamento:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["Escapamento"], "^[01234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
     }
 
-    int Cli::readOS(){
+    std::string Cli::readOS(){
         std::string os;
         leituraCampo("Informe a ordem de servico: ", os,"^[0-9]+$","Ordem de servico invalida.");
-        return stoi(os);
+        return os;
     }
+
     std::string Cli::readPlate(){
         std::string plate;
         leituraCampo("Informe a placa do veiculo: ", plate,"^[A-Z]{3}-?[0-9][0-9A-Z][0-9][0-9]$","Placa invalida.");
@@ -251,6 +253,7 @@ namespace view {
     //As vezes queme sta usando o programa quer apenas calcular orcamento, sem pretensao de liberar o carro de fato
     //nesse caso, o atributo _data_liberacao da classe Veiculo, nao deveria ser mudado, sem que, de fato, o carro seja liberado
     //Essa funcao vai receber a pretensao da data de liberação, e será usada pela funcao CalcDiasApreensao da classe Veiculo
+
     std::string Cli::supostaDataLiberacao() {
 
         std::string data_lib;
@@ -260,11 +263,38 @@ namespace view {
         /* TODO: Alem disso, outra implementação que ainda nao está pronta, é que quando o orçamento é feito, na inserção da placa do
         TODO: veiculo que vai ser liberado, a mesma nao é consultada se o veiculo ja consta no patio ou nao*/
 
-        std::cin >> data_lib;
-
-        displayOutput("Orçamento para liberação do veículo: "); //TODO: lembrar de mudar isso depois, gambiarra feia para formatação do orçamento
+        data_lib = readUserInput();
 
         return data_lib;
+    }
+
+
+
+    std::string Cli::getIdVehicle() {
+
+        std::string escolha;
+        std::string id;
+        std::cout << "Insira como a pesquisa será feita [(1) Placa | (2) OS] : " << std::endl;   //TODO: fazer regex pro usuario nao fazer burrada
+        escolha = readUserInput();
+
+        if(stoi(escolha) == 1){
+
+            id = readPlate();
+
+        }else{
+
+            id = readOS();
+
+        }
+
+        return id;
+
+    }
+
+    void Cli::printOrcamento(double valor) {
+
+        std::cout << "Preço para liberação do veículo: " << valor << "R$" << std::endl;  //TODO: formatar o valor de saída de acordo
+
     }
 
     //mais tarde, para abrir caminho para a implementacao de uma GUI, deveremos implementar chamadas especificas as maneiras diferentes de exibir dados na tela

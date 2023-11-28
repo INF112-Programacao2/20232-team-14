@@ -34,10 +34,10 @@ namespace view {
         void leituraCampo(const std::string &label, std::string &field);
         void leituraCampo(const std::string &label, std::string &field, const std::string &check, const std::string &errorMsg);
 
-        int readOS();
-
+        std::string getIdVehicle();
+        void printOrcamento(double valor);
+        std::string readOS();
         std::string readPlate();
-
         std::string supostaDataLiberacao();
     };
 

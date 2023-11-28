@@ -31,7 +31,7 @@ namespace controller {
                     editarChecklist();
                     break;
                 case 3:
-
+                    realizarOrcamento();
                     break;
                 case 4:
                     liberarVeiculo();
@@ -119,7 +119,7 @@ namespace controller {
     void Controller::printVeiculo(model::Veiculo *v){
         std::unordered_map<std::string, std::string> dados_veiculo;
         std::unordered_map<std::string, std::string> dados_especificos;
-        v->veiculoToMap(dados_veiculo, dados_especificos);
+        v->veiculoToMap(dados_veiculo, dados_especificos);  //perguntar caio porque essa funcao é chamada, nao consigo ver a necessidade ainda
         interface.printChecklist(dados_veiculo);
         switch(v->get_tipo()){
             case 1:
@@ -149,14 +149,16 @@ namespace controller {
             if(v->get_os() == OS){
                 return v;
             }
+            //TODO: fazer o tratamento de quando uma OS que não consta no sistema é inserida
         }
     }
 
-    void Controller::searchByPlate(const std::string &plate){
+    model::Veiculo* Controller::searchByPlate(const std::string &plate){
         for(model::Veiculo *v : *_veiculos){
             if(v->get_placa() == plate){
-                printVeiculo(v);
+                return v;
             }
+            //TODO: fazer o tratamento de quando uma placa que não consta no sistema é inserida
         }
     }
 
@@ -165,10 +167,25 @@ namespace controller {
 
     }
 
-    void Controller::realizarOrcamento(model::Veiculo *pVeiculo) {
+    void Controller::realizarOrcamento() {
 
-        interface.displayOutput(std::to_string(pVeiculo->calcOrcamento(interface.supostaDataLiberacao()))); //TODO: formatar o valor de saída para RR.CC (real e centavos)
-        interface.displayOutput(" R$");
+        //A busca pelo veículo deve ser feita aqui
+        //Antes de tudo ele deve realizar uma escolha: placa ou os!
+
+        //gambiarrinha, mas depois altero
+        //basicamente verifica se o primeiro digito do retorno é uma letra (aí o retorno foi uma placa) ou um numero (foi uma OS)
+
+        std::string id = interface.getIdVehicle();
+
+        if(isalpha(id.at(0))){
+
+            interface.printOrcamento(searchByPlate(id)->calcOrcamento(interface.supostaDataLiberacao()));
+
+        }else{
+
+            interface.printOrcamento(searchByOS(stoi(id))->calcOrcamento(interface.supostaDataLiberacao()));
+
+        }
 
     }
 
@@ -186,7 +203,6 @@ namespace controller {
         }
         delete _veiculos;
     }
-
 
 
 

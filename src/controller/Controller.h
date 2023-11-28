@@ -20,7 +20,7 @@ namespace controller {
         void startProgram();
         void iniciarApreensao();
         void editarChecklist();
-        void realizarOrcamento(model::Veiculo *pVeiculo);
+        void realizarOrcamento();
         void liberarVeiculo();
         void consultarVeiculo();
         bool stob(const std::string &str);
@@ -34,9 +34,10 @@ namespace controller {
 
         model::Veiculo* searchByOS(const int &OS);
 
-        void searchByPlate(const std::string &plate);
+        model::Veiculo* searchByPlate(const std::string &plate);
 
         void printVeiculo(model::Veiculo *v);
+
     };
 
 }
