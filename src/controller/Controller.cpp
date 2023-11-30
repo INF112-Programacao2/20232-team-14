@@ -29,7 +29,7 @@ namespace controller {
                     iniciarApreensao();
                     break;
                 case 2:
-                    interface.leituraCampo("Ordem de serviço do veiculo para busca: ",OS); //essa chamada não pode ser feita aqui, deve ser feita uma chamada
+                    OS = interface.readOS();
                     editarChecklist(std::stoi(OS));
                     break;
                 case 3:
@@ -135,11 +135,13 @@ namespace controller {
                 break;
         }
     }
+
     void Controller::deleteAll(){ //para cada veiculo em _veiculos, chama a funcao de persistencia respectiva (salva as alterações)
         for (model::Veiculo *v : *_veiculos){
             delete v;
         }
     }
+
     void Controller::printAll() {
         for (model::Veiculo *v : *_veiculos){
             printVeiculo(v);
@@ -156,7 +158,7 @@ namespace controller {
     }
 
     model::Veiculo* Controller::searchByPlate(const std::string &plate){
-        for(model::Veiculo *v : *_veiculos){
+        for(model::Veiculo *v : *_veiculos){ //nao ta legal, tem que mudar
             if(v->get_placa() == plate){
                 return v;
             }
