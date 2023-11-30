@@ -17,10 +17,6 @@ namespace view {
 
         int mainMenu();
 
-        std::string readUserInput();
-
-        void displayOutput(const std::string& output);
-
         void errorMsg(const std::exception& e);
 
         void coletaChecklist(std::unordered_map<std::string, std::string> &dados_veiculo);

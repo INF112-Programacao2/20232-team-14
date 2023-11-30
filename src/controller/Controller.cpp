@@ -29,7 +29,8 @@ namespace controller {
                     iniciarApreensao();
                     break;
                 case 2:
-                    editarChecklist();
+                    interface.leituraCampo("Ordem de serviço do veiculo para busca: ",OS); //essa chamada não pode ser feita aqui, deve ser feita uma chamada
+                    editarChecklist(std::stoi(OS));
                     break;
                 case 3:
                     realizarOrcamento();
@@ -79,7 +80,7 @@ namespace controller {
                                                     stoi(dados_veiculo["KM"]), dados_veiculo["Ocorrencia"], dados_veiculo["Policial"], dados_veiculo["Data"], dados_veiculo["Horario"],
                                                     dados_veiculo["Objetos"], dados_veiculo["Obs"], stoi(dados_veiculo["EstadoRodas"]), stoi(dados_veiculo["EstadoRetro"]), stoi(dados_veiculo["Tipo"]),
                                                     stoi(dados_caminhao["EstadoCarroceria"]), stob(dados_caminhao["EixoTras"]), stob(dados_caminhao["Cintas"]),
-                                                    stob(dados_caminhao["SuspensaoC"]), stob(dados_caminhao["Extintor"]), stob(dados_caminhao["Estepe"]),
+                                                    stoi(dados_caminhao["SuspensaoC"]), stob(dados_caminhao["Extintor"]), stob(dados_caminhao["Estepe"]),
                                                     stob(dados_caminhao["Macaco"]), stob(dados_caminhao["ChaveRoda"]), stob(dados_caminhao["Triangulo"]),
                                                     stob(dados_caminhao["Bateria"]), stob(dados_caminhao["Calotas"]), stob(dados_caminhao["Tapetes"]), stob(dados_caminhao["Radio"]));
         _veiculos->push_back(truck);
@@ -163,8 +164,24 @@ namespace controller {
         }
     }
 
-    void Controller::editarChecklist() {
+    void Controller::editarChecklist(const int &OS) {
+        std::unordered_map<std::string, std::string> dados_veiculo;
+        std::unordered_map<std::string, std::string> dados_especificos;
 
+        model::Veiculo* v = searchByOS(OS);
+        v->veiculoToMap(dados_veiculo, dados_especificos);
+
+        switch (stoi(dados_veiculo["Tipo"])) {
+            case 1:
+                interface.coletaChecklistCarro(dados_veiculo);
+                break;
+            case 2:
+                interface.coletaChecklistMoto(dados_veiculo);
+                break;
+            case 3:
+                interface.coletaChecklistCaminhao(dados_veiculo);
+                break;
+        }
 
     }
 

@@ -254,22 +254,6 @@ namespace view {
     }
 
 
-    std::string Cli::readUserInput(){
-
-        std::string input;
-        std::cin.sync(); //necessario usar .sync() por enquanto para limpar o inputstream pro getline (refer to line 16)
-        std::getline(std::cin, input);
-
-        return input;
-
-    }
-
-    void Cli::displayOutput(const std::string& output){ //passagem por referencia pois economia de memoria, referencia const pois nao queremos nunca que seja mutavel
-
-        std::cout << output; //toda string que representa fim de linha deve vir acompanhada de \n ao final
-
-    }
-
     void Cli::errorMsg(const std::exception& e) {
 
         std::cerr << "ERRO: "<< e.what() << std::endl; //what() transforma a excecao em uma string legivel
@@ -290,7 +274,8 @@ namespace view {
         /* TODO: Alem disso, outra implementação que ainda nao está pronta, é que quando o orçamento é feito, na inserção da placa do
         TODO: veiculo que vai ser liberado, a mesma nao é consultada se o veiculo ja consta no patio ou nao*/
 
-        data_lib = readUserInput();
+        //data_lib = readUserInput();
+        // READ USER INPUT NAO EXISTE NUNCA EXISTIU
 
         return data_lib;
     }
@@ -302,8 +287,8 @@ namespace view {
         std::string escolha;
         std::string id;
         std::cout << "Insira como a pesquisa será feita [(1) Placa | (2) OS] : " << std::endl;   //TODO: fazer regex pro usuario nao fazer burrada
-        escolha = readUserInput();
-
+        //escolha = readUserInput();
+        // READ USER INPUT NAO EXISTE NUNCA EXISTIU
         if(stoi(escolha) == 1){
 
             id = readPlate();
