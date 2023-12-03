@@ -18,7 +18,6 @@ namespace controller {
         bool erro = false; //responsavel por solicitar novamente entradas consideradas invalidas
         _veiculos = nullptr;
         _id_patio = 1;
-        std::string OS;
 
 
         while(loop){
@@ -31,8 +30,7 @@ namespace controller {
                     iniciarApreensao();
                     break;
                 case 2:
-                    interface.leituraCampo("Ordem de serviço do veiculo para busca: ",OS);
-                    editarChecklist(std::stoi(OS));
+                    editarChecklist();
                     break;
                 case 3:
                     realizarOrcamento(searchByPlate(interface.readPlate()));
@@ -171,29 +169,12 @@ namespace controller {
         }
     }
 
-     //busca no vetor um veículo pela OS, posteriormente, as informações são mostradas e é oferecida a oportunidade de alterá-las
+    void Controller::editarChecklist() { //busca no vetor um veículo pela OS, posteriormente, as informações são mostradas e é oferecida a oportunidade de alterá-las
 //        //pede a interface para ler uma OS
 //        //recebe esse inteiro
-    void Controller::editarChecklist(const int &OS) {
-            std::unordered_map<std::string, std::string> dados_veiculo;
-            std::unordered_map<std::string, std::string> dados_especificos;
 
-            model::Veiculo* v = searchByOS(OS);
-            v->veiculoToMap(dados_veiculo, dados_especificos);
 
-            switch (stoi(dados_veiculo["Tipo"])) {
-                case 1:
-                    interface.coletaChecklistCarro(dados_veiculo);
-                    break;
-                case 2:
-                    interface.coletaChecklistMoto(dados_veiculo);
-                    break;
-                case 3:
-                    interface.coletaChecklistCaminhao(dados_veiculo);
-                    break;
-                    }
-
-        }
+    }
 
     void Controller::realizarOrcamento(model::Veiculo *pVeiculo) {
 
