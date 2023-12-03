@@ -19,7 +19,7 @@ namespace controller {
 
         void startProgram();
         void iniciarApreensao();
-        void editarChecklist(const int &OS);
+        void editarChecklist();
         void realizarOrcamento(model::Veiculo *pVeiculo);
         void liberarVeiculo();
         void consultarVeiculo();
