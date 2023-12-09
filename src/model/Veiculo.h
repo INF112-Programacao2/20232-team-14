@@ -122,7 +122,9 @@ namespace model {
         virtual double calcOrcamento(std::string dia_liberacao_desejado) = 0;
 
         virtual void veiculoToMap(std::unordered_map<std::string, std::string> &dados_veiculo, std::unordered_map<std::string, std::string> &dados_especificos) = 0;
+
         virtual ~Veiculo();
+
     };
 
 } // model

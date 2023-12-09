@@ -39,6 +39,9 @@ namespace controller {
                     liberarVeiculo();
                     break;
                 case 5:
+                    printAll();
+                    break;
+                case 6:
                     break;
             }
         }
