@@ -149,14 +149,15 @@ namespace model {
     }
 
     //end of gets and sets
-    double Carro::calcOrcamento(std::string data_liberacao_desejado){
+    double Carro::calcOrcamento(std::string data_liberacao){
 
-        return (_diaria_carro * (calcDiasApreensao(data_liberacao_desejado)) + (_reboque_carro) + (2.5 * _km));
+        return (_diaria_carro * (calcDiasApreensao(data_liberacao)) + (_reboque_carro) + (2.5 * _km));
 
     }
 
     void Carro::veiculoToMap(std::unordered_map<std::string, std::string> &dados_veiculo,
                              std::unordered_map<std::string, std::string> &dados_especificos) {
+
         dados_veiculo["OS"] = std::to_string(_os);
         dados_veiculo["Patio"] = std::to_string(_id_patio);
         dados_veiculo["Solicitacao"] = _solicitacao;

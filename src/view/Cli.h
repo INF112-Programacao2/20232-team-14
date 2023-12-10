@@ -34,7 +34,7 @@ namespace view {
         void printOrcamento(double valor);
         std::string readOS();
         std::string readPlate();
-        std::string supostaDataLiberacao();
+        std::string getDataLiberacao();
     };
 
 } // View

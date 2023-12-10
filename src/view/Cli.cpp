@@ -265,22 +265,17 @@ namespace view {
     //nesse caso, o atributo _data_liberacao da classe Veiculo, nao deveria ser mudado, sem que, de fato, o carro seja liberado
     //Essa funcao vai receber a pretensao da data de liberação, e será usada pela funcao CalcDiasApreensao da classe Veiculo
 
-    std::string Cli::supostaDataLiberacao() {
+    std::string Cli::getDataLiberacao() {
 
         std::string data_lib;
 
-        std::cout << "Insira a pretensão do dia de liberação: "; // TODO: FAZER UM REGEX PARA ESSE CASO
-
-        /* TODO: Alem disso, outra implementação que ainda nao está pronta, é que quando o orçamento é feito, na inserção da placa do
-        TODO: veiculo que vai ser liberado, a mesma nao é consultada se o veiculo ja consta no patio ou nao*/
-
-        //data_lib = readUserInput();
-        // READ USER INPUT NAO EXISTE NUNCA EXISTIU
+        //Não sei configurar para datas específicas, exemplo: Se fosse em um ano bissexto, a data 29/02/(anoBissexto) seria válida, mas se n fosse nao seria
+        //Acho que não vai precisar de ser taaaao específico mas vai que ne, por enquanto ta configurado para datas convencionais
+        leituraCampo("Insira a pretensão do dia de liberação: ", data_lib, "^[0-3][0-9]/(0[1-9]|1[0-2])/(20[0-9]{2})$","Data invalida.");
 
         return data_lib;
+
     }
-
-
 
     std::string Cli::getIdVehicle() {
 
@@ -305,7 +300,7 @@ namespace view {
 
     void Cli::printOrcamento(double valor) {
 
-        std::cout << "Preço para liberação do veículo: " << valor << "R$" << std::endl;  //TODO: formatar o valor de saída de acordo
+        std::cout << "Preço para liberação do veículo: " << valor << "R$" << std::endl;
 
     }
 

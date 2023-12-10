@@ -264,16 +264,17 @@ namespace model {
 
     }
 
-    int Veiculo::calcDiasApreensao(std::string data_liberacao_desejado) {
+    int Veiculo::calcDiasApreensao(std::string data_liberacao) {
 
         //Obtém dia, mes e ano das strings de data recebidas, guardando os valores nas variáveis abaixo
         int dia_Apreensao, mes_Apreensao, ano_Apreensao;
         int dia_Liberacao, mes_Liberacao, ano_Liberacao;
         char discard;
+
         std::stringstream ss_apreensao(_data_apreensao);
         ss_apreensao >> dia_Apreensao >> discard >> mes_Apreensao >> discard >> ano_Apreensao;
 
-        std::stringstream ss_liberacao(data_liberacao_desejado);
+        std::stringstream ss_liberacao(data_liberacao);
         ss_liberacao >> dia_Liberacao >> discard >> mes_Liberacao >> discard >> ano_Liberacao;
 
         int calendario_Entrada[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};

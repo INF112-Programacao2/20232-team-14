@@ -119,7 +119,7 @@ namespace model {
 
         //Realiza o orçamento de um veículo baseado no seu tipo e na quantidade de dias que permaneceu no patio
         //Será sobrescrita pois há variáveis dependentes de cada subclasse
-        virtual double calcOrcamento(std::string dia_liberacao_desejado) = 0;
+        virtual double calcOrcamento(std::string data_liberacao) = 0;
 
         virtual void veiculoToMap(std::unordered_map<std::string, std::string> &dados_veiculo, std::unordered_map<std::string, std::string> &dados_especificos) = 0;
 

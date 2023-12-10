@@ -13,11 +13,11 @@ namespace controller {
     view::Cli interface;
 
     void Controller::startProgram() {
+
         std::string OS;
         bool loop = true;
         _veiculos = nullptr;
         _id_patio = 1;
-
 
         while(loop){
 
@@ -33,7 +33,8 @@ namespace controller {
                     editarChecklist(std::stoi(OS));
                     break;
                 case 3:
-                    realizarOrcamento();
+                    OS = interface.readOS();
+                    realizarOrcamento(std::stoi(OS));
                     break;
                 case 4:
                     liberarVeiculo();
@@ -152,12 +153,17 @@ namespace controller {
     }
 
     model::Veiculo* Controller::searchByOS(const int &OS){
+
         for(model::Veiculo *v : *_veiculos){
+
             if(v->get_os() == OS){
                 return v;
             }
+
             //TODO: fazer o tratamento de quando uma OS que não consta no sistema é inserida
+
         }
+
     }
 
     model::Veiculo* Controller::searchByPlate(const std::string &plate){
@@ -190,25 +196,9 @@ namespace controller {
 
     }
 
-    void Controller::realizarOrcamento() {
+    void Controller::realizarOrcamento(const int &OS) {
 
-        //A busca pelo veículo deve ser feita aqui
-        //Antes de tudo ele deve realizar uma escolha: placa ou os!
-
-        //gambiarrinha, mas depois altero
-        //basicamente verifica se o primeiro digito do retorno é uma letra (aí o retorno foi uma placa) ou um numero (foi uma OS)
-
-        std::string id = interface.getIdVehicle();
-
-        if(isalpha(id.at(0))){
-
-            interface.printOrcamento(searchByPlate(id)->calcOrcamento(interface.supostaDataLiberacao()));
-
-        }else{
-
-            interface.printOrcamento(searchByOS(stoi(id))->calcOrcamento(interface.supostaDataLiberacao()));
-
-        }
+        interface.printOrcamento(searchByOS(OS)->calcOrcamento(interface.getDataLiberacao()));
 
     }
 

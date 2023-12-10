@@ -20,7 +20,7 @@ namespace controller {
         void startProgram();
         void iniciarApreensao();
         void editarChecklist(const int &OS);
-        void realizarOrcamento();
+        void realizarOrcamento(const int &OS);
         void liberarVeiculo();
         void consultarVeiculo();
         bool stob(const std::string &str);
