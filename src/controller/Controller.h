@@ -19,7 +19,7 @@ namespace controller {
 
         void startProgram();
         void iniciarApreensao();
-        void editarChecklist(const int &OS);
+        void editarChecklist();
         void realizarOrcamento(const int &OS);
         void liberarVeiculo();
         void consultarVeiculo();
@@ -34,7 +34,7 @@ namespace controller {
 
         model::Veiculo* searchByOS(const int &OS);
 
-        model::Veiculo* searchByPlate(const std::string &plate);
+        void searchByPlate(const std::string &plate);
 
         void printVeiculo(model::Veiculo *v);
 

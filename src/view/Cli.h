@@ -34,7 +34,17 @@ namespace view {
         void printOrcamento(double valor);
         std::string readOS();
         std::string readPlate();
+
+        std::string osAlreadyExistsError();
+
+        void osNotFound();
+
+        void veiculoJaLiberadoError();
+
+        void vectorVazioError();
         std::string getDataLiberacao();
+
+        void veiculoNaoExiste();
     };
 
 } // View

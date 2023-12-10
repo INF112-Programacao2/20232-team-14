@@ -13,13 +13,15 @@ namespace view {
 
         int input;
 
-        std::cout << "\n1. Inserir Apreensão (test insert)" << std::endl;
-        std::cout << "2. Editar checklist (nao ta funcionando) " << std::endl;
-        std::cout << "3. Realizar orçamento (aguardando verificação)" << std::endl;
-        std::cout << "4. Liberar veículo. (nao ta funcionando)" << std::endl;
-        std::cout << "5. Consultar veículo por OS. (nao ta funcionando)" << std::endl;
-        std::cout << "6. Consultar veículo por Placa. (nao ta funcionando)" << std::endl;
-        std::cout << "0. Encerra Programa" << std::endl;
+        std::cout << "\n1. Inserir Apreensão." << std::endl;
+        std::cout << "2. Editar checklist." << std::endl;
+        std::cout << "3. Realizar orçamento. (WIP)" << std::endl;
+        std::cout << "4. Liberar veículo." << std::endl;
+        std::cout << "5. Consultar veículo por OS." << std::endl;
+        std::cout << "6. Consultar veículo por Placa." << std::endl;
+        std::cout << "7. Mostrar todos os veículos." << std::endl;
+        std::cout << "8. Deletar todos os veículos." << std::endl;
+        std::cout << "0. Encerra Programa." << std::endl;
         std::cin >> input;
         std::cin.ignore();
         return input;
@@ -148,6 +150,16 @@ namespace view {
         return os;
     }
 
+    std::string Cli::osAlreadyExistsError(){
+        std::string os;
+        leituraCampo("A OS previamente informada ja esta em uso! Informe outra: ", os,"^[0-9]+$","Ordem de servico invalida.");
+        return os;
+    }
+
+    void Cli::osNotFound(){
+        std::cout << "A OS não foi encontrada." << std::endl;
+    }
+
     std::string Cli::readPlate(){
         std::string plate;
         leituraCampo("Informe a placa do veiculo: ", plate,"^[A-Z]{3}-?[0-9][0-9A-Z][0-9][0-9]$","Placa invalida.");
@@ -253,6 +265,17 @@ namespace view {
         std::cout << "Escapamento: " << dados_moto["Escapamento"] << std::endl;
     }
 
+    void Cli::veiculoJaLiberadoError(){
+        std::cout << "Veiculo ja liberado!" << std::endl;
+    }
+
+    void Cli::vectorVazioError(){
+        std::cout << "Não há veiculos carregados na memória!" << std::endl;
+    }
+
+    void Cli::veiculoNaoExiste(){
+        std::cout << "Erro! A OS não está cadastrada no sistema!" << std::endl;
+    }
 
     void Cli::errorMsg(const std::exception& e) {
 
@@ -271,7 +294,7 @@ namespace view {
 
         //Não sei configurar para datas específicas, exemplo: Se fosse em um ano bissexto, a data 29/02/(anoBissexto) seria válida, mas se n fosse nao seria
         //Acho que não vai precisar de ser taaaao específico mas vai que ne, por enquanto ta configurado para datas convencionais
-        leituraCampo("Insira a pretensão do dia de liberação: ", data_lib, "^[0-3][0-9]/(0[1-9]|1[0-2])/(20[0-9]{2})$","Data invalida.");
+        leituraCampo("Insira o dia de liberação: ", data_lib, "^[0-3][0-9]/(0[1-9]|1[0-2])/(20[0-9]{2})$","Data invalida.");
 
         return data_lib;
 

@@ -13,14 +13,11 @@ namespace controller {
     view::Cli interface;
 
     void Controller::startProgram() {
-
-        std::string OS;
-        bool loop = true;
         _veiculos = nullptr;
         _id_patio = 1;
 
-        while(loop){
 
+        while(true){
             switch(interface.mainMenu()) {
 
                 case 0:
@@ -29,20 +26,25 @@ namespace controller {
                     iniciarApreensao();
                     break;
                 case 2:
-                    OS = interface.readOS();
-                    editarChecklist(std::stoi(OS));
+                    editarChecklist();
                     break;
                 case 3:
-                    OS = interface.readOS();
-                    realizarOrcamento(std::stoi(OS));
+                    realizarOrcamento(stoi(interface.readOS()));
                     break;
                 case 4:
                     liberarVeiculo();
                     break;
                 case 5:
-                    printAll();
+                    consultarVeiculo();
                     break;
                 case 6:
+                    searchByPlate(interface.readPlate());
+                    break;
+                case 7:
+                    printAll();
+                    break;
+                case 8:
+                    deleteAll();
                     break;
             }
         }
@@ -109,6 +111,13 @@ namespace controller {
         }
         std::unordered_map<std::string, std::string> dados_veiculo; //responsavel por receber e encaminhar dados dos novos veiculos registrados
         interface.coletaChecklist(dados_veiculo);
+        while(true) {
+            if (searchByOS(stoi(dados_veiculo["OS"]))) {
+                interface.osAlreadyExistsError();
+            }else{
+                break;
+            }
+        }
         switch (stoi(dados_veiculo["Tipo"])) {
             case 1:
                 criarCarro(dados_veiculo);
@@ -123,6 +132,10 @@ namespace controller {
     }
 
     void Controller::printVeiculo(model::Veiculo *v){
+        if(!v){
+            interface.veiculoNaoExiste();
+            return;
+        }
         std::unordered_map<std::string, std::string> dados_veiculo;
         std::unordered_map<std::string, std::string> dados_especificos;
         v->veiculoToMap(dados_veiculo, dados_especificos);  //perguntar caio porque essa funcao é chamada, nao consigo ver a necessidade ainda
@@ -141,45 +154,60 @@ namespace controller {
     }
 
     void Controller::deleteAll(){ //para cada veiculo em _veiculos, chama a funcao de persistencia respectiva (salva as alterações)
-        for (model::Veiculo *v : *_veiculos){
-            delete v;
+        if (_veiculos) {
+            for (model::Veiculo *v: *_veiculos) {
+                delete v;
+            }
+        } else {
+            interface.vectorVazioError();
         }
     }
 
     void Controller::printAll() {
-        for (model::Veiculo *v : *_veiculos){
-            printVeiculo(v);
+        if(_veiculos) {
+            for (model::Veiculo *v: *_veiculos) {
+                printVeiculo(v);
+            }
+        }else{
+            interface.vectorVazioError();
         }
     }
 
     model::Veiculo* Controller::searchByOS(const int &OS){
-
-        for(model::Veiculo *v : *_veiculos){
-
-            if(v->get_os() == OS){
-                return v;
+        if (_veiculos) {
+            for (model::Veiculo *v: *_veiculos) {
+                if (v->get_os() == OS) {
+                    return v;
+                }
+                return nullptr;
             }
-
-            //TODO: fazer o tratamento de quando uma OS que não consta no sistema é inserida
-
-        }
-
-    }
-
-    model::Veiculo* Controller::searchByPlate(const std::string &plate){
-        for(model::Veiculo *v : *_veiculos){ //nao ta legal, tem que mudar
-            if(v->get_placa() == plate){
-                return v;
-            }
-            //TODO: fazer o tratamento de quando uma placa que não consta no sistema é inserida
+        }else{
+            interface.vectorVazioError();
+            return nullptr;
         }
     }
 
-    void Controller::editarChecklist(const int &OS) {
+    void Controller::searchByPlate(const std::string &plate){
+        if (_veiculos) {
+            for (model::Veiculo *v: *_veiculos) {
+                if (v->get_placa() == plate) {
+                    printVeiculo(v);
+                }
+            }
+        } else {
+            interface.vectorVazioError();
+        }
+    }
+
+    void Controller::editarChecklist() {
+        int OS = stoi(interface.readOS());
+        model::Veiculo* v = searchByOS(OS);
+        if(!v){
+            interface.osNotFound();
+            return;
+        }
         std::unordered_map<std::string, std::string> dados_veiculo;
         std::unordered_map<std::string, std::string> dados_especificos;
-
-        model::Veiculo* v = searchByOS(OS);
         v->veiculoToMap(dados_veiculo, dados_especificos);
 
         switch (stoi(dados_veiculo["Tipo"])) {
@@ -197,24 +225,41 @@ namespace controller {
     }
 
     void Controller::realizarOrcamento(const int &OS) {
-
-        interface.printOrcamento(searchByOS(OS)->calcOrcamento(interface.getDataLiberacao()));
-
+        model::Veiculo* v = searchByOS(OS);
+        if(!v){
+            interface.veiculoNaoExiste();
+            return;
+        }
+        interface.printOrcamento(v->calcOrcamento(interface.getDataLiberacao()));
     }
 
     void Controller::liberarVeiculo() { // receber OS da view, verificar se ja esta liberado, se nao estiver libera, se ja estiver mensagem de erro e aborta função
-
+        model::Veiculo* v = searchByOS(stoi(interface.readOS()));
+        if(!v){
+            interface.veiculoNaoExiste();
+            return;
+        }
+        if(v->get_sit_veiculo()){
+            v->set_sit_veiculo(false);
+            v->set_data_liberacao(interface.getDataLiberacao());
+        }else{
+            interface.veiculoJaLiberadoError();
+            return;
+        }
     }
 
     void Controller::consultarVeiculo() {
-
+        model::Veiculo* v = searchByOS(stoi(interface.readOS()));
+        printVeiculo(v);
     }
 
     Controller::~Controller() {
-        for(model::Veiculo *v : *_veiculos){ // preciso disso funcional pra nao dar um leak de memoria bizonho
-            delete(v);
+        if (_veiculos) {
+            for (model::Veiculo *v: *_veiculos) { // preciso disso funcional pra nao dar um leak de memoria bizonho
+                delete (v);
+            }
+            delete _veiculos;
         }
-        delete _veiculos;
     }
 
 
