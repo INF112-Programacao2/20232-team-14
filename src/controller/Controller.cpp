@@ -209,6 +209,7 @@ namespace controller {
         std::unordered_map<std::string, std::string> dados_veiculo;
         std::unordered_map<std::string, std::string> dados_especificos;
         v->veiculoToMap(dados_veiculo, dados_especificos);
+        interface.coletaChecklist(dados_veiculo);
 
         switch (stoi(dados_veiculo["Tipo"])) {
             case 1:
@@ -221,7 +222,7 @@ namespace controller {
                 interface.coletaChecklistCaminhao(dados_veiculo);
                 break;
         }
-
+        v->updateVeiculo(dados_veiculo, dados_especificos);
     }
 
     void Controller::realizarOrcamento(const int &OS) {
