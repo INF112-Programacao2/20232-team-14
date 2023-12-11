@@ -7,8 +7,10 @@
 
 namespace view {
 
+    //implementacao do construtor
     Cli::Cli() = default;
 
+    //exibicao das operacoes possiveis para o usuario
     int Cli::mainMenu() {
 
         int input;
@@ -28,6 +30,8 @@ namespace view {
 
     }
 
+    //funcao de leitura de dados
+    //imprime a variavel do primeiro parametro e armazena a leitura no segundo
     void Cli::leituraCampo(const std::string &label, std::string &field){
         std::cout << label << std::endl;
         std::string input;
@@ -48,6 +52,9 @@ namespace view {
             return;
         }
     }
+
+    //sobrecarga de metodo em relacao a funcao anterior
+    //com um parametro de regex e outro de mensagem de erro
     void Cli::leituraCampo(const std::string &label, std::string &field, const std::string &regex, const std::string &errorMsg) {
         std::string input;
         std::regex rules(regex);
@@ -58,10 +65,10 @@ namespace view {
         while (true){
             std::cin.sync();
             std::getline(std::cin, input);
-            if(std::regex_match(input, rules)) {
+            if(std::regex_match(input, rules)) { //testa se informacao e valida
                 field = input;
                 return;
-            }else if(field.empty()){
+            }else if(field.empty()){                    //se nao for, imprime mensagem de erro
                 std::cout << errorMsg << std::endl;
                 std::cout << label << std::endl;
             }else{
@@ -70,7 +77,7 @@ namespace view {
         }
     }
 
-
+    //coleta dados comuns entre todos os veiculos
     void Cli::coletaChecklist(std::unordered_map<std::string, std::string> &dados_veiculo){
         leituraCampo("Ordem de servico: ", dados_veiculo["OS"],"^[0-9]+$","Ordem de servico invalida. Este campo deve conter apenas numeros.");
         leituraCampo("Solicitacao: ", dados_veiculo["Solicitacao"]);
@@ -100,6 +107,7 @@ namespace view {
 
     }
 
+    //coleta dados especificos de carro
     void Cli::coletaChecklistCarro(std::unordered_map<std::string, std::string> &dados_carro) {
         leituraCampo("Extintor(S/N):", dados_carro["Extintor"]);
         leituraCampo("Estepe(S/N): ", dados_carro["Estepe"]);
@@ -116,6 +124,7 @@ namespace view {
         leituraCampo("Teto:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_carro["EstadoTeto"], "^[01234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
     }
 
+    //coleta dados especificos de caminhhao
     void Cli::coletaChecklistCaminhao(std::unordered_map<std::string, std::string> &dados_caminhao) {
         leituraCampo("Carroceria:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_caminhao["EstadoCarroceria"], "^[01234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
         leituraCampo("Eixo traseiro(S/N): ", dados_caminhao["EixoTras"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
@@ -132,6 +141,7 @@ namespace view {
         leituraCampo("Radio(S/N): ", dados_caminhao["Radio"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
     }
 
+    //coleta dados especificos de moto
     void Cli::coletaChecklistMoto(std::unordered_map<std::string, std::string> &dados_moto) {
         leituraCampo("Capacete(S/N): ", dados_moto["Capacete"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
         leituraCampo("Carenagem(S/N): ", dados_moto["Carenagem"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
@@ -144,28 +154,33 @@ namespace view {
         leituraCampo("Escapamento:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_moto["Escapamento"], "^[01234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
     }
 
+    //le OS
     std::string Cli::readOS(){
         std::string os;
         leituraCampo("Informe a ordem de servico: ", os,"^[0-9]+$","Ordem de servico invalida.");
         return os;
     }
 
+    //informa que a OS ja foi cadastrada previamente
     std::string Cli::osAlreadyExistsError(){
         std::string os;
         leituraCampo("A OS previamente informada ja esta em uso! Informe outra: ", os,"^[0-9]+$","Ordem de servico invalida.");
         return os;
     }
 
+    //informa que a busca nao encontrou a OS
     void Cli::osNotFound(){
         std::cout << "A OS não foi encontrada." << std::endl;
     }
 
+    //le placa
     std::string Cli::readPlate(){
         std::string plate;
         leituraCampo("Informe a placa do veiculo: ", plate,"^[A-Z]{3}-?[0-9][0-9A-Z][0-9][0-9]$","Placa invalida.");
         return plate;
     }
 
+    //imprime dados do checklist comum entre todos os veiculos
     void Cli::printChecklist(std::unordered_map<std::string, std::string> &dados_veiculo) {
         std::cout << "Ordem de servico: " << dados_veiculo["OS"] << std::endl;
         std::cout << "Solicitacao: " << dados_veiculo["Solicitacao"] << std::endl;
@@ -221,6 +236,7 @@ namespace view {
             std::cout << "Bom estado\n";
     }
 
+    //imprime dados especificos de carro
     void Cli::printChecklistCarro(std::unordered_map<std::string, std::string> &dados_carro) {
         std::cout << "Extintor: " << dados_carro["Extintor"] << std::endl;
         std::cout << "Estepe: " << dados_carro["Estepe"] << std::endl;
@@ -237,6 +253,7 @@ namespace view {
         std::cout << "Teto: " << dados_carro["EstadoTeto"] << std::endl;
     }
 
+    //imprime dados especificos de caminhao
     void Cli::printChecklistCaminhao(std::unordered_map<std::string, std::string> &dados_caminhao) {
         std::cout << "Carroceria: " << dados_caminhao["EstadoCarroceria"] << std::endl;
         std::cout << "Eixo traseiro: " << dados_caminhao["EixoTras"] << std::endl;
@@ -253,6 +270,7 @@ namespace view {
         std::cout << "Radio: " << dados_caminhao["Radio"] << std:: endl;
     }
 
+    //imprime dados especificos de moto
     void Cli::printChecklistMoto(std::unordered_map<std::string, std::string> &dados_moto) {
         std::cout << "Capacete: " << dados_moto["Capacete"] << std::endl;
         std::cout << "Carenagem: " << dados_moto["Carenagem"] << std::endl;
@@ -265,48 +283,48 @@ namespace view {
         std::cout << "Escapamento: " << dados_moto["Escapamento"] << std::endl;
     }
 
+    //informa que um veiculo ja foi liberado
     void Cli::veiculoJaLiberadoError(){
         std::cout << "Veiculo ja liberado!" << std::endl;
     }
 
+    //informa que nao ha veiculos cadastrados no sistema
     void Cli::vectorVazioError(){
         std::cout << "Não há veiculos carregados na memória!" << std::endl;
     }
 
+    //informa que a OS fornecida nao foi cadastrada para nenhum veiculo
     void Cli::veiculoNaoExiste(){
         std::cout << "Erro! A OS não está cadastrada no sistema!" << std::endl;
     }
 
+    //imprime mensagem de erro
     void Cli::errorMsg(const std::exception& e) {
 
         std::cerr << "ERRO: "<< e.what() << std::endl; //what() transforma a excecao em uma string legivel
 
     }
 
-    //Pensei que a data de liberação não é a mesma que a pretensão do usuário liberar
-    //As vezes queme sta usando o programa quer apenas calcular orcamento, sem pretensao de liberar o carro de fato
-    //nesse caso, o atributo _data_liberacao da classe Veiculo, nao deveria ser mudado, sem que, de fato, o carro seja liberado
-    //Essa funcao vai receber a pretensao da data de liberação, e será usada pela funcao CalcDiasApreensao da classe Veiculo
-
+    //retorna a data de liberacao de um veiculo
     std::string Cli::getDataLiberacao() {
 
         std::string data_lib;
 
-        //Não sei configurar para datas específicas, exemplo: Se fosse em um ano bissexto, a data 29/02/(anoBissexto) seria válida, mas se n fosse nao seria
-        //Acho que não vai precisar de ser taaaao específico mas vai que ne, por enquanto ta configurado para datas convencionais
+        //realiza leitura da data de liberacao e verifica se e valida
         leituraCampo("Insira o dia de liberação: ", data_lib, "^[0-3][0-9]/(0[1-9]|1[0-2])/(20[0-9]{2})$","Data invalida.");
 
         return data_lib;
 
     }
 
+    //retorna o id de um veiculo
     std::string Cli::getIdVehicle() {
 
         std::string escolha;
         std::string id;
-        std::cout << "Insira como a pesquisa será feita [(1) Placa | (2) OS] : " << std::endl;   //TODO: fazer regex pro usuario nao fazer burrada
-        //escolha = readUserInput();
-        // READ USER INPUT NAO EXISTE NUNCA EXISTIU
+        //permite que o usuario escolha o parametro de busca
+        std::cout << "Insira como a pesquisa será feita [(1) Placa | (2) OS] : " << std::endl;
+
         if(stoi(escolha) == 1){
 
             id = readPlate();
@@ -321,15 +339,12 @@ namespace view {
 
     }
 
+    //imprime o valor de orcamento
     void Cli::printOrcamento(double valor) {
 
         std::cout << "Preço para liberação do veículo: " << valor << "R$" << std::endl;
 
     }
-
-    //mais tarde, para abrir caminho para a implementacao de uma GUI, deveremos implementar chamadas especificas as maneiras diferentes de exibir dados na tela
-    //de certa forma, "especificas ao metodo" com o qual elas estao relacionadas
-    //displayOutput nao vai ser necessariamente descontinuada, mas teremos outras opcoes para permitir maior intercambiabilidade da view
 
 } // view
 
