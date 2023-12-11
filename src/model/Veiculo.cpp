@@ -250,7 +250,7 @@ namespace model {
 
     //função verifica se um ano é bissexto ou não (usada para estabelecer o cálculo do orçamento baseado nas diárias)
 
-    bool Veiculo::anoBissexto(int ano){
+    bool Veiculo::anoBissexto(int ano){     //função booleana que recebe um determinado ano retornando true caso seja bissexto
 
         bool valid = false;
 
@@ -264,27 +264,29 @@ namespace model {
 
     }
 
-    int Veiculo::calcDiasApreensao(std::string data_liberacao) {
+    int Veiculo::calcDiasApreensao(std::string data_liberacao) {    //função responsável por calcular a quantidade de dias que um veículo permaneceu no pátio, recebendo a data de liberação
 
         //Obtém dia, mes e ano das strings de data recebidas, guardando os valores nas variáveis abaixo
         int dia_Apreensao, mes_Apreensao, ano_Apreensao;
         int dia_Liberacao, mes_Liberacao, ano_Liberacao;
         char discard;
 
+        //fragmenta as datas de apreensão e liberação para manipular ano, mes e dias
         std::stringstream ss_apreensao(_data_apreensao);
         ss_apreensao >> dia_Apreensao >> discard >> mes_Apreensao >> discard >> ano_Apreensao;
 
         std::stringstream ss_liberacao(data_liberacao);
         ss_liberacao >> dia_Liberacao >> discard >> mes_Liberacao >> discard >> ano_Liberacao;
 
+        //vetores que representam ano de entrada e saída, com seus respectivos dias de cada mês
         int calendario_Entrada[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         int calendario_Saida[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-        /*A função trabalha encontrando a quantidade de dias do ano de liberação e do ano de apreensão
-        Exemplo: se o carro foi apreendido dia 25/12/2022 e liberado dia 03/01/2023, a variável
-        dias_liberacao = 3 e a variável dias_apreensao = 7, totalizando 10 dias */
+        /*A função trabalha encontrando a quantidade de dias do ano de liberação e do ano de apreensão e somando-as
+        Caso o intervalo entre os anos seja maior que 0, então a quantidade de dias dos anos entre a apreensão e liberação será somada
+        Caso seja no mesmo ano, o cálculo é simplificado pela subtração de dias_liberação - dias_apreensão*/
 
-        int dias_liberacao = 0;
+        int dias_liberacao = 0; //quantidade de dias que o veículo permaneceu no pátio no ano de liberação
         int dias_apreensao = 0;
         int cont_dias = 0;
 
@@ -328,6 +330,8 @@ namespace model {
 
         } else {
 
+            /*contabiliza a quantidade de dias que o veículo permaneceu
+            no ano de retirada*/
             for (int i = 0; i < mes_Liberacao - 1; i++) {
 
                 dias_liberacao += calendario_Saida[i];
@@ -336,6 +340,8 @@ namespace model {
 
             dias_liberacao += dia_Liberacao;
 
+            /*contabiliza a quantidade de dias que o veículo permaneceu
+            no ano de apreensão*/
             for (int i = 0; i < mes_Apreensao - 1; i++) {
 
                 dias_apreensao += calendario_Entrada[i];
@@ -344,6 +350,7 @@ namespace model {
 
             dias_apreensao += dia_Apreensao;
 
+            /*Retira a "sobra" dos dias do ano, efetivando o calculo de dias dos anos referidos*/
             if (anoBissexto(ano_Apreensao)) {
 
                 dias_apreensao = 366 - dias_apreensao;
@@ -354,6 +361,7 @@ namespace model {
 
             }
 
+            /*Contabiliza os dias entre os anos de apreensão e liberação, considerando se é um ano bissexto ou não*/
             for (int i = ano_Apreensao + 1; i < ano_Liberacao; i++) {
 
                 if (anoBissexto(i)) {
@@ -368,17 +376,17 @@ namespace model {
 
             }
 
-            cont_dias += dias_liberacao + dias_apreensao;
+            cont_dias += dias_liberacao + dias_apreensao;   //calculo de dias efetivado após as verificações
 
         }
 
-        cont_dias++;
+        cont_dias++;    //soma de um dia por conta do sistema do pátio, se um veículo entra dia 22 e sai dia 23 do mesmo mes, é considerado que ele permaneceu no patio por 2 dias, não só 1
 
         return cont_dias;
 
     }
 
-
+    //Destrutor padrão de Veiculo
     Veiculo::~Veiculo() = default;
 
 

@@ -152,12 +152,14 @@ namespace model {
     }
     //end of gets and sets
 
+    //Cálculo de orçamento para caminhões, com base em dados do DETRAN respectivos à taxa de diária, reboque e KM do veículo
     double Caminhao::calcOrcamento(std::string data_liberacao_desejado){
 
         return (_diaria_caminhao * (calcDiasApreensao(data_liberacao_desejado)) + (_reboque_caminhao) + (2.5 * _km));
 
     }
 
+    //Map de veículos do tipo Carro, associação de dados gerais com específicos do tipo
     void Caminhao::veiculoToMap(std::unordered_map<std::string, std::string> &dados_veiculo, std::unordered_map<std::string, std::string> &dados_especificos) {
         dados_veiculo["OS"] = std::to_string(_os);
         dados_veiculo["Patio"] = std::to_string(_id_patio);

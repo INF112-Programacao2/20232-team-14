@@ -253,9 +253,10 @@ namespace controller {
         printVeiculo(v);
     }
 
-    Controller::~Controller() {
+
+    Controller::~Controller() { //verifica se o vector de veículos possui dados inseridos ou não, se sim varre o mesmo e realiza o delete de cada veículo inserido
         if (_veiculos) {
-            for (model::Veiculo *v: *_veiculos) { // preciso disso funcional pra nao dar um leak de memoria bizonho
+            for (model::Veiculo *v: *_veiculos) {
                 delete (v);
             }
             delete _veiculos;

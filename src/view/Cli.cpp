@@ -97,7 +97,7 @@ namespace view {
         leituraCampo("Quilometragem do veiculo no momento de apreensao: ", dados_veiculo["KM"], "^[0-9]+$", "Quilometragem invalida. Este campo deve conter apenas numeros.");
         leituraCampo("Ocorrencia registrada: ", dados_veiculo["Ocorrencia"]);
         leituraCampo("Policial responsavel pela apreensao: ", dados_veiculo["Policial"]);
-        leituraCampo("Data de apreensao do veiculo:\nConsidere o formato dd/mm/aaaa", dados_veiculo["Data"]); // TODO: REFAZER ESSE REGEX
+        leituraCampo("Data de apreensao do veiculo:\nConsidere o formato dd/mm/aaaa", dados_veiculo["Data"], "^[0-3][0-9]/(0[1-9]|1[0-2])/(20[0-9]{2})$", "Formato de data invalida."); // TODO: REFAZER ESSE REGEX
         leituraCampo("Horario de apreensao:", dados_veiculo["Horario"], "^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$", "Horario invalido.");
         leituraCampo("Objetos que estavam no carro no momento de apreensao: ", dados_veiculo["Objetos"]);
         leituraCampo("Observacao (se nao houver, pressione 'N'): ", dados_veiculo["Obs"]);
@@ -109,15 +109,15 @@ namespace view {
 
     //coleta dados especificos de carro
     void Cli::coletaChecklistCarro(std::unordered_map<std::string, std::string> &dados_carro) {
-        leituraCampo("Extintor(S/N):", dados_carro["Extintor"]);
-        leituraCampo("Estepe(S/N): ", dados_carro["Estepe"]);
-        leituraCampo("Macaco (S/N): ", dados_carro["Macaco"]);
-        leituraCampo("Chave roda (S/N): ", dados_carro["ChaveRoda"]);
-        leituraCampo("Triangulo (S/N): ", dados_carro["Triangulo"]);
-        leituraCampo("Bateria (S/N): ", dados_carro["Bateria"]);
-        leituraCampo("Calotas (S/N): ", dados_carro["Calotas"]);
-        leituraCampo("Tapetes (S/N): ", dados_carro["Tapetes"]);
-        leituraCampo("Radio (S/N): ", dados_carro["Radio"]);
+        leituraCampo("Extintor(S/N):", dados_carro["Extintor"], "^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Estepe(S/N): ", dados_carro["Estepe"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Macaco (S/N): ", dados_carro["Macaco"],"^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Chave roda (S/N): ", dados_carro["ChaveRoda"], "^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Triangulo (S/N): ", dados_carro["Triangulo"], "^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Bateria (S/N): ", dados_carro["Bateria"], "^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Calotas (S/N): ", dados_carro["Calotas"], "^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Tapetes (S/N): ", dados_carro["Tapetes"], "^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
+        leituraCampo("Radio (S/N): ", dados_carro["Radio"], "^[SNsn]$","Resposta deve conter 'S' ou 'N'.");
         leituraCampo("Portas:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_carro["EstadoPortas"], "^[01234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
         leituraCampo("Capo:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_carro["EstadoCapo"], "^[01234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
         leituraCampo("Painel:\n(0)Inexistente/(1)Amassado/(2)Riscado/(3)Quebrado/(4)Bom estado", dados_carro["EstadoPainel"], "^[01234]$", "Estado invalido selecionado. Resposta deve conter um numero entre um e quatro");
@@ -311,7 +311,7 @@ namespace view {
         std::string data_lib;
 
         //realiza leitura da data de liberacao e verifica se e valida
-        leituraCampo("Insira o dia de liberação: ", data_lib, "^[0-3][0-9]/(0[1-9]|1[0-2])/(20[0-9]{2})$","Data invalida.");
+        leituraCampo("Insira o dia de liberação: ", data_lib, "^[0-3][0-9]/(0[1-9]|1[0-2])/(20[0-9]{2})$","Formato de data invalida.");
 
         return data_lib;
 

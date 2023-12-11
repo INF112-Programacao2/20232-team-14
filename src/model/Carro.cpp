@@ -27,7 +27,6 @@ namespace model {
 
     //Gets and Sets
 
-
     bool Carro::get_extintor() const {
         return _extintor;
     }
@@ -147,14 +146,16 @@ namespace model {
     void Carro::set_reboque_carro(double reboque_carro){
         _reboque_carro = reboque_carro;
     }
-
     //end of gets and sets
+
+    //Cálculo de orçamento para carros, com base em dados do DETRAN respectivos à taxa de diária, reboque e KM do veículo
     double Carro::calcOrcamento(std::string data_liberacao){
 
         return (_diaria_carro * (calcDiasApreensao(data_liberacao)) + (_reboque_carro) + (2.5 * _km));
 
     }
 
+    //Map de veículos do tipo Carro, associação de dados gerais com específicos do tipo
     void Carro::veiculoToMap(std::unordered_map<std::string, std::string> &dados_veiculo,
                              std::unordered_map<std::string, std::string> &dados_especificos) {
 
