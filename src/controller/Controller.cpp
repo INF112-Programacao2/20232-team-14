@@ -250,6 +250,7 @@ namespace controller {
         std::unordered_map<std::string, std::string> dados_veiculo;  //armazena os dados do veiculo
         std::unordered_map<std::string, std::string> dados_especificos; //armazena os dados especificos de carro,moto ou caminhao
         v->veiculoToMap(dados_veiculo, dados_especificos);
+        OS = v->get_os();
 
         try {
             interface.coletaChecklist(dados_veiculo);
@@ -260,11 +261,13 @@ namespace controller {
 
         while(true) {
             if (searchByOS(stoi(dados_veiculo["OS"]))) {
-                try {
-                    interface.osAlreadyExistsError(); //informa que a OS já foi cadastrada
-                } catch (abortFunctionException &e) {
-                    interface.errorMsg(e);
-                    return;
+                if(OS != stoi(dados_veiculo["OS"])) {
+                    try {
+                        interface.osAlreadyExistsError(); //informa que a OS já foi cadastrada
+                    } catch (abortFunctionException &e) {
+                        interface.errorMsg(e);
+                        return;
+                    }
                 }
             }else{
                 break;
