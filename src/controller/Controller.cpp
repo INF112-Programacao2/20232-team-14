@@ -213,6 +213,14 @@ namespace controller {
         v->veiculoToMap(dados_veiculo, dados_especificos);
         interface.coletaChecklist(dados_veiculo);
 
+        while(true) {
+            if (searchByOS(stoi(dados_veiculo["OS"]))) {
+                interface.osAlreadyExistsError(); //informa que a OS já foi cadastrada
+            }else{
+                break;
+            }
+        }
+
         switch (stoi(dados_veiculo["Tipo"])) {
             case 1: //recebe o tipo e dependendo dele chama a funcao coletaChecklist para carro, moto ou caminhao
                 interface.coletaChecklistCarro(dados_especificos);
