@@ -11,6 +11,8 @@ add_executable(20232_team_14 ${PROJ_FILES}
         src/model/Caminhao.cpp
         src/model/Caminhao.h
         src/model/Moto.cpp
+        src/exception/abortFunctionException.cpp
+        src/exception/abortFunctionException.h
 )
 
 target_include_directories(20232_team_14 PRIVATE src)
