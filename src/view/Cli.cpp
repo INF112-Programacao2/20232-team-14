@@ -65,14 +65,19 @@ namespace view {
         while (true){
             std::cin.sync();
             std::getline(std::cin, input);
-            if(std::regex_match(input, rules)) { //testa se informacao e valida
+            if(input.empty()){
+                if(field.empty()){
+                    std::cout << errorMsg << std::endl;
+                    std::cout << label << std::endl;
+                }else{
+                    return;
+                }
+            }else if(std::regex_match(input, rules)){
                 field = input;
                 return;
-            }else if(field.empty()){                    //se nao for, imprime mensagem de erro
+            }else{
                 std::cout << errorMsg << std::endl;
                 std::cout << label << std::endl;
-            }else{
-                return;
             }
         }
     }
