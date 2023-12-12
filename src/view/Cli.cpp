@@ -317,28 +317,6 @@ namespace view {
 
     }
 
-    //retorna o id de um veiculo
-    std::string Cli::getIdVehicle() {
-
-        std::string escolha;
-        std::string id;
-        //permite que o usuario escolha o parametro de busca
-        std::cout << "Insira como a pesquisa será feita [(1) Placa | (2) OS] : " << std::endl;
-
-        if(stoi(escolha) == 1){
-
-            id = readPlate();
-
-        }else{
-
-            id = readOS();
-
-        }
-
-        return id;
-
-    }
-
     //imprime o valor de orcamento
     void Cli::printOrcamento(double valor) {
 

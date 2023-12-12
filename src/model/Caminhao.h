@@ -79,6 +79,9 @@ namespace model {
         /*Map de veículos do tipo Caminhão que faz a "junção" de dados específicos do tipo Caminhão com os gerais*/
         void veiculoToMap(std::unordered_map<std::string, std::string> &dados_veiculo, std::unordered_map<std::string, std::string> &dados_especificos) override;
 
+        /*Atualiza os dados de veículo depois da chamada de EditarChecklist()*/
+        virtual void updateVeiculo(std::unordered_map<std::string, std::string> &dados_veiculo, std::unordered_map<std::string, std::string> &dados_especificos) override;
+
     };
 
 }
