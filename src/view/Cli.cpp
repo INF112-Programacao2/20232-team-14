@@ -17,7 +17,7 @@ namespace view {
 
         std::cout << "\n1. Inserir Apreensão." << std::endl;
         std::cout << "2. Editar checklist." << std::endl;
-        std::cout << "3. Realizar orçamento. (WIP)" << std::endl;
+        std::cout << "3. Realizar orçamento." << std::endl;
         std::cout << "4. Liberar veículo." << std::endl;
         std::cout << "5. Consultar veículo por OS." << std::endl;
         std::cout << "6. Consultar veículo por Placa." << std::endl;
