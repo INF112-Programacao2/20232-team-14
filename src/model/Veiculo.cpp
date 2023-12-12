@@ -254,7 +254,7 @@ namespace model {
 
         bool valid = false;
 
-        if(ano%4 == 0 && ano%100 != 0 || ano%400==0){
+        if(ano%4 == 0 && ano%100 != 0 || ano%400==0){    // verificação padrão para validar um ano como bissexto ou não
 
             valid = true;
 

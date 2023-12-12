@@ -19,7 +19,7 @@ namespace controller {
 
         while(true){
             switch(interface.mainMenu()) {
-
+                //ilustra os casos que o usuario pode escolher
                 case 0:
                     return;
                 case 1:
@@ -50,7 +50,7 @@ namespace controller {
         }
     }
 
-    bool Controller::stob(const std::string &str){
+    bool Controller::stob(const std::string &str){ //função que recebe um parametro e retorna seu valor em bool (casos afirmativos retornam true e o contrario false)
 
         if(str == "true" || str == "1" || str == "S" || str == "s"){
 
@@ -64,7 +64,7 @@ namespace controller {
     }
 
     void Controller::criarCarro(std::unordered_map<std::string, std::string> &dados_veiculo) {
-        std::unordered_map<std::string, std::string> dados_carro;
+        std::unordered_map<std::string, std::string> dados_carro;  //a funçao recebe os dados do usuario e cria um objeto da classe Carro a partir de seu construtor
         interface.coletaChecklistCarro(dados_carro);
         model::Veiculo *car = new model::Carro(stoi(dados_veiculo["OS"]), _id_patio,dados_veiculo["Solicitacao"], dados_veiculo["Funcionario"], dados_veiculo["PlacaReboque"], dados_veiculo["Motivo"],
                                                stoi(dados_veiculo["Estado"]), stob(dados_veiculo["Blitz"]), dados_veiculo["Local"], dados_veiculo["Placa"], dados_veiculo["Marca"],
@@ -74,11 +74,12 @@ namespace controller {
                                                stob(dados_carro["Extintor"]), stob(dados_carro["Estepe"]), stob(dados_carro["Macaco"]), stob(dados_carro["ChaveRoda"]),
                                                stob(dados_carro["Triangulo"]), stob(dados_carro["Bateria"]), stob(dados_carro["Calotas"]), stob(dados_carro["Tapetes"]), stob(dados_carro["Radio"]),
                                                stoi(dados_carro["EstadoPortas"]), stoi(dados_carro["EstadoCapo"]), stoi(dados_carro["EstadoPainel"]),stoi(dados_carro["EstadoTeto"]));
-        _veiculos->push_back(car);
+        _veiculos->push_back(car); //adiciona o novo carro ao vetor de veiculos
     }
 
     void Controller::criarCaminhao(std::unordered_map<std::string, std::string> &dados_veiculo) {
-        std::unordered_map<std::string, std::string> dados_caminhao;
+        std::unordered_map<std::string, std::string> dados_caminhao; //a funçao recebe os dados do usuario e cria um objeto da classe Caminhao a partir de seu construtor
+
         interface.coletaChecklistCaminhao(dados_caminhao);
         model::Veiculo *truck = new model::Caminhao(stoi(dados_veiculo["OS"]), _id_patio,dados_veiculo["Solicitacao"], dados_veiculo["Funcionario"], dados_veiculo["PlacaReboque"], dados_veiculo["Motivo"],
                                                     stoi(dados_veiculo["Estado"]), stob(dados_veiculo["Blitz"]), dados_veiculo["Local"], dados_veiculo["Placa"], dados_veiculo["Marca"],
@@ -89,11 +90,12 @@ namespace controller {
                                                     stoi(dados_caminhao["SuspensaoC"]), stob(dados_caminhao["Extintor"]), stob(dados_caminhao["Estepe"]),
                                                     stob(dados_caminhao["Macaco"]), stob(dados_caminhao["ChaveRoda"]), stob(dados_caminhao["Triangulo"]),
                                                     stob(dados_caminhao["Bateria"]), stob(dados_caminhao["Calotas"]), stob(dados_caminhao["Tapetes"]), stob(dados_caminhao["Radio"]));
-        _veiculos->push_back(truck);
+        _veiculos->push_back(truck); //adiciona o novo caminhao ao vetor de veiculos
     }
 
     void Controller::criarMoto(std::unordered_map<std::string, std::string> &dados_veiculo) {
-        std::unordered_map<std::string, std::string> dados_moto;
+        std::unordered_map<std::string, std::string> dados_moto; //a funçao recebe os dados do usuario e cria um objeto da classe Moto a partir de seu construtor
+
         interface.coletaChecklistMoto(dados_moto);
         model::Veiculo *motorcycle = new  model::Moto(stoi(dados_veiculo["OS"]), _id_patio,dados_veiculo["Solicitacao"], dados_veiculo["Funcionario"], dados_veiculo["PlacaReboque"], dados_veiculo["Motivo"],
                                                      stoi(dados_veiculo["Estado"]), stob(dados_veiculo["Blitz"]), dados_veiculo["Local"], dados_veiculo["Placa"], dados_veiculo["Marca"],
@@ -102,7 +104,7 @@ namespace controller {
                                                      dados_veiculo["Objetos"], dados_veiculo["Obs"], stoi(dados_veiculo["EstadoRodas"]), stoi(dados_veiculo["EstadoRetro"]), stoi(dados_veiculo["Tipo"]),
                                                      stob(dados_moto["Capacete"]), stob(dados_moto["Carenagem"]), stob(dados_moto["Bau"]), stob(dados_moto["Ferramentas"]), stoi(dados_moto["SuspensaoD"]),
                                                      stoi(dados_moto["SuspensaoT"]), stoi(dados_moto["Guidao"]), stoi(dados_moto["SistemaE"]), stoi(dados_moto["Escapamento"]));
-        _veiculos->push_back(motorcycle);
+        _veiculos->push_back(motorcycle); //adiciona a nova moto ao vetor de veiculos
     }
 
     void Controller::iniciarApreensao() {
@@ -113,13 +115,13 @@ namespace controller {
         interface.coletaChecklist(dados_veiculo);
         while(true) {
             if (searchByOS(stoi(dados_veiculo["OS"]))) {
-                interface.osAlreadyExistsError();
+                interface.osAlreadyExistsError(); //informa que a OS já foi cadastrada
             }else{
                 break;
             }
         }
         switch (stoi(dados_veiculo["Tipo"])) {
-            case 1:
+            case 1: //cada caso encaminha para uma funcao dependendo do tipo do veiculo (carro, moto ou caminhao)
                 criarCarro(dados_veiculo);
                 break;
             case 2:
@@ -132,15 +134,15 @@ namespace controller {
     }
 
     void Controller::printVeiculo(model::Veiculo *v){
-        if(!v){
-            interface.veiculoNaoExiste();
+        if(!v){      //verifica se o ponteiro é nulo
+            interface.veiculoNaoExiste();  //retorna que o veiculo nao existe
             return;
         }
         std::unordered_map<std::string, std::string> dados_veiculo;
         std::unordered_map<std::string, std::string> dados_especificos;
-        v->veiculoToMap(dados_veiculo, dados_especificos);  //perguntar caio porque essa funcao é chamada, nao consigo ver a necessidade ainda
+        v->veiculoToMap(dados_veiculo, dados_especificos);  //chama a funçao veiculoToMap
         interface.printChecklist(dados_veiculo);
-        switch(v->get_tipo()){
+        switch(v->get_tipo()){  //obtem o tipo do veiculo para saber qual funcao printChecklist chamar
             case 1:
                 interface.printChecklistCarro(dados_especificos);
                 break;
@@ -153,10 +155,10 @@ namespace controller {
         }
     }
 
-    void Controller::deleteAll(){ //para cada veiculo em _veiculos, chama a funcao de persistencia respectiva (salva as alterações)
-        if (_veiculos) {
+    void Controller::deleteAll(){
+        if (_veiculos) {  //verifica se nao é nulo
             for (model::Veiculo *v: *_veiculos) {
-                delete v;
+                delete v;  //deleta o objeto v
             }
         } else {
             interface.vectorVazioError();
@@ -164,9 +166,9 @@ namespace controller {
     }
 
     void Controller::printAll() {
-        if(_veiculos) {
+        if(_veiculos) { //verifica se nao é nulo
             for (model::Veiculo *v: *_veiculos) {
-                printVeiculo(v);
+                printVeiculo(v); //imprime as informacoes de v
             }
         }else{
             interface.vectorVazioError();
@@ -174,10 +176,10 @@ namespace controller {
     }
 
     model::Veiculo* Controller::searchByOS(const int &OS){
-        if (_veiculos) {
+        if (_veiculos) { //verifica se nao é nulo
             for (model::Veiculo *v: *_veiculos) {
-                if (v->get_os() == OS) {
-                    return v;
+                if (v->get_os() == OS) {  //verifica a OS
+                    return v; //retorna o objeto referente àquela OS
                 }
                 return nullptr;
             }
@@ -188,10 +190,10 @@ namespace controller {
     }
 
     void Controller::searchByPlate(const std::string &plate){
-        if (_veiculos) {
+        if (_veiculos) { //verifica se nao é nulo
             for (model::Veiculo *v: *_veiculos) {
-                if (v->get_placa() == plate) {
-                    printVeiculo(v);
+                if (v->get_placa() == plate) { //verifica a placa
+                    printVeiculo(v);  //imprime as informacoes do veiculo referente às informacoes recebidas
                 }
             }
         } else {
@@ -202,17 +204,17 @@ namespace controller {
     void Controller::editarChecklist() {
         int OS = stoi(interface.readOS());
         model::Veiculo* v = searchByOS(OS);
-        if(!v){
+        if(!v){  //verifica se nao é nulo
             interface.osNotFound();
             return;
         }
-        std::unordered_map<std::string, std::string> dados_veiculo;
-        std::unordered_map<std::string, std::string> dados_especificos;
+        std::unordered_map<std::string, std::string> dados_veiculo;  //armazena os dados do veiculo
+        std::unordered_map<std::string, std::string> dados_especificos; //armazena os dados especificos de carro,moto ou caminhao
         v->veiculoToMap(dados_veiculo, dados_especificos);
         interface.coletaChecklist(dados_veiculo);
 
         switch (stoi(dados_veiculo["Tipo"])) {
-            case 1:
+            case 1: //recebe o tipo e dependendo dele chama a funcao coletaChecklist para carro, moto ou caminhao
                 interface.coletaChecklistCarro(dados_veiculo);
                 break;
             case 2:
@@ -226,15 +228,15 @@ namespace controller {
     }
 
     void Controller::realizarOrcamento(const int &OS) {
-        model::Veiculo* v = searchByOS(OS);
-        if(!v){
+        model::Veiculo* v = searchByOS(OS); //procura um veiculo pela OS
+        if(!v){ //verifica se é nulo
             interface.veiculoNaoExiste();
             return;
         }
-        interface.printOrcamento(v->calcOrcamento(interface.getDataLiberacao()));
+        interface.printOrcamento(v->calcOrcamento(interface.getDataLiberacao())); //realiza o orcamento por meio da funcao calcOrcamento
     }
 
-    void Controller::liberarVeiculo() { // receber OS da view, verificar se ja esta liberado, se nao estiver libera, se ja estiver mensagem de erro e aborta função
+    void Controller::liberarVeiculo() { // recebe OS da view, verifica se ja esta liberado, se nao estiver libera, se ja estiver mensagem de erro e aborta função
         model::Veiculo* v = searchByOS(stoi(interface.readOS()));
         if(!v){
             interface.veiculoNaoExiste();
@@ -249,7 +251,7 @@ namespace controller {
         }
     }
 
-    void Controller::consultarVeiculo() {
+    void Controller::consultarVeiculo() { //consulta um veiculo atraves da OS e imprime os dados
         model::Veiculo* v = searchByOS(stoi(interface.readOS()));
         printVeiculo(v);
     }

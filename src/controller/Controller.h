@@ -10,7 +10,8 @@ namespace controller {
     class Controller {
 
     private:
-        std::vector<model::Veiculo *> *_veiculos;
+
+        std::vector<model::Veiculo *> *_veiculos; //Cria um vector para armazenar os dados de cada veiculo
         int _id_patio;
 
     public:
@@ -19,26 +20,26 @@ namespace controller {
 
         virtual ~Controller();
 
-        void startProgram();
-        void iniciarApreensao();
-        void editarChecklist();
-        void realizarOrcamento(const int &OS);
-        void liberarVeiculo();
-        void consultarVeiculo();
-        bool stob(const std::string &str);
+        void startProgram(); //inicia o programa
+        void iniciarApreensao(); //inicia a apreensao pegando os dados iniciais, como o tipo do veiculo
+        void editarChecklist();  //permite editar o checklist de cada veiculo
+        void realizarOrcamento(const int &OS); //realiza o orcamento para retirada do veiculo
+        void liberarVeiculo(); //libera o veiculo
+        void consultarVeiculo(); //consulta os dados de um veiculo
+        bool stob(const std::string &str); //retorna um valor em bool
         void criarCarro(std::unordered_map<std::string, std::string> &dados_veiculo);
         void criarCaminhao(std::unordered_map<std::string, std::string> &dados_veiculo);
         void criarMoto(std::unordered_map<std::string, std::string> &dados_veiculo);
 
-        void deleteAll();
+        void deleteAll(); //deleta os dados de veiculo
 
-        void printAll();
+        void printAll(); //imprime os dados de veiculo
 
-        model::Veiculo* searchByOS(const int &OS);
+        model::Veiculo* searchByOS(const int &OS); //procura um veiculo pela OS
 
-        void searchByPlate(const std::string &plate);
+        void searchByPlate(const std::string &plate); //procura um veiculo pela placa
 
-        void printVeiculo(model::Veiculo *v);
+        void printVeiculo(model::Veiculo *v); //imprime os dados de um veiculo
 
     };
 
