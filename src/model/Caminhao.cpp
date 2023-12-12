@@ -176,21 +176,22 @@ namespace model {
         _horario = dados_veiculo["Horario"];
         _objetos = dados_veiculo["Objetos"];
         _observacoes = dados_veiculo["Obs"];
-        std::to_string(_rodas) = dados_veiculo["EstadoRodas"];
-        std::to_string(_retrovisores) = dados_veiculo["EstadoRetro"];
-        std::to_string(_carroceria) = dados_especificos["EstadoCarroceria"];
-        std::to_string(_eixoTraseiro) = dados_especificos["EixoTras"];
-        std::to_string(_cintas) = dados_especificos["Cintas"];
-        std::to_string(_suspCabine) = dados_especificos["SuspensaoC"];
-        std::to_string(_extintor) = dados_especificos["Extintor"];
-        std::to_string(_estepe) = dados_especificos["Estepe"];
-        std::to_string(_macaco) = dados_especificos["Macaco"];
-        std::to_string(_chave_roda) = dados_especificos["ChaveRoda"];
-        std::to_string(_triangulo) = dados_especificos["Triangulo"];
-        std::to_string(_bateria) = dados_especificos["Bateria"];
-        std::to_string(_calotas) = dados_especificos["Calotas"];
-        std::to_string(_tapetes) = dados_especificos["Tapetes"];
-        std::to_string(_radio) = dados_especificos["Radio"];
+        _rodas = std::stoi(dados_veiculo["EstadoRodas"]);
+        _retrovisores = std::stoi(dados_veiculo["EstadoRetro"]);
+        _carroceria = std::stoi(dados_especificos["EstadoCarroceria"]);
+        _eixoTraseiro = stob(dados_especificos["EixoTras"]);
+        _cintas = stob(dados_especificos["Cintas"]);
+        _suspCabine = std::stoi(dados_especificos["SuspensaoC"]);
+        _extintor = stob(dados_especificos["Extintor"]);
+        _estepe = stob(dados_especificos["Estepe"]);
+        _macaco = stob(dados_especificos["Macaco"]);
+        _chave_roda = stob(dados_especificos["ChaveRoda"]);
+        _triangulo = stob(dados_especificos["Triangulo"]);
+        _bateria = stob(dados_especificos["Bateria"]);
+        _calotas = stob(dados_especificos["Calotas"]);
+        _tapetes = stob(dados_especificos["Tapetes"]);
+        _radio = stob(dados_especificos["Radio"]);
+
     }
 
 

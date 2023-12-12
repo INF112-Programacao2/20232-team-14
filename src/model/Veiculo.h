@@ -124,6 +124,8 @@ namespace model {
         /*Map de veículos, faz a junção de dados específicos do tipo de veículo com os gerais, portanto, sofrendo sobrescrição nas subclasses*/
         virtual void veiculoToMap(std::unordered_map<std::string, std::string> &dados_veiculo, std::unordered_map<std::string, std::string> &dados_especificos) = 0;
 
+        bool stob(const std::string &str); //função que recebe um parametro e retorna seu valor em bool (casos afirmativos retornam true e o contrario false)
+
         virtual ~Veiculo();
 
     };

@@ -386,6 +386,20 @@ namespace model {
 
     }
 
+    bool Veiculo::stob(const std::string &str) {
+
+        if(str == "true" || str == "1" || str == "S" || str == "s"){
+
+            return true;
+
+        }else{
+
+            return false;
+
+        }
+
+    }
+
     //Destrutor padrão de Veiculo
     Veiculo::~Veiculo() = default;
 

@@ -187,17 +187,17 @@ namespace model {
         _horario = dados_veiculo["Horario"];
         _objetos = dados_veiculo["Objetos"];
         _observacoes = dados_veiculo["Obs"];
-        std::to_string(_rodas) = dados_veiculo["EstadoRodas"];
-        std::to_string(_retrovisores) = dados_veiculo["EstadoRetro"];
-        std::to_string(_capacete) = dados_especificos["Capacete"];
-        std::to_string(_carenagem) = dados_especificos["Carenagem"];
-        std::to_string(_bau) = dados_especificos["Bau"];
-        std::to_string(_ferramentas) = dados_especificos["Ferramentas"];
-        std::to_string(_suspDianteira) = dados_especificos["SuspensaoD"];
-        std::to_string(_suspTraseira) = dados_especificos["SuspensaoT"];
-        std::to_string(_guidao) = dados_especificos["Guidao"];
-        std::to_string(_sistEletrico) = dados_especificos["SistemaE"];
-        std::to_string(_escapamento) = dados_especificos["Escapamento"];
+        _rodas = std::stoi(dados_veiculo["EstadoRodas"]);
+        _retrovisores = std::stoi(dados_veiculo["EstadoRetro"]);
+        _capacete = stob(dados_especificos["Capacete"]);
+        _carenagem = stob(dados_especificos["Carenagem"]);
+        _bau = stob(dados_especificos["Bau"]);
+        _ferramentas = stob(dados_especificos["Ferramentas"]);
+        _suspDianteira = std::stoi(dados_especificos["SuspensaoD"]);
+        _suspTraseira = std::stoi(dados_especificos["SuspensaoT"]);
+        _guidao = std::stoi(dados_especificos["Guidao"]);
+        _sistEletrico = std::stoi(dados_especificos["SistemaE"]);
+        _escapamento = std::stoi(dados_especificos["Escapamento"]);
 
     }
 

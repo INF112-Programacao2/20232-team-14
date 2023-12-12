@@ -202,8 +202,8 @@ namespace model {
 
     void Carro::updateVeiculo(std::unordered_map<std::string, std::string> &dados_veiculo, std::unordered_map<std::string, std::string> &dados_especificos) {
 
-        std::to_string(_os) = dados_veiculo["OS"];
-        std::to_string(_id_patio) = dados_veiculo["Patio"];
+        _os = std::stoi(dados_veiculo["OS"]);
+        _id_patio = std::stoi(dados_veiculo["Patio"]);
         _solicitacao = dados_veiculo["Solicitacao"];
         _funcionario = dados_veiculo["Funcionario"];
         _placa_reboque = dados_veiculo["PlacaReboque"];
@@ -225,21 +225,21 @@ namespace model {
         _horario = dados_veiculo["Horario"];
         _objetos = dados_veiculo["Objetos"];
         _observacoes = dados_veiculo["Obs"];
-        std::to_string(_rodas) = dados_veiculo["EstadoRodas"];
-        std::to_string(_retrovisores) = dados_veiculo["EstadoRetro"];
-        std::to_string(_extintor) = dados_especificos["Extintor"];
-        std::to_string(_estepe) = dados_especificos["Estepe"];
-        std::to_string(_macaco) = dados_especificos["Macaco"];
-        std::to_string(_chave_roda) = dados_especificos["ChaveRoda"];
-        std::to_string(_triangulo) = dados_especificos["Triangulo"];
-        std::to_string(_bateria) = dados_especificos["Bateria"];
-        std::to_string(_calotas) = dados_especificos["Calotas"];
-        std::to_string(_tapetes) = dados_especificos["Tapetes"];
-        std::to_string(_radio) = dados_especificos["Radio"];
-        std::to_string(_portas) = dados_especificos["EstadoPortas"];
-        std::to_string(_capo) = dados_especificos["EstadoCapo"];
-        std::to_string(_painel) = dados_especificos["EstadoPainel"];
-        std::to_string(_teto) = dados_especificos["EstadoTeto"];
+        _rodas = std::stoi(dados_veiculo["EstadoRodas"]);
+        _retrovisores = std::stoi(dados_veiculo["EstadoRetro"]);
+        _extintor = stob(dados_especificos["Extintor"]);
+        _estepe = stob(dados_especificos["Estepe"]);
+        _macaco = stob(dados_especificos["Macaco"]);
+        _chave_roda = stob(dados_especificos["ChaveRoda"]);
+        _triangulo = stob(dados_especificos["Triangulo"]);
+        _bateria = stob(dados_especificos["Bateria"]);
+        _calotas = stob(dados_especificos["Calotas"]);
+        _tapetes = stob(dados_especificos["Tapetes"]);
+        _radio = stob(dados_especificos["Radio"]);
+        _portas = std::stoi(dados_especificos["EstadoPortas"]);
+        _capo = std::stoi(dados_especificos["EstadoCapo"]);
+        _painel = std::stoi(dados_especificos["EstadoPainel"]);
+        _teto = std::stoi(dados_especificos["EstadoTeto"]);
 
     }
 
