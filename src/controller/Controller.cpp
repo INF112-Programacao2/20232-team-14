@@ -149,7 +149,6 @@ namespace controller {
 
 
         try {
-            interface.coletaChecklist(dados_veiculo);
             switch (stoi(dados_veiculo["Tipo"])) {
                 case 1: //cada caso encaminha para uma funcao dependendo do tipo do veiculo (carro, moto ou caminhao)
                     criarCarro(dados_veiculo);
