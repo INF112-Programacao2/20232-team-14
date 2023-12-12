@@ -164,23 +164,23 @@ namespace model {
 
     void Moto::updateVeiculo(std::unordered_map<std::string, std::string> &dados_veiculo, std::unordered_map<std::string, std::string> &dados_especificos) {
 
-        std::to_string(_os) = dados_veiculo["OS"];
-        std::to_string(_id_patio) = dados_veiculo["Patio"];
+        _os = std::stoi(dados_veiculo["OS"]);
+        _id_patio = std::stoi(dados_veiculo["Patio"]);
         _solicitacao = dados_veiculo["Solicitacao"];
         _funcionario = dados_veiculo["Funcionario"];
         _placa_reboque = dados_veiculo["PlacaReboque"];
         _motivo = dados_veiculo["Motivo"];
-        std::to_string(_estado_veiculo) = dados_veiculo["Estado"];
-        std::to_string(_blitz) = dados_veiculo["Blitz"];
+        _estado_veiculo = std::stoi(dados_veiculo["Estado"]);
+        _blitz = stob(dados_veiculo["Blitz"]);
         _local = dados_veiculo["Local"];
         _placa = dados_veiculo["Placa"];
         _marca = dados_veiculo["Marca"];
         _modelo = dados_veiculo["Modelo"];
-        std::to_string(_ano) = dados_veiculo["Ano"];
+        _ano = std::stoi(dados_veiculo["Ano"]);
         _cidade = dados_veiculo["Cidade"];
         _chassi = dados_veiculo["Chassi"];
-        std::to_string(_km) = dados_veiculo["Distancia"];
-        std::to_string(_hodometro) = dados_veiculo["KM"];
+        _km = std::stoi(dados_veiculo["Distancia"]);
+        _hodometro = std::stoi(dados_veiculo["KM"]);
         _ocorrencia = dados_veiculo["Ocorrencia"];
         _policial = dados_veiculo["Policial"];
         _data_apreensao = dados_veiculo["Data"];
