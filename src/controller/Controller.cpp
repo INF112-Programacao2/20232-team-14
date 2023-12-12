@@ -215,13 +215,13 @@ namespace controller {
 
         switch (stoi(dados_veiculo["Tipo"])) {
             case 1: //recebe o tipo e dependendo dele chama a funcao coletaChecklist para carro, moto ou caminhao
-                interface.coletaChecklistCarro(dados_veiculo);
+                interface.coletaChecklistCarro(dados_especificos);
                 break;
             case 2:
-                interface.coletaChecklistMoto(dados_veiculo);
+                interface.coletaChecklistMoto(dados_especificos);
                 break;
             case 3:
-                interface.coletaChecklistCaminhao(dados_veiculo);
+                interface.coletaChecklistCaminhao(dados_especificos);
                 break;
         }
         v->updateVeiculo(dados_veiculo, dados_especificos);
