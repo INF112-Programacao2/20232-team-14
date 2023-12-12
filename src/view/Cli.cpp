@@ -1,9 +1,9 @@
 #include <iostream>
-#include <iomanip>
 #include <vector>
 #include <unordered_map>
 #include "Cli.h"
 #include <regex>
+#include "exceptions/abortFunctionException.h"
 
 namespace view {
 
@@ -40,6 +40,9 @@ namespace view {
         }
         std::cin.sync();
         std::getline(std::cin, input);
+        if(input == "CANCELA"){
+            throw abortFunctionException("Função abortada");
+        }
         if(input.empty()){
             if(field.empty()){
                 std::cout << "Campo não pode ser vazio!" << std::endl;
@@ -65,6 +68,9 @@ namespace view {
         while (true){
             std::cin.sync();
             std::getline(std::cin, input);
+            if(input == "CANCELA"){
+                throw abortFunctionException("Função abortada");
+            }
             if(input.empty()){
                 if(field.empty()){
                     std::cout << errorMsg << std::endl;
@@ -306,7 +312,7 @@ namespace view {
     //imprime mensagem de erro
     void Cli::errorMsg(const std::exception& e) {
 
-        std::cerr << "ERRO: "<< e.what() << std::endl; //what() transforma a excecao em uma string legivel
+        std::cerr << e.what() << std::endl; //what() transforma a excecao em uma string legivel
 
     }
 

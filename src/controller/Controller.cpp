@@ -5,6 +5,7 @@
 #include "view/Cli.h"
 #include "model/Moto.h"
 #include "model/Caminhao.h"
+#include "exceptions/abortFunctionException.h"
 
 namespace controller {
 
@@ -29,7 +30,12 @@ namespace controller {
                     editarChecklist();
                     break;
                 case 3:
-                    realizarOrcamento(stoi(interface.readOS()));
+                    try {
+                        realizarOrcamento(stoi(interface.readOS()));
+                    } catch (abortFunctionException &e) {
+                        interface.errorMsg(e);
+                        return;
+                    }
                     break;
                 case 4:
                     liberarVeiculo();
@@ -38,7 +44,12 @@ namespace controller {
                     consultarVeiculo();
                     break;
                 case 6:
-                    searchByPlate(interface.readPlate());
+                    try {
+                        searchByPlate(interface.readPlate());
+                    } catch (abortFunctionException &e) {
+                        interface.errorMsg(e);
+                        return;
+                    }
                     break;
                 case 7:
                     printAll();
@@ -112,24 +123,47 @@ namespace controller {
             _veiculos = new std::vector<model::Veiculo *>();
         }
         std::unordered_map<std::string, std::string> dados_veiculo; //responsavel por receber e encaminhar dados dos novos veiculos registrados
-        interface.coletaChecklist(dados_veiculo);
+
+        try {
+            interface.coletaChecklist(dados_veiculo);
+        } catch (abortFunctionException &e) {
+            interface.errorMsg(e);
+            return;
+        }
+
         while(true) {
             if (searchByOS(stoi(dados_veiculo["OS"]))) {
-                interface.osAlreadyExistsError(); //informa que a OS já foi cadastrada
+
+                try {
+                    interface.osAlreadyExistsError(); //informa que a OS já foi cadastrada
+                } catch (abortFunctionException &e) {
+                    interface.errorMsg(e);
+                    return;
+                }
+
             }else{
                 break;
             }
         }
-        switch (stoi(dados_veiculo["Tipo"])) {
-            case 1: //cada caso encaminha para uma funcao dependendo do tipo do veiculo (carro, moto ou caminhao)
-                criarCarro(dados_veiculo);
-                break;
-            case 2:
-                criarMoto(dados_veiculo);
-                break;
-            case 3:
-                criarCaminhao(dados_veiculo);
-                break;
+
+
+
+        try {
+            interface.coletaChecklist(dados_veiculo);
+            switch (stoi(dados_veiculo["Tipo"])) {
+                case 1: //cada caso encaminha para uma funcao dependendo do tipo do veiculo (carro, moto ou caminhao)
+                    criarCarro(dados_veiculo);
+                    break;
+                case 2:
+                    criarMoto(dados_veiculo);
+                    break;
+                case 3:
+                    criarCaminhao(dados_veiculo);
+                    break;
+            }
+        }catch (abortFunctionException &e) {
+            interface.errorMsg(e);
+            return;
         }
     }
 
@@ -202,7 +236,13 @@ namespace controller {
     }
 
     void Controller::editarChecklist() {
-        int OS = stoi(interface.readOS());
+        int OS;
+        try {
+            OS = stoi(interface.readOS());
+        } catch (abortFunctionException &e) {
+            interface.errorMsg(e);
+            return;
+        }
         model::Veiculo* v = searchByOS(OS);
         if(!v){  //verifica se nao é nulo
             interface.osNotFound();
@@ -211,26 +251,42 @@ namespace controller {
         std::unordered_map<std::string, std::string> dados_veiculo;  //armazena os dados do veiculo
         std::unordered_map<std::string, std::string> dados_especificos; //armazena os dados especificos de carro,moto ou caminhao
         v->veiculoToMap(dados_veiculo, dados_especificos);
-        interface.coletaChecklist(dados_veiculo);
+
+        try {
+            interface.coletaChecklist(dados_veiculo);
+        } catch (abortFunctionException &e) {
+            interface.errorMsg(e);
+            return;
+        }
 
         while(true) {
             if (searchByOS(stoi(dados_veiculo["OS"]))) {
-                interface.osAlreadyExistsError(); //informa que a OS já foi cadastrada
+                try {
+                    interface.osAlreadyExistsError(); //informa que a OS já foi cadastrada
+                } catch (abortFunctionException &e) {
+                    interface.errorMsg(e);
+                    return;
+                }
             }else{
                 break;
             }
         }
 
-        switch (stoi(dados_veiculo["Tipo"])) {
-            case 1: //recebe o tipo e dependendo dele chama a funcao coletaChecklist para carro, moto ou caminhao
-                interface.coletaChecklistCarro(dados_especificos);
-                break;
-            case 2:
-                interface.coletaChecklistMoto(dados_especificos);
-                break;
-            case 3:
-                interface.coletaChecklistCaminhao(dados_especificos);
-                break;
+        try{
+            switch (stoi(dados_veiculo["Tipo"])) {
+                case 1: //recebe o tipo e dependendo dele chama a funcao coletaChecklist para carro, moto ou caminhao
+                    interface.coletaChecklistCarro(dados_especificos);
+                    break;
+                case 2:
+                    interface.coletaChecklistMoto(dados_especificos);
+                    break;
+                case 3:
+                    interface.coletaChecklistCaminhao(dados_especificos);
+                    break;
+            }
+        } catch (abortFunctionException &e) {
+            interface.errorMsg(e);
+            return;
         }
         v->updateVeiculo(dados_veiculo, dados_especificos);
     }
@@ -241,18 +297,36 @@ namespace controller {
             interface.veiculoNaoExiste();
             return;
         }
-        interface.printOrcamento(v->calcOrcamento(interface.getDataLiberacao())); //realiza o orcamento por meio da funcao calcOrcamento
+
+        try {
+            interface.printOrcamento(v->calcOrcamento(interface.getDataLiberacao())); //realiza o orcamento por meio da funcao calcOrcamento
+        } catch (abortFunctionException &e) {
+            interface.errorMsg(e);
+            return;
+        }
     }
 
     void Controller::liberarVeiculo() { // recebe OS da view, verifica se ja esta liberado, se nao estiver libera, se ja estiver mensagem de erro e aborta função
-        model::Veiculo* v = searchByOS(stoi(interface.readOS()));
+        model::Veiculo* v;
+        try {
+            v = searchByOS(stoi(interface.readOS()));
+        } catch (abortFunctionException &e) {
+            interface.errorMsg(e);
+            return;
+        }
         if(!v){
             interface.veiculoNaoExiste();
             return;
         }
         if(v->get_sit_veiculo()){
             v->set_sit_veiculo(false);
-            v->set_data_liberacao(interface.getDataLiberacao());
+            try {
+                v->set_data_liberacao(interface.getDataLiberacao());
+            } catch (abortFunctionException &e) {
+                interface.errorMsg(e);
+                return;
+            }
+
         }else{
             interface.veiculoJaLiberadoError();
             return;
@@ -260,7 +334,14 @@ namespace controller {
     }
 
     void Controller::consultarVeiculo() { //consulta um veiculo atraves da OS e imprime os dados
-        model::Veiculo* v = searchByOS(stoi(interface.readOS()));
+        model::Veiculo* v;
+
+        try {
+            v = searchByOS(stoi(interface.readOS()));
+        } catch (abortFunctionException &e) {
+            interface.errorMsg(e);
+            return;
+        }
         printVeiculo(v);
     }
 
