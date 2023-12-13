@@ -103,14 +103,14 @@ namespace view {
         leituraCampo("Placa do veiculo apreendido: ", dados_veiculo["Placa"],"^[A-Z]{3}-?[0-9][0-9A-Z][0-9][0-9]$","Placa invalida.");
         leituraCampo("Marca do veiculo apreendido: ", dados_veiculo["Marca"]);
         leituraCampo("Modelo do veiculo apreendido: ", dados_veiculo["Modelo"]);
-        leituraCampo("Ano de fabricação do veiculo: ", dados_veiculo["Ano"], "^(19[012][0-9]|20[0-9]{2})$", "Ano invalido.");
+        leituraCampo("Ano de fabricação do veiculo: ", dados_veiculo["Ano"], "^(19[0-9]{2}|20[0-9]{2})$", "Ano invalido.");
         leituraCampo("Cidade em que ocorreu a apreensao: ", dados_veiculo["Cidade"]);
         leituraCampo("Chassi do veiculo apreendido: ", dados_veiculo["Chassi"]);
         leituraCampo("Distancia em quilometro do patio no momento de apreensao: ", dados_veiculo["Distancia"], "^[0-9]+$", "Distancia invalida. Este campo deve conter apenas numeros.");
         leituraCampo("Quilometragem do veiculo no momento de apreensao: ", dados_veiculo["KM"], "^[0-9]+$", "Quilometragem invalida. Este campo deve conter apenas numeros.");
         leituraCampo("Ocorrencia registrada: ", dados_veiculo["Ocorrencia"]);
         leituraCampo("Policial responsavel pela apreensao: ", dados_veiculo["Policial"]);
-        leituraCampo("Data de apreensao do veiculo:\nConsidere o formato dd/mm/aaaa", dados_veiculo["Data"], "^(0?[1-9]|[12][0-9]|3[01])[\\/](0?[1-9]|1[012])[\\/]\\d{4}$", "Formato de data invalida.");
+        leituraCampo("Data de apreensao do veiculo:\nConsidere o formato dd/mm/aaaa", dados_veiculo["Data"], "^(0?[1-9]|[12][0-9]|3[01])[\\/](0?[1-9]|1[012])[\\/]19[0-9]{2}|20[0-9]{2}$", "Formato de data invalida.");
         leituraCampo("Horario de apreensao:", dados_veiculo["Horario"], "^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$", "Horario invalido.");
         leituraCampo("Objetos que estavam no carro no momento de apreensao: ", dados_veiculo["Objetos"]);
         leituraCampo("Observacao (se nao houver, pressione 'N'): ", dados_veiculo["Obs"]);
@@ -581,12 +581,6 @@ namespace view {
             std::cout << "Bom estado" << std::endl;
         }
 
-
-
-            std::cout << "Suspensao traseira: " << dados_moto["SuspensaoT"] << std::endl;
-        std::cout << "Guidao: " << dados_moto["Guidao"] << std::endl;
-        std::cout << "Sistema eletrico: " << dados_moto["SistemaE"] << std::endl;
-        std::cout << "Escapamento: " << dados_moto["Escapamento"] << std::endl;
     }
 
     //informa que um veiculo ja foi liberado
