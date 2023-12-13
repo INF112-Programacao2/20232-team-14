@@ -162,6 +162,9 @@ namespace model {
         dados_veiculo["OS"] = std::to_string(_os);
         dados_veiculo["Patio"] = std::to_string(_id_patio);
         dados_veiculo["Solicitacao"] = _solicitacao;
+        dados_veiculo["Situacao"] = std::to_string(_sit_veiculo);
+        dados_veiculo["Data"] = _data_apreensao;
+        dados_veiculo["DataLib"] = _data_liberacao;
         dados_veiculo["Funcionario"] = _funcionario;
         dados_veiculo["PlacaReboque"] = _placa_reboque;
         dados_veiculo["Motivo"] = _motivo;
@@ -178,7 +181,6 @@ namespace model {
         dados_veiculo["KM"] = std::to_string(_hodometro);
         dados_veiculo["Ocorrencia"] = _ocorrencia;
         dados_veiculo["Policial"] = _policial;
-        dados_veiculo["Data"] = _data_apreensao;
         dados_veiculo["Horario"] = _horario;
         dados_veiculo["Objetos"] = _objetos;
         dados_veiculo["Obs"] = _observacoes;

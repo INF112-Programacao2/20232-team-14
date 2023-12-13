@@ -9,7 +9,6 @@
 #include <iostream>
 #include <sstream>
 #include <chrono>
-#include "exceptions/deLoreanException.h"
 #include <iomanip>
 
 namespace controller {
@@ -151,6 +150,15 @@ namespace controller {
             }
         }
 
+        while(true) {
+            if(verificaData(dados_veiculo["Data"])){
+                break;
+            }else{
+                interface.dataInvalidaErro();
+                dados_veiculo["Data"] = interface.getData();
+
+            }
+        }
 
 
         try {
@@ -376,13 +384,33 @@ namespace controller {
         auto input_seconds = std::mktime(&input_tm);
 
         if (input_seconds > current_seconds) {
-           return false;
+            return false;
         } else {
             return true;
         }
-
-
 }
+
+    bool Controller::verificaDataLib(const std::string &data){
+        auto now = std::chrono::system_clock::now();
+        time_t current_time = std::chrono::system_clock::to_time_t(now);
+        struct tm* current_tm = std::localtime(&current_time);
+
+        std::tm input_tm = {};
+        std::istringstream ss(data);
+        ss >> std::get_time(&input_tm, "%d/%m/%Y");
+
+
+        auto current_seconds = std::mktime(current_tm);
+        auto input_seconds = std::mktime(&input_tm);
+
+        if (current_seconds > input_seconds) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
 
 
 } // controller

@@ -61,6 +61,12 @@ namespace view {
 
         //informa que a OS fornecida nao foi cadastrada
         void veiculoNaoExiste();
+
+        std::string getData();
+
+        void dataInvalidaErro();
+
+        void deLoreanError();
     };
 
 } // View

@@ -38,21 +38,23 @@ namespace view {
         if(!field.empty()){
             std::cout << "Valor atual: " << field << "\nPressione enter para manter o valor atual." << std::endl;
         }
-        std::cin.sync();
-        std::getline(std::cin, input);
-        if(input == "CANCELA"){
-            throw abortFunctionException("Função abortada");
-        }
-        if(input.empty()){
-            if(field.empty()){
-                std::cout << "Campo não pode ser vazio!" << std::endl;
-                std::cout << label << std::endl;
-            }else{
+        while (true){
+            std::cin.sync();
+            std::getline(std::cin, input);
+            if (input == "CANCELA") {
+                throw abortFunctionException("Função abortada");
+            }
+            if (input.empty()) {
+                if (field.empty()) {
+                    std::cout << "Campo não pode ser vazio!" << std::endl;
+                    std::cout << label << std::endl;
+                } else {
+                    return;
+                }
+            } else {
+                field = input;
                 return;
             }
-        }else{
-            field = input;
-            return;
         }
     }
 
@@ -108,7 +110,7 @@ namespace view {
         leituraCampo("Quilometragem do veiculo no momento de apreensao: ", dados_veiculo["KM"], "^[0-9]+$", "Quilometragem invalida. Este campo deve conter apenas numeros.");
         leituraCampo("Ocorrencia registrada: ", dados_veiculo["Ocorrencia"]);
         leituraCampo("Policial responsavel pela apreensao: ", dados_veiculo["Policial"]);
-        leituraCampo("Data de apreensao do veiculo:\nConsidere o formato dd/mm/aaaa", dados_veiculo["Data"], "^[0-3][0-9]/(0[1-9]|1[0-2])/(20[0-9]{2})$", "Formato de data invalida."); // TODO: REFAZER ESSE REGEX
+        leituraCampo("Data de apreensao do veiculo:\nConsidere o formato dd/mm/aaaa", dados_veiculo["Data"], "^(0?[1-9]|[12][0-9]|3[01])[\\/](0?[1-9]|1[012])[\\/]\\d{4}$", "Formato de data invalida.");
         leituraCampo("Horario de apreensao:", dados_veiculo["Horario"], "^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$", "Horario invalido.");
         leituraCampo("Objetos que estavam no carro no momento de apreensao: ", dados_veiculo["Objetos"]);
         leituraCampo("Observacao (se nao houver, pressione 'N'): ", dados_veiculo["Obs"]);
@@ -195,9 +197,16 @@ namespace view {
     void Cli::printChecklist(std::unordered_map<std::string, std::string> &dados_veiculo) {
         std::cout << "Ordem de servico: " << dados_veiculo["OS"] << std::endl;
         std::cout << "Solicitacao: " << dados_veiculo["Solicitacao"] << std::endl;
+
+        if (std::stoi(dados_veiculo["Situacao"])==1)
+            std::cout << "No patio\n";
+        else if (std::stoi(dados_veiculo["Situacao"])==0)
+            std::cout << "Liberado\n";
+
         std::cout << "Funcionario responsavel por registrar o veiculo: " << dados_veiculo["Funcionario"] << std::endl;
         std::cout << "Placa do veiculo que realizou o reboque: " << dados_veiculo["PlacaReboque"] << std::endl;
         std::cout << "Motivo da apreensao: " << dados_veiculo["Motivo"] << std::endl;
+
         std::cout << "Estado do veiculo no momento de apreensao: ";
         if (std::stoi(dados_veiculo["Estado"])==1)
             std::cout << "Ruim\n";
@@ -205,6 +214,7 @@ namespace view {
             std::cout << "Regular\n";
         else
             std::cout << "Bom\n";
+
         std::cout << "Ocorrencia de Blitz: " << dados_veiculo["Blitz"] << std::endl;
         std::cout << "Local de apreensao: " << dados_veiculo["Local"] << std::endl;
         std::cout << "Placa do veiculo apreendido: " << dados_veiculo["Placa"] << std::endl;
@@ -220,9 +230,11 @@ namespace view {
         std::cout << "Data de apreensao do veiculo: " << dados_veiculo["Data"] << std::endl;
         std::cout << "Horario de apreensao: " << dados_veiculo["Horario"] << std::endl;
         std::cout << "Objetos que estavam no carro no momento de apreensao: " << dados_veiculo["Objetos"] << std::endl;
+
         if (dados_veiculo["Obs"]!="N" && dados_veiculo["Obs"]!="n" ) {
             std::cout << "Observacao: " << dados_veiculo["Obs"] << std::endl;
         }
+
         std::cout << "Estado das rodas do veiculo no momento de apreensao: ";
         if (std::stoi(dados_veiculo["EstadoRodas"])==0)
             std::cout << "Inexistente\n";
@@ -234,6 +246,7 @@ namespace view {
             std::cout << "Quebrado\n";
         else
             std::cout << "Bom estado\n";
+
         std::cout << "Estado dos retrovisores do veiculo no momento de apreensao: ";
         if (std::stoi(dados_veiculo["EstadoRetro"])==0)
             std::cout << "Inexistente\n";
@@ -322,10 +335,24 @@ namespace view {
         std::string data_lib;
 
         //realiza leitura da data de liberacao e verifica se e valida
-        leituraCampo("Insira o dia de liberação: ", data_lib, "^[0-3][0-9]/(0[1-9]|1[0-2])/(20[0-9]{2})$","Formato de data invalida.");
+        leituraCampo("Insira o dia de liberação: ", data_lib, "^(0?[1-9]|[12][0-9]|3[01])[\\/](0?[1-9]|1[012])[\\/]\\d{4}$","Formato de data invalido.");
 
         return data_lib;
 
+    }
+
+    std::string Cli::getData(){
+        std::string data;
+        leituraCampo("Insira a data de apreensão: ", data, "^(0?[1-9]|[12][0-9]|3[01])[\\/](0?[1-9]|1[012])[\\/]\\d{4}$", "Formato de data invalido.");
+        return data;
+    }
+
+    void Cli::dataInvalidaErro(){
+        std::cout << "A data informada não pode ser posterior à data atual!" << std::endl;
+    }
+
+    void Cli::deLoreanError(){
+        std::cout << "A data de liberação não pode ser anterior à data atual!" << std::endl;
     }
 
     //imprime o valor de orcamento

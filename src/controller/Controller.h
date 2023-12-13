@@ -42,6 +42,8 @@ namespace controller {
         void printVeiculo(model::Veiculo *v); //imprime os dados de um veiculo
 
         bool verificaData(const std::string &data); //verifica se a data é válida
+
+        bool verificaDataLib(const std::string &data);
     };
 
 }
