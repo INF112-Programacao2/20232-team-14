@@ -214,12 +214,11 @@ namespace controller {
                 if (v->get_os() == OS) {  //verifica a OS
                     return v; //retorna o objeto referente àquela OS
                 }
-                return nullptr;
             }
         }else{
             interface.vectorVazioError();
-            return nullptr;
         }
+        return nullptr;
     }
 
     void Controller::searchByPlate(const std::string &plate){
