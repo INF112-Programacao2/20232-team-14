@@ -195,7 +195,7 @@ namespace model {
     }
 
     void Veiculo::set_data_liberacao(const std::string &data_liberacao) {
-        _data_apreensao=data_liberacao;
+        _data_liberacao=data_liberacao;
     }
 
     const std::string &Veiculo::get_horario() const{

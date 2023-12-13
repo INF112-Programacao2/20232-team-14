@@ -24,6 +24,7 @@ namespace view {
         std::cout << "7. Mostrar todos os veículos." << std::endl;
         std::cout << "8. Deletar todos os veículos." << std::endl;
         std::cout << "0. Encerra Programa." << std::endl;
+        std::cout << "-- Digite 'CANCELA' para interromper qualquer entrada de dados --" << std::endl;
         std::cin >> input;
         std::cin.ignore();
         return input;
@@ -110,7 +111,7 @@ namespace view {
         leituraCampo("Quilometragem do veiculo no momento de apreensao: ", dados_veiculo["KM"], "^[0-9]+$", "Quilometragem invalida. Este campo deve conter apenas numeros.");
         leituraCampo("Ocorrencia registrada: ", dados_veiculo["Ocorrencia"]);
         leituraCampo("Policial responsavel pela apreensao: ", dados_veiculo["Policial"]);
-        leituraCampo("Data de apreensao do veiculo:\nConsidere o formato dd/mm/aaaa", dados_veiculo["Data"], "^(0?[1-9]|[12][0-9]|3[01])[\\/](0?[1-9]|1[012])[\\/]19[0-9]{2}|20[0-9]{2}$", "Formato de data invalida.");
+        leituraCampo("Data de apreensao do veiculo:\nConsidere o formato dd/mm/aaaa", dados_veiculo["Data"], "^(0?[1-9]|[12][0-9]|3[01])[\\/](0?[1-9]|1[012])[\\/](19[0-9]{2}|20[0-9]{2})$", "Formato de data invalida.");
         leituraCampo("Horario de apreensao:", dados_veiculo["Horario"], "^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$", "Horario invalido.");
         leituraCampo("Objetos que estavam no carro no momento de apreensao: ", dados_veiculo["Objetos"]);
         leituraCampo("Observacao (se nao houver, pressione 'N'): ", dados_veiculo["Obs"]);
@@ -235,6 +236,9 @@ namespace view {
         std::cout << "Ocorrencia registrada: " << dados_veiculo["Ocorrencia"] << std::endl;
         std::cout << "Policial responsavel pela apreensao: " << dados_veiculo["Policial"] << std::endl;
         std::cout << "Data de apreensao do veiculo: " << dados_veiculo["Data"] << std::endl;
+        if (!dados_veiculo["DataLib"].empty()) {
+            std::cout << "Data de liberacao do veiculo: " << dados_veiculo["DataLib"] << std::endl;
+        }
         std::cout << "Horario de apreensao: " << dados_veiculo["Horario"] << std::endl;
         std::cout << "Objetos que estavam no carro no momento de apreensao: " << dados_veiculo["Objetos"] << std::endl;
 
