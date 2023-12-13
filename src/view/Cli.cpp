@@ -198,8 +198,9 @@ namespace view {
         std::cout << "Ordem de servico: " << dados_veiculo["OS"] << std::endl;
         std::cout << "Solicitacao: " << dados_veiculo["Solicitacao"] << std::endl;
 
+        std::cout << "Situação do veículo: " << std::endl;
         if (std::stoi(dados_veiculo["Situacao"])==1)
-            std::cout << "No patio\n";
+            std::cout << "Apreendido\n";
         else if (std::stoi(dados_veiculo["Situacao"])==0)
             std::cout << "Liberado\n";
 
@@ -215,7 +216,13 @@ namespace view {
         else
             std::cout << "Bom\n";
 
-        std::cout << "Ocorrencia de Blitz: " << dados_veiculo["Blitz"] << std::endl;
+        std::cout << "Ocorrencia de blitz: ";
+        if(std::stoi(dados_veiculo["Blitz"])==1){
+            std::cout << "Sim" << std::endl;
+        }else{
+            std::cout << "Não" << std::endl;
+        }
+
         std::cout << "Local de apreensao: " << dados_veiculo["Local"] << std::endl;
         std::cout << "Placa do veiculo apreendido: " << dados_veiculo["Placa"] << std::endl;
         std::cout << "Marca do veiculo apreendido: " << dados_veiculo["Marca"] << std::endl;
@@ -262,19 +269,122 @@ namespace view {
 
     //imprime dados especificos de carro
     void Cli::printChecklistCarro(std::unordered_map<std::string, std::string> &dados_carro) {
-        std::cout << "Extintor: " << dados_carro["Extintor"] << std::endl;
-        std::cout << "Estepe: " << dados_carro["Estepe"] << std::endl;
-        std::cout << "Macaco: " << dados_carro["Macaco"] << std::endl;
-        std::cout << "Chave roda: " << dados_carro["ChaveRoda"] << std::endl;
-        std::cout << "Triangulo: " << dados_carro["Triangulo"] << std::endl;
-        std::cout << "Bateria: " << dados_carro["Bateria"] << std::endl;
-        std::cout <<"Calotas " << dados_carro["Calotas"] << std::endl;
-        std::cout <<"Tapetes: " << dados_carro["Tapetes"] << std::endl;
-        std::cout << "Radio: " << dados_carro["Radio"] << std::endl;
-        std::cout << "Portas: " << dados_carro["EstadoPortas"] << std::endl;
-        std::cout << "Capo: " << dados_carro["EstadoCapo"] << std::endl;
-        std::cout << "Painel: " << dados_carro["EstadoPainel"] << std::endl;
-        std::cout << "Teto: " << dados_carro["EstadoTeto"] << std::endl;
+
+        std::cout << "Extintor: ";
+        if(std::stoi(dados_carro["Extintor"])==1){
+            std::cout << "Sim" << std::endl;
+        }else{
+            std::cout << "Não" << std::endl;
+        }
+
+        std::cout << "Estepe: ";
+        if(std::stoi(dados_carro["Estepe"]) ==1) {
+            std::cout << "Sim" << std::endl;
+        } else {
+            std::cout << "Não" << std::endl;
+        }
+
+        std::cout << "Macaco: ";
+        if(std::stoi(dados_carro["Macaco"]) ==1) {
+            std::cout << "Sim" << std::endl;
+        } else {
+            std::cout << "Não" << std::endl;
+        }
+
+        std::cout << "Chave roda: ";
+        if(std::stoi(dados_carro["ChaveRoda"]) ==1) {
+            std::cout << "Sim" << std::endl;
+        } else {
+            std::cout << "Não" << std::endl;
+        }
+
+        std::cout << "Triângulo: ";
+        if(std::stoi(dados_carro["Triangulo"]) ==1) {
+            std::cout << "Sim" << std::endl;
+        } else {
+            std::cout << "Não" << std::endl;
+        }
+
+        std::cout << "Bateria: ";
+        if(std::stoi(dados_carro["Bateria"]) ==1) {
+            std::cout << "Sim" << std::endl;
+        } else {
+            std::cout << "Não" << std::endl;
+        }
+
+        std::cout << "Calotas: ";
+        if(std::stoi(dados_carro["Calotas"]) ==1) {
+            std::cout << "Sim" << std::endl;
+        } else {
+            std::cout << "Não" << std::endl;
+        }
+
+        std::cout << "Tapetes: ";
+        if(std::stoi(dados_carro["Tapetes"]) ==1) {
+            std::cout << "Sim" << std::endl;
+        } else {
+            std::cout << "Não" << std::endl;
+        }
+
+        std::cout << "Rádio: ";
+        if(std::stoi(dados_carro["Radio"]) ==1) {
+            std::cout << "Sim" << std::endl;
+        } else {
+            std::cout << "Não" << std::endl;
+        }
+
+        std::cout << "Portas: ";
+        if(std::stoi(dados_carro["EstadoPortas"]) ==0) {
+            std::cout << "Inexistente" << std::endl;
+        } else if (std::stoi(dados_carro["EstadoPortas"]) ==1) {
+            std::cout << "Amassado" << std::endl;
+        }else if (std::stoi(dados_carro["EstadoPortas"]) == 2) {
+            std::cout << "Riscado" << std::endl;
+        }else if (std::stoi(dados_carro["EstadoPortas"]) ==3) {
+            std::cout << "Quebrado" << std::endl;
+        }else{
+            std::cout << "Bom estado" << std::endl;
+        }
+
+        std::cout << "Capô: ";
+        if(std::stoi(dados_carro["EstadoCapo"]) == 0) {
+            std::cout << "Inexistente" << std::endl;
+        } else if (std::stoi(dados_carro["EstadoCapo"]) == 1) {
+            std::cout << "Amassado" << std::endl;
+        } else if (std::stoi(dados_carro["EstadoCapo"]) == 2) {
+            std::cout << "Riscado" << std::endl;
+        } else if (std::stoi(dados_carro["EstadoCapo"]) == 3) {
+            std::cout << "Quebrado" << std::endl;
+        } else {
+            std::cout << "Bom estado" << std::endl;
+        }
+
+        std::cout << "Painel: ";
+        if(std::stoi(dados_carro["EstadoPainel"]) == 0) {
+            std::cout << "Inexistente" << std::endl;
+        } else if (std::stoi(dados_carro["EstadoPainel"]) == 1) {
+            std::cout << "Amassado" << std::endl;
+        } else if (std::stoi(dados_carro["EstadoPainel"]) == 2) {
+            std::cout << "Riscado" << std::endl;
+        } else if (std::stoi(dados_carro["EstadoPainel"]) == 3) {
+            std::cout << "Quebrado" << std::endl;
+        } else {
+            std::cout << "Bom estado" << std::endl;
+        }
+
+        std::cout << "Teto: ";
+        if(std::stoi(dados_carro["EstadoTeto"]) == 0) {
+            std::cout << "Inexistente" << std::endl;
+        } else if (std::stoi(dados_carro["EstadoTeto"]) == 1) {
+            std::cout << "Amassado" << std::endl;
+        } else if (std::stoi(dados_carro["EstadoTeto"]) == 2) {
+            std::cout << "Riscado" << std::endl;
+        } else if (std::stoi(dados_carro["EstadoTeto"]) == 3) {
+            std::cout << "Quebrado" << std::endl;
+        } else {
+            std::cout << "Bom estado" << std::endl;
+        }
+
     }
 
     //imprime dados especificos de caminhao
@@ -296,12 +406,103 @@ namespace view {
 
     //imprime dados especificos de moto
     void Cli::printChecklistMoto(std::unordered_map<std::string, std::string> &dados_moto) {
-        std::cout << "Capacete: " << dados_moto["Capacete"] << std::endl;
-        std::cout << "Carenagem: " << dados_moto["Carenagem"] << std::endl;
-        std::cout << "Bau: " << dados_moto["Bau"] << std::endl;
-        std::cout << "Ferramentas: " << dados_moto["Ferramentas"] << std::endl;
-        std::cout << "Suspensao dianteira: " << dados_moto["SuspensaoD"] << std::endl;
-        std::cout << "Suspensao traseira: " << dados_moto["SuspensaoT"] << std::endl;
+
+        std::cout << "Capacete: ";
+        if(std::stoi(dados_moto["Capacete"]) == 1) {
+            std::cout << "Sim" << std::endl;
+        } else {
+            std::cout << "Não" << std::endl;
+        }
+
+        std::cout << "Carenagem: ";
+        if(std::stoi(dados_moto["Carenagem"]) == 1) {
+            std::cout << "Sim" << std::endl;
+        } else {
+            std::cout << "Não" << std::endl;
+        }
+
+        std::cout << "Bau: ";
+        if(std::stoi(dados_moto["Bau"]) == 1) {
+            std::cout << "Sim" << std::endl;
+        } else {
+            std::cout << "Não" << std::endl;
+        }
+
+        std::cout << "Ferramentas: ";
+        if(std::stoi(dados_moto["Ferramentas"]) == 1) {
+            std::cout << "Sim" << std::endl;
+        } else {
+            std::cout << "Não" << std::endl;
+        }
+
+        std::cout << "Suspensão Dianteira: ";
+        if(std::stoi(dados_moto["SuspensaoD"]) == 0) {
+            std::cout << "Inexistente" << std::endl;
+        } else if (std::stoi(dados_moto["SuspensaoD"]) == 1) {
+            std::cout << "Amassado" << std::endl;
+        } else if (std::stoi(dados_moto["SuspensaoD"]) == 2) {
+            std::cout << "Riscado" << std::endl;
+        } else if (std::stoi(dados_moto["SuspensaoD"]) == 3) {
+            std::cout << "Quebrado" << std::endl;
+        } else {
+            std::cout << "Bom estado" << std::endl;
+        }
+
+        std::cout << "Suspensão traseira: ";
+        if (std::stoi(dados_moto["SuspensaoT"]) == 0) {
+            std::cout << "Inexistente" << std::endl;
+        } else if (std::stoi(dados_moto["SuspensaoT"]) == 1) {
+            std::cout << "Amassada" << std::endl;
+        } else if (std::stoi(dados_moto["SuspensaoT"]) == 2) {
+            std::cout << "Riscada" << std::endl;
+        } else if (std::stoi(dados_moto["SuspensaoT"])== 3) {
+            std::cout << "Quebrada" << std::endl;
+        } else {
+            std::cout << "Bom estado" << std::endl;
+        }
+
+        std::cout << "Guidao: ";
+        if (std::stoi(dados_moto["Guidao"]) == 0) {
+            std::cout << "Inexistente" << std::endl;
+        } else if (std::stoi(dados_moto["Guidao"]) == 1) {
+            std::cout << "Amassado" << std::endl;
+        } else if (std::stoi(dados_moto["Guidao"])== 2) {
+            std::cout << "Riscado" << std::endl;
+        } else if (std::stoi(dados_moto["Guidao"])== 3) {
+            std::cout << "Quebrado" << std::endl;
+        } else {
+            std::cout << "Bom estado" << std::endl;
+        }
+
+        std::cout << "Sistema eletrico: ";
+        if (std::stoi(dados_moto["SistemaE"]) == 0) {
+            std::cout << "Inexistente" << std::endl;
+        } else if (std::stoi(dados_moto["SistemaE"]) == 1) {
+            std::cout << "Amassado" << std::endl;
+        } else if (std::stoi(dados_moto["SistemaE"]) == 2) {
+            std::cout << "Riscado" << std::endl;
+        }else if (std::stoi(dados_moto["SistemaE"]) == 3) {
+            std::cout << "Quebrado" << std::endl;
+        }else {
+            std::cout << "Bom estado" << std::endl;
+        }
+
+        std::cout << "Escapamento: ";
+        if (std::stoi(dados_moto["Escapamento"]) == 0) {
+            std::cout << "Inexistente" << std::endl;
+        } else if (std::stoi(dados_moto["Escapamento"]) == 1) {
+            std::cout << "Amassado" << std::endl;
+        } else if (std::stoi(dados_moto["Escapamento"]) == 2) {
+            std::cout << "Riscado" << std::endl;
+        }else if (std::stoi(dados_moto["Escapamento"]) == 3) {
+            std::cout << "Quebrado" << std::endl;
+        }else {
+            std::cout << "Bom estado" << std::endl;
+        }
+
+
+
+            std::cout << "Suspensao traseira: " << dados_moto["SuspensaoT"] << std::endl;
         std::cout << "Guidao: " << dados_moto["Guidao"] << std::endl;
         std::cout << "Sistema eletrico: " << dados_moto["SistemaE"] << std::endl;
         std::cout << "Escapamento: " << dados_moto["Escapamento"] << std::endl;

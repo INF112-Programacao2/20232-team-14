@@ -17,7 +17,7 @@ namespace model {
         std::string _placa_reboque;             //Placa do veículo do pátio (caminhão ou carro) que realizou a apreensão
         std::string _motivo;                    //(Inf. Trânsito/Crime de Trânsito/Falta de Licenciamento/Etc... -> são vários, o usuário que vai escrever)
         int _estado_veiculo;                    //(1)Ruim/(2)Regular/(3)Bom
-        bool _blitz;                            //(1)Sim/(2)Não
+        bool _blitz;                            //(0)Não/(1)Sim
         std::string _local;                     //Local de apreensão do veículo
         std::string _placa;                     //Placa do veículo
         std::string _marca;                     //Marca do veículo
