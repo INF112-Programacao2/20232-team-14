@@ -389,19 +389,100 @@ namespace view {
 
     //imprime dados especificos de caminhao
     void Cli::printChecklistCaminhao(std::unordered_map<std::string, std::string> &dados_caminhao) {
-        std::cout << "Carroceria: " << dados_caminhao["EstadoCarroceria"] << std::endl;
-        std::cout << "Eixo traseiro: " << dados_caminhao["EixoTras"] << std::endl;
-        std::cout << "Cintas: " << dados_caminhao["Cintas"] << std::endl;
-        std::cout << "Suspensao da cabine: " << dados_caminhao["SuspensaoC"] << std::endl;
-        std::cout << "Extintor: " << dados_caminhao["Extintor"] << std::endl;
-        std::cout << "Estepe: " << dados_caminhao["Estepe"] << std::endl;
-        std::cout << "Macaco: " << dados_caminhao["Macaco"] << std::endl;
-        std::cout << "Chave roda: " << dados_caminhao["ChaveRoda"] << std::endl;
-        std::cout << "Triangulo: " << dados_caminhao["Triangulo"] << std:: endl;
-        std::cout << "Bateria: " << dados_caminhao["Bateria"] << std:: endl;
-        std::cout << "Calotas: " << dados_caminhao["Calotas"] << std:: endl;
-        std::cout << "Tapetes: " << dados_caminhao["Tapetes"] << std:: endl;
-        std::cout << "Radio: " << dados_caminhao["Radio"] << std:: endl;
+        std::cout << "Carroceria: ";
+        if(std::stoi(dados_caminhao["EstadoCarroceria"]) == 0 ) {
+            std::cout << "Inexistente" << std::endl;
+        }
+        else if (std::stoi(dados_caminhao["EstadoCarroceria"]) == 1) {
+            std::cout << "Amassado" << std::endl;
+        }
+        else if (std::stoi(dados_caminhao["EstadoCarroceria"]) == 2) {
+            std::cout << "Riscado" << std::endl;
+        }
+        else if (std::stoi(dados_caminhao["EstadoCarroceria"]) == 3) {
+            std::cout << "Quebrado" << std::endl;
+        }
+        else if (std::stoi(dados_caminhao["EstadoCarroceria"]) == 4) {
+            std::cout << "Carroceria: " << "Bom estado" << std::endl;
+        }
+        std::cout << "Eixo traseiro: ";
+        if(std::stoi(dados_caminhao["EixoTras"])==1){
+            std::cout << "Sim" << std::endl;
+        }else{
+            std::cout << "Não" << std::endl;
+        }
+        std::cout << "Cinta: ";
+        if(std::stoi(dados_caminhao["Cintas"])==1){
+            std::cout << "Sim" << std::endl;
+        }else{
+            std::cout << "Não" << std::endl;
+        }
+        std::cout << "Suspensao da Cabine: ";
+        if(std::stoi(dados_caminhao["SuspensaoC"]) ==0) {
+            std::cout << "Inexistente" << std::endl;
+        } else if (std::stoi(dados_caminhao["SuspensaoC"]) ==1) {
+            std::cout << "Amassado" << std::endl;
+        }else if (std::stoi(dados_caminhao["SuspensaoC"]) == 2) {
+            std::cout << "Riscado" << std::endl;
+        }else if (std::stoi(dados_caminhao["SuspensaoC"]) ==3) {
+            std::cout << "Quebrado" << std::endl;
+        }else{
+            std::cout << "Bom estado" << std::endl;
+        }
+        std::cout << "Extintor: ";
+        if(std::stoi(dados_caminhao["Extintor"])==1){
+            std::cout << "Sim" << std::endl;
+        }else{
+            std::cout << "Não" << std::endl;
+        }
+        std::cout << "Estepe: ";
+        if(std::stoi(dados_caminhao["Estepe"])==1){
+            std::cout << "Sim" << std::endl;
+        }else{
+            std::cout << "Não" << std::endl;
+        }
+        std::cout << "Macaco: ";
+        if(std::stoi(dados_caminhao["Macaco"])==1){
+            std::cout << "Sim" << std::endl;
+        }else{
+            std::cout << "Não" << std::endl;
+        }
+        std::cout << "Chave roda: ";
+        if(std::stoi(dados_caminhao["ChaveRoda"])==1){
+            std::cout << "Sim" << std::endl;
+        }else{
+            std::cout << "Não" << std::endl;
+        }
+        std::cout << "Triangulo: ";
+        if(std::stoi(dados_caminhao["Triangulo"])==1){
+            std::cout << "Sim" << std::endl;
+        }else{
+            std::cout << "Não" << std::endl;
+        }
+        std::cout << "Bateria: ";
+        if(std::stoi(dados_caminhao["Bateria"])==1){
+            std::cout << "Sim" << std::endl;
+        }else{
+            std::cout << "Não" << std::endl;
+        }
+        std::cout << "Calotas: ";
+        if(std::stoi(dados_caminhao["Calotas"])==1){
+            std::cout << "Sim" << std::endl;
+        }else{
+            std::cout << "Não" << std::endl;
+        }
+        std::cout << "Tapetes: ";
+        if(std::stoi(dados_caminhao["Tapetes"])==1){
+            std::cout << "Sim" << std::endl;
+        }else{
+            std::cout << "Não" << std::endl;
+        }
+        std::cout << "Radio: ";
+        if(std::stoi(dados_caminhao["Radio"])==1){
+            std::cout << "Sim" << std::endl;
+        }else{
+            std::cout << "Não" << std::endl;
+        }
     }
 
     //imprime dados especificos de moto
