@@ -13,6 +13,10 @@ add_executable(20232_team_14 ${PROJ_FILES}
         src/model/Moto.cpp
         src/exceptions/abortFunctionException.cpp
         src/exceptions/abortFunctionException.h
+        src/exceptions/deLoreanException.cpp
+        src/exceptions/deLoreanException.h
+        src/exceptions/steinsGateException.cpp
+        src/exceptions/steinsGateException.h
 )
 
 target_include_directories(20232_team_14 PRIVATE src)
