@@ -139,7 +139,7 @@ namespace controller {
             if (searchByOS(stoi(dados_veiculo["OS"]))) {
 
                 try {
-                    interface.osAlreadyExistsError(); //informa que a OS já foi cadastrada
+                    dados_veiculo["OS"] = interface.osAlreadyExistsError(); //informa que a OS já foi cadastrada
                 } catch (abortFunctionException &e) {
                     interface.errorMsg(e);
                     return;
@@ -274,7 +274,7 @@ namespace controller {
             if (searchByOS(stoi(dados_veiculo["OS"]))) {
                 if(OS != stoi(dados_veiculo["OS"])) {
                     try {
-                        interface.osAlreadyExistsError(); //informa que a OS já foi cadastrada
+                        dados_veiculo["OS"] = interface.osAlreadyExistsError(); //informa que a OS já foi cadastrada
                     } catch (abortFunctionException &e) {
                         interface.errorMsg(e);
                         return;
